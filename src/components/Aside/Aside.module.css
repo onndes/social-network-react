@@ -3,3 +3,17 @@
   background-color: rgb(163, 163, 163);
   padding: 10px;
 }
+
+.list {
+
+}
+
+.item {
+  padding: 0px 0px 15px 0px;
+  
+}
+
+.item a {
+  font-size: 20px;
+  color: black;
+}
