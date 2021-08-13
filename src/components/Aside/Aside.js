@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import style from "./Aside.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default class Aside extends Component {
     render() {
@@ -9,13 +9,19 @@ export default class Aside extends Component {
                 <aside className={style.aside}>
                     <ul className={style.list}>
                         <li className={style.item}>
-                            <Link to='/home'>Home</Link>
+                            <NavLink to='/home' activeClassName={style.active}>
+                                Home
+                            </NavLink>
                         </li>
                         <li className={style.item}>
-                            <Link to='/messages'>Messages</Link>
+                            <NavLink to='/messages' activeClassName={style.active}>
+                                Messages
+                            </NavLink>
                         </li>
                         <li className={style.item}>
-                            <Link to='/news'>News</Link>
+                            <NavLink to='/news' activeClassName={style.active}>
+                                News
+                            </NavLink>
                         </li>
                     </ul>
                 </aside>

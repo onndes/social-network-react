@@ -1,5 +1,8 @@
 .header {
   grid-area: header;
-  background-color: rgb(90, 55, 97);
+  background-color: rgb(100, 1, 119);
   padding: 10px;
+  color: white;
+  font-size: 30px;
+  letter-spacing: 1px;
 }

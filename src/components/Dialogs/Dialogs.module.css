@@ -1,0 +1,15 @@
+.list {
+
+}
+.item {
+  padding: 0px 0px 10px 0px;
+  font-size: 18px;
+}
+.item a {
+  color: black;
+  font-weight: 00;
+}
+
+.item a.active {
+  color: red;
+}

@@ -1,6 +1,6 @@
 .aside {
   grid-area: aside;
-  background-color: rgb(163, 163, 163);
+  background-color: rgba(99, 1, 119, 0.213);
   padding: 10px;
 }
 
@@ -15,5 +15,9 @@
 
 .item a {
   font-size: 20px;
-  color: black;
+  /* color: rgb(100, 1, 119); */
+  text-transform: uppercase;
+}
+.item a.active {
+  color: red;
 }
