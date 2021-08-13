@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import style from "./MessagesPage.module.css";
 import { Route } from "react-router-dom";
-import Dialogs from "../Dialogs/Dialogs";
+import Dialogs from "./Dialogs/Dialogs";
 
 export default class MessagesPage extends Component {
     render() {

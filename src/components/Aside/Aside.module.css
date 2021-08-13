@@ -1,7 +1,7 @@
 .aside {
   grid-area: aside;
   background-color: rgba(99, 1, 119, 0.213);
-  padding: 10px;
+  padding: 10px 0px 0px 0px;
 }
 
 .list {
@@ -9,15 +9,24 @@
 }
 
 .item {
-  padding: 0px 0px 15px 0px;
+  padding: px 0px 15px 0px;
   
 }
 
 .item a {
+  display: block;
   font-size: 20px;
-  /* color: rgb(100, 1, 119); */
+  color: rgb(100, 1, 119);
   text-transform: uppercase;
+  padding:7px;
+  margin: 5px 0px;
+}
+.item a:visited {
+
 }
 .item a.active {
-  color: red;
+  display: block;
+  /* color: rgba(99, 1, 119, 1); */
+  background-color: rgba(99, 1, 119, 0.3);
+  width: 100%;
 }
