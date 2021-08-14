@@ -2,14 +2,18 @@
 
 }
 .item {
+  font-size: 16px;
   padding: 0px 0px 10px 0px;
-  font-size: 18px;
 }
 .item a {
-  color: black;
+  display: block;
+  color: rgba(99, 1, 119, 0.8);
   font-weight: 00;
+  padding: 5px;
+
 }
 
 .item a.active {
-  color: red;
+  color: rgba(99, 1, 119, 0.8);
+  background-color: rgba(99, 1, 119, 0.2);
 }

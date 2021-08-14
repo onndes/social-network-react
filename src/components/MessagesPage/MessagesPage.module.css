@@ -7,15 +7,17 @@
   font-size: 24px;
   font-weight: 600;
   padding: 0px 0px 20px 0px;
+  color: rgba(99, 1, 119, 1);
 }
 
 .wrapper {
   height: 100%;
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: auto 1fr;
 }
 .col1 {
-  border-right: 1px solid rgba(128, 128, 128, 0.5);
+  padding: 0 15px;
+  border-right: 1px solid rgba(99, 1, 119, 0.2);
 }
 .col2 {
   padding: 0 15px;
