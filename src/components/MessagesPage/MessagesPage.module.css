@@ -22,31 +22,7 @@
 .col2 {
   padding: 0 15px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
   font-size: 16px;
   /* al */
 }
-.col2 .msgRightBlock{
-  align-self: flex-end;
-}
-.msgLeftBlock {
-  max-width:  60%;
-  padding-bottom: 15px;
-}
-.msgLeft {
-  padding: 6px;
-  background-color: rgba(128, 128, 128, 0.33);
-  border-radius: 7px;
-  display: inline-block;
-}
-.msgRightBlock {
-  max-width:  60%;
-  padding-bottom: 15px;
-}
-.msgRight {
-  padding: 6px;
-  background-color: rgba(99, 1, 119, 0.2);
-  border-radius: 7px;
-  display: inline-block;
-}
+
