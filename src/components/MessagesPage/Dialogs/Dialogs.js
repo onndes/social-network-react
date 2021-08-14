@@ -4,37 +4,16 @@ import { NavLink } from "react-router-dom";
 
 export default class Dialogs extends Component {
     state = {
-        userName: [
-            {
-                id: 657951,
-                name: "Kiril",
-            },
-            {
-                id: 156753,
-                name: "Misha",
-            },
-            {
-                id: 315978,
-                name: "Khristina",
-            },
-            {
-                id: 548971,
-                name: "Oleg",
-            },
-            {
-                id: 456519,
-                name: "Yula",
-            },
-        ],
+        users: [],
     };
 
     generateDialogs() {
-        return this.state.userName.map((item) => {
+        const { allUsers, idUser } = this.props;
+        return allUsers.map((item) => {
+            const id = idUser(item);
             return (
                 <li key={item.id} className={style.item}>
-                    <NavLink
-                        to={`/messages/${item.name.toLocaleLowerCase() + item.id}`}
-                        activeClassName={style.active}>
+                    <NavLink to={`/messages/${id}`} activeClassName={style.active}>
                         {item.name}
                     </NavLink>
                 </li>

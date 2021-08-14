@@ -4,16 +4,31 @@ import { Route } from "react-router-dom";
 import Dialogs from "./Dialogs/Dialogs";
 
 export default class MessagesPage extends Component {
+    state = {
+        _urlThisPale: "/messages",
+        users: [],
+    };
+
+    componentDidMount() {
+        this.props.getAllUsers().then((users) => {
+            this.setState({
+                users: users,
+            });
+        });
+    }
+    idUser = (user) => {
+        return user.name.replace(/\s/g, "").toLocaleLowerCase() + user.id;
+    };
     render() {
         return (
             <>
                 <main className={style.wrapper}>
                     <div className={style.col1}>
                         <h3 className={style.title}>Dialogues</h3>
-                        <Dialogs />
+                        <Dialogs allUsers={this.state.users} idUser={this.idUser} />
                     </div>
                     <div className={style.col2}>
-                        <Route path='/messages/kiril657951' component={Mess} />
+                        <Route path='/messages/leannegraham1' component={Mess} />
                     </div>
                 </main>
             </>

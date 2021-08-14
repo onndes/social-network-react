@@ -7,10 +7,14 @@ import HomePage from "../HomePage/HomePage";
 
 export default class Main extends Component {
     render() {
+        <MessagesPage getAllUsers={this.props.getAllUsers} />;
+
         return (
             <div>
                 <Route path='/home' component={HomePage} />
-                <Route path='/messages' component={MessagesPage} />
+                <Route path='/messages'>
+                    <MessagesPage getAllUsers={this.props.getAllUsers} />;
+                </Route>
                 <Route path='/news' component={NewsPage} />
             </div>
         );
