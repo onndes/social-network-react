@@ -16,9 +16,12 @@ export default class Main extends Component {
                     <MessagesPage
                         getAllUsers={this.props.getAllUsers}
                         getAllComments={this.props.getAllComments}
+                        messagesPage={this.props.messagesPage}
+                        dispatch={this.props.dispatch}
                     />
                     ;
                 </Route>
+                {/* <Route path='/news' render={() => <Item menu={this.props.getAllUsers} />} /> */}
                 <Route path='/news' component={NewsPage} />
             </div>
         );

@@ -10,7 +10,6 @@ import GetDialogsService from "../../service/getDialogsService";
 export default class App extends Component {
     getData = new GetDialogsService();
     render() {
-
         return (
             <BrowserRouter>
                 <div className='app'>
@@ -19,6 +18,8 @@ export default class App extends Component {
                     <Main
                         getAllUsers={this.getData.getAllUsers}
                         getAllComments={this.getData.getAllComments}
+                        messagesPage={this.props.messagesPage}
+                        dispatch={this.props.dispatch}
                     />
                     <Footer />
                 </div>
