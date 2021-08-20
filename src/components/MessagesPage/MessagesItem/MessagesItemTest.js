@@ -1,12 +1,13 @@
 // import { render } from "node-sass";
 import React from "react";
 import style from "./MessagesItem.module.css";
+import { updataInputValueActionCreator, addPostActionCreator } from "../../../redux/state";
 
 const MessagesItemTest = (props) => {
     let newPostElement = React.createRef();
     const updateInput = () => {
         let text = newPostElement.current.value;
-        props.dispatch({ type: "UPDATE-INPUT-VALUE", text: text });
+        props.dispatch(updataInputValueActionCreator(text));
     };
     const updatePost = () => {
         let i = 1;
@@ -27,7 +28,7 @@ const MessagesItemTest = (props) => {
                 ref={newPostElement}
             />
             <button
-                onClick={() => props.dispatch({ type: "ADD-POST" })}
+                onClick={() => props.dispatch(addPostActionCreator())}
                 type='submit'
                 className={style.tButton}>
                 Submit

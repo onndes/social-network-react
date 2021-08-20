@@ -27,4 +27,13 @@ const store = {
     },
 };
 
+const updataInputValueActionCreator = (text) => {
+    return { type: "UPDATE-INPUT-VALUE", text: text };
+};
+
+const addPostActionCreator = () => {
+    return { type: "ADD-POST" };
+};
+
 export default store;
+export {updataInputValueActionCreator, addPostActionCreator}
