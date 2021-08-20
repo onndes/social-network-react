@@ -17,4 +17,24 @@ export default class GetDialogsService {
         const resault = await this.getData("/users");
         return resault;
     };
+
+    getAllComments = async (id) => {
+        const resault = await this.getData(`/comments/${id}`);
+        return this._transformComents(resault);
+        // return resault;
+    };
+
+    separationBody(item) {
+        const idx = item.split("\n");
+        return idx;
+    }
+
+    _transformComents = (res) => {
+        return {
+            id: res.id,
+            name: res.name,
+            email: res.email,
+            body: this.separationBody(res.body),
+        };
+    };
 }
