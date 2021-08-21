@@ -37,5 +37,6 @@ const addPostActionCreator = () => {
     return { type: ADD_POST };
 };
 console.log('test')
+console.log('test')
 export default store;
 export { updataInputValueActionCreator, addPostActionCreator };
