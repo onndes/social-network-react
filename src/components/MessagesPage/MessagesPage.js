@@ -3,7 +3,7 @@ import style from "./MessagesPage.module.css";
 import { Route } from "react-router-dom";
 import Dialogs from "./Dialogs/Dialogs";
 import MessagesItem from "./MessagesItem/MessagesItem";
-import MessagesItemTest from "./MessagesItem/MessagesItemTest";
+import MessagesItemTest from "../NewsPage/MessagesItemTest";
 
 export default class MessagesPage extends Component {
     state = {
@@ -41,7 +41,7 @@ export default class MessagesPage extends Component {
                             render={() => (
                                 <MessagesItemTest
                                     messagesPage={this.props.messagesPage}
-                                    dispatch={this.props.dispatch}
+                                    
                                 />
                             )}
                         />

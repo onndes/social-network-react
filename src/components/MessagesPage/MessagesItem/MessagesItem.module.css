@@ -26,30 +26,3 @@
   display: inline-block;
 }
 
-.tWrapper {
-  padding: 10px
-}
-
-.tInput {
-  display: block;
-  width: 100%;
-  max-width: 300px;
-  border: 1px solid palevioletred;
-  padding: 7px;
-  margin: 0px 0px 20px 0px;
-}
-.tButton {
-  color: black;
-  font-weight: 600;
-  
-  padding: 7px 24px;
-  background-color: palevioletred;
-  border-radius: 10px;
-
-  margin: 0px 0px 40px 0px;
-}
-
-.tBoxMessages p {
-  padding: 0px 0px 7px 0px;
-  font-style: italic;
-}
