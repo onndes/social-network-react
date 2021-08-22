@@ -1,7 +1,10 @@
 // import { render } from "node-sass";
 import React from "react";
 import style from "./NewsPage.module.css";
-import { updataInputValueActionCreator, addPostActionCreator } from "../../redux/state";
+import {
+    updataInputValueActionCreator,
+    addPostActionCreator,
+} from "../../Store/Reducers/NewsPageReducer";
 
 const MessagesItemTest = (props) => {
     let newPostElement = React.createRef();

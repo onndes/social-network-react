@@ -2,7 +2,7 @@ import React from "react";
 import {
     updataBodyMessagestextActionCreator,
     addMessagesActionCreator,
-} from "../../../redux/state";
+} from "../../../Store/Reducers/MessagesPageReducer";
 import style from "./MessagesItem.module.css";
 
 const MessagesItemTest = (props) => {

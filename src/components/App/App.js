@@ -5,7 +5,7 @@ import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 import { BrowserRouter } from "react-router-dom";
 import Main from "../Main/Main";
-import GetDialogsService from "../../service/getDialogsService";
+import GetDialogsService from "../../Service/getDialogsService";
 
 export default class App extends Component {
     getData = new GetDialogsService();
