@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import style from "Main.module.css";
 import { Route } from "react-router-dom";
 import MessagesPage from "../MessagesPage/MessagesPage";
-import MessagesItemTest from "../NewsPage/MessagesItemTest";
+import MessagesItemTest from "../NewsPage/NewsPage";
 import HomePage from "../HomePage/HomePage";
 
 export default class Main extends Component {

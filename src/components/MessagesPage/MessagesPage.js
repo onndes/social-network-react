@@ -3,7 +3,7 @@ import style from "./MessagesPage.module.css";
 import { Route } from "react-router-dom";
 import Dialogs from "./Dialogs/Dialogs";
 import MessagesItem from "./MessagesItem/MessagesItem";
-import MessagesItemTest from "../NewsPage/MessagesItemTest";
+import MessagesItemTest from "../NewsPage/NewsPage";
 
 export default class MessagesPage extends Component {
     state = {
