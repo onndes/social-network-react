@@ -2,7 +2,8 @@ const UPDATE_INPUT_VALUE = "UPDATE-INPUT-VALUE";
 const ADD_POST = "ADD-POST";
 const store = {
     state: {
-        messagesPage: {
+        messagesPage: {},
+        newesPage: {
             inputValue: "text",
             posts: [],
         },
@@ -16,27 +17,26 @@ const store = {
 
     dispatch(action) {
         if (action.type === ADD_POST) {
-            const { inputValue, posts } = this.state.messagesPage;
+            const { inputValue, posts } = this.state.newesPage;
             if (inputValue.trim()) {
                 posts.push(inputValue);
-                this.state.messagesPage.inputValue = "";
+                this.state.newesPage.inputValue = "";
                 this.updateTree(store);
             }
         } else if (action.type === UPDATE_INPUT_VALUE) {
-            this.state.messagesPage.inputValue = action.text;
+            this.state.newesPage.inputValue = action.text;
             this.updateTree(store);
         }
     },
 };
 
-const updataInputValueActionCreator = (text) => {
+export const updataInputValueActionCreator = (text) => {
     return { type: UPDATE_INPUT_VALUE, text: text };
 };
 
-const addPostActionCreator = () => {
+export const addPostActionCreator = () => {
     return { type: ADD_POST };
 };
-console.log('test')
-console.log('test')
+console.log("test");
+console.log("test");
 export default store;
-export { updataInputValueActionCreator, addPostActionCreator };

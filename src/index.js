@@ -6,7 +6,7 @@ import store from "./redux/state";
 const updateTree = (store) => {
     ReactDOM.render(
         <App
-            messagesPage={store.state.messagesPage}
+            messagesPage={store.state.newesPage}
             dispatch={store.dispatch.bind(store)}
         />,
         document.getElementById("root"),
