@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import style from "Main.module.css";
 import { Route } from "react-router-dom";
 import MessagesPage from "../MessagesPage/MessagesPage";
-import MessagesItemTest from "../NewsPage/NewsPage";
+import NewsPage from "../NewsPage/NewsPage";
 import HomePage from "../HomePage/HomePage";
 
 export default class Main extends Component {
@@ -16,6 +16,7 @@ export default class Main extends Component {
                     <MessagesPage
                         getAllUsers={this.props.getAllUsers}
                         getAllComments={this.props.getAllComments}
+                        store={this.props.store}
                     />
                     ;
                 </Route>
@@ -23,7 +24,7 @@ export default class Main extends Component {
                 <Route
                     path='/news'
                     render={() => (
-                        <MessagesItemTest
+                        <NewsPage
                             messagesPage={this.props.messagesPage}
                             dispatch={this.props.dispatch}
                         />

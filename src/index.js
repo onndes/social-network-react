@@ -5,10 +5,7 @@ import "./index.css";
 import store from "./redux/state";
 const updateTree = (store) => {
     ReactDOM.render(
-        <App
-            messagesPage={store.state.newesPage}
-            dispatch={store.dispatch.bind(store)}
-        />,
+        <App messagesPage={store.state.newesPage} dispatch={store.dispatch.bind(store)} store={store} />,
         document.getElementById("root"),
     );
 };

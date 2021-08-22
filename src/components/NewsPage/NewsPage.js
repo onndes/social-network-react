@@ -9,6 +9,7 @@ const MessagesItemTest = (props) => {
         let text = newPostElement.current.value;
         props.dispatch(updataInputValueActionCreator(text));
     };
+
     const updatePost = () => {
         let i = 1;
         return props.messagesPage.posts.map((item) => {

@@ -20,6 +20,7 @@ export default class App extends Component {
                         getAllComments={this.getData.getAllComments}
                         messagesPage={this.props.messagesPage}
                         dispatch={this.props.dispatch}
+                        store={this.props.store}
                     />
                     <Footer />
                 </div>
