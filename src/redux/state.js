@@ -6,7 +6,9 @@ const store = {
     state: {
         messagesPage: {
             messageBodyText: "",
-            messages: ["Hello"],
+            messages: [
+                "Hello"
+            ],
         },
         newesPage: {
             inputValue: "text",
