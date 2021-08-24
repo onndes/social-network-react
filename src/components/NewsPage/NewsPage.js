@@ -1,15 +1,11 @@
 // import { render } from "node-sass";
 import React from "react";
 import style from "./NewsPage.module.css";
-import {
-    updataInputValueActionCreator,
-    addPostActionCreator,
-} from "../../Store/Reducers/NewsPageReducer";
 
 const MessagesItemTest = (props) => {
-    const updateInput = (e) => {
-        let text = e.target.value;
-        props.dispatch(updataInputValueActionCreator(text));
+    // debugger;
+    const onUpdateInput = (e) => {
+        props.updateInput(e.target.value);
     };
 
     const updatePost = () => {
@@ -19,7 +15,9 @@ const MessagesItemTest = (props) => {
             return <p key={i}>{item}</p>;
         });
     };
-    const post = updatePost();
+    const onClickBtn = () => {
+        props.clickBtn();
+    };
 
     return (
         <div className={style.Wrapper}>
@@ -27,15 +25,12 @@ const MessagesItemTest = (props) => {
                 type='text'
                 className={style.Input}
                 value={props.newsPage.inputValue}
-                onChange={updateInput}
+                onChange={onUpdateInput}
             />
-            <button
-                onClick={() => props.dispatch(addPostActionCreator())}
-                type='submit'
-                className={style.Button}>
+            <button onClick={onClickBtn} type='submit' className={style.Button}>
                 Submit
             </button>
-            <div className={style.BoxMessages}>{post}</div>
+            <div className={style.BoxMessages}>{updatePost()}</div>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import MessagesPage from "../MessagesPage/MessagesPage";
-import NewsPage from "../NewsPage/NewsPage";
+import NewsPageContainer from "../NewsPage/NewsPageContainer";
 import HomePage from "../HomePage/HomePage";
 
 const Main = (props) => {
@@ -20,7 +20,7 @@ const Main = (props) => {
             <Route
                 path='/news'
                 render={() => (
-                    <NewsPage newsPage={props.newsPage} dispatch={props.dispatch} />
+                    <NewsPageContainer newsPage={props.newsPage} dispatch={props.dispatch} />
                 )}
             />
         </div>
