@@ -1,35 +1,12 @@
-import messagesPageReducerReducer from "./Reducers/MessagesPageReducer";
+import { combineReducers, createStore } from "redux";
+import MessagesPageReducer from "./Reducers/MessagesPageReducer";
 import NewsPageReducer from "./Reducers/NewsPageReducer";
 
-const store = {
-    state: {
-        messagesPage: {
-            messageBodyText: "",
-            messages: ["Hello"],
-        },
-        newesPage: {
-            inputValue: "text",
-            posts: [],
-        },
-    },
+let reducers = combineReducers({
+    messagesPage: MessagesPageReducer,
+    newsPage: NewsPageReducer,
+});
 
-    getState() {
-        return this.state;
-    },
-
-    updateTree() {},
-
-    subscribe(observer) {
-        this.updateTree = observer;
-    },
-
-    dispatch(action) {
-
-
-        this.state.messagesPage = messagesPageReducerReducer(this.state.messagesPage, action);
-        this.state.newesPage = NewsPageReducer(this.state.newesPage, action);
-        this.updateTree(store);
-    },
-};
+let store = createStore(reducers);
 
 export default store;
