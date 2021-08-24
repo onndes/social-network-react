@@ -18,11 +18,6 @@ const MessagesItemTest = (props) => {
         let i = 1;
         return props.newsPage.posts.map((item) => {
             i++;
-            return <p key={i}>{item}</p>;
-        });
-    };
-    const post = updatePost();
-
     return (
         <div className={style.tWrapper}>
             <input
