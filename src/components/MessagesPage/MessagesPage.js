@@ -3,6 +3,7 @@ import style from "./MessagesPage.module.css";
 import { Route } from "react-router-dom";
 import Dialogs from "./Dialogs/Dialogs";
 import MessagesItem from "./MessagesItem/MessagesItem";
+import MessagesItemTest from "./MessagesItem/MessagesItemTest";
 
 export default class MessagesPage extends Component {
     state = {
@@ -17,10 +18,15 @@ export default class MessagesPage extends Component {
             });
         });
     }
+
     idUser = (user) => {
         return user.name.replace(/\s/g, "").toLocaleLowerCase() + user.id;
     };
+
     render() {
+
+
+
         return (
             <>
                 <main className={style.wrapper}>
@@ -32,6 +38,12 @@ export default class MessagesPage extends Component {
                         <Route path='/messages/leannegraham1'>
                             <MessagesItem getAllComments={this.props.getAllComments} idUser={1} />
                         </Route>
+
+                        <Route
+                            path='/messages/ervinhowell2'
+                            render={() => <MessagesItemTest store={this.props.store} />}
+                        />
+                        <p>{this.props.updateInputValue}</p>
                     </div>
                 </main>
             </>

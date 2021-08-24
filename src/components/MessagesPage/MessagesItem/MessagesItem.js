@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import style from "./MessagesItem.module.css";
-export default class MessagesItem extends Component {
+export default class MessagesItemTest extends Component {
     state = {
         commnets: null,
     };

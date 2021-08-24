@@ -25,3 +25,46 @@
   border-radius: 7px;
   display: inline-block;
 }
+/*  ======================== */
+.t_mainWrapper {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.t_wrapper {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 40px;
+}
+.t_messagesContainer {
+  max-height:75vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.t_conteinerInputBtn {
+  border-top: 1px solid rgba(0, 0, 0, 0.712);
+  display: flex;
+}
+.t_input {
+  padding: 7px 12px;
+  width: 100%;
+  background-color: rgba(197, 197, 245, 0.541);
+}
+.t_btn {
+  /* margin: 0px 0px 0px 10px; */
+  padding: 10px;
+  background-color: rgb(197, 197, 245);
+  font-weight: 600;
+}
+.t_myMessage {
+  background-color: rgba(195, 127, 212, 0.295);
+  padding: 7px;
+  border-radius: 4px;
+  margin: 0px 0px 10px 0px;
+  align-self: start;
+  /* margin: 0px 20px 0px 0px; */
+}

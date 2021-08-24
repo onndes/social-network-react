@@ -33,7 +33,7 @@ export default class GetDialogsService {
         return {
             id: res.id,
             name: res.name,
-            email: res.email,
+            email: res.email, 
             body: this.separationBody(res.body),
         };
     };
