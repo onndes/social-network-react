@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import style from "./Header.module.css";
 
-export default class Header extends Component {
-    render() {
-        return <header className={style.header}>VCarab</header>;
-    }
-}
+const Header = () => {
+    return <header className={style.header}>VCarab</header>;
+};
+export default Header;

@@ -7,10 +7,8 @@ import {
 } from "../../Store/Reducers/NewsPageReducer";
 
 const MessagesItemTest = (props) => {
-    // debugger;
-    let newPostElement = React.createRef();
-    const updateInput = () => {
-        let text = newPostElement.current.value;
+    const updateInput = (e) => {
+        let text = e.target.value;
         props.dispatch(updataInputValueActionCreator(text));
     };
 
@@ -24,21 +22,20 @@ const MessagesItemTest = (props) => {
     const post = updatePost();
 
     return (
-        <div className={style.tWrapper}>
+        <div className={style.Wrapper}>
             <input
                 type='text'
-                className={style.tInput}
+                className={style.Input}
                 value={props.newsPage.inputValue}
                 onChange={updateInput}
-                ref={newPostElement}
             />
             <button
                 onClick={() => props.dispatch(addPostActionCreator())}
                 type='submit'
-                className={style.tButton}>
+                className={style.Button}>
                 Submit
             </button>
-            <div className={style.tBoxMessages}>{post}</div>
+            <div className={style.BoxMessages}>{post}</div>
         </div>
     );
 };
