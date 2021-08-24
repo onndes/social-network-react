@@ -1,10 +1,15 @@
 const UPDATE_INPUT_VALUE = "UPDATE-INPUT-VALUE";
 const ADD_POST = "ADD-POST";
 
-const messagesPageReducer = (state, action) => {
+const initialState = {
+    inputValue: "text",
+    posts: [],
+};
+
+const messagesPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
-            const { inputValue, posts } = this.state.newesPage;
+            const { inputValue, posts } = state;
             if (inputValue.trim()) {
                 posts.push(inputValue);
                 state.inputValue = "";

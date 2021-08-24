@@ -7,6 +7,7 @@ import {
 } from "../../Store/Reducers/NewsPageReducer";
 
 const MessagesItemTest = (props) => {
+    // debugger;
     let newPostElement = React.createRef();
     const updateInput = () => {
         let text = newPostElement.current.value;
@@ -15,7 +16,7 @@ const MessagesItemTest = (props) => {
 
     const updatePost = () => {
         let i = 1;
-        return props.messagesPage.posts.map((item) => {
+        return props.newsPage.posts.map((item) => {
             i++;
             return <p key={i}>{item}</p>;
         });
@@ -27,7 +28,7 @@ const MessagesItemTest = (props) => {
             <input
                 type='text'
                 className={style.tInput}
-                value={props.messagesPage.inputValue}
+                value={props.newsPage.inputValue}
                 onChange={updateInput}
                 ref={newPostElement}
             />

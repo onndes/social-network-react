@@ -1,7 +1,12 @@
 const UPDATE_BODY_TEXT = "UPDATE_BODY_TEXT";
 const MESSAGES_TEXT = "MESSAGES_TEXT";
 
-const messagesPageReducer = (state, action) => {
+const initialState = {
+    messageBodyText: "",
+    messages: ["Hello"],
+};
+
+const messagesPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_BODY_TEXT:
             state.messageBodyText = action.messageBodyText;

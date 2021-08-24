@@ -3,15 +3,15 @@ import ReactDOM from "react-dom";
 import App from "./components/App/App";
 import "./index.css";
 import store from "./Store/Store";
-const updateTree = (store) => {
+const rerenderEntireTree = (state) => {
+    // debugger;
     ReactDOM.render(
-        <App
-            messagesPage={store.state.newesPage}
-            dispatch={store.dispatch.bind(store)}
-            store={store}
-        />,
+        <App newsPage={state.newsPage} dispatch={store.dispatch.bind(store)} store={store} />,
         document.getElementById("root"),
     );
 };
-updateTree(store);
-store.subscribe(updateTree);
+rerenderEntireTree(store.getState());
+store.subscribe(() => {
+    const state = store.getState();
+    rerenderEntireTree(state);
+});

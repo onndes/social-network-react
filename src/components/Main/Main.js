@@ -25,7 +25,7 @@ export default class Main extends Component {
                     path='/news'
                     render={() => (
                         <NewsPage
-                            messagesPage={this.props.messagesPage}
+                        newsPage={this.props.newsPage}
                             dispatch={this.props.dispatch}
                         />
                     )}
