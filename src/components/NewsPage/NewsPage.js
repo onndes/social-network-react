@@ -3,7 +3,6 @@ import React from "react";
 import style from "./NewsPage.module.css";
 
 const MessagesItemTest = (props) => {
-    // debugger;
     const onUpdateInput = (e) => {
         props.updateInput(e.target.value);
     };
@@ -18,7 +17,7 @@ const MessagesItemTest = (props) => {
     const onClickBtn = () => {
         props.clickBtn();
     };
-
+  
     return (
         <div className={style.Wrapper}>
             <input

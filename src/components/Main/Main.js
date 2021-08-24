@@ -16,13 +16,7 @@ const Main = (props) => {
                 />
                 ;
             </Route>
-            {/* <Route path='/news' render={() => <Item menu={props.getAllUsers} />} /> */}
-            <Route
-                path='/news'
-                render={() => (
-                    <NewsPageContainer newsPage={props.newsPage} dispatch={props.dispatch} />
-                )}
-            />
+            <Route path='/news' render={() => <NewsPageContainer store={props.store} />} />
         </div>
     );
 };

@@ -5,15 +5,17 @@ import {
     addPostActionCreator,
 } from "../../Store/Reducers/NewsPageReducer";
 
-const MessagesItemTest = (props) => {
+const MessagesItemTest = ({ store: { dispatch, getState } }) => {
     const updateInput = (text) => {
-        props.dispatch(updataInputValueActionCreator(text));
+        dispatch(updataInputValueActionCreator(text));
     };
 
     const clickBtn = () => {
-        props.dispatch(addPostActionCreator());
+        dispatch(addPostActionCreator());
     };
 
-    return <NewsPage clickBtn={clickBtn} updateInput={updateInput} newsPage={props.newsPage} />;
+    return (
+        <NewsPage clickBtn={clickBtn} updateInput={updateInput} newsPage={getState().newsPage} />
+    );
 };
 export default MessagesItemTest;

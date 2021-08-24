@@ -19,7 +19,6 @@ export default class App extends Component {
                     <Main
                         getAllUsers={this.getData.getAllUsers}
                         getAllComments={this.getData.getAllComments}
-                        newsPage={this.props.newsPage}
                         dispatch={this.props.dispatch}
                         store={this.props.store}
                     />
