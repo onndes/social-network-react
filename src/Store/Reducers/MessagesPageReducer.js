@@ -9,15 +9,18 @@ const initialState = {
 const messagesPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_BODY_TEXT:
-            state.messageBodyText = action.messageBodyText;
-            return state;
+            // debugger;
+            const newState = { ...state };
+            newState.messageBodyText = action.messageBodyText;
+            return newState;
         case MESSAGES_TEXT:
             const { messageBodyText, messages } = state;
+            const copyState = { ...state };
             if (messageBodyText.trim()) {
-                messages.push(messageBodyText);
-                state.messageBodyText = "";
+                copyState.messages = [...state.messages, state.messageBodyText];
+                copyState.messageBodyText = "";
             }
-            return state;
+            return copyState;
         default:
             return state;
     }

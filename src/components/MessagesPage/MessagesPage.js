@@ -3,7 +3,7 @@ import style from "./MessagesPage.module.css";
 import { Route } from "react-router-dom";
 import Dialogs from "./Dialogs/Dialogs";
 import MessagesItem from "./MessagesItem/MessagesItem";
-import MessagesItemTest from "./MessagesItem/MessagesItemTest";
+import MessagesItemTestContainer from "./MessagesItem/MessagesItemTestContainer";
 
 export default class MessagesPage extends Component {
     state = {
@@ -24,9 +24,6 @@ export default class MessagesPage extends Component {
     };
 
     render() {
-
-
-
         return (
             <>
                 <main className={style.wrapper}>
@@ -41,7 +38,7 @@ export default class MessagesPage extends Component {
 
                         <Route
                             path='/messages/ervinhowell2'
-                            render={() => <MessagesItemTest store={this.props.store} />}
+                            render={() => <MessagesItemTestContainer />}
                         />
                         <p>{this.props.updateInputValue}</p>
                     </div>

@@ -1,24 +1,19 @@
 import React from "react";
-import {
-    updataBodyMessagestextActionCreator,
-    addMessagesActionCreator,
-} from "../../../Store/Reducers/MessagesPageReducer";
+
 import style from "./MessagesItem.module.css";
 
 const MessagesItemTest = (props) => {
-    let state = props.store.getState().messagesPage;
-
     const onUpdateValue = (e) => {
-        let body = e.target.value;
-        props.store.dispatch(updataBodyMessagestextActionCreator(body));
+        props.updateValue(e.target.value);
     };
+
     const onClickButton = () => {
-        props.store.dispatch(addMessagesActionCreator());
+        props.clickButton();
     };
 
     const renderMessages = () => {
         let key = 1;
-        return state.messages.map((message) => {
+        return props.messagesPage.messages.map((message) => {
             key++;
             return (
                 <p className={style.t_myMessage} key={key}>
@@ -36,7 +31,7 @@ const MessagesItemTest = (props) => {
                         type='text'
                         placeholder='Enter your messages'
                         className={style.t_input}
-                        value={state.messageBodyText}
+                        value={props.messagesPage.messageBodyText}
                         onChange={onUpdateValue}
                         onKeyDown={(e) => (e.key === "Enter" ? onClickButton() : null)}
                     />
