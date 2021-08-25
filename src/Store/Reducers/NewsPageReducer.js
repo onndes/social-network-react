@@ -9,18 +9,12 @@ const initialState = {
 const messagesPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
-            let { inputValue, posts } = state;
-            let stateCopy = { ...state };
-            if (inputValue.trim()) {
-                stateCopy.posts = [...posts, inputValue];
-                stateCopy.inputValue = "";
-                return stateCopy;
+            if (state.inputValue.trim()) {
+                return { ...state, posts: [...state.posts, state.inputValue], inputValue: "" };
             }
             return state;
         case UPDATE_INPUT_VALUE:
-            let stateCopyTwo = { ...state };
-            stateCopyTwo.inputValue = action.text;
-            return stateCopyTwo;
+            return { ...state, inputValue: action.text };
         default:
             return state;
     }
