@@ -2,6 +2,14 @@ import React from "react";
 import style from "./Header.module.css";
 
 const Header = () => {
-    return <header className={style.header}>VCarab</header>;
+    return (
+        <div className={style.wrapper}>
+            <header className={style.header}>
+                <div className={style.logo}>
+                    <div>RR</div>
+                </div>
+            </header>
+        </div>
+    );
 };
 export default Header;

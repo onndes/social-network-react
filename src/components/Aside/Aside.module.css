@@ -1,7 +1,7 @@
 .aside {
   grid-area: aside;
-  background-color: rgba(99, 1, 119, 0.213);
-  padding: 10px 0px 0px 0px;
+  /* background-color: rgba(99, 1, 119, 0.213); */
+  padding: 0px 0px 0px 0px;
 }
 
 .list {
@@ -15,9 +15,9 @@
 
 .item a {
   display: block;
-  font-size: 20px;
-  color: rgb(100, 1, 119);
-  text-transform: uppercase;
+  font-size: 18px;
+  color: rgb(79, 75, 153);
+  /* text-transform: uppercase; */
   padding:7px;
   margin: 5px 0px;
 }
@@ -26,7 +26,7 @@
 }
 .item a.active {
   display: block;
-  /* color: rgba(99, 1, 119, 1); */
-  background-color: rgba(99, 1, 119, 0.3);
-  width: 100%;
+  color: rgb(79, 75, 153);
+  /* background-color: rgba(99, 1, 119, 0.3);
+  width: 100%; */
 }

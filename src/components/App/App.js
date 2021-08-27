@@ -12,15 +12,27 @@ export default class App extends Component {
     render() {
         return (
             <div className='app'>
-                <Header />
-                <Aside />
-                <Main
-                    getAllUsers={this.getData.getAllUsers}
-                    getAllComments={this.getData.getAllComments}
-                    dispatch={this.props.dispatch}
-                    store={this.props.store}
-                />
-                <Footer />
+                <div>
+                    <Header />
+                </div>
+                <div className='app-body-container'>
+                    <div className='app-body'>
+                        <div>
+                            <Aside />
+                        </div>
+                        <div>
+                            <Main
+                                getAllUsers={this.getData.getAllUsers}
+                                getAllComments={this.getData.getAllComments}
+                                dispatch={this.props.dispatch}
+                                store={this.props.store}
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <Footer />
+                </div>
             </div>
         );
     }

@@ -1,8 +1,24 @@
+.wrapper {
+  background-color: rgb(79, 75, 153);
+  /* grid-area: header; */
+}
+
 .header {
-  grid-area: header;
-  background-color: rgb(100, 1, 119);
+  max-width: 1200px;
+  margin: auto;
   padding: 10px;
   color: white;
-  font-size: 30px;
-  letter-spacing: 1px;
+  
+}
+.logo {
+  width: 50px;
+  height: 50px;
+  border: 3px solid white;
+  display: inline-block;
+  border-radius: 50%;
+  font-size: 25px;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center ;
 }

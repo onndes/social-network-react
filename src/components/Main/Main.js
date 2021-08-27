@@ -3,10 +3,10 @@ import { Route } from "react-router-dom";
 import MessagesPage from "../MessagesPage/MessagesPage";
 import NewsPageContainer from "../NewsPage/NewsPageContainer";
 import HomePage from "../HomePage/HomePage";
-
+import style from "./Main.module.css"
 const Main = (props) => {
     return (
-        <div>
+        <div className={style.wrapper}>
             <Route path='/home' component={HomePage} />
             <Route path='/messages'>
                 <MessagesPage
@@ -14,7 +14,6 @@ const Main = (props) => {
                     getAllComments={props.getAllComments}
                     store={props.store}
                 />
-                ;
             </Route>
             <Route path='/news' render={() => <NewsPageContainer store={props.store} />} />
         </div>
