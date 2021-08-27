@@ -14,15 +14,15 @@ const UsersPage = (props) => {
                         <div className={style.btnContainer}>
                             {user.follow ? (
                                 <button
-                                    className={style.btnFollow}
+                                    className={style.unfollow + " " + style.btnfollow}
                                     onClick={() => props.unFollow(user.id)}>
-                                    unfollow
+                                    Unfollow
                                 </button>
                             ) : (
                                 <button
-                                    className={style.unFollow}
+                                    className={style.follow + " " + style.btnfollow}
                                     onClick={() => props.follow(user.id)}>
-                                    follow
+                                    Follow
                                 </button>
                             )}
                         </div>
@@ -30,13 +30,13 @@ const UsersPage = (props) => {
                     <div className={style.secondCol}>
                         <div className={style.nameAndOnlineBox}>
                             <p className={style.titleName}>
-                                {user.firstName}
-                                {user.secondName}
+                                {user.firstName + " " + user.secondName}
+                                {}
                             </p>
                             {user.status ? (
-                                <p className={style.statusOnline + "" + style.status}>Online</p>
+                                <p className={style.statusOnline + " " + style.status}>Online</p>
                             ) : (
-                                <p className={style.statusOffline + "" + style.status}>Offline</p>
+                                <p className={style.statusOffline + " " + style.status}>Offline</p>
                             )}
                         </div>
                         <p className={style.titleLocation}>

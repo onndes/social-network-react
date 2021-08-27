@@ -8,7 +8,7 @@ const initialState = {
             firstName: "Anna",
             secondName: "Gorils",
             photoUrl:
-                "https://im0-tub-ua.yandex.net/i?id=577dcb3c36b8b52c76113c95d01c6534&n=13&exp=1",
+                "https://dekatop.com/wp-content/uploads/2019/01/people_03.jpg",
             age: 22,
             location: { city: "Kiev", country: "Ukraine" },
             follow: true,
@@ -19,7 +19,7 @@ const initialState = {
             firstName: "Viktor",
             secondName: "Botr",
             photoUrl:
-                "https://im0-tub-ua.yandex.net/i?id=6b405c17a174bbb37109690cd7adb9a7&n=13&exp=1",
+                "https://www.liga.net/images/general/2019/02/14/20190214174619-9721.png",
             age: 32,
             location: { city: "Mosscow", country: "Russia" },
             follow: false,
@@ -30,7 +30,7 @@ const initialState = {
             firstName: "Kira",
             secondName: "Morzi",
             photoUrl:
-                "https://im0-tub-ua.yandex.net/i?id=2d72bf962a85f97e1eb2e3d6d755ff2c&n=13&exp=1",
+                "https://yablyk.com/wp-content/uploads/2018/03/shakira.jpg",
             age: 45,
             location: { city: "Odessa", country: "Ukraine" },
             follow: true,
