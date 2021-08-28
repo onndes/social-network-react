@@ -1,6 +1,6 @@
 .userWrapp {
   display: grid;
-  grid-template-columns: 150px 10fr;
+  grid-template-columns: 100px 10fr;
   grid-gap: 15px;
   margin: 0px 10px 35px 10px;
 }

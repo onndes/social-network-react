@@ -9,17 +9,14 @@
 }
 
 .item {
-  padding: px 0px 15px 0px;
+  padding: 0px 0px 10px 0px;
   
 }
 
 .item a {
   display: block;
-  font-size: 18px;
+  font-size: 16px;
   color: rgb(79, 75, 153);
-  /* text-transform: uppercase; */
-  padding:7px;
-  margin: 5px 0px;
 }
 .item a:visited {
 
