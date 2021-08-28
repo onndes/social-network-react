@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/register": "^7.15.3",
+    "axios": "^0.21.1",
     "jsdom-quokka-plugin": "^1.0.16",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
