@@ -4,9 +4,7 @@ import * as axios from "axios";
 import userImg from "../../assets/img/iconUser.png";
 
 class UsersPage extends React.Component {
-    constructor(props) {
-        super(props);
-
+    componentDidMount() {
         axios.get("https://social-network.samuraijs.com/api/1.0/users").then((response) => {
             this.props.setUsers(response.data.items);
         });
@@ -60,14 +58,7 @@ class UsersPage extends React.Component {
         });
     };
     render() {
-        return (
-            <div className={style.Wrapper}>
-                {/* <button className={style.testBtn} onClick={getUsers}>
-                    [test] Get user
-                </button> */}
-                {this.renderUsersList()}
-            </div>
-        );
+        return <div className={style.Wrapper}>{this.renderUsersList()}</div>;
     }
 }
 
