@@ -21,7 +21,7 @@
   max-width: 100%;
 }
 
-.btnfollow {
+.btnFollow {
   width: 100%;
   text-align: center;
   padding: 4px 6px;
@@ -65,4 +65,25 @@
   letter-spacing: 1px;
   font-weight: 500;
   margin: 0px 0px 15px 0px;
+}
+
+.btnUserPageBox {
+  display: flex;
+  padding: 0px 0px 10px 10px;
+  margin: 0px 10px 20px 0px;
+  border-bottom: 1px solid rgba(79, 75, 153, 0.234);
+  font-size: 20px;
+  cursor: pointer;
+}
+.btnUserPageBox div{
+  padding: 5px 10px 5px 10px;
+
+}
+.btnPageUsers {
+  background-color: rgba(79, 75, 153, 0.248);
+}
+.btnPageUsersActive {
+ 
+  font-weight: 700;
+  background-color: rgba(79, 75, 153, 0.666);
 }

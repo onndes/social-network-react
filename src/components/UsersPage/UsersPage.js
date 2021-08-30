@@ -5,9 +5,14 @@ import userImg from "../../assets/img/iconUser.png";
 
 class UsersPage extends React.Component {
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then((response) => {
-            this.props.setUsers(response.data.items);
-        });
+        axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+            )
+            .then((response) => {
+                this.props.setUsers(response.data.items);
+                this.props.setTotalUsers(response.data.totalCount);
+            });
     }
 
     renderUsersList = () => {
@@ -24,13 +29,13 @@ class UsersPage extends React.Component {
                         <div className={style.btnContainer}>
                             {user.follow ? (
                                 <button
-                                    className={style.unfollow + " " + style.btnfollow}
+                                    className={style.unfollow + " " + style.btnFollow}
                                     onClick={() => this.props.unFollow(user.id)}>
                                     Unfollow
                                 </button>
                             ) : (
                                 <button
-                                    className={style.follow + " " + style.btnfollow}
+                                    className={style.follow + " " + style.btnFollow}
                                     onClick={() => this.props.follow(user.id)}>
                                     Follow
                                 </button>
@@ -57,8 +62,45 @@ class UsersPage extends React.Component {
             );
         });
     };
+
+    hundleClickBtnPage = (page) => {
+        axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`,
+            )
+            .then((response) => {
+                this.props.setUsers(response.data.items);
+                this.props.setCurrentPage(page);
+            });
+    };
+
+    renderBtnPageUsers = () => {
+        const countPage = Math.ceil(this.props.totalUserCount / this.props.pageSize);
+        const arrPageCount = [];
+        for (let i = 1; i <= countPage; i++) {
+            arrPageCount.push(i);
+        }
+        const arrPageCountTemp = [1, 2, 3, 4];
+        return arrPageCountTemp.map((i) => {
+            return (
+                <div
+                    onClick={() => this.hundleClickBtnPage(i)}
+                    className={
+                        this.props.currentPage === i ? style.btnPageUsersActive : style.btnPageUsers
+                    }>
+                    {i}
+                </div>
+            );
+        });
+    };
+
     render() {
-        return <div className={style.Wrapper}>{this.renderUsersList()}</div>;
+        return (
+            <div className={style.Wrapper}>
+                <div className={style.btnUserPageBox}>{this.renderBtnPageUsers()}</div>
+                {this.renderUsersList()}
+            </div>
+        );
     }
 }
 
