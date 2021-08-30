@@ -1,22 +1,10 @@
 import React from "react";
 import style from "./UsersPage.module.css";
-import * as axios from "axios";
 import userImg from "../../assets/img/iconUser.png";
 
-class UsersPage extends React.Component {
-    componentDidMount() {
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-            )
-            .then((response) => {
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsers(response.data.totalCount);
-            });
-    }
-
-    renderUsersList = () => {
-        return this.props.usersPage.users.map((user) => {
+const UsersPage = (props) => {
+    const renderUsersList = () => {
+        return props.usersPage.users.map((user) => {
             return (
                 <div key={user.id} className={style.userWrapp}>
                     <div className={style.firstCol}>
@@ -30,13 +18,13 @@ class UsersPage extends React.Component {
                             {user.follow ? (
                                 <button
                                     className={style.unfollow + " " + style.btnFollow}
-                                    onClick={() => this.props.unFollow(user.id)}>
+                                    onClick={() => props.unFollow(user.id)}>
                                     Unfollow
                                 </button>
                             ) : (
                                 <button
                                     className={style.follow + " " + style.btnFollow}
-                                    onClick={() => this.props.follow(user.id)}>
+                                    onClick={() => props.follow(user.id)}>
                                     Follow
                                 </button>
                             )}
@@ -63,30 +51,19 @@ class UsersPage extends React.Component {
         });
     };
 
-    hundleClickBtnPage = (page) => {
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`,
-            )
-            .then((response) => {
-                this.props.setUsers(response.data.items);
-                this.props.setCurrentPage(page);
-            });
-    };
-
-    renderBtnPageUsers = () => {
-        const countPage = Math.ceil(this.props.totalUserCount / this.props.pageSize);
+    const renderBtnPageUsers = () => {
+        const countPage = Math.ceil(props.totalUserCount / props.pageSize);
         const arrPageCount = [];
         for (let i = 1; i <= countPage; i++) {
             arrPageCount.push(i);
         }
-        const arrPageCountTemp = [1, 2, 3, 4];
+        const arrPageCountTemp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1400];
         return arrPageCountTemp.map((i) => {
             return (
                 <div
-                    onClick={() => this.hundleClickBtnPage(i)}
+                    onClick={() => props.hundleClickBtnPage(i)}
                     className={
-                        this.props.currentPage === i ? style.btnPageUsersActive : style.btnPageUsers
+                        props.currentPage === i ? style.btnPageUsersActive : style.btnPageUsers
                     }>
                     {i}
                 </div>
@@ -94,14 +71,12 @@ class UsersPage extends React.Component {
         });
     };
 
-    render() {
-        return (
-            <div className={style.Wrapper}>
-                <div className={style.btnUserPageBox}>{this.renderBtnPageUsers()}</div>
-                {this.renderUsersList()}
-            </div>
-        );
-    }
-}
+    return (
+        <div className={style.Wrapper}>
+            <div className={style.btnUserPageBox}>{renderBtnPageUsers()}</div>
+            {renderUsersList()}
+        </div>
+    );
+};
 
 export default UsersPage;
