@@ -4,6 +4,7 @@ const SET_USERS = "SET-USERS";
 const CURRENT_PAGE = "CURRENT-PAGE";
 const TOTAL_USERS = "TOTAL-USERS";
 const VISIBLE_PAGE = "VISIBLE-PAGE";
+const LOADING = "LOADING";
 
 const initialState = {
     users: [],
@@ -11,6 +12,7 @@ const initialState = {
     totalUserCount: 0,
     currentPage: 1,
     visiblePageBtn: [1, 6],
+    isLoading: true,
 };
 
 const UsersPageReducer = (state = initialState, action) => {
@@ -55,6 +57,11 @@ const UsersPageReducer = (state = initialState, action) => {
                 ...state,
                 visiblePageBtn: action.visiblePageBtn,
             };
+        case LOADING:;
+            return {
+                ...state,
+                isLoading: action.loading,
+            };
         default:
             return state;
     }
@@ -69,7 +76,7 @@ export const unFollowAC = (id) => {
 export const setUsersAC = (users) => {
     return { type: SET_USERS, users };
 };
-export const setCurrentPageAC = (currentPage) => {
+export const CurrentPageAC = (currentPage) => {
     return { type: CURRENT_PAGE, currentPage: currentPage };
 };
 export const setTotalUsersAC = (totalUserCount) => {
@@ -77,6 +84,9 @@ export const setTotalUsersAC = (totalUserCount) => {
 };
 export const setVisiblePageBtnAC = (visiblePageBtn) => {
     return { type: VISIBLE_PAGE, visiblePageBtn: visiblePageBtn };
+};
+export const loadingAC = (load) => {
+    return { type: LOADING, loading: load };
 };
 
 export default UsersPageReducer;

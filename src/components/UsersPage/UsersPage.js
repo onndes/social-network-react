@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./UsersPage.module.css";
 import userImg from "../../assets/img/iconUser.png";
+import preloader from "../../assets/img/preloader.svg";
 
 const UsersPage = (props) => {
     const renderUsersList = () => {
@@ -57,7 +58,7 @@ const UsersPage = (props) => {
         for (let i = 1; i <= countPage; i++) {
             arrPageCount.push(i);
         }
-        const arrPageCountTemp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1400];
+        const arrPageCountTemp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
         return arrPageCountTemp.map((i) => {
             return (
                 <div
@@ -74,7 +75,7 @@ const UsersPage = (props) => {
     return (
         <div className={style.Wrapper}>
             <div className={style.btnUserPageBox}>{renderBtnPageUsers()}</div>
-            {renderUsersList()}
+            {props.loading ? <img src={preloader} alt='' /> : renderUsersList()}
         </div>
     );
 };
