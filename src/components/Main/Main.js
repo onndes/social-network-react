@@ -3,12 +3,14 @@ import { Route } from "react-router-dom";
 import style from "./Main.module.css";
 import MessagesPage from "../MessagesPage/MessagesPage";
 import NewsPageContainer from "../NewsPage/NewsPageContainer";
-import HomePage from "../HomePage/HomePage";
+import MyProfile from "../MyProfile/MyProfile";
 import UsersPageContainer from "../UsersPage/UsersPageContainer";
+import Progile from "../Profile/Profile";
+
 const Main = (props) => {
     return (
         <div className={style.wrapper}>
-            <Route path='/home' component={HomePage} />
+            <Route path='/myprofile' component={MyProfile} />
             <Route path='/messages'>
                 <MessagesPage
                     getAllUsers={props.getAllUsers}
@@ -18,6 +20,7 @@ const Main = (props) => {
             </Route>
             <Route path='/news' render={() => <NewsPageContainer store={props.store} />} />
             <Route path='/users' component={UsersPageContainer} />
+            <Route path='/profile' component={Progile} />
         </div>
     );
 };

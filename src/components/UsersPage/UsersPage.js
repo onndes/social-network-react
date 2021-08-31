@@ -2,6 +2,7 @@ import React from "react";
 import style from "./UsersPage.module.css";
 import userImg from "../../assets/img/iconUser.png";
 import preloader from "../../assets/img/preloader.svg";
+import { NavLink } from "react-router-dom";
 
 const UsersPage = (props) => {
     const renderUsersList = () => {
@@ -9,12 +10,14 @@ const UsersPage = (props) => {
             return (
                 <div key={user.id} className={style.userWrapp}>
                     <div className={style.firstCol}>
-                        <div className={style.imgContainer}>
-                            <img
-                                src={user.photos.small !== null ? user.photos.small : userImg}
-                                alt=''
-                            />
-                        </div>
+                        <NavLink to='/profile'>
+                            <div className={style.imgContainer}>
+                                <img
+                                    src={user.photos.small !== null ? user.photos.small : userImg}
+                                    alt=''
+                                />
+                            </div>
+                        </NavLink>
                         <div className={style.btnContainer}>
                             {user.follow ? (
                                 <button
@@ -62,6 +65,7 @@ const UsersPage = (props) => {
         return arrPageCountTemp.map((i) => {
             return (
                 <div
+                    key={i}
                     onClick={() => props.hundleClickBtnPage(i)}
                     className={
                         props.currentPage === i ? style.btnPageUsersActive : style.btnPageUsers
