@@ -1,12 +1,12 @@
 import React from "react";
 import {
-    followAC,
-    unFollowAC,
-    setUsersAC,
-    CurrentPageAC,
-    setTotalUsersAC,
-    setVisiblePageBtnAC,
-    loadingAC,
+    follow,
+    unFollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsers,
+    setVisiblePageBtn,
+    setLoading,
 } from "../../Store/Reducers/UsersPageReducer";
 import UsersPage from "./UsersPage";
 import { connect } from "react-redux";
@@ -50,7 +50,7 @@ class UsersContainer extends React.Component {
                     follow={this.props.follow}
                     unFollow={this.props.unFollow}
                     hundleClickBtnPage={this.hundleClickBtnPage}
-                    loading={this.props.loading}
+                    isLoading={this.props.isLoading}
                 />
             </>
         );
@@ -64,35 +64,19 @@ const mapStateToProps = (state) => {
         totalUserCount: state.usersPage.totalUserCount,
         currentPage: state.usersPage.currentPage,
         visiblePageBtn: state.usersPage.visiblePageBtn,
-        loading: state.usersPage.loading,
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (id) => {
-            return dispatch(followAC(id));
-        },
-        unFollow: (id) => {
-            return dispatch(unFollowAC(id));
-        },
-        setUsers: (users) => {
-            return dispatch(setUsersAC(users));
-        },
-        setCurrentPage: (currentPage) => {
-            return dispatch(CurrentPageAC(currentPage));
-        },
-        setTotalUsers: (totalUsers) => {
-            return dispatch(setTotalUsersAC(totalUsers));
-        },
-        setVisiblePageBtn: (visiblePageBtn) => {
-            return dispatch(setVisiblePageBtnAC(visiblePageBtn));
-        },
-        setLoading: (load) => {
-            return dispatch(loadingAC(load));
-        },
+        isLoading: state.usersPage.isLoading,
     };
 };
 
-const UsersPageContainer = connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+
+const UsersPageContainer = connect(mapStateToProps, {
+    follow,
+    unFollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsers,
+    setVisiblePageBtn,
+    setLoading,
+})(UsersContainer);
 
 export default UsersPageContainer;

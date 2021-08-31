@@ -57,7 +57,8 @@ const UsersPageReducer = (state = initialState, action) => {
                 ...state,
                 visiblePageBtn: action.visiblePageBtn,
             };
-        case LOADING:;
+        case LOADING:
+            
             return {
                 ...state,
                 isLoading: action.loading,
@@ -67,25 +68,25 @@ const UsersPageReducer = (state = initialState, action) => {
     }
 };
 
-export const followAC = (id) => {
+export const follow = (id) => {
     return { type: FOLLOW, id };
 };
-export const unFollowAC = (id) => {
+export const unFollow = (id) => {
     return { type: UN_FOLLOW, id };
 };
-export const setUsersAC = (users) => {
+export const setUsers = (users) => {
     return { type: SET_USERS, users };
 };
-export const CurrentPageAC = (currentPage) => {
+export const setCurrentPage = (currentPage) => {
     return { type: CURRENT_PAGE, currentPage: currentPage };
 };
-export const setTotalUsersAC = (totalUserCount) => {
+export const setTotalUsers = (totalUserCount) => {
     return { type: TOTAL_USERS, totalUserCount: totalUserCount };
 };
-export const setVisiblePageBtnAC = (visiblePageBtn) => {
+export const setVisiblePageBtn = (visiblePageBtn) => {
     return { type: VISIBLE_PAGE, visiblePageBtn: visiblePageBtn };
 };
-export const loadingAC = (load) => {
+export const setLoading = (load) => {
     return { type: LOADING, loading: load };
 };
 

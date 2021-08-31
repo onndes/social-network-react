@@ -75,7 +75,7 @@ const UsersPage = (props) => {
     return (
         <div className={style.Wrapper}>
             <div className={style.btnUserPageBox}>{renderBtnPageUsers()}</div>
-            {props.loading ? <img src={preloader} alt='' /> : renderUsersList()}
+            {props.isLoading ? <img src={preloader} alt='' /> : renderUsersList()}
         </div>
     );
 };
