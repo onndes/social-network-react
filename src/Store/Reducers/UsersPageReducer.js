@@ -58,7 +58,6 @@ const UsersPageReducer = (state = initialState, action) => {
                 visiblePageBtn: action.visiblePageBtn,
             };
         case LOADING:
-            
             return {
                 ...state,
                 isLoading: action.loading,

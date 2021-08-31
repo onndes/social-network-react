@@ -5,7 +5,7 @@ import MessagesPage from "../MessagesPage/MessagesPage";
 import NewsPageContainer from "../NewsPage/NewsPageContainer";
 import MyProfile from "../MyProfile/MyProfile";
 import UsersPageContainer from "../UsersPage/UsersPageContainer";
-import Progile from "../Profile/Profile";
+import ProfilePageContainer from "../ProfilePage/ProfilePageContainer";
 
 const Main = (props) => {
     return (
@@ -20,7 +20,7 @@ const Main = (props) => {
             </Route>
             <Route path='/news' render={() => <NewsPageContainer store={props.store} />} />
             <Route path='/users' component={UsersPageContainer} />
-            <Route path='/profile' component={Progile} />
+            <Route path='/profile' component={ProfilePageContainer} />
         </div>
     );
 };
