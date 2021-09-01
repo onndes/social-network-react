@@ -1,16 +1,17 @@
 import React from "react";
 import style from "./UsersPage.module.css";
 import userImg from "../../assets/img/iconUser.png";
-import preloader from "../../assets/img/preloader.svg";
+import Preloader from "../../Common/Preloader/Preloader";
 import { NavLink } from "react-router-dom";
 
 const UsersPage = (props) => {
+    // debugger;
     const renderUsersList = () => {
         return props.usersPage.users.map((user) => {
             return (
                 <div key={user.id} className={style.userWrapp}>
                     <div className={style.firstCol}>
-                        <NavLink to='/profile'>
+                        <NavLink to={`/profile/${user.id}`}>
                             <div className={style.imgContainer}>
                                 <img
                                     src={user.photos.small !== null ? user.photos.small : userImg}
@@ -79,7 +80,7 @@ const UsersPage = (props) => {
     return (
         <div className={style.Wrapper}>
             <div className={style.btnUserPageBox}>{renderBtnPageUsers()}</div>
-            {props.isLoading ? <img src={preloader} alt='' /> : renderUsersList()}
+            {props.isLoading ? <Preloader /> : renderUsersList()}
         </div>
     );
 };

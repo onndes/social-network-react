@@ -20,8 +20,9 @@ const Main = (props) => {
             </Route>
             <Route path='/news' render={() => <NewsPageContainer store={props.store} />} />
             <Route path='/users' component={UsersPageContainer} />
-            <Route path='/profile' component={ProfilePageContainer} />
+            <Route path='/profile/:userId' component={ProfilePageContainer} />
         </div>
     );
 };
+
 export default Main;

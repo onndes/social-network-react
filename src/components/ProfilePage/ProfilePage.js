@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Profile.module.css";
 import userImg from "../../assets/img/iconUser.png";
-const Profile = () => {
+const Profile = (props) => {
     const myData = {
         name: "User Name",
         id: 19397,
@@ -20,7 +20,11 @@ const Profile = () => {
                 <div className={style.firstCol}>
                     <div className={style.imgContainer}>
                         <img
-                            src={myData.photos.small !== null ? myData.photos.small : userImg}
+                            src={
+                                props.profile.photos.small !== null
+                                    ? props.profile.photos.small
+                                    : userImg
+                            }
                             alt=''
                         />
                     </div>
@@ -37,7 +41,9 @@ const Profile = () => {
                 <div className={style.secondCol}>
                     <div className={style.nameAndOnlineBox}>
                         <p className={style.titleName}>
-                            {`${myData.name} ${myData.secondName ? myData.secondName : ""}`}
+                            {`${props.profile.fullName} ${
+                                myData.secondName ? myData.secondName : ""
+                            }`}
                         </p>
                         {myData.status ? (
                             <p className={style.statusOnline + " " + style.status}>Online</p>
@@ -45,7 +51,7 @@ const Profile = () => {
                             <p className={style.statusOffline + " " + style.status}>Offline</p>
                         )}
                     </div>
-                    <p className={style.titleLocation}>{"[hardcode]"}</p>
+                    <p className={style.titleLocation}>{props.profile.aboutMe}</p>
                     <div className={style.aboutUserWrapper}>
                         <ul className={style.aboutUserListTitle}>
                             <li className={style.aboutUserItemTitle}>Birthday:</li>

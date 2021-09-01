@@ -68,7 +68,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-
 const UsersPageContainer = connect(mapStateToProps, {
     follow,
     unFollow,
