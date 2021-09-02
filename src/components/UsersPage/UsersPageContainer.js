@@ -34,12 +34,16 @@ class UsersContainer extends React.Component {
 
         const countPage = Math.ceil(this.props.totalUserCount / this.props.pageSize);
 
-        if (page < 5) {
-            this.props.setVisiblePageBtn([0, 7]);
-        } else if (page > countPage - 4) {
-            this.props.setVisiblePageBtn([countPage - 7, countPage]);
+        if (countPage > 7) {
+            if (page < 5) {
+                this.props.setVisiblePageBtn([0, 7]);
+            } else if (page > countPage - 4) {
+                this.props.setVisiblePageBtn([countPage - 7, countPage]);
+            } else {
+                this.props.setVisiblePageBtn([page - 4, page + 3]);
+            }
         } else {
-            this.props.setVisiblePageBtn([page - 4, page + 3]);
+            this.props.setVisiblePageBtn([0, countPage]);
         }
 
         axios

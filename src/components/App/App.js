@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Header from "../Header/Header";
+import HeaderContainer from "../Header/HeaderContainer";
 import Aside from "../Aside/Aside";
 import Footer from "../Footer/Footer";
 
@@ -13,7 +13,7 @@ export default class App extends Component {
         return (
             <div className='app'>
                 <div>
-                    <Header />
+                    <HeaderContainer />
                 </div>
                 <div className='app-body-container'>
                     <div className='app-body'>
