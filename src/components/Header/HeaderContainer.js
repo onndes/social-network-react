@@ -16,11 +16,13 @@ class HeaderClassContainer extends React.Component {
                     this.props.setUserData(id, email, login);
                 }
             });
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.id}`)
-            .then((response) => {
-                this.props.setUserPhoto(response.data.photos.small);
-            });
+        if (this.props.id) {
+            axios
+                .get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.id}`)
+                .then((response) => {
+                    this.props.setUserPhoto(response.data.photos.small);
+                });
+        }
     }
 
     render() {
