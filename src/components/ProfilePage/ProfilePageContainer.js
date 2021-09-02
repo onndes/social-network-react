@@ -7,6 +7,7 @@ import Preloader from "../../Common/Preloader/Preloader";
 import { withRouter } from "react-router-dom";
 class ProfileContainer extends React.Component {
     componentDidMount() {
+        this.props.setProfileData(null);
         this.props.isLoading(true);
         // debugger;
         axios

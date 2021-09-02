@@ -32,12 +32,14 @@ class UsersContainer extends React.Component {
         this.props.setCurrentPage(page);
         this.props.setCurrentPagePrew(this.props.currentPage);
 
-        if (page) {
-            if (page < 5) {
-                this.props.setVisiblePageBtn([0, 7]);
-            } else {
-                this.props.setVisiblePageBtn([page - 4, page + 3]);
-            }
+        const countPage = Math.ceil(this.props.totalUserCount / this.props.pageSize);
+
+        if (page < 5) {
+            this.props.setVisiblePageBtn([0, 7]);
+        } else if (page > countPage - 4) {
+            this.props.setVisiblePageBtn([countPage - 7, countPage]);
+        } else {
+            this.props.setVisiblePageBtn([page - 4, page + 3]);
         }
 
         axios
@@ -53,20 +55,7 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <>
-                <UsersPage
-                    usersPage={this.props.usersPage}
-                    totalUserCount={this.props.totalUserCount}
-                    pageSize={this.props.pageSize}
-                    currentPage={this.props.currentPage}
-                    follow={this.props.follow}
-                    unFollow={this.props.unFollow}
-                    hundleClickBtnPage={this.hundleClickBtnPage}
-                    isLoading={this.props.isLoading}
-                    visiblePageBtn={this.props.visiblePageBtn}
-                    currentPagePrew={this.props.currentPagePrew}
-                    setVisiblePageBtn={this.props.setVisiblePageBtn}
-                    setCurrentPage={this.props.setCurrentPage}
-                />
+                <UsersPage {...this.props} hundleClickBtnPage={this.hundleClickBtnPage} />
             </>
         );
     }
@@ -74,7 +63,7 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        usersPage: state.usersPage,
+        users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUserCount: state.usersPage.totalUserCount,
         currentPage: state.usersPage.currentPage,

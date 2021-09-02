@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 const UsersPage = (props) => {
     const renderUsersList = () => {
-        return props.usersPage.users.map((user) => {
+        return props.users.map((user) => {
             return (
                 <div key={user.id} className={style.userWrapp}>
                     <div className={style.firstCol}>
@@ -55,6 +55,7 @@ const UsersPage = (props) => {
         });
     };
     const countPage = Math.ceil(props.totalUserCount / props.pageSize);
+
     const renderBtnPageUsers = () => {
         const arrPageCount = [];
         for (let i = 1; i <= countPage; i++) {
