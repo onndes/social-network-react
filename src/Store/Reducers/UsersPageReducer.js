@@ -56,7 +56,6 @@ const UsersPageReducer = (state = initialState, action) => {
                 totalUserCount: action.totalUserCount,
             };
         case VISIBLE_PAGE:
-            console.log(action.visiblePageBtn);
             return {
                 ...state,
                 visiblePageBtn: action.visiblePageBtn,

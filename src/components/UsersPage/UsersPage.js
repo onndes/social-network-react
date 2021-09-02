@@ -54,9 +54,8 @@ const UsersPage = (props) => {
             );
         });
     };
-
+    const countPage = Math.ceil(props.totalUserCount / props.pageSize);
     const renderBtnPageUsers = () => {
-        const countPage = Math.ceil(props.totalUserCount / props.pageSize);
         const arrPageCount = [];
         for (let i = 1; i <= countPage; i++) {
             arrPageCount.push(i);
@@ -83,7 +82,15 @@ const UsersPage = (props) => {
 
     return (
         <div className={style.Wrapper}>
-            <div className={style.btnUserPageBox}>{renderBtnPageUsers()}</div>
+            <div className={style.btnUserPageBox}>
+                <div onClick={() => props.hundleClickBtnPage(1)} className={style.FLBtn}>
+                    First page
+                </div>
+                {renderBtnPageUsers()}
+                <div onClick={() => props.hundleClickBtnPage(countPage)} className={style.FLBtn}>
+                    Last page
+                </div>
+            </div>
             {props.isLoading ? <Preloader /> : renderUsersList()}
         </div>
     );

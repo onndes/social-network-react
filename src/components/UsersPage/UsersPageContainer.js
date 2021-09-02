@@ -32,8 +32,12 @@ class UsersContainer extends React.Component {
         this.props.setCurrentPage(page);
         this.props.setCurrentPagePrew(this.props.currentPage);
 
-        if (this.props.currentPage > 1 && page > 1) {
-            this.props.setVisiblePageBtn([page - 4, page + 3]);
+        if (page) {
+            if (page < 5) {
+                this.props.setVisiblePageBtn([0, 7]);
+            } else {
+                this.props.setVisiblePageBtn([page - 4, page + 3]);
+            }
         }
 
         axios
@@ -61,6 +65,7 @@ class UsersContainer extends React.Component {
                     visiblePageBtn={this.props.visiblePageBtn}
                     currentPagePrew={this.props.currentPagePrew}
                     setVisiblePageBtn={this.props.setVisiblePageBtn}
+                    setCurrentPage={this.props.setCurrentPage}
                 />
             </>
         );
