@@ -7,6 +7,7 @@ import {
     setTotalUsers,
     setVisiblePageBtn,
     setLoading,
+    setCurrentPagePrew,
 } from "../../Store/Reducers/UsersPageReducer";
 import UsersPage from "./UsersPage";
 import { connect } from "react-redux";
@@ -28,13 +29,19 @@ class UsersContainer extends React.Component {
 
     hundleClickBtnPage = (page) => {
         this.props.setLoading(true);
+        this.props.setCurrentPage(page);
+        this.props.setCurrentPagePrew(this.props.currentPage);
+
+        if (this.props.currentPage > 1 && page > 1) {
+            this.props.setVisiblePageBtn([page - 4, page + 3]);
+        }
+
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`,
             )
             .then((response) => {
                 this.props.setUsers(response.data.items);
-                this.props.setCurrentPage(page);
                 this.props.setLoading(false);
             });
     };
@@ -51,6 +58,9 @@ class UsersContainer extends React.Component {
                     unFollow={this.props.unFollow}
                     hundleClickBtnPage={this.hundleClickBtnPage}
                     isLoading={this.props.isLoading}
+                    visiblePageBtn={this.props.visiblePageBtn}
+                    currentPagePrew={this.props.currentPagePrew}
+                    setVisiblePageBtn={this.props.setVisiblePageBtn}
                 />
             </>
         );
@@ -65,6 +75,7 @@ const mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         visiblePageBtn: state.usersPage.visiblePageBtn,
         isLoading: state.usersPage.isLoading,
+        currentPagePrew: state.usersPage.currentPagePrew,
     };
 };
 
@@ -76,6 +87,7 @@ const UsersPageContainer = connect(mapStateToProps, {
     setTotalUsers,
     setVisiblePageBtn,
     setLoading,
+    setCurrentPagePrew,
 })(UsersContainer);
 
 export default UsersPageContainer;

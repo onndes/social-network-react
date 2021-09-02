@@ -5,7 +5,6 @@ import Preloader from "../../Common/Preloader/Preloader";
 import { NavLink } from "react-router-dom";
 
 const UsersPage = (props) => {
-    // debugger;
     const renderUsersList = () => {
         return props.usersPage.users.map((user) => {
             return (
@@ -62,8 +61,13 @@ const UsersPage = (props) => {
         for (let i = 1; i <= countPage; i++) {
             arrPageCount.push(i);
         }
-        const arrPageCountTemp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-        return arrPageCountTemp.map((i) => {
+
+        const selectArrPageCount = arrPageCount.slice(
+            props.visiblePageBtn[0],
+            props.visiblePageBtn[1],
+        );
+
+        return selectArrPageCount.map((i) => {
             return (
                 <div
                     key={i}
@@ -71,7 +75,7 @@ const UsersPage = (props) => {
                     className={
                         props.currentPage === i ? style.btnPageUsersActive : style.btnPageUsers
                     }>
-                    {i}
+                    <div className={style.btnCurrentPage}>{i}</div>
                 </div>
             );
         });

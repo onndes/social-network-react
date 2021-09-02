@@ -5,14 +5,16 @@ const CURRENT_PAGE = "CURRENT-PAGE";
 const TOTAL_USERS = "TOTAL-USERS";
 const VISIBLE_PAGE = "VISIBLE-PAGE";
 const LOADING = "LOADING";
+const CURRENT_PAGE_PREW = "CURRENT-PAGE-PREW";
 
 const initialState = {
     users: [],
     pageSize: 10,
     totalUserCount: 0,
     currentPage: 1,
-    visiblePageBtn: [1, 6],
+    visiblePageBtn: [0, 7],
     isLoading: true,
+    currentPagePrew: null,
 };
 
 const UsersPageReducer = (state = initialState, action) => {
@@ -54,6 +56,7 @@ const UsersPageReducer = (state = initialState, action) => {
                 totalUserCount: action.totalUserCount,
             };
         case VISIBLE_PAGE:
+            console.log(action.visiblePageBtn);
             return {
                 ...state,
                 visiblePageBtn: action.visiblePageBtn,
@@ -62,6 +65,11 @@ const UsersPageReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: action.loading,
+            };
+        case CURRENT_PAGE_PREW:
+            return {
+                ...state,
+                currentPagePrew: action.currentPagePrew,
             };
         default:
             return state;
@@ -84,10 +92,13 @@ export const setTotalUsers = (totalUserCount) => {
     return { type: TOTAL_USERS, totalUserCount: totalUserCount };
 };
 export const setVisiblePageBtn = (visiblePageBtn) => {
-    return { type: VISIBLE_PAGE, visiblePageBtn: visiblePageBtn };
+    return { type: VISIBLE_PAGE, visiblePageBtn };
 };
 export const setLoading = (load) => {
     return { type: LOADING, loading: load };
+};
+export const setCurrentPagePrew = (currentPagePrew) => {
+    return { type: CURRENT_PAGE_PREW, currentPagePrew: currentPagePrew };
 };
 
 export default UsersPageReducer;
