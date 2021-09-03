@@ -8,6 +8,7 @@ const UsersPage = (props) => {
     // debugger;
     const renderUsersList = () => {
         return props.users.map((user) => {
+            // debugger;
             return (
                 <div key={user.id} className={style.userWrapp}>
                     <div className={style.firstCol}>
@@ -62,7 +63,6 @@ const UsersPage = (props) => {
                                             .then((response) => {
                                                 console.log(response);
                                                 if (response.data.resultCode === 0) {
-                                                    debugger;
                                                     props.follow(user.id);
                                                 }
                                             });
@@ -84,8 +84,8 @@ const UsersPage = (props) => {
                                 <p className={style.statusOffline + " " + style.status}>Offline</p>
                             )}
                         </div>
-                        <p className={style.titleLocation}>
-                            {"user.location.city"}, {"user.location.country"}
+                        <p className={style.status}>
+                            {user.status ? user.status : "no data"}
                         </p>
                     </div>
                 </div>

@@ -1,11 +1,13 @@
 const SET_PROFILE_DATA = "SET-PROFILE-DATA ";
 const SET_USER_ID = "SET-USER-ID";
 const IS_LOADING = "IS-LOADING";
+const SET_USER_STATUS = "SET_USER_STATUS";
 
 const initialState = {
     profile: null,
     userId: null,
     isLoading: true,
+    userStatus: null,
 };
 
 const ProfilePageReducer = (state = initialState, action) => {
@@ -16,6 +18,8 @@ const ProfilePageReducer = (state = initialState, action) => {
             return { ...state, userId: action.userId };
         case IS_LOADING:
             return { ...state, isLoading: action.loading };
+        case SET_USER_STATUS:
+            return { ...state, userStatus: action.userStatus };
         default:
             return state;
     }
@@ -38,6 +42,13 @@ export const isLoading = (loading) => {
     return {
         type: IS_LOADING,
         loading,
+    };
+};
+export const setUserStatus = (userStatus) => {
+    
+    return {
+        type: SET_USER_STATUS,
+        userStatus,
     };
 };
 export default ProfilePageReducer;

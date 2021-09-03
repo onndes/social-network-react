@@ -51,7 +51,13 @@ const Profile = (props) => {
                             <p className={style.statusOffline + " " + style.status}>Offline</p>
                         )}
                     </div>
-                    <p className={style.titleLocation}>{props.profile.aboutMe}</p>
+                    <p className={style.userStatus}>
+                        {props.userStatus ? props.userStatus : "no data"}
+                    </p>
+                    <p className={style.aboutMe}>
+                        <span>About me: </span>
+                        {props.profile.aboutMe ? props.profile.aboutMe : "no data"}
+                    </p>
                     <div className={style.aboutUserWrapper}>
                         <ul className={style.aboutUserListTitle}>
                             <li className={style.aboutUserItemTitle}>Birthday:</li>
