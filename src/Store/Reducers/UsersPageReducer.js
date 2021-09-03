@@ -6,7 +6,7 @@ const TOTAL_USERS = "TOTAL-USERS";
 const VISIBLE_PAGE = "VISIBLE-PAGE";
 const LOADING = "LOADING";
 const CURRENT_PAGE_PREW = "CURRENT-PAGE-PREW";
-
+const TEMP_CHECK_FOLLOW = "TEMP-CHECK-FOLLOW";
 const initialState = {
     users: [],
     pageSize: 10,
@@ -15,6 +15,7 @@ const initialState = {
     visiblePageBtn: [0, 7],
     isLoading: true,
     currentPagePrew: null,
+    tempCheckFollow: false,
 };
 
 const UsersPageReducer = (state = initialState, action) => {
@@ -70,6 +71,12 @@ const UsersPageReducer = (state = initialState, action) => {
                 ...state,
                 currentPagePrew: action.currentPagePrew,
             };
+        case TEMP_CHECK_FOLLOW:
+          console.log(state.tempCheckFollow);
+            return {
+                ...state,
+                tempCheckFollow: !state.tempCheckFollow,
+            };
         default:
             return state;
     }
@@ -98,6 +105,9 @@ export const setLoading = (load) => {
 };
 export const setCurrentPagePrew = (currentPagePrew) => {
     return { type: CURRENT_PAGE_PREW, currentPagePrew: currentPagePrew };
+};
+export const setTempCheckFollow = () => {
+    return { type: TEMP_CHECK_FOLLOW };
 };
 
 export default UsersPageReducer;

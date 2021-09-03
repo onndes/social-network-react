@@ -8,6 +8,7 @@ import {
     setVisiblePageBtn,
     setLoading,
     setCurrentPagePrew,
+    setTempCheckFollow,
 } from "../../Store/Reducers/UsersPageReducer";
 import UsersPage from "./UsersPage";
 import { connect } from "react-redux";
@@ -19,6 +20,9 @@ class UsersContainer extends React.Component {
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+                {
+                    withCredentials: true,
+                },
             )
             .then((response) => {
                 this.props.setUsers(response.data.items);
@@ -49,6 +53,9 @@ class UsersContainer extends React.Component {
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`,
+                {
+                    withCredentials: true,
+                },
             )
             .then((response) => {
                 this.props.setUsers(response.data.items);
@@ -74,6 +81,7 @@ const mapStateToProps = (state) => {
         visiblePageBtn: state.usersPage.visiblePageBtn,
         isLoading: state.usersPage.isLoading,
         currentPagePrew: state.usersPage.currentPagePrew,
+        followed: state.usersPage.users.followed,
     };
 };
 
@@ -86,6 +94,7 @@ const UsersPageContainer = connect(mapStateToProps, {
     setVisiblePageBtn,
     setLoading,
     setCurrentPagePrew,
+    setTempCheckFollow,
 })(UsersContainer);
 
 export default UsersPageContainer;
