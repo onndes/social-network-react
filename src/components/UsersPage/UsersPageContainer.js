@@ -7,8 +7,6 @@ import {
     setTotalUsers,
     setVisiblePageBtn,
     setLoading,
-    setCurrentPagePrew,
-    setTempCheckFollow,
 } from "../../Store/Reducers/UsersPageReducer";
 import UsersPage from "./UsersPage";
 import { connect } from "react-redux";
@@ -34,7 +32,6 @@ class UsersContainer extends React.Component {
     hundleClickBtnPage = (page) => {
         this.props.setLoading(true);
         this.props.setCurrentPage(page);
-        this.props.setCurrentPagePrew(this.props.currentPage);
 
         const countPage = Math.ceil(this.props.totalUserCount / this.props.pageSize);
 
@@ -80,8 +77,6 @@ const mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         visiblePageBtn: state.usersPage.visiblePageBtn,
         isLoading: state.usersPage.isLoading,
-        currentPagePrew: state.usersPage.currentPagePrew,
-        followed: state.usersPage.users.followed,
     };
 };
 
@@ -93,8 +88,6 @@ const UsersPageContainer = connect(mapStateToProps, {
     setTotalUsers,
     setVisiblePageBtn,
     setLoading,
-    setCurrentPagePrew,
-    setTempCheckFollow,
 })(UsersContainer);
 
 export default UsersPageContainer;

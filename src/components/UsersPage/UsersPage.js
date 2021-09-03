@@ -37,12 +37,12 @@ const UsersPage = (props) => {
                                             )
                                             .then((response) => {
                                                 if (response.data.resultCode === 0) {
-                                                    // debugger
                                                     props.unFollow(user.id);
-                                                    props.setTempCheckFollow();
                                                 }
                                             });
-                                    }}></button>
+                                    }}>
+                                    Unfollow
+                                </button>
                             ) : (
                                 <button
                                     className={style.follow + " " + style.btnFollow}
@@ -62,8 +62,8 @@ const UsersPage = (props) => {
                                             .then((response) => {
                                                 console.log(response);
                                                 if (response.data.resultCode === 0) {
+                                                    debugger;
                                                     props.follow(user.id);
-                                                    props.setTempCheckFollow();
                                                 }
                                             });
                                     }}>
