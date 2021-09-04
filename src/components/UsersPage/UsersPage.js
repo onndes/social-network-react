@@ -3,7 +3,8 @@ import style from "./UsersPage.module.css";
 import userImg from "../../assets/img/iconUser.png";
 import Preloader from "../../Common/Preloader/Preloader";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
+import { followAPI } from "../../API/API";
+
 const UsersPage = (props) => {
     // debugger;
     const renderUsersList = () => {
@@ -25,22 +26,11 @@ const UsersPage = (props) => {
                                 <button
                                     className={style.unfollow + " " + style.btnFollow}
                                     onClick={() => {
-                                        axios
-                                            .delete(
-                                                `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                                                {
-                                                    withCredentials: true,
-                                                    headers: {
-                                                        "API-KEY":
-                                                            "80f91154-9634-44fc-a875-b81e7897c21e",
-                                                    },
-                                                },
-                                            )
-                                            .then((response) => {
-                                                if (response.data.resultCode === 0) {
-                                                    props.unFollow(user.id);
-                                                }
-                                            });
+                                        followAPI.unfollow(user.id).then((data) => {
+                                            if (data.resultCode === 0) {
+                                                props.unFollow(user.id);
+                                            }
+                                        });
                                     }}>
                                     Unfollow
                                 </button>
@@ -48,24 +38,11 @@ const UsersPage = (props) => {
                                 <button
                                     className={style.follow + " " + style.btnFollow}
                                     onClick={() => {
-                                        axios
-                                            .post(
-                                                `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                                                {},
-                                                {
-                                                    withCredentials: true,
-                                                    headers: {
-                                                        "API-KEY":
-                                                            "80f91154-9634-44fc-a875-b81e7897c21e",
-                                                    },
-                                                },
-                                            )
-                                            .then((response) => {
-                                                console.log(response);
-                                                if (response.data.resultCode === 0) {
-                                                    props.follow(user.id);
-                                                }
-                                            });
+                                        followAPI.follow(user.id).then((data) => {
+                                            if (data.resultCode === 0) {
+                                                props.follow(user.id);
+                                            }
+                                        });
                                     }}>
                                     Follow
                                 </button>
@@ -84,9 +61,7 @@ const UsersPage = (props) => {
                                 <p className={style.statusOffline + " " + style.status}>Offline</p>
                             )}
                         </div>
-                        <p className={style.status}>
-                            {user.status ? user.status : "no data"}
-                        </p>
+                        <p className={style.status}>{user.status ? user.status : "no data"}</p>
                     </div>
                 </div>
             );

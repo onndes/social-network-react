@@ -1,27 +1,21 @@
-import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import Header from "./Header";
 import { setUserData, setUserPhoto } from "./../../Store/Reducers/AuthReducer";
+import { authMeAPI, profileAPI } from "../../API/API";
 
 class HeaderClassContainer extends React.Component {
     componentDidMount() {
-        axios
-            .get("https://social-network.samuraijs.com/api/1.0/auth/me", {
-                withCredentials: true,
-            })
-            .then((response) => {
-                if (response.data.resultCode === 0) {
-                    const { email, id, login } = response.data.data;
-                    this.props.setUserData(id, email, login);
-                }
-            });
+        authMeAPI.getAuthMe().then((data) => {
+            if (data.resultCode === 0) {
+                const { email, id, login } = data.data;
+                this.props.setUserData(id, email, login);
+            }
+        });
         if (this.props.id) {
-            axios
-                .get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.id}`)
-                .then((response) => {
-                    this.props.setUserPhoto(response.data.photos.small);
-                });
+            profileAPI.getProfile(this.props.id).then((data) => {
+                this.props.setUserPhoto(data.photos.small);
+            });
         }
     }
 
