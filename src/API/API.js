@@ -41,3 +41,6 @@ export const authMeAPI = {
         return instance.get(`auth/me`).then((responce) => responce.data);
     },
 };
+
+
+

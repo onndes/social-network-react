@@ -27,7 +27,9 @@
   padding: 4px 6px;
   color: white;
 }
-
+.btnFollow:disabled {
+  opacity: .2;
+}
 .follow {
   background: rgb(79, 75, 153);
 }

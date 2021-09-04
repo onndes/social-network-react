@@ -24,24 +24,30 @@ const UsersPage = (props) => {
                         <div className={style.btnContainer}>
                             {user.followed ? (
                                 <button
+                                    disabled={props.buttonFollowWork.some((i) => i === user.id)}
                                     className={style.unfollow + " " + style.btnFollow}
                                     onClick={() => {
+                                        props.toggleButtonFollow(true, user.id);
                                         followAPI.unfollow(user.id).then((data) => {
                                             if (data.resultCode === 0) {
                                                 props.unFollow(user.id);
                                             }
+                                            props.toggleButtonFollow(false, user.id);
                                         });
                                     }}>
                                     Unfollow
                                 </button>
                             ) : (
                                 <button
+                                    disabled={props.buttonFollowWork.some((i) => i === user.id)}
                                     className={style.follow + " " + style.btnFollow}
                                     onClick={() => {
+                                        props.toggleButtonFollow(true, user.id);
                                         followAPI.follow(user.id).then((data) => {
                                             if (data.resultCode === 0) {
                                                 props.follow(user.id);
                                             }
+                                            props.toggleButtonFollow(false, user.id);
                                         });
                                     }}>
                                     Follow

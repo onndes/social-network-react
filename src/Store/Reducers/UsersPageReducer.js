@@ -6,6 +6,7 @@ const TOTAL_USERS = "TOTAL-USERS";
 const VISIBLE_PAGE = "VISIBLE-PAGE";
 const LOADING = "LOADING";
 const CURRENT_PAGE_PREW = "CURRENT-PAGE-PREW";
+const TOOGLE_BUTTON_FOLLOW = "TOOGLE-BUTTON-FOLLOW";
 
 const initialState = {
     users: [],
@@ -15,7 +16,7 @@ const initialState = {
     visiblePageBtn: [0, 7],
     isLoading: true,
     currentPagePrew: null,
-
+    buttonFollowWork: [],
 };
 
 const UsersPageReducer = (state = initialState, action) => {
@@ -71,7 +72,14 @@ const UsersPageReducer = (state = initialState, action) => {
                 ...state,
                 currentPagePrew: action.currentPagePrew,
             };
-       
+        case TOOGLE_BUTTON_FOLLOW:
+            return {
+                ...state,
+                buttonFollowWork: action.toggleButton
+                    ? [...state.buttonFollowWork, action.userId]
+                    : state.buttonFollowWork.filter((i) => i !== action.userId),
+            };
+
         default:
             return state;
     }
@@ -101,6 +109,8 @@ export const setLoading = (load) => {
 export const setCurrentPagePrew = (currentPagePrew) => {
     return { type: CURRENT_PAGE_PREW, currentPagePrew: currentPagePrew };
 };
-
+export const toggleButtonFollow = (toggleButton, userId) => {
+    return { type: TOOGLE_BUTTON_FOLLOW, toggleButton, userId };
+};
 
 export default UsersPageReducer;

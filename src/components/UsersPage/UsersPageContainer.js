@@ -11,6 +11,7 @@ import {
 import UsersPage from "./UsersPage";
 import { connect } from "react-redux";
 import { usersAPI } from "./../../API/API";
+import { toggleButtonFollow } from "./../../Store/Reducers/UsersPageReducer";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -24,7 +25,7 @@ class UsersContainer extends React.Component {
 
     hundleClickBtnPage = (page) => {
         const { setLoading, setCurrentPage, setVisiblePageBtn, setUsers } = this.props;
-        
+
         setLoading(true);
         setCurrentPage(page);
 
@@ -65,6 +66,7 @@ const mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         visiblePageBtn: state.usersPage.visiblePageBtn,
         isLoading: state.usersPage.isLoading,
+        buttonFollowWork: state.usersPage.buttonFollowWork,
     };
 };
 
@@ -76,6 +78,7 @@ const UsersPageContainer = connect(mapStateToProps, {
     setTotalUsers,
     setVisiblePageBtn,
     setLoading,
+    toggleButtonFollow,
 })(UsersContainer);
 
 export default UsersPageContainer;
