@@ -12,14 +12,22 @@ export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 5) {
         return instance
             .get(`users?page=${currentPage}&count=${pageSize}`)
-            .then((responce) => responce.data);
+
+            .then((responce) => {
+                let data = responce.data;
+                data.items.forEach(
+                    (user) =>
+                        (user.status = user.status ? user.status : "no status [check api.js]"),
+                );
+                return data;
+            });
     },
 };
 export const followAPI = {
     follow(userId) {
         return instance.post(`follow/${userId}`).then((responce) => responce.data);
     },
-    unfollow(userId) {
+    unFollow(userId) {
         return instance.delete(`follow/${userId}`).then((responce) => responce.data);
     },
 };
@@ -41,6 +49,3 @@ export const authMeAPI = {
         return instance.get(`auth/me`).then((responce) => responce.data);
     },
 };
-
-
-

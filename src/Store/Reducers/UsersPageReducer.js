@@ -1,3 +1,5 @@
+import { usersAPI, followAPI } from "../../API/API";
+
 const FOLLOW = "FOLLOW";
 const UN_FOLLOW = "UN-FOLLOW";
 const SET_USERS = "SET-USERS";
@@ -85,10 +87,10 @@ const UsersPageReducer = (state = initialState, action) => {
     }
 };
 
-export const follow = (id) => {
+export const followApply = (id) => {
     return { type: FOLLOW, id };
 };
-export const unFollow = (id) => {
+export const unFollowApply = (id) => {
     return { type: UN_FOLLOW, id };
 };
 export const setUsers = (users) => {
@@ -113,4 +115,62 @@ export const toggleButtonFollow = (toggleButton, userId) => {
     return { type: TOOGLE_BUTTON_FOLLOW, toggleButton, userId };
 };
 
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(setLoading(true));
+        usersAPI.getUsers(currentPage, pageSize).then((data) => {
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsers(data.totalCount));
+            dispatch(setLoading(false));
+        });
+    };
+};
+export const getUsersClickBtn = (page, totalUserCount, pageSize) => {
+    return (dispatch) => {
+        dispatch(setLoading(true));
+        dispatch(setCurrentPage(page));
+
+        const countPage = Math.ceil(totalUserCount / pageSize);
+
+        if (countPage > 7) {
+            if (page < 5) {
+                dispatch(setVisiblePageBtn([0, 7]));
+            } else if (page > countPage - 4) {
+                dispatch(setVisiblePageBtn([countPage - 7, countPage]));
+            } else {
+                dispatch(setVisiblePageBtn([page - 4, page + 3]));
+            }
+        } else {
+            dispatch(setVisiblePageBtn([0, countPage]));
+        }
+
+        usersAPI.getUsers(page, pageSize).then((data) => {
+            dispatch(setUsers(data.items));
+            dispatch(setLoading(false));
+        });
+    };
+};
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleButtonFollow(true, userId));
+        followAPI.follow(userId).then((data) => {
+            if (data.resultCode === 0) {
+                dispatch(followApply(userId));
+            }
+            dispatch(toggleButtonFollow(false, userId));
+        });
+    };
+};
+export const unFollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleButtonFollow(true, userId));
+        followAPI.unFollow(userId).then((data) => {
+            if (data.resultCode === 0) {
+                dispatch(unFollowApply(userId));
+            }
+            dispatch(toggleButtonFollow(false, userId));
+        });
+    };
+};
 export default UsersPageReducer;

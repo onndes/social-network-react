@@ -3,7 +3,6 @@ import style from "./UsersPage.module.css";
 import userImg from "../../assets/img/iconUser.png";
 import Preloader from "../../Common/Preloader/Preloader";
 import { NavLink } from "react-router-dom";
-import { followAPI } from "../../API/API";
 
 const UsersPage = (props) => {
     // debugger;
@@ -27,13 +26,7 @@ const UsersPage = (props) => {
                                     disabled={props.buttonFollowWork.some((i) => i === user.id)}
                                     className={style.unfollow + " " + style.btnFollow}
                                     onClick={() => {
-                                        props.toggleButtonFollow(true, user.id);
-                                        followAPI.unfollow(user.id).then((data) => {
-                                            if (data.resultCode === 0) {
-                                                props.unFollow(user.id);
-                                            }
-                                            props.toggleButtonFollow(false, user.id);
-                                        });
+                                        props.unFollow(user.id);
                                     }}>
                                     Unfollow
                                 </button>
@@ -42,13 +35,7 @@ const UsersPage = (props) => {
                                     disabled={props.buttonFollowWork.some((i) => i === user.id)}
                                     className={style.follow + " " + style.btnFollow}
                                     onClick={() => {
-                                        props.toggleButtonFollow(true, user.id);
-                                        followAPI.follow(user.id).then((data) => {
-                                            if (data.resultCode === 0) {
-                                                props.follow(user.id);
-                                            }
-                                            props.toggleButtonFollow(false, user.id);
-                                        });
+                                        props.follow(user.id);
                                     }}>
                                     Follow
                                 </button>
