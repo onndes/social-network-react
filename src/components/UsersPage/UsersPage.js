@@ -5,10 +5,8 @@ import Preloader from "../../Common/Preloader/Preloader";
 import { NavLink } from "react-router-dom";
 
 const UsersPage = (props) => {
-    // debugger;
     const renderUsersList = () => {
         return props.users.map((user) => {
-            // debugger;
             return (
                 <div key={user.id} className={style.userWrapp}>
                     <div className={style.firstCol}>
@@ -68,23 +66,48 @@ const UsersPage = (props) => {
             arrPageCount.push(i);
         }
 
-        const selectArrPageCount = arrPageCount.slice(
-            props.visiblePageBtn[0],
-            props.visiblePageBtn[1],
-        );
-
-        return selectArrPageCount.map((i) => {
-            return (
-                <div
-                    key={i}
-                    onClick={() => props.hundleClickBtnPage(i)}
-                    className={
-                        props.currentPage === i ? style.btnPageUsersActive : style.btnPageUsers
-                    }>
-                    <div className={style.btnCurrentPage}>{i}</div>
-                </div>
+        if (arrPageCount.length > 0) {
+            const selectArrPageCount = arrPageCount.slice(
+                props.visiblePageBtn[0],
+                props.visiblePageBtn[1],
             );
-        });
+
+            return selectArrPageCount.map((i) => {
+                return (
+                    <div
+                        key={i}
+                        onClick={() => props.hundleClickBtnPage(i)}
+                        className={
+                            props.currentPage === i ? style.btnPageUsersActive : style.btnPageUsers
+                        }>
+                        <div className={style.btnCurrentPage}>{i}</div>
+                    </div>
+                );
+            });
+        } else {
+            // if the pages did not load
+            for (let i = 1; i <= 7; i++) {
+                arrPageCount.push(i);
+            }
+            const selectArrPageCount = arrPageCount.slice(
+                props.visiblePageBtn[0],
+                props.visiblePageBtn[1],
+            );
+
+            return selectArrPageCount.map((i) => {
+                return (
+                    <div
+                        key={i}
+                        className={
+                            props.currentPage === i ? style.btnPageUsersActive : style.btnPageUsers
+                        }>
+                        <div className={style.btnCurrentPage}>
+                            <br />
+                        </div>
+                    </div>
+                );
+            });
+        }
     };
 
     return (

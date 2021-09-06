@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import style from "./MessagesPage.module.css";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Dialogs from "./Dialogs/Dialogs";
 import MessagesItem from "./MessagesItem/MessagesItem";
 import MessagesItemTestContainer from "./MessagesItem/MessagesItemTestContainer";
@@ -24,6 +24,8 @@ export default class MessagesPage extends Component {
     };
 
     render() {
+        if (!this.props.isAuth) return <Redirect to='/login' />;
+
         return (
             <>
                 <main className={style.wrapper}>
