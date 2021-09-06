@@ -1,29 +1,12 @@
 import React from "react";
 import ProfilePage from "./ProfilePage";
 import { connect } from "react-redux";
-import {
-    setProfileData,
-    setUserId,
-    isLoading,
-    setUserStatus,
-} from "../../Store/Reducers/ProfilePageReducer";
+import { isLoading, getProfile } from "../../Store/Reducers/ProfilePageReducer";
 import Preloader from "../../Common/Preloader/Preloader";
 import { withRouter } from "react-router-dom";
-import { profileAPI } from "../../API/API";
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        this.props.setProfileData(null);
-        this.props.isLoading(true);
-
-        profileAPI.getProfile(this.props.match.params.userId).then((data) => {
-            this.props.setProfileData(data);
-            this.props.setUserId(data.userId);
-            this.props.isLoading(false);
-        });
-
-        profileAPI.getProfileStatus(this.props.match.params.userId).then((data) => {
-                this.props.setUserStatus(data);
-            });
+        this.props.getProfile(this.props.match.params.userId);
     }
 
     render() {
@@ -41,10 +24,8 @@ const mapStateToProps = (state) => {
     };
 };
 const ProfilePageContainer = connect(mapStateToProps, {
-    setProfileData,
-    setUserId,
     isLoading,
-    setUserStatus,
+    getProfile,
 })(withRouter(ProfileContainer));
 
 export default ProfilePageContainer;

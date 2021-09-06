@@ -1,3 +1,5 @@
+import { profileAPI } from "../../API/API";
+
 const SET_PROFILE_DATA = "SET-PROFILE-DATA ";
 const SET_USER_ID = "SET-USER-ID";
 const IS_LOADING = "IS-LOADING";
@@ -45,10 +47,26 @@ export const isLoading = (loading) => {
     };
 };
 export const setUserStatus = (userStatus) => {
-    
     return {
         type: SET_USER_STATUS,
         userStatus,
+    };
+};
+
+export const getProfile = (userId) => {
+    return (dispatch) => {
+        dispatch(setProfileData(null));
+        dispatch(isLoading(true));
+
+        profileAPI.getProfile(userId).then((data) => {
+            dispatch(setProfileData(data));
+            dispatch(setUserId(data.userId));
+            dispatch(isLoading(false));
+        });
+
+        profileAPI.getProfileStatus(userId).then((data) => {
+            dispatch(setUserStatus(data));
+        });
     };
 };
 export default ProfilePageReducer;

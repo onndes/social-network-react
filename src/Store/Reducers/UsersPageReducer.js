@@ -157,6 +157,8 @@ export const follow = (userId) => {
         followAPI.follow(userId).then((data) => {
             if (data.resultCode === 0) {
                 dispatch(followApply(userId));
+            } else if (data.status === 429) {
+                alert("Ошибка. Status: 429 зазончились delete/post/put запросы на API");
             }
             dispatch(toggleButtonFollow(false, userId));
         });
@@ -168,6 +170,8 @@ export const unFollow = (userId) => {
         followAPI.unFollow(userId).then((data) => {
             if (data.resultCode === 0) {
                 dispatch(unFollowApply(userId));
+            } else if (data.status === 429) {
+                alert("Ошибка. status: 429 зазончились delete/post/put запросы на API");
             }
             dispatch(toggleButtonFollow(false, userId));
         });

@@ -25,10 +25,23 @@ export const usersAPI = {
 };
 export const followAPI = {
     follow(userId) {
-        return instance.post(`follow/${userId}`).then((responce) => responce.data);
+        return instance
+            .post(`follow/${userId}`)
+            .then((responce) => {
+                console.log(responce);
+                return responce.data;
+            })
+            .catch((error) => {
+                return error.response;
+            });
     },
     unFollow(userId) {
-        return instance.delete(`follow/${userId}`).then((responce) => responce.data);
+        return instance
+            .delete(`follow/${userId}`)
+            .then((responce) => responce.data)
+            .catch((error) => {
+                return error.response;
+            });
     },
 };
 
