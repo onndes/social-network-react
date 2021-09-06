@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import MessagesPage from "./MessagesPage";
+import withAuthRedirect from "../../HOC/withAuthRedirect";
 
 class MessageseContainer extends Component {
     render() {
@@ -9,10 +10,10 @@ class MessageseContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
-        isAuth: state.auth.isAuth,
-    };
+    return {};
 };
 
-const MessagesPageContainer = connect(mapStateToProps, {})(MessageseContainer);
+const MessageseContainerHoc = withAuthRedirect(MessageseContainer);
+
+const MessagesPageContainer = connect(mapStateToProps, {})(MessageseContainerHoc);
 export default MessagesPageContainer;
