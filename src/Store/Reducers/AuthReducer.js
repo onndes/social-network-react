@@ -1,3 +1,5 @@
+import { authMeAPI, profileAPI } from "../../API/API";
+
 const SET_USER_DATA = "SET-USER-DATA";
 const SET_USER_PHOTO = "SET-USER-PHOTO";
 
@@ -38,6 +40,20 @@ export const setUserPhoto = (photo) => {
         type: SET_USER_PHOTO,
         photo,
     };
+};
+
+export const authMe = (id) => (dispatch) => {
+    authMeAPI.getAuthMe().then((data) => {
+        if (data.resultCode === 0) {
+            const { email, id, login } = data.data;
+            dispatch(setUserData(id, email, login));
+        }
+    });
+    if (id) {
+        profileAPI.getProfile(this.props.id).then((data) => {
+          dispatch(setUserPhoto(data.photos.small));
+        });
+    }
 };
 
 export default AuthReducer;
