@@ -8,7 +8,7 @@ const Aside = () => {
             <aside className={style.aside}>
                 <ul className={style.list}>
                     <li className={style.item}>
-                        <NavLink to='/profile/myprofile' activeClassName={style.active}>
+                        <NavLink to='/myprofile' activeClassName={style.active}>
                             My profile
                         </NavLink>
                     </li>

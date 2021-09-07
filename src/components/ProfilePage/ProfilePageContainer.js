@@ -6,13 +6,10 @@ import Preloader from "../../Common/Preloader/Preloader";
 import { withRouter, Redirect } from "react-router-dom";
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        if (this.props.match.params.userId === "myprofile") {
-            if (this.props.id) this.props.getProfile(this.props.id);
-        } else {
-            this.props.getProfile(this.props.match.params.userId);
-        }
+        // if (this.props.match.params.userId !== "myprofile") {
+        this.props.getProfile(this.props.match.params.userId);
+        // }
     }
-
     render() {
         if (this.props.match.params.userId === "myprofile") {
             if (!this.props.isAuth) return <Redirect to='/login' />;
