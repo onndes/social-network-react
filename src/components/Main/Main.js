@@ -5,11 +5,13 @@ import MessagesPageContainer from "../MessagesPage/MessagesPageContainer";
 import NewsPageContainer from "../NewsPage/NewsPageContainer";
 import UsersPageContainer from "../UsersPage/UsersPageContainer";
 import ProfilePageContainer from "../ProfilePage/ProfilePageContainer";
-import LoginPage from "./../LoginPage/LoginPage";
+import MyProfilePageContainer from "../MyProfilePage/MyProfilePageContainer";
+import LoginPageContainer from "./../LoginPage/LoginPageContainer";
 
 const Main = (props) => {
     return (
         <div className={style.wrapper}>
+            <Route path='/myprofile' component={MyProfilePageContainer} />
             <Route path='/messages'>
                 <MessagesPageContainer
                     getAllUsers={props.getAllUsers}
@@ -20,7 +22,7 @@ const Main = (props) => {
             <Route path='/news' render={() => <NewsPageContainer store={props.store} />} />
             <Route path='/users' component={UsersPageContainer} />
             <Route path='/profile/:userId' component={ProfilePageContainer} />
-            <Route path='/login' component={LoginPage} />
+            <Route path='/login' component={LoginPageContainer} />
         </div>
     );
 };
