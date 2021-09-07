@@ -1,10 +1,11 @@
 import React from "react";
 import style from "./MyProfile.module.css";
 import userImg from "../../assets/img/iconUser.png";
+import Status from "./Status/Status";
 const MyProfile = (props) => {
     // console.log(props);
     // debugger;
-    if (props.profile === null) return <div>no props</div>
+    if (props.profile === null) return <div>no props</div>;
     return (
         <div>
             <div key={props.id} className={style.userWrapp}>
@@ -38,9 +39,9 @@ const MyProfile = (props) => {
                             <p className={style.statusOffline + " " + style.status}>Offline</p>
                         )}
                     </div>
-                    <p className={style.userStatus}>
-                        {props.userStatus ? props.userStatus : "no data"}
-                    </p>
+                    <div className={style.userStatus}>
+                        <Status status={props.userStatus ? props.userStatus : "no status"} />
+                    </div>
                     <p className={style.aboutMe}>
                         <span>About me: </span>
                         {props.profile.aboutMe ? props.profile.aboutMe : "no data"}

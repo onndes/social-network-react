@@ -55,6 +55,7 @@ export const profileAPI = {
     getProfileMe() {
         return instance.get(`auth/me`).then((responce) => responce.data);
     },
+    putStatus() {},
 };
 
 export const authMeAPI = {

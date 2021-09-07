@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { isLoading, getProfile } from "../../Store/Reducers/ProfilePageReducer";
 import Preloader from "../../Common/Preloader/Preloader";
 import withAuthRedirect from "./../../HOC/withAuthRedirect";
-import {compose} from "redux"
+import { compose } from "redux";
 class MyProfileContainer extends React.Component {
     componentDidMount() {
         this.props.getProfile(this.props.id);
@@ -26,7 +26,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-
 export default compose(
     connect(mapStateToProps, {
         isLoading,
@@ -34,3 +33,4 @@ export default compose(
     }),
     withAuthRedirect,
 )(MyProfileContainer);
+
