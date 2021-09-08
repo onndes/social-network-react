@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import style from "./Status.module.css";
+import Preloader from "../../../Common/Preloader/Preloader";
 
 
 export default class Status extends Component {
@@ -12,7 +13,6 @@ export default class Status extends Component {
         this.setState({
             isActiveInput: !this.state.isActiveInput,
         });
-        // this.props.putStatus(this.state.status)
     };
     handleUpdateStatus = (e) => {
         let value = e.target.value;
@@ -21,25 +21,55 @@ export default class Status extends Component {
         });
 
     };
-    handleClickSaveStatus =  () =>  {
+    handleClickSaveStatus = () => {
         this.setState({
             isActiveInput: !this.state.isActiveInput,
         });
         this.props.putStatus(this.state.status)
     }
-    handleClickCloseStatus =  () =>  {
-        this.setState({
-            isActiveInput: !this.state.isActiveInput,
-        });
+    handleClickCloseStatus = () => {
+        // TODO: сделать кастомную модалку
+
+        if (window.confirm('Exit without saving?')) {
+            this.setState({
+                isActiveInput: !this.state.isActiveInput,
+            });
+            if (this.state.status !== this.props.status) {
+                this.setState({
+                    status: this.props.status
+                });
+            }
+        }
+
 
     }
 
+    componentDidUpdate = (prevProps) => {
+        if(prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            });
+        }
+    }
+
     renderStatus() {
-        return (
-            <div>
-                <p onClick={this.handleClickStatus}>{this.state.status}</p>
+        if (this.props.isUpdatingMyStatus) {
+            return (
+                <div className={style.pStatusBox}>
+                    <p className={style.pStatus}>{this.state.status}</p>
+                    <div className={style.statusUpdating}>
+                        <p>status updating</p>
+                        <Preloader height={'10px'}/>
+                    </div>
+                </div>
+            )
+        } else {
+            return ( <div className={style.pStatusBox}>
+                <p className={style.pStatus} onClick={this.handleClickStatus}>{this.status.status}</p>
             </div>
-        )
+            )
+        }
+
     }
 
     renderInputStatus() {
@@ -58,8 +88,12 @@ export default class Status extends Component {
                             autoFocus={true}
                         />
                     </div>
-                    <button type={"button"} className={style.btnSaveStatus} onClick={this.handleClickSaveStatus}>To apply</button>
-                    <button type={"button"} className={style.btnCloseStatus} onClick={this.handleClickCloseStatus}>To apply</button>
+                    <button type={"button"} className={style.btnSaveStatus} onClick={this.handleClickSaveStatus}>To
+                        apply
+                    </button>
+                    <button type={"button"} className={style.btnCloseStatus} onClick={this.handleClickCloseStatus}>Exit
+                        edit
+                    </button>
                 </div>
             </div>
         )

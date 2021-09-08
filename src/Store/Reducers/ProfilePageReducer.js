@@ -5,13 +5,15 @@ const SET_USER_ID = "SET-USER-ID";
 const IS_LOADING = "IS-LOADING";
 const SET_USER_STATUS = "SET_USER_STATUS";
 const PUT_STATUS = "PUT-STATUS"
+const IS_UPDATING_MY_STATUS = "IS_UPDATING_MY_STATUS"
 
 const initialState = {
     profile: null,
     userId: null,
     isLoading: true,
     userStatus: null,
-    status: ''
+    status: '',
+    isUpdatingMyStatus: false
 };
 
 const ProfilePageReducer = (state = initialState, action) => {
@@ -26,6 +28,9 @@ const ProfilePageReducer = (state = initialState, action) => {
             return { ...state, userStatus: action.userStatus };
         case PUT_STATUS:
             return { ...state, status: action.userStatus };
+        case IS_UPDATING_MY_STATUS:
+            console.log(state.isUpdatingMyStatus)
+            return { ...state, isUpdatingMyStatus: action.isUpdate };
         default:
             return state;
     }
@@ -56,6 +61,11 @@ export const setUserStatus = (userStatus) => {
         userStatus,
     };
 };
+export const isUpdatingMyStatus = (isUpdate) => {
+    return {
+        type: IS_UPDATING_MY_STATUS, isUpdate
+    };
+};
 
 export const getProfile = (userId) => {
     return (dispatch) => {
@@ -75,10 +85,12 @@ export const getProfile = (userId) => {
 };
 
 export const putStatus = (status) => (dispatch) => {
+    dispatch(isUpdatingMyStatus(true))
     profileAPI.putStatus(status).then((data) => {
         if (data.resaultCode === 0) {
             dispatch(setUserStatus(status))
         }
+        dispatch(isUpdatingMyStatus(false))
     })
 }
 export default ProfilePageReducer;

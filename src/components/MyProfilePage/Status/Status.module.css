@@ -5,6 +5,35 @@
     position: relative;
 
 }
+
+
+.pStatus {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: relative;
+}
+.pStatusBox {
+
+}
+.statusUpdating {
+
+}
+.pStatusBox .statusUpdating {
+    position: absolute;
+    top: -12px;
+    left: 80px;
+    font-size: 12px;
+    padding: 3px;
+    opacity: .7;
+    display: flex;
+    align-items: center;
+    background: #ecb0b0;
+
+}
+
+.pStatus:hover {
+    background: rgba(194, 194, 194, 0.38);
+}
 .inputWrap {
     min-width: 250px;
     background: #f0f2f5;

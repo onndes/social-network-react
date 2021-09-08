@@ -54,7 +54,6 @@ const UsersPageReducer = (state = initialState, action) => {
                 currentPage: action.currentPage,
             };
         case TOTAL_USERS:
-            console.log(`Total users: ${action.totalUserCount}`);
             return {
                 ...state,
                 totalUserCount: action.totalUserCount,

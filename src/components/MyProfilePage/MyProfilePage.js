@@ -4,8 +4,7 @@ import userImg from "../../assets/img/iconUser.png";
 import Status from "./Status/Status";
 
 const MyProfile = (props) => {
-    // console.log(props);
-    // debugger;
+
     if (props.profile === null) return <div>no props</div>;
     return (
         <div>
@@ -41,7 +40,7 @@ const MyProfile = (props) => {
                         )}
                     </div>
                     <div className={style.userStatus}>
-                        <Status putStatus={props.putStatus} status={props.userStatus} />
+                        <Status putStatus={props.putStatus} status={props.userStatus} isUpdatingMyStatus={props.isUpdatingMyStatus}/>
                     </div>
                     <p className={style.aboutMe}>
                         <span>About me: </span>
