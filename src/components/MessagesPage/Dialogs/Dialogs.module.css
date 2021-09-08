@@ -3,7 +3,7 @@
 }
 .item {
   font-size: 16px;
-  padding: 0px 0px 10px 0px;
+  padding: 0 0 10px 0;
 }
 .item a {
   display: block;

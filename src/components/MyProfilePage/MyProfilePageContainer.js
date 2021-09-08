@@ -1,7 +1,7 @@
 import React from "react";
 import MyProfilePage from "./MyProfilePage";
 import { connect } from "react-redux";
-import { isLoading, getProfile } from "../../Store/Reducers/ProfilePageReducer";
+import { isLoading, getProfile, putStatus } from "../../Store/Reducers/ProfilePageReducer";
 import Preloader from "../../Common/Preloader/Preloader";
 import withAuthRedirect from "./../../HOC/withAuthRedirect";
 import { compose } from "redux";
@@ -30,6 +30,7 @@ export default compose(
     connect(mapStateToProps, {
         isLoading,
         getProfile,
+        putStatus
     }),
     withAuthRedirect,
 )(MyProfileContainer);

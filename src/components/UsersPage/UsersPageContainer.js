@@ -14,14 +14,14 @@ class UsersContainer extends React.Component {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
-    hundleClickBtnPage = (page) => {
+    handleClickBtnPage = (page) => {
         this.props.getUsersClickBtn(page, this.props.totalUserCount, this.props.pageSize);
     };
 
     render() {
         return (
             <>
-                <UsersPage {...this.props} hundleClickBtnPage={this.hundleClickBtnPage} />
+                <UsersPage {...this.props} handleClickBtnPage={this.handleClickBtnPage} />
             </>
         );
     }

@@ -55,7 +55,7 @@
   background-color: rgba(197, 197, 245, 0.541);
 }
 .t_btn {
-  /* margin: 0px 0px 0px 10px; */
+  /* margin: 0 0 0 10px; */
   padding: 10px;
   background-color: rgb(197, 197, 245);
   font-weight: 600;
@@ -64,7 +64,7 @@
   background-color: rgba(195, 127, 212, 0.295);
   padding: 7px;
   border-radius: 4px;
-  margin: 0px 0px 10px 0px;
+  margin: 0 0 10px 0;
   align-self: start;
-  /* margin: 0px 20px 0px 0px; */
+  /* margin: 0 20px 0 0; */
 }

@@ -8,7 +8,7 @@ const UsersPage = (props) => {
     const renderUsersList = () => {
         return props.users.map((user) => {
             return (
-                <div key={user.id} className={style.userWrapp}>
+                <div key={user.id} className={style.userWrap}>
                     <div className={style.firstCol}>
                         <NavLink to={`/profile/${user.id}`}>
                             <div className={style.imgContainer}>
@@ -76,7 +76,7 @@ const UsersPage = (props) => {
                 return (
                     <div
                         key={i}
-                        onClick={() => props.hundleClickBtnPage(i)}
+                        onClick={() => props.handleClickBtnPage(i)}
                         className={
                             props.currentPage === i ? style.btnPageUsersActive : style.btnPageUsers
                         }>
@@ -113,11 +113,11 @@ const UsersPage = (props) => {
     return (
         <div className={style.Wrapper}>
             <div className={style.btnUserPageBox}>
-                <div onClick={() => props.hundleClickBtnPage(1)} className={style.FLBtn}>
+                <div onClick={() => props.handleClickBtnPage(1)} className={style.FLBtn}>
                     First page
                 </div>
                 {renderBtnPageUsers()}
-                <div onClick={() => props.hundleClickBtnPage(countPage)} className={style.FLBtn}>
+                <div onClick={() => props.handleClickBtnPage(countPage)} className={style.FLBtn}>
                     Last page
                 </div>
             </div>

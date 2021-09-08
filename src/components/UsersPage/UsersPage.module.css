@@ -1,8 +1,8 @@
-.userWrapp {
+.userWrap {
   display: grid;
   grid-template-columns: 100px 10fr;
   grid-gap: 15px;
-  margin: 0px 10px 35px 10px;
+  margin: 0 10px 35px 10px;
 }
 
 .nameAndOnlineBox {
@@ -13,7 +13,7 @@
 .imgContainer {
   max-width: 150px;
   max-height: 150px;
-  margin: 0px 0px 10px 0px;
+  margin: 0 0 10px 0;
 }
 
 .imgContainer img {
@@ -38,7 +38,7 @@
   background: rgb(80, 80, 80);
 } 
 .nameAndOnlineBox {
-  padding: 0px 0px 10px 0px;
+  padding: 0 0 10px 0;
 }
 
 .status {
@@ -53,7 +53,7 @@
 .titleName {
   font-weight: 500;
   font-size: 18px;
-  padding: 0px 30px 0px 0px;
+  padding: 0 30px 0 0;
 }
 .status {
   font-size: 14px;
@@ -66,13 +66,13 @@
   font-size: 16px;
   letter-spacing: 1px;
   font-weight: 500;
-  margin: 0px 0px 15px 0px;
+  margin: 0 0 15px 0;
 }
 
 .btnUserPageBox {
   display: flex;
-  padding: 0px 0px 10px 10px;
-  margin: 0px 10px 20px 0px;
+  padding: 0 0 10px 10px;
+  margin: 0 10px 20px 0;
   border-bottom: 1px solid rgba(79, 75, 153, 0.234);
   font-size: 20px;
   cursor: pointer;
@@ -95,7 +95,7 @@ background-color: rgba(79, 75, 153, 0.466);
 .btnCurrentPage{
   text-align: center;
   min-width: 60px;
-  padding: 7px 0px;
+  padding: 7px 0;
   
 }
 .FLBtn {

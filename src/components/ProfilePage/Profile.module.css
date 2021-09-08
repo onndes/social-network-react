@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 2fr 5fr;
   grid-gap: 15px;
-  margin: 0px 10px 35px 10px;
+  margin: 0 10px 35px 10px;
 }
 
 .nameAndOnlineBox {
@@ -13,14 +13,14 @@
 .imgContainer {
   width: 100%;
   height: 100%;
-  margin: 0px 0px 10px 0px;
+  margin: 0 0 10px 0;
 }
 
 .imgContainer img {
   width: 100%;
   max-width: 100%;
   /* height: 100%; */
-  object-fit: center;
+  /*object-fit: center;*/
 }
 
 .btnFollow {
@@ -38,7 +38,7 @@
   background: rgb(80, 80, 80);
 } 
 .nameAndOnlineBox {
-  padding: 0px 0px 10px 0px;
+  padding: 0 0 10px 0;
 }
 
 .status {
@@ -53,14 +53,14 @@
 .titleName {
   font-weight: 500;
   font-size: 18px;
-  padding: 0px 30px 0px 0px;
+  padding: 0 30px 0 0;
 }
 .userStatus {
   font-size: 14px;
   color: rgb(73, 73, 73);
 }
 .aboutMe {
-  padding: 30px 0px 0px 0px;
+  padding: 30px 0 0 0;
 }
 .aboutMe span {
   font-weight: 600;
@@ -72,13 +72,13 @@
   font-size: 16px;
   letter-spacing: 1px;
   font-weight: 500;
-  margin: 0px 0px 15px 0px;
+  margin: 0 0 15px 0;
 }
 
 .btnUserPageBox {
   display: flex;
-  padding: 0px 0px 10px 10px;
-  margin: 0px 10px 20px 0px;
+  padding: 0 0 10px 10px;
+  margin: 0 10px 20px 0;
   border-bottom: 1px solid rgba(79, 75, 153, 0.234);
   font-size: 20px;
   cursor: pointer;
@@ -96,16 +96,16 @@
 }
 
 .aboutUserWrapper {
-  margin: 40px 0px 0px 0px;
+  margin: 40px 0 0 0;
   display: grid;
   grid-template-columns: 100px 1fr;
   grid-gap: 40px;
 }
 .aboutUserItemTitle{
-  padding: 0px 0px 10px 0px;
+  padding: 0 0 10px 0;
   font-weight: 600;
 }
 .aboutUserItem {
-  padding: 0px 0px 10px 0px;
+  padding: 0 0 10px 0;
 
 }

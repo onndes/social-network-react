@@ -1,0 +1,32 @@
+.wrapper {
+    /*position: absolute;*/
+    top: 0;
+    left: 0;
+    position: relative;
+
+}
+.inputWrap {
+    min-width: 250px;
+    background: #f0f2f5;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.55);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.input {
+    width: 100%;
+    padding: 3px 5px;
+    margin-bottom: 7px;
+    border: 1px solid rgba(128, 128, 128, 0.42);
+}
+
+.btnSaveStatus {
+    padding: 4px 8px;
+    background: rgba(160, 225, 111, 0.77);
+    margin-right: 10px;
+}
+.btnCloseStatus {
+    padding: 4px 8px;
+    background: rgba(225, 111, 111, 0.77);
+}

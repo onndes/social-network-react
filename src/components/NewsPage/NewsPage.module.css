@@ -8,7 +8,7 @@
   max-width: 300px;
   border: 1px solid palevioletred;
   padding: 7px;
-  margin: 0px 0px 20px 0px;
+  margin: 0 0 20px 0;
 }
 .Button {
   color: black;
@@ -16,10 +16,10 @@
   padding: 7px 24px;
   background-color: palevioletred;
   border-radius: 10px;
-  margin: 0px 0px 40px 0px;
+  margin: 0 0 40px 0;
 }
 
 .BoxMessages p {
-  padding: 0px 0px 7px 0px;
+  padding: 0 0 7px 0;
   font-style: italic;
 }

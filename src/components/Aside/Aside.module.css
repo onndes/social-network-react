@@ -1,7 +1,7 @@
 .aside {
   grid-area: aside;
   /* background-color: rgba(99, 1, 119, 0.213); */
-  padding: 0px 0px 0px 0px;
+  padding: 0 0 0 0;
 }
 
 .list {
@@ -9,7 +9,7 @@
 }
 
 .item {
-  padding: 0px 0px 10px 15px;
+  padding: 0 0 10px 15px;
   
 }
 

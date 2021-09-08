@@ -16,7 +16,7 @@ const Profile = (props) => {
 
     return (
         <div>
-            <div key={myData.id} className={style.userWrapp}>
+            <div key={myData.id} className={style.userWrap}>
                 <div className={style.firstCol}>
                     <div className={style.imgContainer}>
                         <img

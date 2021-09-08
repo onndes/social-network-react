@@ -1,44 +1,77 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import style from "./Status.module.css";
+
 
 export default class Status extends Component {
     state = {
-        isAvtiveInput: false,
-        inputValue: "",
+        isActiveInput: false,
+        status: this.props.status ? this.props.status : 'set status',
     };
 
-    hundleClickStatus = () => {
+    handleClickStatus = () => {
         this.setState({
-            isAvtiveInput: !this.state.isAvtiveInput,
+            isActiveInput: !this.state.isActiveInput,
         });
+        // this.props.putStatus(this.state.status)
     };
-    hundleUpdateInputValue = (e) => {
-        let vlaue = e.target.value;
+    handleUpdateStatus = (e) => {
+        let value = e.target.value;
         this.setState({
-            inputValue: vlaue,
+            status: value,
         });
-    };
 
-    render() {
+    };
+    handleClickSaveStatus =  () =>  {
+        this.setState({
+            isActiveInput: !this.state.isActiveInput,
+        });
+        this.props.putStatus(this.state.status)
+    }
+    handleClickCloseStatus =  () =>  {
+        this.setState({
+            isActiveInput: !this.state.isActiveInput,
+        });
+
+    }
+
+    renderStatus() {
         return (
-            <div className={style.wrapper}>
-                {!this.state.isAvtiveInput && (
-                    <div>
-                        <p onClick={this.hundleClickStatus}>{this.props.status}</p>
-                    </div>
-                )}
-                {this.state.isAvtiveInput && (
+            <div>
+                <p onClick={this.handleClickStatus}>{this.state.status}</p>
+            </div>
+        )
+    }
+
+    renderInputStatus() {
+        return (
+            <div>
+                {this.renderStatus()}
+                <div className={style.inputWrap}>
                     <div className={style.inputBox}>
                         <input
+                            maxLength={100}
                             className={style.input}
-                            onBlur={this.hundleClickStatus}
+                            // onBlur={this.handleClickStatus}
                             type='text'
-                            value={this.state.inputValue}
-                            onChange={this.hundleUpdateInputValue}
+                            value={this.state.status}
+                            onChange={this.handleUpdateStatus}
                             autoFocus={true}
                         />
                     </div>
-                )}
+                    <button type={"button"} className={style.btnSaveStatus} onClick={this.handleClickSaveStatus}>To apply</button>
+                    <button type={"button"} className={style.btnCloseStatus} onClick={this.handleClickCloseStatus}>To apply</button>
+                </div>
+            </div>
+        )
+    }
+
+    render() {
+        // console.log(this.state.status)
+        return (
+            <div className={style.wrapper}>
+                {!this.state.isActiveInput && this.renderStatus()}
+                {this.state.isActiveInput && this.renderInputStatus()}
+
             </div>
         );
     }

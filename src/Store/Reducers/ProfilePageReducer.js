@@ -4,12 +4,14 @@ const SET_PROFILE_DATA = "SET-PROFILE-DATA ";
 const SET_USER_ID = "SET-USER-ID";
 const IS_LOADING = "IS-LOADING";
 const SET_USER_STATUS = "SET_USER_STATUS";
+const PUT_STATUS = "PUT-STATUS"
 
 const initialState = {
     profile: null,
     userId: null,
     isLoading: true,
     userStatus: null,
+    status: ''
 };
 
 const ProfilePageReducer = (state = initialState, action) => {
@@ -22,6 +24,8 @@ const ProfilePageReducer = (state = initialState, action) => {
             return { ...state, isLoading: action.loading };
         case SET_USER_STATUS:
             return { ...state, userStatus: action.userStatus };
+        case PUT_STATUS:
+            return { ...state, status: action.userStatus };
         default:
             return state;
     }
@@ -69,4 +73,12 @@ export const getProfile = (userId) => {
         });
     };
 };
+
+export const putStatus = (status) => (dispatch) => {
+    profileAPI.putStatus(status).then((data) => {
+        if (data.resaultCode === 0) {
+            dispatch(setUserStatus(status))
+        }
+    })
+}
 export default ProfilePageReducer;

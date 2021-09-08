@@ -2,13 +2,14 @@ import React from "react";
 import style from "./MyProfile.module.css";
 import userImg from "../../assets/img/iconUser.png";
 import Status from "./Status/Status";
+
 const MyProfile = (props) => {
     // console.log(props);
     // debugger;
     if (props.profile === null) return <div>no props</div>;
     return (
         <div>
-            <div key={props.id} className={style.userWrapp}>
+            <div key={props.id} className={style.userWrap}>
                 <div className={style.firstCol}>
                     <div className={style.imgContainer}>
                         <img
@@ -40,7 +41,7 @@ const MyProfile = (props) => {
                         )}
                     </div>
                     <div className={style.userStatus}>
-                        <Status status={props.userStatus ? props.userStatus : "no status"} />
+                        <Status putStatus={props.putStatus} status={props.userStatus} />
                     </div>
                     <p className={style.aboutMe}>
                         <span>About me: </span>
