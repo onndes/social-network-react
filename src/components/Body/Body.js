@@ -2,6 +2,7 @@ import React from "react";
 import Aside from "../Aside/Aside";
 import LoginPage from "../LoginPage/LoginPage";
 import Main from "../Main/Main";
+import { Route, Redirect } from "react-router-dom";
 
 const Body = (props) => {
     const renderMainContent = () => {
@@ -17,7 +18,12 @@ const Body = (props) => {
         );
     };
 
-    return props.isAuth ? renderMainContent() : <LoginPage />;
+    return (
+        <div>
+            <Route path='' render={() => renderMainContent()} />
+            {props.isAuth && <Redirect to='/myprofile' />}
+        </div>
+    );
 };
 
 export default Body;

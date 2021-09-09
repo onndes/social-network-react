@@ -12,9 +12,9 @@ const LoginFrom = (props) => {
             </div>
             <div className={style.inputBox}>
                 <label className={style.label}>Password</label>
-                <Field className={style.input}  component={'input'} name={'password'} placeholder={'password'}/>
+                <Field className={style.input}  component={'input'} type={'password'} name={'password'} placeholder={'password'}/>
             </div>
-            <div className={style.inputBox}>
+            <div className={style.inputBox + " " + style.inputBoxCheckbox}>
                 <label className={style.label + " " + style.labelRemember}>Remember me</label>
                 <Field component={'input'} type={'checkbox'} name={'remember'}/>
 
@@ -34,7 +34,7 @@ const LoginPage = () => {
     }
 
     return <div className={style.wrapper}>
-        <h1 className={style.loginTitle}>Login</h1>
+        <h1 className={style.loginTitle}>Log in</h1>
         <LoginReducerFrom onSubmit={onSubmit}/>
     </div>;
 };
