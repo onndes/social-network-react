@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter, useHistory } from "react-router-dom";
+// useHistory 
+import { withRouter, } from "react-router-dom";
 import LoginPage from "./LoginPage";
 
 const LoginContainer = (props) => {
-    const history = useHistory();
+    // const history = useHistory();
     // if (props.isAuth) history.goBack();
     return <LoginPage {...props} />;
 };

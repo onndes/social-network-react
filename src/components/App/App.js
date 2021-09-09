@@ -14,12 +14,14 @@ export default class App extends Component {
                     <HeaderContainer />
                 </div>
                 <div className='app-body-container'>
-                    <BodyContainer
-                        getAllUsers={this.getData.getAllUsers}
-                        getAllComments={this.getData.getAllComments}
-                        dispatch={this.props.dispatch}
-                        store={this.props.store}
-                    />
+                   
+                      <BodyContainer
+                          getAllUsers={this.getData.getAllUsers}
+                          getAllComments={this.getData.getAllComments}
+                          dispatch={this.props.dispatch}
+                          store={this.props.store}
+                      />
+                    
                 </div>
                 <div>
                     <Footer />

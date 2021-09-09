@@ -1,17 +1,17 @@
 import React from "react";
 import Aside from "../Aside/Aside";
-import LoginPage from "../LoginPage/LoginPage";
 import Main from "../Main/Main";
 import { Route, Redirect } from "react-router-dom";
+import style from "./Body.module.css";
 
 const Body = (props) => {
     const renderMainContent = () => {
         return (
-            <div className='app-body'>
-                <div>
+            <div className={style.appBody}>
+                <div className={style.div1}>
                     <Aside />
                 </div>
-                <div>
+                <div className={style.div2}>
                     <Main {...props} />
                 </div>
             </div>
@@ -19,10 +19,10 @@ const Body = (props) => {
     };
 
     return (
-        <div>
+        <>
             <Route path='' render={() => renderMainContent()} />
             {props.isAuth && <Redirect to='/myprofile' />}
-        </div>
+        </>
     );
 };
 

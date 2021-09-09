@@ -1,6 +1,4 @@
 .aside {
-  grid-area: aside;
-  /* background-color: rgba(99, 1, 119, 0.213); */
   padding: 0 0 0 0;
 }
 
@@ -24,6 +22,4 @@
 .item a.active {
   display: block;
   color: rgb(79, 75, 153);
-  /* background-color: rgba(99, 1, 119, 0.3);
-  width: 100%; */
 }

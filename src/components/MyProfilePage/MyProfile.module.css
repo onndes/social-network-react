@@ -3,6 +3,7 @@
   grid-template-columns: 2fr 5fr;
   grid-gap: 15px;
   margin: 0 10px 35px 10px;
+  min-height: 100%;
 }
 
 .nameAndOnlineBox {

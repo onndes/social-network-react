@@ -1,6 +1,5 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import style from "./Main.module.css";
 import MessagesPageContainer from "../MessagesPage/MessagesPageContainer";
 import NewsPageContainer from "../NewsPage/NewsPageContainer";
 import UsersPageContainer from "../UsersPage/UsersPageContainer";
@@ -10,7 +9,7 @@ import LoginPageContainer from "./../LoginPage/LoginPageContainer";
 
 const Main = (props) => {
     return (
-        <div className={style.wrapper}>
+        <>
             <Route path='/myprofile' component={MyProfilePageContainer} />
             <Route path='/messages'>
                 <MessagesPageContainer
@@ -23,7 +22,7 @@ const Main = (props) => {
             <Route path='/users' component={UsersPageContainer} />
             <Route path='/profile/:userId' component={ProfilePageContainer} />
             <Route path='/login' component={LoginPageContainer} />
-        </div>
+        </>
     );
 };
 
