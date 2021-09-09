@@ -24,7 +24,8 @@ export default class Status extends Component {
     handleClickSaveStatus = () => {
         this.setState({
             isActiveInput: !this.state.isActiveInput,
-        });
+            status: this.state.status
+            });
         this.props.putStatus(this.state.status)
     }
     handleClickCloseStatus = () => {
@@ -65,7 +66,7 @@ export default class Status extends Component {
             )
         } else {
             return ( <div className={style.pStatusBox}>
-                <p className={style.pStatus} onClick={this.handleClickStatus}>{this.status.status}</p>
+                <p className={style.pStatus} onClick={this.handleClickStatus}>{this.state.status}</p>
             </div>
             )
         }

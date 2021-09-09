@@ -1,17 +1,25 @@
 import React from "react";
 import MyProfilePage from "./MyProfilePage";
-import { connect } from "react-redux";
-import { isLoading, getProfile, putStatus } from "../../Store/Reducers/ProfilePageReducer";
+import {connect} from "react-redux";
+import {isLoading, getProfile, putStatus} from "../../Store/Reducers/ProfilePageReducer";
 import Preloader from "../../Common/Preloader/Preloader";
 import withAuthRedirect from "./../../HOC/withAuthRedirect";
-import { compose } from "redux";
+import {compose} from "redux";
+
 class MyProfileContainer extends React.Component {
+
     componentDidMount() {
-        this.props.getProfile(this.props.id);
+        // const getProfile = setTimeout();
+        this.props.getProfile(this.props.id)
     }
+
+    componentWillUnmount() {
+        // clearTimeout(getProfile)
+    }
+
     render() {
         if (!this.props.profile) {
-            return <Preloader />;
+            return <Preloader/>;
         }
         return <MyProfilePage {...this.props} />;
     }
