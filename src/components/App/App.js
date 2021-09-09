@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import HeaderContainer from "../Header/HeaderContainer";
-import Aside from "../Aside/Aside";
+
 import Footer from "../Footer/Footer";
-
-import Main from "../Main/Main";
 import GetDialogsService from "../../Service/getDialogsService";
-
+import BodyContainer from "../Body/BodyContainer";
 export default class App extends Component {
     getData = new GetDialogsService();
     render() {
@@ -16,19 +14,12 @@ export default class App extends Component {
                     <HeaderContainer />
                 </div>
                 <div className='app-body-container'>
-                    <div className='app-body'>
-                        <div>
-                            <Aside />
-                        </div>
-                        <div>
-                            <Main
-                                getAllUsers={this.getData.getAllUsers}
-                                getAllComments={this.getData.getAllComments}
-                                dispatch={this.props.dispatch}
-                                store={this.props.store}
-                            />
-                        </div>
-                    </div>
+                    <BodyContainer
+                        getAllUsers={this.getData.getAllUsers}
+                        getAllComments={this.getData.getAllComments}
+                        dispatch={this.props.dispatch}
+                        store={this.props.store}
+                    />
                 </div>
                 <div>
                     <Footer />
