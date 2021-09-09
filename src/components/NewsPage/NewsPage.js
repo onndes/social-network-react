@@ -1,14 +1,10 @@
 // import { render } from "node-sass";
 import React from "react";
 import style from "./NewsPage.module.css";
+import { reduxForm } from "redux-form";
+import { Field } from "redux-form";
 
 const MessagesItemTest = (props) => {
-  
-    const onUpdateInput = (e) => {
-        let text = e.target.value;
-        props.updateInput(text);
-    };
-
     const updatePost = () => {
         let i = 1;
         return props.newsPage.posts.map((item) => {
@@ -16,23 +12,26 @@ const MessagesItemTest = (props) => {
             return <p key={i}>{item}</p>;
         });
     };
-    const onClickBtn = () => {
-        props.clickBtn();
-    };
 
+    const inputText = (text) => {
+        console.log(text);
+    };
     return (
         <div className={style.Wrapper}>
-            <input
-                type='text'
-                className={style.Input}
-                value={props.newsPage.inputValue}
-                onChange={onUpdateInput}
-            />
-            <button onClick={onClickBtn} type='submit' className={style.Button}>
-                Submit
-            </button>
-            <div className={style.BoxMessages}>{updatePost()}</div>
+            <FromRedux onSubmit={inputText} />
+            <div className={style.BoxMessages}>ds</div>
         </div>
     );
 };
+
+const Form = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field name={"inputBodyText"} className={style.Input} component={"input"} />
+            <button className={style.Button}>Submit</button>
+        </form>
+    );
+};
+
+const FromRedux = reduxForm({ form: "inputNews" })(Form);
 export default MessagesItemTest;

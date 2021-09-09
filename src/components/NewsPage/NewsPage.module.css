@@ -22,4 +22,5 @@
 .BoxMessages p {
   padding: 0 0 7px 0;
   font-style: italic;
+  background-color: rgba(225, 183, 107, 0.638);
 }
