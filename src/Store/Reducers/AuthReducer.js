@@ -50,8 +50,9 @@ export const authMe = (id) => (dispatch) => {
         }
     });
     if (id) {
-        profileAPI.getProfile(this.props.id).then((data) => {
-          dispatch(setUserPhoto(data.photos.small));
+        profileAPI.getProfile(id).then((data) => {
+            // console.log(data);
+            dispatch(setUserPhoto(data.photos.small));
         });
     }
 };
@@ -59,8 +60,7 @@ export const authMe = (id) => (dispatch) => {
 export const loginMe = (userData) => (dispatch) => {
     authMeAPI.authMe().then((data) => {
         if (data.resultCode === 0) {
-
         }
-    })
-}
+    });
+};
 export default AuthReducer;
