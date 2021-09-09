@@ -5,7 +5,7 @@ import LoginPage from "./LoginPage";
 
 const LoginContainer = (props) => {
     const history = useHistory();
-    if (props.isAuth) history.goBack();
+    // if (props.isAuth) history.goBack();
     return <LoginPage {...props} />;
 };
 

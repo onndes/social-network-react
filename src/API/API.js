@@ -13,8 +13,8 @@ export const usersAPI = {
         return instance
             .get(`users?page=${currentPage}&count=${pageSize}`)
 
-            .then((responce) => {
-                let data = responce.data;
+            .then((response) => {
+                let data = response.data;
                 data.items.forEach(
                     (user) =>
                         (user.status = user.status ? user.status : "no status [check api.js]"),
@@ -23,13 +23,14 @@ export const usersAPI = {
             });
     },
 };
+
 export const followAPI = {
     follow(userId) {
         return instance
             .post(`follow/${userId}`)
-            .then((responce) => {
-                console.log(responce);
-                return responce.data;
+            .then((response) => {
+                console.log(response);
+                return response.data;
             })
             .catch((error) => {
                 return error.response;
@@ -38,7 +39,7 @@ export const followAPI = {
     unFollow(userId) {
         return instance
             .delete(`follow/${userId}`)
-            .then((responce) => responce.data)
+            .then((response) => response.data)
             .catch((error) => {
                 return error.response;
             });
@@ -47,13 +48,13 @@ export const followAPI = {
 
 export const profileAPI = {
     getProfile(userId) {
-        return instance.get(`profile/${userId}`).then((responce) => responce.data);
+        return instance.get(`profile/${userId}`).then((response) => response.data);
     },
     getProfileStatus(userId) {
-        return instance.get(`profile/status/${userId}`).then((responce) => responce.data);
+        return instance.get(`profile/status/${userId}`).then((response) => response.data);
     },
     getProfileMe() {
-        return instance.get(`auth/me`).then((responce) => responce.data);
+        return instance.get(`auth/me`).then((response) => response.data);
     },
     putStatus(status) {
         return instance.put(`profile/status`, {status: status}).then(response => response.data)
@@ -62,6 +63,9 @@ export const profileAPI = {
 
 export const authMeAPI = {
     getAuthMe() {
-        return instance.get(`auth/me`).then((responce) => responce.data);
+        return instance.get(`auth/me`).then((response) => response.data);
     },
+    authMe() {
+        return instance.post('auth/login').then(response => response.data)
+    }
 };

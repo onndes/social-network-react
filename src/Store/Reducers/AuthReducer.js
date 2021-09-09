@@ -56,4 +56,11 @@ export const authMe = (id) => (dispatch) => {
     }
 };
 
+export const loginMe = (userData) => (dispatch) => {
+    authMeAPI.authMe().then((data) => {
+        if (data.resultCode === 0) {
+
+        }
+    })
+}
 export default AuthReducer;
