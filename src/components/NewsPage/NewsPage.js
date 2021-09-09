@@ -14,12 +14,12 @@ const MessagesItemTest = (props) => {
     };
 
     const inputText = (text) => {
-        console.log(text);
+        props.addPostActionCreator(text.inputBodyText);
     };
     return (
         <div className={style.Wrapper}>
             <FromRedux onSubmit={inputText} />
-            <div className={style.BoxMessages}>ds</div>
+            <div className={style.BoxMessages}>{updatePost()}</div>
         </div>
     );
 };
@@ -34,4 +34,5 @@ const Form = (props) => {
 };
 
 const FromRedux = reduxForm({ form: "inputNews" })(Form);
+
 export default MessagesItemTest;

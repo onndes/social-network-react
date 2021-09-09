@@ -1,12 +1,7 @@
 // import React from "react";
 import NewsPage from "./NewsPage";
-import {
-    updataInputValueActionCreator,
-    addPostActionCreator,
-} from "../../Store/Reducers/NewsPageReducer";
+import { addPostActionCreator } from "../../Store/Reducers/NewsPageReducer";
 import { connect } from "react-redux";
-
-
 
 let mapStateToProps = (state) => {
     return {
@@ -14,17 +9,6 @@ let mapStateToProps = (state) => {
     };
 };
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        clickBtn: () => {
-            dispatch(addPostActionCreator());
-        },
-        updateInput: (text) => {
-            return dispatch(updataInputValueActionCreator(text));
-        },
-    };
-};
-
-const NewsPageContainer = connect(mapStateToProps, mapDispatchToProps)(NewsPage);
+const NewsPageContainer = connect(mapStateToProps, { addPostActionCreator })(NewsPage);
 
 export default NewsPageContainer;
