@@ -1,7 +1,8 @@
 import React from "react";
 import Aside from "../Aside/Aside";
 import Main from "../Main/Main";
-import { Route, Redirect } from "react-router-dom";
+// Redirect
+import { Route } from "react-router-dom";
 import style from "./Body.module.css";
 
 const Body = (props) => {
