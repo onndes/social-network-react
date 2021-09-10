@@ -1,14 +1,13 @@
 const ADD_POST = "ADD-POST";
 
 const initialState = {
-    inputValue: "text",
     posts: [],
 };
 
 const messagesPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
-            if (state.inputValue.trim()) {
+            if (1) {
                 return { ...state, posts: [...state.posts, action.textBody] };
             }
             return state;

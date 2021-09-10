@@ -45,7 +45,7 @@
   overflow: hidden;
   overflow-y: auto;
 }
-.t_conteinerInputBtn {
+.t_conteinerInputBtn form {
   border-top: 1px solid rgba(0, 0, 0, 0.712);
   display: flex;
 }

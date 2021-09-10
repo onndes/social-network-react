@@ -1,5 +1,4 @@
 import {
-    updataBodyMessagestextActionCreator,
     addMessagesActionCreator,
 } from "../../../Store/Reducers/MessagesPageReducer";
 import { connect } from "react-redux";
@@ -11,17 +10,7 @@ const mapStateToProps = (state) => {
     };  
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateValue: (body) => {
-            return dispatch(updataBodyMessagestextActionCreator(body));
-        },
-        clickButton: () => {
-            return dispatch(addMessagesActionCreator());
-        },
-    };
-};
 
-const MessagesItemTestContainer = connect(mapStateToProps, mapDispatchToProps)(MessagesItemTest);
+const MessagesItemTestContainer = connect(mapStateToProps, {addMessagesActionCreator})(MessagesItemTest);
 
 export default MessagesItemTestContainer;

@@ -1,14 +1,11 @@
 import React from "react";
+import { Field, reduxForm } from "redux-form";
 
 import style from "./MessagesItem.module.css";
 
 const MessagesItemTest = (props) => {
-    const onUpdateValue = (e) => {
-        props.updateValue(e.target.value);
-    };
-
-    const onClickButton = () => {
-        props.clickButton();
+    const onClickButton = (text) => {
+        props.addMessagesActionCreator(text.inputBodyValue);
     };
 
     const renderMessages = () => {
@@ -22,28 +19,32 @@ const MessagesItemTest = (props) => {
             );
         });
     };
+
     return (
         <div className={style.t_mainWrapper}>
             <div className={style.t_wrapper}>
                 <div className={style.t_messagesContainer}>{renderMessages()}</div>
                 <div className={style.t_conteinerInputBtn}>
-                    <input
-                        type='text'
-                        placeholder='Enter your messages'
-                        className={style.t_input}
-                        value={props.messagesPage.messageBodyText}
-                        onChange={onUpdateValue}
-                        onKeyDown={(e) => (e.key === "Enter" ? onClickButton() : null)}
-                    />
-                    <button
-                        className={style.t_btn}
-                        onSubmit={onClickButton}
-                        onClick={onClickButton}>
-                        Send
-                    </button>
+                    <FormReducer onSubmit={onClickButton} />
                 </div>
             </div>
         </div>
     );
 };
+const Form = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field
+                type='text'
+                placeholder='Enter your messages'
+                className={style.t_input}
+                component={"input"}
+                name="inputBodyValue"
+            />
+            <button className={style.t_btn}>Send</button>
+        </form>
+    );
+};
+const FormReducer = reduxForm({ form: "messageInput" })(Form);
+
 export default MessagesItemTest;

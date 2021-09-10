@@ -24,7 +24,6 @@ export default class MessagesPage extends Component {
     };
 
     render() {
-
         return (
             <>
                 <main className={style.wrapper}>
@@ -33,14 +32,11 @@ export default class MessagesPage extends Component {
                         <Dialogs allUsers={this.state.users} idUser={this.idUser} />
                     </div>
                     <div className={style.col2}>
-                        <Route path='/messages/leannegraham1'>
+                        <Route path='/messages/2'>
                             <MessagesItem getAllComments={this.props.getAllComments} idUser={1} />
                         </Route>
 
-                        <Route
-                            path='/messages/ervinhowell2'
-                            render={() => <MessagesItemTestContainer />}
-                        />
+                        <Route path='/messages/1' render={() => <MessagesItemTestContainer />} />
                         <p>{this.props.updateInputValue}</p>
                     </div>
                 </main>

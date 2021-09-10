@@ -3,26 +3,26 @@ import style from "./Dialogs.module.css";
 import { NavLink } from "react-router-dom";
 
 export default class Dialogs extends Component {
-    state = {
-        users: [],
-    };
 
     generateDialogs() {
-        const { allUsers, idUser } = this.props;
-        return allUsers.map((item) => {
-            const id = idUser(item);
-            return (
-                <li key={item.id} className={style.item}>
-                    <NavLink to={`/messages/${id}`} activeClassName={style.active}>
-                        {item.name}
-                    </NavLink>
-                </li>
-            );
-        });
+        
+        return (
+            <>
+              <li key={1} className={style.item}>
+                  <NavLink to={`/messages/${1}`} activeClassName={style.active}>
+                      Nikita
+                  </NavLink>
+              </li>
+              <li key={1} className={style.item}>
+                  <NavLink to={`/messages/${2}`} activeClassName={style.active}>
+                      Alisa
+                  </NavLink>
+              </li>
+            </>
+        );
     }
 
     render() {
-        const dialogs = this.generateDialogs();
-        return <ul className={style.list}>{dialogs}</ul>;
+        return <ul className={style.list}>{this.generateDialogs()}</ul>;
     }
 }
