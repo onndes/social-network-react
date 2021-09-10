@@ -21,7 +21,7 @@ const Body = (props) => {
     return (
         <>
             <Route path='' render={() => renderMainContent()} />
-            {props.isAuth && <Redirect to='/myprofile' />}
+            {/* {props.isAuth && <Redirect to='/myprofile' />} */}
         </>
     );
 };

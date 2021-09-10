@@ -1,42 +1,32 @@
-import React, { Component } from "react";
+import React from "react";
 import style from "./MessagesItem.module.css";
-export default class MessagesItemTest extends Component {
-    state = {
-        commnets: null,
-    };
-
-    componentDidMount() {
-        this.props.getAllComments(3).then((commnets) => {
-            this.setState({
-                commnets: commnets.body,
-            });
+const MessagesItemTest = () => {
+    const generationMessages = () => {
+        const commnetsTempHardCodeTest = [
+            "Officia excepteur sit quis amet elit eu tempor mollit labore.",
+            "Nulla exercitation veniam esse dolore non nulla.",
+            "Et nulla sunt enim dolor.",
+            "Ex velit exercitation aliqua amet duis mollit ipsum id sunt reprehenderit voluptate.",
+            "Irure officia ex in tempor dolor aliquip in ut sint nisi aliquip.",
+        ];
+        return commnetsTempHardCodeTest.map((item, i) => {
+            let msgStBlock = "";
+            let msgSt = "";
+            if (i % 2 === 0) {
+                msgStBlock = style.msgLeftBlock;
+                msgSt = style.msgLeft;
+            } else {
+                msgStBlock = style.msgRightBlock;
+                msgSt = style.msgRight;
+            }
+            return (
+                <div key={i} className={msgStBlock}>
+                    <p className={msgSt}>{item}</p>
+                </div>
+            );
         });
-    }
-
-    generationMessages = () => {
-        if (this.state.commnets) {
-            return this.state.commnets.map((item, i) => {
-                let msgStBlock = '';
-                let msgSt = '';
-                if (i % 2 === 0) {
-                    msgStBlock = style.msgLeftBlock;
-                    msgSt = style.msgLeft;
-                } else {
-                    msgStBlock = style.msgRightBlock;
-                    msgSt = style.msgRight;
-                }
-                return (
-                    <div key={i} className={msgStBlock}>
-                        <p className={msgSt}>{item}</p>
-                    </div>
-                );
-            });
-        }
     };
 
-    render() {
-        // eslint-disable-next-line
-        const msg = this.generationMessages();
-        return <div className={style.reactDiv}>{msg}</div>;
-    }
-}
+    return <div className={style.reactDiv}>{generationMessages()}</div>;
+};
+export default MessagesItemTest;

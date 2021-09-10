@@ -1,7 +1,6 @@
 import React from "react";
+import style from "./MessagesItemTest.module.css";
 import { Field, reduxForm } from "redux-form";
-
-import style from "./MessagesItem.module.css";
 
 const MessagesItemTest = (props) => {
     const onClickButton = (text) => {
@@ -39,7 +38,7 @@ const Form = (props) => {
                 placeholder='Enter your messages'
                 className={style.t_input}
                 component={"input"}
-                name="inputBodyValue"
+                name='inputBodyValue'
             />
             <button className={style.t_btn}>Send</button>
         </form>

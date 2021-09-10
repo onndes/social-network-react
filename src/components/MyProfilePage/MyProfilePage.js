@@ -4,7 +4,6 @@ import userImg from "../../assets/img/iconUser.png";
 import Status from "./Status/Status";
 
 const MyProfile = (props) => {
-
     if (props.profile === null) return <div>no props</div>;
     return (
         <div>
@@ -21,26 +20,20 @@ const MyProfile = (props) => {
                         />
                     </div>
                     <div className={style.btnContainer}>
-                        {/* {myData.follow ? (
-                            <button className={style.unfollow + " " + style.btnFollow}>
-                                Unfollow
-                            </button>
-                        ) : (
-                            <button className={style.follow + " " + style.btnFollow}>Follow</button>
-                        )} */}
+                        <button className={style.btnEditMyProfile}>Edit my profile**</button>
                     </div>
                 </div>
                 <div className={style.secondCol}>
                     <div className={style.nameAndOnlineBox}>
                         <p className={style.titleName}>{props.profile.fullName}</p>
-                        {props.userStatus ? (
-                            <p className={style.statusOnline + " " + style.status}>Online</p>
-                        ) : (
-                            <p className={style.statusOffline + " " + style.status}>Offline</p>
-                        )}
+                        <p className={style.statusOnline + " " + style.status}>Online</p>
                     </div>
                     <div className={style.userStatus}>
-                        <Status putStatus={props.putStatus} status={props.userStatus} isUpdatingMyStatus={props.isUpdatingMyStatus}/>
+                        <Status
+                            putStatus={props.putStatus}
+                            status={props.userStatus}
+                            isUpdatingMyStatus={props.isUpdatingMyStatus}
+                        />
                     </div>
                     <p className={style.aboutMe}>
                         <span>About me: </span>

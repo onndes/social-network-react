@@ -20,24 +20,15 @@
 .imgContainer img {
   width: 100%;
   max-width: 100%;
-  /* height: 100%; */
-  /*object-fit: center;*/
 }
-
-.btnFollow {
+.btnEditMyProfile {
   width: 100%;
   text-align: center;
   padding: 4px 6px;
   color: white;
-}
-
-.follow {
   background: rgb(79, 75, 153);
 }
 
-.unfollow {
-  background: rgb(80, 80, 80);
-} 
 .nameAndOnlineBox {
   padding: 0 0 10px 0;
 }
