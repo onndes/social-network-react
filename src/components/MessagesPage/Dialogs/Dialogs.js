@@ -11,7 +11,7 @@ const Dialogs = () => {
                         Nikita
                     </NavLink>
                 </li>
-                <li key={1} className={style.item}>
+                <li key={2} className={style.item}>
                     <NavLink to={`/messages/${2}`} activeClassName={style.active}>
                         Alisa
                     </NavLink>

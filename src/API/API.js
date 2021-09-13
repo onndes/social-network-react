@@ -29,7 +29,6 @@ export const followAPI = {
         return instance
             .post(`follow/${userId}`)
             .then((response) => {
-                console.log(response);
                 return response.data;
             })
             .catch((error) => {
@@ -57,7 +56,7 @@ export const profileAPI = {
         return instance.get(`auth/me`).then((response) => response.data);
     },
     putStatus(status) {
-        return instance.put(`profile/status`, {status: status}).then(response => response.data)
+        return instance.put(`profile/status`, { status: status }).then((response) => response.data);
     },
 };
 
@@ -65,7 +64,12 @@ export const authMeAPI = {
     getAuthMe() {
         return instance.get(`auth/me`).then((response) => response.data);
     },
-    authMe() {
-        return instance.post('auth/login').then(response => response.data)
-    }
+    login({ email, password, rememberMe = false }) {
+        return instance
+            .post("auth/login", { email, password, rememberMe })
+            .then((response) => response.data);
+    },
+    logout() {
+        return instance.delete("auth/login");
+    },
 };

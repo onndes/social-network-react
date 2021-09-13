@@ -17,7 +17,6 @@ const AuthReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
-                isAuth: true,
             };
         case SET_USER_PHOTO:
             return {
@@ -32,7 +31,13 @@ const AuthReducer = (state = initialState, action) => {
 export const setUserData = (id, email, login) => {
     return {
         type: SET_USER_DATA,
-        data: { id, email, login },
+        data: { id, email, login, isAuth: true },
+    };
+};
+export const clearUserData = () => {
+    return {
+        type: SET_USER_DATA,
+        data: { id: null, email: null, login: null, isAuth: false, photo: null },
     };
 };
 export const setUserPhoto = (photo) => {
@@ -51,16 +56,24 @@ export const authMe = (id) => (dispatch) => {
     });
     if (id) {
         profileAPI.getProfile(id).then((data) => {
-            // console.log(data);
             dispatch(setUserPhoto(data.photos.small));
         });
     }
 };
 
 export const loginMe = (userData) => (dispatch) => {
-    authMeAPI.authMe().then((data) => {
+    authMeAPI.login(userData).then((data) => {
         if (data.resultCode === 0) {
+            authMe(data.userId);
         }
     });
 };
+export const logoutMe = (userData) => (dispatch) => {
+    authMeAPI.logout(userData).then((data) => {
+        if (data.resultCode === 0) {
+            dispatch(clearUserData());
+        }
+    });
+};
+
 export default AuthReducer;

@@ -3,6 +3,7 @@ import style from "./LoginPage.module.css";
 import { Field, reduxForm } from "redux-form";
 import { requireFillIn } from "../../Common/Validate/Validate";
 import { Input } from "../../Common/CastomFrom/CustomFrom";
+import { Redirect } from "react-router-dom";
 
 const LoginFrom = (props) => {
     return (
@@ -12,8 +13,8 @@ const LoginFrom = (props) => {
                 <Field
                     className={style.input}
                     component={Input}
-                    name={"login"}
-                    placeholder={"login"}
+                    name={"email"}
+                    placeholder={"Email"}
                     validate={[requireFillIn]}
                 />
             </div>
@@ -30,7 +31,7 @@ const LoginFrom = (props) => {
             </div>
             <div className={style.inputBox + " " + style.inputBoxCheckbox}>
                 <label className={style.label + " " + style.labelRemember}>Remember me</label>
-                <Field component={"input"} type={"checkbox"} name={"remember"} />
+                <Field component={"input"} type={"checkbox"} name={"rememberMe"} />
             </div>
             <div className={style.inputBox}>
                 <button className={style.btn}>Login</button>
@@ -41,9 +42,14 @@ const LoginFrom = (props) => {
 
 const LoginReducerFrom = reduxForm({ form: "login" })(LoginFrom);
 
-const LoginPage = () => {
-    const onSubmit = (fromData) => {
-        console.log(fromData);
+const LoginPage = (props) => {
+    if (props.isAuth) {
+        return <Redirect to='/myprofile' />;
+    } else if (!props.isAuth) {
+        <Redirect to='/login' />;
+    }
+    const onSubmit = (data) => {
+        props.loginMe(data);
     };
 
     return (

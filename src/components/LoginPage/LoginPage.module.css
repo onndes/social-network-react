@@ -39,4 +39,5 @@
   padding: 10px 20px;
   background: rgba(160, 225, 111, 0.77);
   min-width: 100%;
+  box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.439);
 }

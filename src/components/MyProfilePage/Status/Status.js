@@ -101,7 +101,6 @@ export default class Status extends Component {
     }
 
     render() {
-        // console.log(this.state.status)
         return (
             <div className={style.wrapper}>
                 {!this.state.isActiveInput && this.renderStatus()}

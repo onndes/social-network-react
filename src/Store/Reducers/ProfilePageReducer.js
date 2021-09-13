@@ -29,7 +29,6 @@ const ProfilePageReducer = (state = initialState, action) => {
         case PUT_STATUS:
             return { ...state, status: action.userStatus };
         case IS_UPDATING_MY_STATUS:
-            console.log(state.isUpdatingMyStatus)
             return { ...state, isUpdatingMyStatus: action.isUpdate };
         default:
             return state;
