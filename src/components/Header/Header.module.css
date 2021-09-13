@@ -1,5 +1,6 @@
 .wrapper {
   background-color: #4f4b99;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .header {
@@ -27,6 +28,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .imgBox {
   width: 25px;
@@ -35,4 +37,36 @@
 .imgBox img {
   max-width: 100%;
   width: 100%;
+}
+.userTextBox{
+ 
+}
+.loginBox:hover .menuUser{
+  display: block;
+  transition: all 1s ease;
+}
+.menuUser {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: #4f4b99;
+  border: 7px solid rgba(0, 0, 0, 0);
+  border-left: 0px;
+  border-right: 0px;
+  width: 100%;
+}
+.menuUser ul {
+  background-color: #f0f2f5;
+  padding: 10px 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.487);
+}
+.menuUser ul li {
+  padding: 0px 0px 10px 0px;
+}
+.menuUser ul li:hover {
+  text-shadow: 0px 0px 10px #4f4b99ce;
+}
+.menuUser ul li:last-of-type {
+  padding: 0px 0px 0px 0px;
 }
