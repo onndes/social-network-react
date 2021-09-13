@@ -51,10 +51,11 @@
   top: 100%;
   left: 0;
   color: #4f4b99;
-  border: 7px solid rgba(0, 0, 0, 0);
+  border: 7px solid rgba(175, 65, 65, 0.001);
   border-left: 0px;
   border-right: 0px;
   width: 100%;
+  z-index: 1;
 }
 .menuUser ul {
   background-color: #f0f2f5;
