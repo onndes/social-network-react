@@ -1,6 +1,9 @@
 .wrapper {
   margin: 40px auto;
-  max-width: 280px;
+  max-width: 320px;
+  padding: 30px 40px;
+  background-color: white;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 .loginTitle {
   margin-bottom: 30px;
@@ -13,6 +16,7 @@
 .inputBox {
   margin-bottom: 30px;
   width: 100%;
+  
   
 }
 .inputBoxBtn {
@@ -32,9 +36,10 @@
 .input {
   padding: 5px 10px;
   min-width: 100%;
+  border: 1px solid rgb(126, 126, 126, 0.4);
 }
 .labelRemember {
-  padding-right: 20px;
+  padding-right: 10px;
   padding-bottom: 0;
   display: inline-block;
 }
@@ -45,4 +50,17 @@
   background: rgba(160, 225, 111, 0.77);
   min-width: 100%;
   box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.439);
+}
+.errorBox{
+  width: 100%;
+  background-color: rgba(255, 0, 0, 0.2);
+  border: 2px solid rgb(252, 66, 66);
+  margin: 0px 0px 25px 0px;
+}
+
+.errorText {
+  padding: 15px;
+  color: rgb(247, 53, 53);
+
+  line-height: 22px;
 }

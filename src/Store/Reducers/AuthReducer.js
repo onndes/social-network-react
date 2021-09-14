@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { authMeAPI, profileAPI } from "../../API/API";
 
 const SET_USER_DATA = "SET-USER-DATA";
@@ -67,6 +68,7 @@ export const authMe = (id) => (dispatch) => {
             dispatch(setUserData(id, email, login));
         }
     });
+
     if (id) {
         profileAPI.getProfile(id).then((data) => {
             dispatch(setUserPhoto(data.photos.small));
@@ -79,10 +81,17 @@ export const loginMe = (userData) => (dispatch) => {
     authMeAPI.login(userData).then((data) => {
         if (data.resultCode === 0) {
             dispatch(authMe(data.userId));
-            dispatch(setIsLoading(false));
+        } else {
+            dispatch(
+                stopSubmit("login", {
+                    _error: data.messages.length < 1 ? "Some error" : data.messages[0],
+                }),
+            );
         }
+        dispatch(setIsLoading(false));
     });
 };
+
 export const logoutMe = (userData) => (dispatch) => {
     authMeAPI.logout(userData).then((data) => {
         if (data.resultCode === 0) {

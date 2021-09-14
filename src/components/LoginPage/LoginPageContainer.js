@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 // import { withRouter, useHistory } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import { loginMe } from "../../Store/Reducers/AuthReducer";
