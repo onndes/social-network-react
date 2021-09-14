@@ -21,7 +21,6 @@ const Textarea = (props) => {
     );
 };
 
-
 const Input = (props) => {
     const { input, meta, ...otherProps } = props;
 
@@ -36,7 +35,11 @@ const Input = (props) => {
                         {...otherProps}
                     />
                 </div>
-                {hasError && <span className={s.messageError}>{meta.error}</span>}
+                {hasError && (
+                    <span className={s.messageError}>
+                        <span>{meta.error}</span>
+                    </span>
+                )}
             </div>
         </>
     );

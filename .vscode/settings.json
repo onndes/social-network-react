@@ -1,11 +1,10 @@
 {
-  "cSpell.words": [
-    "Wrapp"
-  ],
-  "favorites.resources": [
-    "src\\Store\\Reducers\\AuthReducer.js",
-    "src\\components\\LoginPage\\LoginPage.js",
-    "src\\components\\LoginPage\\LoginPage.module.css"
-  ],
-  "favorites.sortOrder": "ASC"
+    "cSpell.words": ["Wrapp"],
+    "favorites.resources": [
+        "src\\Store\\Reducers\\AuthReducer.js",
+        "src\\components\\LoginPage\\LoginPage.js",
+        "src\\components\\LoginPage\\LoginPage.module.css",
+        "src\\Common\\CastomFrom\\CustomFrom.js"
+    ],
+    "favorites.sortOrder": "ASC"
 }

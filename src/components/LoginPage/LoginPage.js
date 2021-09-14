@@ -33,7 +33,7 @@ const LoginFrom = (props) => {
                     component={Input}
                     type={"password"}
                     name={"password"}
-                    placeholder={"password"}
+                    placeholder={"Password"}
                     validate={[requireFillIn]}
                 />
             </div>
