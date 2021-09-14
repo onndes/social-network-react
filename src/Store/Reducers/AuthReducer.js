@@ -2,6 +2,7 @@ import { authMeAPI, profileAPI } from "../../API/API";
 
 const SET_USER_DATA = "SET-USER-DATA";
 const SET_USER_PHOTO = "SET-USER-PHOTO";
+const IS_LOADING = "IS_LOADING";
 
 const initialState = {
     id: null,
@@ -9,6 +10,7 @@ const initialState = {
     login: null,
     isAuth: false,
     photo: null,
+    isLoading: false,
 };
 
 const AuthReducer = (state = initialState, action) => {
@@ -22,6 +24,11 @@ const AuthReducer = (state = initialState, action) => {
             return {
                 ...state,
                 photo: action.photo,
+            };
+        case IS_LOADING:
+            return {
+                ...state,
+                isLoading: action.isLoading,
             };
         default:
             return state;
@@ -46,6 +53,12 @@ export const setUserPhoto = (photo) => {
         photo,
     };
 };
+export const setIsLoading = (isLoading) => {
+    return {
+        type: IS_LOADING,
+        isLoading,
+    };
+};
 
 export const authMe = (id) => (dispatch) => {
     authMeAPI.getAuthMe().then((data) => {
@@ -62,9 +75,11 @@ export const authMe = (id) => (dispatch) => {
 };
 
 export const loginMe = (userData) => (dispatch) => {
+    dispatch(setIsLoading(true));
     authMeAPI.login(userData).then((data) => {
         if (data.resultCode === 0) {
-            authMe(data.userId);
+            dispatch(authMe(data.userId));
+            dispatch(setIsLoading(false));
         }
     });
 };

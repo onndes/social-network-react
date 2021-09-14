@@ -9,13 +9,9 @@ import {compose} from "redux";
 class MyProfileContainer extends React.Component {
 
     componentDidMount() {
-        // const getProfile = setTimeout();
         this.props.getProfile(this.props.id)
     }
 
-    componentWillUnmount() {
-        // clearTimeout(getProfile)
-    }
 
     render() {
         if (!this.props.profile) {

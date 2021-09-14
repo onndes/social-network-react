@@ -5,9 +5,9 @@ import HeaderContainer from "../Header/HeaderContainer";
 import Footer from "../Footer/Footer";
 
 import BodyContainer from "../Body/BodyContainer";
-import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default class App extends Component {
+class AppContainer extends Component {
     render() {
         return (
             <div className='app'>
@@ -24,3 +24,11 @@ export default class App extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isAuth: state.auth.isAuth,
+    };
+};
+
+export default connect(mapStateToProps, {})(AppContainer);

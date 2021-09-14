@@ -10,7 +10,9 @@
   padding: 0 0 10px 15px;
   
 }
-
+.item:hover {
+  text-shadow: 0px 0px 10px #4f4b99ce;
+}
 .item a {
   display: block;
   font-size: 16px;

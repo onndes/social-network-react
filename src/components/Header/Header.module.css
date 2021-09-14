@@ -38,8 +38,11 @@
   max-width: 100%;
   width: 100%;
 }
-.userTextBox{
- 
+.userTextBox a{
+   color: white;
+}
+.userTextBox a:hover{
+   text-shadow: 0 0 10px rgba(255, 255, 255, 0.624);
 }
 .loginBox:hover .menuUser{
   display: block;

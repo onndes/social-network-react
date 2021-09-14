@@ -4,6 +4,7 @@ import { Field, reduxForm } from "redux-form";
 import { requireFillIn } from "../../Common/Validate/Validate";
 import { Input } from "../../Common/CastomFrom/CustomFrom";
 import { Redirect } from "react-router-dom";
+import Preloader from "../../Common/Preloader/Preloader";
 
 const LoginFrom = (props) => {
     return (
@@ -33,8 +34,12 @@ const LoginFrom = (props) => {
                 <label className={style.label + " " + style.labelRemember}>Remember me</label>
                 <Field component={"input"} type={"checkbox"} name={"rememberMe"} />
             </div>
-            <div className={style.inputBox}>
-                <button className={style.btn}>Login</button>
+            <div className={style.inputBox + " " + style.inputBoxBtn}>
+                {props.isLoading ? (
+                    <Preloader height={"30px"} />
+                ) : (
+                    <button className={style.btn}>Login</button>
+                )}
             </div>
         </form>
     );
@@ -45,8 +50,6 @@ const LoginReducerFrom = reduxForm({ form: "login" })(LoginFrom);
 const LoginPage = (props) => {
     if (props.isAuth) {
         return <Redirect to='/myprofile' />;
-    } else if (!props.isAuth) {
-        <Redirect to='/login' />;
     }
     const onSubmit = (data) => {
         props.loginMe(data);
@@ -55,7 +58,7 @@ const LoginPage = (props) => {
     return (
         <div className={style.wrapper}>
             <h1 className={style.loginTitle}>Log in</h1>
-            <LoginReducerFrom onSubmit={onSubmit} />
+            <LoginReducerFrom onSubmit={onSubmit} isLoading={props.isLoading} />
         </div>
     );
 };
