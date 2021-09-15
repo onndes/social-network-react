@@ -1,5 +1,5 @@
 import { stopSubmit } from "redux-form";
-import { authMeAPI, profileAPI } from "../../API/API";
+import { authMeAPI } from "../../API/API";
 
 const SET_USER_DATA = "SET-USER-DATA";
 const SET_USER_PHOTO = "SET-USER-PHOTO";

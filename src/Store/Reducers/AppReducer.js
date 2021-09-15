@@ -1,5 +1,6 @@
 import { authMe } from "./AuthReducer";
 import { getUsers } from "./UsersPageReducer";
+
 const INITIAL_SUCCESS = "INITIAL_SUCCESS";
 
 const initialState = {
@@ -24,7 +25,7 @@ const setInitialSuccess = () => {
     };
 };
 
-const startInitial = (id) => (dispatch) => {
+const startInitial = () => (dispatch) => {
     const authMePromise = dispatch(authMe());
     const getUsersPromise = dispatch(getUsers(1, 10));
 

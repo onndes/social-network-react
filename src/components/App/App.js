@@ -10,7 +10,7 @@ import AppPreloader from "./../../Common/AppPreloader/AppPreloader";
 import { withRouter } from "react-router";
 class App extends Component {
     componentDidMount() {
-        this.props.startInitial();
+        this.props.startInitial(this.props.authId);
     }
 
     render() {
@@ -37,6 +37,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
     return {
         initialSucsses: state.app.initialSucsses,
+        profileUserID: state.auth.authId,
     };
 };
 
