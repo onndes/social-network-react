@@ -1,3 +1,5 @@
+import { authMe } from "./AuthReducer";
+import { getUsers } from "./UsersPageReducer";
 const INITIAL_SUCCESS = "INITIAL_SUCCESS";
 
 const initialState = {
@@ -22,5 +24,14 @@ const setInitialSuccess = () => {
     };
 };
 
-export { setInitialSuccess };
+const startInitial = (id) => (dispatch) => {
+    const authMePromise = dispatch(authMe());
+    const getUsersPromise = dispatch(getUsers(1, 10));
+
+    Promise.all([authMePromise, getUsersPromise]).then(() => {
+        dispatch(setInitialSuccess());
+    });
+};
+
+export { startInitial };
 export default AppReducer;

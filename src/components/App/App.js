@@ -1,14 +1,23 @@
 import React, { Component } from "react";
 import "./App.css";
 import HeaderContainer from "../Header/HeaderContainer";
-
 import Footer from "../Footer/Footer";
-
 import BodyContainer from "../Body/BodyContainer";
-import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { startInitial } from "../../Store/Reducers/AppReducer";
+import AppPreloader from "./../../Common/AppPreloader/AppPreloader";
+import { withRouter } from "react-router";
+class App extends Component {
+    componentDidMount() {
+        this.props.startInitial();
+    }
 
-export default class App extends Component {
     render() {
+        if (!this.props.initialSucsses) {
+            return <AppPreloader />;
+        }
+
         return (
             <div className='app'>
                 <div>
@@ -24,3 +33,11 @@ export default class App extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        initialSucsses: state.app.initialSucsses,
+    };
+};
+
+export default compose(withRouter, connect(mapStateToProps, { startInitial }))(App);

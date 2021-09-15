@@ -1,5 +1,8 @@
 {
     "cSpell.words": ["Wrapp"],
-    "favorites.resources": [],
+    "favorites.resources": [
+      "src\\components\\App\\App.js",
+      "src\\Store\\Reducers\\appReducer.js"
+    ],
     "favorites.sortOrder": "ASC"
 }

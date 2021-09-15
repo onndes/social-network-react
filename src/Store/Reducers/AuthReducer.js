@@ -37,6 +37,7 @@ const AuthReducer = (state = initialState, action) => {
 };
 
 export const setUserData = (id, email, login) => {
+    
     return {
         type: SET_USER_DATA,
         data: { id, email, login, isAuth: true },
@@ -62,18 +63,18 @@ export const setIsLoading = (isLoading) => {
 };
 
 export const authMe = (id) => (dispatch) => {
-    authMeAPI.getAuthMe().then((data) => {
+    return authMeAPI.getAuthMe().then((data) => {
         if (data.resultCode === 0) {
             const { email, id, login } = data.data;
             dispatch(setUserData(id, email, login));
         }
     });
 
-    if (id) {
-        profileAPI.getProfile(id).then((data) => {
-            dispatch(setUserPhoto(data.photos.small));
-        });
-    }
+    // if (id) {
+    //     profileAPI.getProfile(id).then((data) => {
+    //         dispatch(setUserPhoto(data.photos.small));
+    //     });
+    // }
 };
 
 export const loginMe = (userData) => (dispatch) => {
