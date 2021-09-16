@@ -1,12 +1,12 @@
 .wrapper {
   background-color: #4f4b99;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0px 15px #4f4b997b;
 }
 
 .header {
   max-width: 1200px;
   margin: auto;
-  padding: 10px;
+  padding: 6px;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -14,15 +14,18 @@
   
 }
 .logo {
-  width: 50px;
-  height: 50px;
-  border: 3px solid white;
+  width: 30px;
+  height: 30px;
+  border: 2px solid white;
   border-radius: 50%;
   font-size: 25px;
   vertical-align: middle;
   display: flex;
   align-items: center;
   justify-content: center ;
+}
+.logo div {
+  font-size: 16px;
 }
 .loginBox {
   cursor: pointer;

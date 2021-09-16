@@ -67,7 +67,7 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  grid-gap: 10px;
+  grid-gap: 20px;
   background-color: #f0f2f5;
 }
 .app-body-container {
