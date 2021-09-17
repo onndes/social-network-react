@@ -1,112 +1,100 @@
-import React, {Component} from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Status.module.css";
 import Preloader from "../../../Common/Preloader/Preloader";
 
+const StatusHook = (props) => {
+    const [isActiveInput, setActiveInput] = useState(false);
+    const [status, setStatus] = useState(props.status ? props.status : "set status");
 
-export default class Status extends Component {
-    state = {
-        isActiveInput: false,
-        status: this.props.status ? this.props.status : 'set status',
+    const handleClickSaveStatus = () => {
+        setActiveInput(!isActiveInput);
+        setStatus(status);
+        props.putStatus(status);
     };
-
-    handleClickStatus = () => {
-        this.setState({
-            isActiveInput: !this.state.isActiveInput,
-        });
+    const handleClickStatus = () => {
+        setActiveInput(!isActiveInput);
     };
-    handleUpdateStatus = (e) => {
+    const handleUpdateStatus = (e) => {
         let value = e.target.value;
-        this.setState({
-            status: value,
-        });
-
+        console.log(value);
+        setStatus(value);
     };
-    handleClickSaveStatus = () => {
-        this.setState({
-            isActiveInput: !this.state.isActiveInput,
-            status: this.state.status
-            });
-        this.props.putStatus(this.state.status)
-    }
-    handleClickCloseStatus = () => {
+
+    const handleClickCloseStatus = () => {
         // TODO: сделать кастомную модалку
 
-        if (window.confirm('Exit without saving?')) {
-            this.setState({
-                isActiveInput: !this.state.isActiveInput,
-            });
-            if (this.state.status !== this.props.status) {
-                this.setState({
-                    status: this.props.status
-                });
+        if (window.confirm("Exit without saving?")) {
+            setActiveInput(!isActiveInput);
+            if (status !== props.status) {
+                setStatus(props.status);
             }
         }
+    };
 
+    useEffect(() => {
+        setStatus(props.status);
+    }, [props.status]);
 
-    }
-
-    componentDidUpdate = (prevProps) => {
-        if(prevProps.status !== this.props.status) {
-            this.setState({
-                status: this.props.status
-            });
-        }
-    }
-
-    renderStatus() {
-        if (this.props.isUpdatingMyStatus) {
+    const renderStatus = () => {
+        if (props.isUpdatingMyStatus) {
             return (
                 <div className={style.pStatusBox}>
-                    <p className={style.pStatus}>{this.state.status}</p>
+                    <p className={style.pStatus}>{status}</p>
                     <div className={style.statusUpdating}>
                         <p>status updating</p>
-                        <Preloader height={'10px'}/>
+                        <Preloader height={"10px"} />
                     </div>
                 </div>
-            )
+            );
         } else {
-            return ( <div className={style.pStatusBox}>
-                <p className={style.pStatus} onClick={this.handleClickStatus}>{this.state.status}</p>
-            </div>
-            )
+            return (
+                <div className={style.pStatusBox}>
+                    <p className={style.pStatus} onClick={handleClickStatus}>
+                        {status}
+                    </p>
+                </div>
+            );
         }
+    };
 
-    }
-
-    renderInputStatus() {
+    const renderInputStatus = () => {
         return (
             <div>
-                {this.renderStatus()}
+                {renderStatus()}
                 <div className={style.inputWrap}>
                     <div className={style.inputBox}>
                         <input
                             maxLength={100}
                             className={style.input}
-                            // onBlur={this.handleClickStatus}
+                            // onBlur={handleClickStatus}
                             type='text'
-                            value={this.state.status}
-                            onChange={this.handleUpdateStatus}
+                            value={status}
+                            onChange={handleUpdateStatus}
                             autoFocus={true}
                         />
                     </div>
-                    <button type={"button"} className={style.btnSaveStatus} onClick={this.handleClickSaveStatus}>To
-                        apply
+                    <button
+                        type={"button"}
+                        className={style.btnSaveStatus}
+                        onClick={handleClickSaveStatus}>
+                        To apply
                     </button>
-                    <button type={"button"} className={style.btnCloseStatus} onClick={this.handleClickCloseStatus}>Exit
-                        edit
+                    <button
+                        type={"button"}
+                        className={style.btnCloseStatus}
+                        onClick={handleClickCloseStatus}>
+                        Exit edit
                     </button>
                 </div>
             </div>
-        )
-    }
-
-    render() {
-        return (
-            <div className={style.wrapper}>
-                {!this.state.isActiveInput && this.renderStatus()}
-                {this.state.isActiveInput && this.renderInputStatus()}
-
-            </div>
         );
-    }
-}
+    };
+
+    return (
+        <div className={style.wrapper}>
+            {!isActiveInput && renderStatus()}
+            {isActiveInput && renderInputStatus()}
+        </div>
+    );
+};
+export default StatusHook;
