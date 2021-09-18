@@ -5,6 +5,7 @@ import { isLoading, getProfile, putStatus } from "../../Store/Reducers/ProfilePa
 import Preloader from "../../Common/Preloader/Preloader";
 import withAuthRedirect from "./../../HOC/withAuthRedirect";
 import { compose } from "redux";
+import { checkGetUserStatus, getProfilePage } from "../../Store/Selectors";
 
 class MyProfileContainer extends React.Component {
     componentDidMount() {
@@ -21,8 +22,9 @@ class MyProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        profile: state.profilePage.profile,
-        userStatus: state.profilePage.userStatus,
+        // use selectors
+        profile: getProfilePage(state),
+        userStatus: checkGetUserStatus(state),
         isUpdatingMyStatus: state.profilePage.isUpdatingMyStatus,
         id: state.auth.id,
         isAuth: state.auth.isAuth,
