@@ -8,6 +8,7 @@ import {
 } from "../../Store/Reducers/UsersPageReducer";
 import UsersPage from "./UsersPage";
 import { connect } from "react-redux";
+import { checkGetUsers } from "../../Store/Selectors";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -29,7 +30,7 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
+        users: checkGetUsers(state),
         pageSize: state.usersPage.pageSize,
         totalUserCount: state.usersPage.totalUserCount,
         currentPage: state.usersPage.currentPage,

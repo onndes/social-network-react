@@ -14,12 +14,12 @@ export const usersAPI = {
             .get(`users?page=${currentPage}&count=${pageSize}`)
 
             .then((response) => {
-                let data = response.data;
-                data.items.forEach(
-                    (user) =>
-                        (user.status = user.status ? user.status : "no status [check api.js]"),
-                );
-                return data;
+                // let data = response.data;
+                // data.items.forEach(
+                //     (user) =>
+                //         (user.status = user.status ? user.status : "no status [check api.js]"),
+                // );
+                return response.data;
             });
     },
 };

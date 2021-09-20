@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./UsersPage.module.css";
-import userImg from "../../assets/img/iconUser.png";
 import Preloader from "../../Common/Preloader/Preloader";
 import { NavLink } from "react-router-dom";
 
@@ -12,10 +11,7 @@ const UsersPage = (props) => {
                     <div className={style.firstCol}>
                         <NavLink to={`/profile/${user.id}`}>
                             <div className={style.imgContainer}>
-                                <img
-                                    src={user.photos.small !== null ? user.photos.small : userImg}
-                                    alt=''
-                                />
+                                <img src={user.photos.small} alt='' />
                             </div>
                         </NavLink>
                         <div className={style.btnContainer}>
@@ -43,7 +39,7 @@ const UsersPage = (props) => {
                     <div className={style.secondCol}>
                         <div className={style.nameAndOnlineBox}>
                             <p className={style.titleName}>
-                                {`${user.name} ${user.secondName ? user.secondName : ""}`}
+                                {user.name}
                                 {}
                             </p>
                             {user.status ? (
@@ -52,7 +48,7 @@ const UsersPage = (props) => {
                                 <p className={style.statusOffline + " " + style.status}>Offline</p>
                             )}
                         </div>
-                        <p className={style.status}>{user.status ? user.status : "no data"}</p>
+                        <p className={style.status}>{user.status}</p>
                     </div>
                 </div>
             );

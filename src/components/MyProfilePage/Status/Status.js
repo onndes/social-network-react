@@ -16,7 +16,6 @@ const StatusHook = (props) => {
     };
     const handleUpdateStatus = (e) => {
         let value = e.target.value;
-        console.log(value);
         setStatus(value);
     };
 
