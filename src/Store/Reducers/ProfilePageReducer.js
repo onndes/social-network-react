@@ -1,11 +1,11 @@
 import { profileAPI } from "../../API/API";
 
-const SET_PROFILE_DATA = "SET-PROFILE-DATA ";
-const SET_USER_ID = "SET-USER-ID";
-const IS_LOADING = "IS-LOADING";
-const SET_USER_STATUS = "SET_USER_STATUS";
-const PUT_STATUS = "PUT-STATUS"
-const IS_UPDATING_MY_STATUS = "IS_UPDATING_MY_STATUS"
+const SET_PROFILE_DATA = "ProfilePageReducer/SET_PROFILE_DATA ";
+const SET_USER_ID = "ProfilePageReducer/SET_USER_ID";
+const IS_LOADING = "ProfilePageReducer/IS_LOADING";
+const SET_USER_STATUS = "ProfilePageReducer/SET_USER_STATUS";
+const PUT_STATUS = "ProfilePageReducer/PUT_STATUS"
+const IS_UPDATING_MY_STATUS = "ProfilePageReducer/IS_UPDATING_MY_STATUS"
 
 const initialState = {
     profile: null,

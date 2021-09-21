@@ -1,5 +1,5 @@
-const ADD_POST = "ADD_POST";
-const DELETE_POST = "DELETE_POST";
+const ADD_POST = "NewsPageReducer/ADD_POST";
+const DELETE_POST = "NewsPageReducer/DELETE_POST";
 
 const initialState = {
     posts: [

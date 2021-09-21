@@ -1,7 +1,7 @@
 import { authMe } from "./AuthReducer";
 import { getUsers } from "./UsersPageReducer";
 
-const INITIAL_SUCCESS = "INITIAL_SUCCESS";
+const INITIAL_SUCCESS = "AppReducer/INITIAL_SUCCESS";
 
 const initialState = {
     initialSucsses: false,

@@ -1,14 +1,14 @@
 import { usersAPI, followAPI } from "../../API/API";
 
-const FOLLOW = "FOLLOW";
-const UN_FOLLOW = "UN-FOLLOW";
-const SET_USERS = "SET-USERS";
-const CURRENT_PAGE = "CURRENT-PAGE";
-const TOTAL_USERS = "TOTAL-USERS";
-const VISIBLE_PAGE = "VISIBLE-PAGE";
-const LOADING = "LOADING";
-const CURRENT_PAGE_PREW = "CURRENT-PAGE-PREW";
-const TOOGLE_BUTTON_FOLLOW = "TOOGLE-BUTTON-FOLLOW";
+const FOLLOW = "UsersPageReducer/FOLLOW";
+const UN_FOLLOW = "UsersPageReducer/UN-FOLLOW";
+const SET_USERS = "UsersPageReducer/SET-USERS";
+const CURRENT_PAGE = "UsersPageReducer/CURRENT-PAGE";
+const TOTAL_USERS = "UsersPageReducer/TOTAL-USERS";
+const VISIBLE_PAGE = "UsersPageReducer/VISIBLE-PAGE";
+const LOADING = "UsersPageReducer/LOADING";
+const CURRENT_PAGE_PREW = "UsersPageReducer/CURRENT-PAGE-PREW";
+const TOOGLE_BUTTON_FOLLOW = "UsersPageReducer/TOOGLE-BUTTON-FOLLOW";
 
 const initialState = {
     users: [],

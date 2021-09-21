@@ -1,9 +1,9 @@
 import { stopSubmit } from "redux-form";
 import { authMeAPI } from "../../API/API";
 
-const SET_USER_DATA = "SET-USER-DATA";
-const SET_USER_PHOTO = "SET-USER-PHOTO";
-const IS_LOADING = "IS_LOADING";
+const SET_USER_DATA = "AuthReducer/SET_USER_DATA";
+const SET_USER_PHOTO = "AuthReducer/SET_USER_PHOTO";
+const IS_LOADING = "AuthReducer/IS_LOADING";
 
 const initialState = {
     id: null,

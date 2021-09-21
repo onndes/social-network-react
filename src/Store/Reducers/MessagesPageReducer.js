@@ -1,4 +1,4 @@
-const MESSAGES_TEXT = "MESSAGES_TEXT";
+const MESSAGES_TEXT = "MessagesPageReducer/MESSAGES_TEXT";
 
 const initialState = {
     messages: ["Hello"],
