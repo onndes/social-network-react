@@ -1,10 +1,10 @@
 const ADD_POST = "ADD-POST";
 
 const initialState = {
-    posts: [],
+    posts: ["1 day", "PC", "work day"],
 };
 
-const messagesPageReducer = (state = initialState, action) => {
+const newsPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             if (1) {
@@ -19,4 +19,4 @@ const messagesPageReducer = (state = initialState, action) => {
 export const addPostActionCreator = (textBody) => {
     return { type: ADD_POST, textBody };
 };
-export default messagesPageReducer;
+export default newsPageReducer;
