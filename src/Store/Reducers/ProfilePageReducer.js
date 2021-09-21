@@ -4,16 +4,16 @@ const SET_PROFILE_DATA = "ProfilePageReducer/SET_PROFILE_DATA ";
 const SET_USER_ID = "ProfilePageReducer/SET_USER_ID";
 const IS_LOADING = "ProfilePageReducer/IS_LOADING";
 const SET_USER_STATUS = "ProfilePageReducer/SET_USER_STATUS";
-const PUT_STATUS = "ProfilePageReducer/PUT_STATUS"
-const IS_UPDATING_MY_STATUS = "ProfilePageReducer/IS_UPDATING_MY_STATUS"
+const PUT_STATUS = "ProfilePageReducer/PUT_STATUS";
+const IS_UPDATING_MY_STATUS = "ProfilePageReducer/IS_UPDATING_MY_STATUS";
 
 const initialState = {
     profile: null,
     userId: null,
     isLoading: true,
     userStatus: null,
-    status: '',
-    isUpdatingMyStatus: false
+    status: "",
+    isUpdatingMyStatus: false,
 };
 
 const ProfilePageReducer = (state = initialState, action) => {
@@ -62,34 +62,32 @@ export const setUserStatus = (userStatus) => {
 };
 export const isUpdatingMyStatus = (isUpdate) => {
     return {
-        type: IS_UPDATING_MY_STATUS, isUpdate
+        type: IS_UPDATING_MY_STATUS,
+        isUpdate,
     };
 };
 
 export const getProfile = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setProfileData(null));
         dispatch(isLoading(true));
 
-        profileAPI.getProfile(userId).then((data) => {
-            dispatch(setProfileData(data));
-            dispatch(setUserId(data.userId));
-            dispatch(isLoading(false));
-        });
+        const data = await profileAPI.getProfile(userId);
+        dispatch(setProfileData(data));
+        dispatch(setUserId(data.userId));
+        dispatch(isLoading(false));
 
-        profileAPI.getProfileStatus(userId).then((data) => {
-            dispatch(setUserStatus(data));
-        });
+        const dataStatus = await profileAPI.getProfileStatus(userId);
+        dispatch(setUserStatus(dataStatus));
     };
 };
 
-export const putStatus = (status) => (dispatch) => {
-    dispatch(isUpdatingMyStatus(true))
-    profileAPI.putStatus(status).then((data) => {
-        if (data.resaultCode === 0) {
-            dispatch(setUserStatus(status))
-        }
-        dispatch(isUpdatingMyStatus(false))
-    })
-}
+export const putStatus = (status) => async (dispatch) => {
+    dispatch(isUpdatingMyStatus(true));
+    const data = await profileAPI.putStatus(status);
+    if (data.resaultCode === 0) {
+        dispatch(setUserStatus(status));
+    }
+    dispatch(isUpdatingMyStatus(false));
+};
 export default ProfilePageReducer;

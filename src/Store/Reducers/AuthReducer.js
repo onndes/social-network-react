@@ -37,7 +37,6 @@ const AuthReducer = (state = initialState, action) => {
 };
 
 export const setUserData = (id, email, login) => {
-    
     return {
         type: SET_USER_DATA,
         data: { id, email, login, isAuth: true },
@@ -62,13 +61,12 @@ export const setIsLoading = (isLoading) => {
     };
 };
 
-export const authMe = (id) => (dispatch) => {
-    return authMeAPI.getAuthMe().then((data) => {
-        if (data.resultCode === 0) {
-            const { email, id, login } = data.data;
-            dispatch(setUserData(id, email, login));
-        }
-    });
+export const authMe = (id) => async (dispatch) => {
+    const data = await authMeAPI.getAuthMe();
+    if (data.resultCode === 0) {
+        const { email, id, login } = data.data;
+        dispatch(setUserData(id, email, login));
+    }
 
     // if (id) {
     //     profileAPI.getProfile(id).then((data) => {
@@ -77,28 +75,26 @@ export const authMe = (id) => (dispatch) => {
     // }
 };
 
-export const loginMe = (userData) => (dispatch) => {
+export const loginMe = (userData) => async (dispatch) => {
     dispatch(setIsLoading(true));
-    authMeAPI.login(userData).then((data) => {
-        if (data.resultCode === 0) {
-            dispatch(authMe(data.userId));
-        } else {
-            dispatch(
-                stopSubmit("login", {
-                    _error: data.messages.length < 1 ? "Some error" : data.messages[0],
-                }),
-            );
-        }
-        dispatch(setIsLoading(false));
-    });
+    const data = await authMeAPI.login(userData);
+    if (data.resultCode === 0) {
+        dispatch(authMe(data.userId));
+    } else {
+        dispatch(
+            stopSubmit("login", {
+                _error: data.messages.length < 1 ? "Some error" : data.messages[0],
+            }),
+        );
+    }
+    dispatch(setIsLoading(false));
 };
 
 export const logoutMe = (userData) => (dispatch) => {
-    authMeAPI.logout(userData).then((data) => {
-        if (data.resultCode === 0) {
-            dispatch(clearUserData());
-        }
-    });
+    const data = authMeAPI.logout(userData);
+    if (data.resultCode === 0) {
+        dispatch(clearUserData());
+    }
 };
 
 export default AuthReducer;

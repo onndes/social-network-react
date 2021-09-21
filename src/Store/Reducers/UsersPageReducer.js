@@ -1,14 +1,14 @@
 import { usersAPI, followAPI } from "../../API/API";
 
 const FOLLOW = "UsersPageReducer/FOLLOW";
-const UN_FOLLOW = "UsersPageReducer/UN-FOLLOW";
-const SET_USERS = "UsersPageReducer/SET-USERS";
-const CURRENT_PAGE = "UsersPageReducer/CURRENT-PAGE";
-const TOTAL_USERS = "UsersPageReducer/TOTAL-USERS";
-const VISIBLE_PAGE = "UsersPageReducer/VISIBLE-PAGE";
+const UN_FOLLOW = "UsersPageReducer/UN_FOLLOW";
+const SET_USERS = "UsersPageReducer/SET_USERS";
+const CURRENT_PAGE = "UsersPageReducer/CURRENT_PAGE";
+const TOTAL_USERS = "UsersPageReducer/TOTAL_USERS";
+const VISIBLE_PAGE = "UsersPageReducer/VISIBLE_PAGE";
 const LOADING = "UsersPageReducer/LOADING";
-const CURRENT_PAGE_PREW = "UsersPageReducer/CURRENT-PAGE-PREW";
-const TOOGLE_BUTTON_FOLLOW = "UsersPageReducer/TOOGLE-BUTTON-FOLLOW";
+const CURRENT_PAGE_PREW = "UsersPageReducer/CURRENT_PAGE_PREW";
+const TOOGLE_BUTTON_FOLLOW = "UsersPageReducer/TOOGLE_BUTTON_FOLLOW";
 
 const initialState = {
     users: [],
@@ -115,17 +115,16 @@ export const toggleButtonFollow = (toggleButton, userId) => {
 };
 
 export const getUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setLoading(true));
-        usersAPI.getUsers(currentPage, pageSize).then((data) => {
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsers(data.totalCount));
-            dispatch(setLoading(false));
-        });
+        const data = await usersAPI.getUsers(currentPage, pageSize);
+        dispatch(setUsers(data.items));
+        dispatch(setTotalUsers(data.totalCount));
+        dispatch(setLoading(false));
     };
 };
 export const getUsersClickBtn = (page, totalUserCount, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setLoading(true));
         dispatch(setCurrentPage(page));
 
@@ -143,37 +142,34 @@ export const getUsersClickBtn = (page, totalUserCount, pageSize) => {
             dispatch(setVisiblePageBtn([0, countPage]));
         }
 
-        usersAPI.getUsers(page, pageSize).then((data) => {
-            dispatch(setUsers(data.items));
-            dispatch(setLoading(false));
-        });
+        const data = await usersAPI.getUsers(page, pageSize);
+        dispatch(setUsers(data.items));
+        dispatch(setLoading(false));
     };
 };
 
 export const follow = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleButtonFollow(true, userId));
-        followAPI.follow(userId).then((data) => {
-            if (data.resultCode === 0) {
-                dispatch(followApply(userId));
-            } else if (data.status === 429) {
-                alert("Ошибка. Status: 429 зазончились delete/post/put запросы на API");
-            }
-            dispatch(toggleButtonFollow(false, userId));
-        });
+        const data = await followAPI.follow(userId);
+        if (data.resultCode === 0) {
+            dispatch(followApply(userId));
+        } else if (data.status === 429) {
+            alert("Ошибка. Status: 429 зазончились delete/post/put запросы на API");
+        }
+        dispatch(toggleButtonFollow(false, userId));
     };
 };
 export const unFollow = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleButtonFollow(true, userId));
-        followAPI.unFollow(userId).then((data) => {
-            if (data.resultCode === 0) {
-                dispatch(unFollowApply(userId));
-            } else if (data.status === 429) {
-                alert("Ошибка. status: 429 зазончились delete/post/put запросы на API");
-            }
-            dispatch(toggleButtonFollow(false, userId));
-        });
+        const data = await followAPI.unFollow(userId);
+        if (data.resultCode === 0) {
+            dispatch(unFollowApply(userId));
+        } else if (data.status === 429) {
+            alert("Ошибка. status: 429 зазончились delete/post/put запросы на API");
+        }
+        dispatch(toggleButtonFollow(false, userId));
     };
 };
 export default UsersPageReducer;
