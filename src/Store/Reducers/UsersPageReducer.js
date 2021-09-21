@@ -148,28 +148,25 @@ export const getUsersClickBtn = (page, totalUserCount, pageSize) => {
     };
 };
 
+const followUnFollow = async (dispatch, userId, followApi, followApply) => {
+    dispatch(toggleButtonFollow(true, userId));
+    const data = await followApi(userId);
+    if (data.resultCode === 0) {
+        dispatch(followApply(userId));
+    } else if (data.status === 429) {
+        alert("Ошибка. Status: 429 зазончились delete/post/put запросы на API");
+    }
+    dispatch(toggleButtonFollow(false, userId));
+};
+
 export const follow = (userId) => {
-    return async (dispatch) => {
-        dispatch(toggleButtonFollow(true, userId));
-        const data = await followAPI.follow(userId);
-        if (data.resultCode === 0) {
-            dispatch(followApply(userId));
-        } else if (data.status === 429) {
-            alert("Ошибка. Status: 429 зазончились delete/post/put запросы на API");
-        }
-        dispatch(toggleButtonFollow(false, userId));
+    return (dispatch) => {
+        followUnFollow(dispatch, userId, followAPI.follow, followApply);
     };
 };
 export const unFollow = (userId) => {
     return async (dispatch) => {
-        dispatch(toggleButtonFollow(true, userId));
-        const data = await followAPI.unFollow(userId);
-        if (data.resultCode === 0) {
-            dispatch(unFollowApply(userId));
-        } else if (data.status === 429) {
-            alert("Ошибка. status: 429 зазончились delete/post/put запросы на API");
-        }
-        dispatch(toggleButtonFollow(false, userId));
+        followUnFollow(dispatch, userId, followAPI.unFollow, unFollowApply);
     };
 };
 export default UsersPageReducer;
