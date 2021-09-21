@@ -1,4 +1,5 @@
 const ADD_POST = "ADD_POST";
+const DELETE_POST = "DELETE_POST";
 
 const initialState = {
     posts: [
@@ -14,6 +15,11 @@ const newsPageReducer = (state = initialState, action) => {
                 ...state,
                 posts: [...state.posts, { id: state.posts.length + 1, postText: action.textBody }],
             };
+        case DELETE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter((post) => post.id !== action.id),
+            };
         default:
             return state;
     }
@@ -21,6 +27,9 @@ const newsPageReducer = (state = initialState, action) => {
 
 export const addPostActionCreator = (textBody) => {
     return { type: ADD_POST, textBody };
+};
+export const deletePostActionCreator = (id) => {
+    return { type: DELETE_POST, id };
 };
 
 export default newsPageReducer;
