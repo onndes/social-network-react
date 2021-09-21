@@ -9,10 +9,8 @@ import { Textarea } from "../../Common/CastomFrom/CustomFrom";
 
 const MessagesItemTest = (props) => {
     const updatePost = () => {
-        let i = 1;
         return props.newsPage.posts.map((item) => {
-            i++;
-            return <p key={i}>{item}</p>;
+            return <p key={item.id}>{item.postText}</p>;
         });
     };
 
@@ -32,7 +30,7 @@ const maxLength = maxLengthCreater(15);
 const Form = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={style.form}>
-            <div className={style.textarea} >
+            <div className={style.textarea}>
                 <Field
                     validate={[requireFillIn, maxLength]}
                     name='inputBodyText'

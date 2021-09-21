@@ -1,16 +1,19 @@
-const ADD_POST = "ADD-POST";
+const ADD_POST = "ADD_POST";
 
 const initialState = {
-    posts: ["1 day", "PC", "work day"],
+    posts: [
+        { id: 1, postText: "This is news page" },
+        { id: 2, postText: "Test" },
+    ],
 };
 
 const newsPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
-            if (1) {
-                return { ...state, posts: [...state.posts, action.textBody] };
-            }
-            return state;
+            return {
+                ...state,
+                posts: [...state.posts, { id: state.posts.length + 1, postText: action.textBody }],
+            };
         default:
             return state;
     }
@@ -19,4 +22,5 @@ const newsPageReducer = (state = initialState, action) => {
 export const addPostActionCreator = (textBody) => {
     return { type: ADD_POST, textBody };
 };
+
 export default newsPageReducer;
