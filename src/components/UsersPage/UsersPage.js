@@ -1,5 +1,4 @@
 import React from "react";
-import Preloader from "../../Common/Preloader/Preloader";
 import PreloaderLine from "../../Common/PreloaderLine/PreloaderLine";
 import User from "./User/User";
 import BtnPage from "./BtnPage/BtnPage";
