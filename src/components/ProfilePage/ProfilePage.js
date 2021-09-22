@@ -2,21 +2,9 @@ import React from "react";
 import style from "./Profile.module.css";
 import userImg from "../../assets/img/iconUser.png";
 const Profile = (props) => {
-    const myData = {
-        name: "User Name",
-        id: 19397,
-        uniqueUrlName: null,
-        photos: {
-            small: null,
-            large: null,
-        },
-        status: null,
-        followed: false,
-    };
-
     return (
         <div>
-            <div key={myData.id} className={style.userWrap}>
+            <div className={style.userWrap}>
                 <div className={style.firstCol}>
                     <div className={style.imgContainer}>
                         <img
@@ -29,7 +17,7 @@ const Profile = (props) => {
                         />
                     </div>
                     <div className={style.btnContainer}>
-                        {myData.follow ? (
+                        {props.follow ? (
                             <button className={style.unfollow + " " + style.btnFollow}>
                                 Unfollow
                             </button>
@@ -40,16 +28,8 @@ const Profile = (props) => {
                 </div>
                 <div className={style.secondCol}>
                     <div className={style.nameAndOnlineBox}>
-                        <p className={style.titleName}>
-                            {`${props.profile.fullName} ${
-                                myData.secondName ? myData.secondName : ""
-                            }`}
-                        </p>
-                        {myData.status ? (
-                            <p className={style.statusOnline + " " + style.status}>Online</p>
-                        ) : (
-                            <p className={style.statusOffline + " " + style.status}>Offline</p>
-                        )}
+                        <p className={style.titleName}>{props.profile.fullName}</p>
+                        <p className={style.statusOffline + " " + style.status}>[Offline]</p>
                     </div>
                     <p className={style.userStatus}>
                         {props.userStatus ? props.userStatus : "no data"}

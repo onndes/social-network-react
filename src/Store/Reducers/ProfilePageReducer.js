@@ -1,4 +1,4 @@
-import { profileAPI } from "../../API/API";
+import { followAPI, profileAPI } from "../../API/API";
 
 const SET_PROFILE_DATA = "ProfilePageReducer/SET_PROFILE_DATA ";
 const SET_USER_ID = "ProfilePageReducer/SET_USER_ID";
@@ -6,6 +6,7 @@ const IS_LOADING = "ProfilePageReducer/IS_LOADING";
 const SET_USER_STATUS = "ProfilePageReducer/SET_USER_STATUS";
 const PUT_STATUS = "ProfilePageReducer/PUT_STATUS";
 const IS_UPDATING_MY_STATUS = "ProfilePageReducer/IS_UPDATING_MY_STATUS";
+const SET_FOLLOW_THIS_USER = "ProfilePageReducer/GET_FOLLOW_THIS_USER";
 
 const initialState = {
     profile: null,
@@ -14,6 +15,7 @@ const initialState = {
     userStatus: null,
     status: "",
     isUpdatingMyStatus: false,
+    follow: null,
 };
 
 const ProfilePageReducer = (state = initialState, action) => {
@@ -30,6 +32,8 @@ const ProfilePageReducer = (state = initialState, action) => {
             return { ...state, status: action.userStatus };
         case IS_UPDATING_MY_STATUS:
             return { ...state, isUpdatingMyStatus: action.isUpdate };
+        case SET_FOLLOW_THIS_USER:
+            return { ...state, follow: action.follow };
         default:
             return state;
     }
@@ -66,6 +70,12 @@ export const isUpdatingMyStatus = (isUpdate) => {
         isUpdate,
     };
 };
+export const setFollowThisUser = (follow) => {
+    return {
+        type: SET_FOLLOW_THIS_USER,
+        follow,
+    };
+};
 
 export const getProfile = (userId) => {
     return async (dispatch) => {
@@ -90,4 +100,12 @@ export const putStatus = (status) => async (dispatch) => {
     }
     dispatch(isUpdatingMyStatus(false));
 };
+
+export const getFollowThisUser = (id) => async (dispatch) => {
+    const data = await followAPI.checkFollow(id);
+    if (data.status === 200) {
+        dispatch(setFollowThisUser(data.data));
+    }
+};
+
 export default ProfilePageReducer;
