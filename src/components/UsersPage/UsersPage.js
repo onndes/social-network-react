@@ -1,5 +1,6 @@
 import React from "react";
 import Preloader from "../../Common/Preloader/Preloader";
+import PreloaderLine from "../../Common/PreloaderLine/PreloaderLine";
 import User from "./User/User";
 import BtnPage from "./BtnPage/BtnPage";
 
@@ -8,12 +9,12 @@ const UsersPage = (props) => {
         return props.users.map((user) => {
             return (
                 <div key={user.id}>
-                  <User
-                      user={user}
-                      buttonFollowWork={props.buttonFollowWork}
-                      follow={props.follow}
-                      unFollow={props.unFollow}
-                  />
+                    <User
+                        user={user}
+                        buttonFollowWork={props.buttonFollowWork}
+                        follow={props.follow}
+                        unFollow={props.unFollow}
+                    />
                 </div>
             );
         });
@@ -29,7 +30,7 @@ const UsersPage = (props) => {
                 currentPage={props.currentPage}
             />
 
-            {props.isLoading ? <Preloader /> : renderUsersList()}
+            {props.isLoading ? <PreloaderLine /> : renderUsersList()}
         </>
     );
 };

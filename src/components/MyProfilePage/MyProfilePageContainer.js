@@ -2,10 +2,10 @@ import React from "react";
 import MyProfilePage from "./MyProfilePage";
 import { connect } from "react-redux";
 import { isLoading, getProfile, putStatus } from "../../Store/Reducers/ProfilePageReducer";
-import Preloader from "../../Common/Preloader/Preloader";
 import withAuthRedirect from "./../../HOC/withAuthRedirect";
 import { compose } from "redux";
 import { checkGetUserStatus, getProfilePage } from "../../Store/Selectors";
+import PreloaderLine from './../../Common/PreloaderLine/PreloaderLine';
 
 class MyProfileContainer extends React.Component {
     componentDidMount() {
@@ -14,7 +14,7 @@ class MyProfileContainer extends React.Component {
 
     render() {
         if (!this.props.profile) {
-            return <Preloader />;
+            return <PreloaderLine />;
         }
         return <MyProfilePage {...this.props} />;
     }
