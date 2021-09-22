@@ -1,4 +1,5 @@
 import { usersAPI, followAPI } from "../../API/API";
+import { updateImmutableObg } from "./../../Utils/ObjectHelp";
 
 const FOLLOW = "UsersPageReducer/FOLLOW";
 const UN_FOLLOW = "UsersPageReducer/UN_FOLLOW";
@@ -26,22 +27,12 @@ const UsersPageReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map((user) => {
-                    if (user.id === action.id) {
-                        return { ...user, followed: true };
-                    }
-                    return user;
-                }),
+                users: updateImmutableObg(state.users, "id", action.id, { followed: true }),
             };
         case UN_FOLLOW:
             return {
                 ...state,
-                users: state.users.map((user) => {
-                    if (user.id === action.id) {
-                        return { ...user, followed: false };
-                    }
-                    return user;
-                }),
+                users: updateImmutableObg(state.users, "id", action.id, { followed: false }),
             };
         case SET_USERS:
             return {
