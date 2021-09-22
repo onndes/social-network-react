@@ -1,7 +1,8 @@
 {
     "cSpell.words": ["Wrapp"],
     "favorites.resources": [
-      "src\\Store\\Reducers\\NewsPageReducer.test.js"
+      "csstractor-port-0.0.3\\extension.js",
+      "src\\components\\UsersPage\\User\\User.js"
     ],
     "favorites.sortOrder": "ASC"
 }

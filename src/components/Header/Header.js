@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 const Header = (props) => {
     return (
         <div className={s.wrapper}>
-            <header className={s.header}>
+            <header className={s.header + " appWrapper"}>
                 <div className={s.logo}>
                     <div>RR</div>
                 </div>

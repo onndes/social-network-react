@@ -7,12 +7,14 @@ const UsersPage = (props) => {
     const renderUsersList = () => {
         return props.users.map((user) => {
             return (
-                <User
-                    user={user}
-                    buttonFollowWork={props.buttonFollowWork}
-                    follow={props.follow}
-                    unFollow={props.unFollow}
-                />
+                <div key={user.id}>
+                  <User
+                      user={user}
+                      buttonFollowWork={props.buttonFollowWork}
+                      follow={props.follow}
+                      unFollow={props.unFollow}
+                  />
+                </div>
             );
         });
     };

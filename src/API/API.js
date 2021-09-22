@@ -14,11 +14,6 @@ export const usersAPI = {
             .get(`users?page=${currentPage}&count=${pageSize}`)
 
             .then((response) => {
-                // let data = response.data;
-                // data.items.forEach(
-                //     (user) =>
-                //         (user.status = user.status ? user.status : "no status [check api.js]"),
-                // );
                 return response.data;
             });
     },
@@ -39,6 +34,14 @@ export const followAPI = {
         return instance
             .delete(`follow/${userId}`)
             .then((response) => response.data)
+            .catch((error) => {
+                return error.response;
+            });
+    },
+    checkFollow(userId) {
+        return instance
+            .get(`follow/${userId}`)
+            .then((response) => response)
             .catch((error) => {
                 return error.response;
             });

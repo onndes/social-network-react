@@ -6,7 +6,7 @@ import UsersPageContainer from "../UsersPage/UsersPageContainer";
 import ProfilePageContainer from "../ProfilePage/ProfilePageContainer";
 import MyProfilePageContainer from "../MyProfilePage/MyProfilePageContainer";
 import LoginPageContainer from "./../LoginPage/LoginPageContainer";
-import s from './Main.module.css'
+import s from "./Main.module.css";
 const Main = (props) => {
     return (
         <>
