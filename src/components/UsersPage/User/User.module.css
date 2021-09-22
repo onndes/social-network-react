@@ -1,0 +1,59 @@
+.userWrap {
+  display: grid;
+  grid-template-columns: 100px 10fr;
+  grid-gap: 15px;
+  margin: 0 10px 35px 10px;
+}
+
+.nameAndOnlineBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.imgContainer {
+  max-width: 150px;
+  max-height: 150px;
+  margin: 0 0 10px 0;
+}
+
+.imgContainer img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.btnFollow {
+  width: 100%;
+  text-align: center;
+  padding: 4px 6px;
+  color: white;
+}
+.btnFollow:disabled {
+  opacity: .2;
+}
+.follow {
+  background: rgb(79, 75, 153);
+}
+
+.unfollow {
+  background: rgb(80, 80, 80);
+} 
+.nameAndOnlineBox {
+  padding: 0 0 10px 0;
+}
+
+.statusOffline {
+  color: rgb(168, 115, 115);
+}
+.statusOnline {
+  color: rgb(43, 168, 49);
+}
+.titleName {
+  font-weight: 500;
+  font-size: 18px;
+  padding: 0 30px 0 0;
+}
+.status {
+  font-size: 14px;
+  color: rgb(73, 73, 73);
+}
+
