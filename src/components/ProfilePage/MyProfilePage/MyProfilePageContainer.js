@@ -1,11 +1,11 @@
 import React from "react";
 import MyProfilePage from "./MyProfilePage";
 import { connect } from "react-redux";
-import { isLoading, getProfile, putStatus } from "../../Store/Reducers/ProfilePageReducer";
-import withAuthRedirect from "./../../HOC/withAuthRedirect";
+import { isLoading, getProfile, putStatus } from "../../../Store/Reducers/ProfilePageReducer";
+import withAuthRedirect from "../../../HOC/withAuthRedirect";
 import { compose } from "redux";
-import { checkGetUserStatus, getProfilePage } from "../../Store/Selectors";
-import PreloaderLine from './../../Common/PreloaderLine/PreloaderLine';
+import { checkGetUserStatus, getProfilePage } from "../../../Store/Selectors";
+import PreloaderLine from "../../../Common/PreloaderLine/PreloaderLine";
 
 class MyProfileContainer extends React.Component {
     componentDidMount() {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import style from "./Status.module.css";
-import Preloader from "../../../Common/Preloader/Preloader";
+import Preloader from "../../../../Common/Preloader/Preloader";
 
 const StatusHook = (props) => {
     const [isActiveInput, setActiveInput] = useState(false);

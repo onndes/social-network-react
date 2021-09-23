@@ -1,6 +1,6 @@
 import React from "react";
-import style from "./MyProfile.module.css";
-import userImg from "../../assets/img/iconUser.png";
+import style from "./MyProfilePage.module.css";
+import userImg from "../../../assets/img/iconUser.png";
 import Status from "./Status/Status";
 
 const MyProfile = (props) => {

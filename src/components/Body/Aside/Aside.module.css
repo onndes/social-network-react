@@ -1,10 +1,8 @@
-.aside {
-  padding: 0 0 0 0;
-}
-
 .item {
-  padding: 0 0 10px 15px;
-  
+  padding: 0 0 10px 0px;
+}
+.item:last-of-type {
+  padding: 0px 0px 0px 0px;
 }
 .item:hover {
   text-shadow: 0px 0px 10px #4f4b99ce;
@@ -14,7 +12,6 @@
   font-size: 16px;
   color: rgb(79, 75, 153);
 }
-
 .item a.active {
   display: block;
   color: rgb(79, 75, 153);
