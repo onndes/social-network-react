@@ -10,6 +10,7 @@ const Header = (props) => {
                 <div className={s.logo}>
                     <div>RR</div>
                 </div>
+                <div className={s.btnMenu}></div>
                 <div className={s.loginBox}>
                     <div className={s.imgBox}>
                         <img src={props.photo ? props.photo : iconUser} alt='' />

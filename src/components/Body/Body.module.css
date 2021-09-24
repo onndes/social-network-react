@@ -5,4 +5,8 @@
   grid-gap: 10px;
 }
 
-
+/* @media only screen and (max-width: 768px) {
+  .appBody {
+    display: block  ;
+  }
+} */
