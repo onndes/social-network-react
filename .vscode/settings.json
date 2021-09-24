@@ -1,7 +1,9 @@
 {
     "cSpell.words": ["Wrapp"],
     "favorites.resources": [
-      "csstractor-port-0.0.3\\extension.js"
+      "csstractor-port-0.0.3\\extension.js",
+      "src\\API\\API.js",
+      "src\\Store\\Reducers"
     ],
     "favorites.sortOrder": "ASC"
 }
