@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@babel/register": "^7.15.3",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@material-ui/core": "^5.0.0-beta.5",
     "axios": "^0.21.1",
     "jsdom-quokka-plugin": "^1.0.16",
     "node-sass": "^6.0.1",
