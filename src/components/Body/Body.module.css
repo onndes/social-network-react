@@ -5,8 +5,11 @@
   grid-gap: 10px;
 }
 
-/* @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   .appBody {
-    display: block  ;
+    grid-template-columns: 1fr;
   }
-} */
+  .div1 {
+    display: none;
+  }
+}

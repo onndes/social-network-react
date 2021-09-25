@@ -1,6 +1,7 @@
 .wrapper {
   background-color: #4f4b99;
   box-shadow: 0 0px 15px #4f4b997b;
+  position: relative;
 }
 
 .header {
@@ -89,5 +90,46 @@
     border-style: solid;
     border-width: 15px 15px 0 15px;
     border-color: white transparent transparent transparent;
+    position: relative;
+    z-index: 1000;
+  }
+
+  .btnMenuIsOpenWrapper {
+    padding: 10px 0px 0px 0px;
+  }
+  .btnMenuIsOpen {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-style: solid;
+    border-width: 15px 15px 0 15px;
+    border-color: black transparent transparent transparent;
+    margin: auto;
+    padding: 10px 0px 0px 0px;
+  }
+
+  
+  .SwipeableDrawer {
+    position: absolute;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.685);
+    width: 100%;
+    overflow-y:hidden;
+    z-index: 99;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.356);
+  }
+  .conentDropMenu {
+    background-color: white;
+  }
+  .list {
+    padding: 20px;
+  }
+
+  .item {
+    margin: 0px 0px 10px 0px;
+  }
+
+  .item a {
+    color: rgb(79, 75, 153);
   }
 }
