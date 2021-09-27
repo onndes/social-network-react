@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import s from "./Header.module.css";
 import iconUser from "../../assets/img/iconUser.png";
 import { NavLink } from "react-router-dom";
-import DropdownMenus from './DropdownMenus/DropdownMenus';
+import DropdownMenus from "./DropdownMenus/DropdownMenus";
 
 const Header = (props) => {
     const [toggleDrawer, setToggleDrawer] = useState(false);
@@ -16,7 +16,7 @@ const Header = (props) => {
     return (
         <div className={s.wrapper}>
             <div className={s.wrapperHeader}>
-                <header className={s.header + " appWrapper"}>
+                <header className={s.header + " appWrapperHeader"}>
                     <div className={s.logo}>
                         <div>RR</div>
                     </div>
@@ -50,5 +50,3 @@ const Header = (props) => {
 };
 
 export default Header;
-
-
