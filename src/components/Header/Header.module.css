@@ -1,135 +1,151 @@
 .wrapper {
-  background-color: #4f4b99;
-  box-shadow: 0 0px 15px #4f4b997b;
-  position: relative;
+    position: relative;
+}
+
+.wrapperHeader {
+    background-color: #4f4b99;
+    box-shadow: 0 0px 15px #4f4b997b;
+    position: relative;
+    z-index: 100;
 }
 
 .header {
-  padding: 6px;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    padding: 6px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
 }
 
 .logo {
-  width: 30px;
-  height: 30px;
-  border: 2px solid white;
-  border-radius: 50%;
-  font-size: 25px;
-  vertical-align: middle;
-  display: flex;
-  align-items: center;
-  justify-content: center ;
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 50%;
+    font-size: 25px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .logo div {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 .loginBox {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 .imgBox {
-  width: 25px;
-  margin: 0 10px 0 0;
+    width: 25px;
+    margin: 0 10px 0 0;
 }
 .imgBox img {
-  max-width: 100%;
-  width: 100%;
+    max-width: 100%;
+    width: 100%;
 }
-.userTextBox a{
-   color: white;
+.userTextBox a {
+    color: white;
 }
-.userTextBox a:hover{
-   text-shadow: 0 0 10px rgba(255, 255, 255, 0.624);
+.userTextBox a:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.624);
 }
-.loginBox:hover .menuUser{
-  display: block;
-  transition: all 1s ease;
+.loginBox:hover .menuUser {
+    display: block;
+    transition: all 1s ease;
 }
 .menuUser {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  color: #4f4b99;
-  border: 7px solid rgba(175, 65, 65, 0.001);
-  border-left: 0px;
-  border-right: 0px;
-  width: 100%;
-  z-index: 1;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: #4f4b99;
+    border: 7px solid rgba(175, 65, 65, 0.001);
+    border-left: 0px;
+    border-right: 0px;
+    width: 100%;
+    z-index: 1;
 }
 .menuUser ul {
-  background-color: #f0f2f5;
-  padding: 10px 5px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.487);
+    background-color: #f0f2f5;
+    padding: 10px 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.487);
 }
 .menuUser ul li {
-  padding: 0px 0px 10px 0px;
+    padding: 0px 0px 10px 0px;
 }
 .menuUser ul li:hover {
-  text-shadow: 0px 0px 10px #4f4b99ce;
+    text-shadow: 0px 0px 10px #4f4b99ce;
 }
 .menuUser ul li:last-of-type {
-  padding: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
 }
 
 .btnMenu {
-  display: none;
+    display: none;
 }
 
-@media  only screen  and (max-width: 768px) {
-  .btnMenu {
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-style: solid;
-    border-width: 15px 15px 0 15px;
-    border-color: white transparent transparent transparent;
-    position: relative;
-    z-index: 1000;
-  }
+@media only screen and (max-width: 768px) {
+    .SwipeableDrawer {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 99;
+        box-shadow: 0 0px 10px rgba(0, 0, 0, 0.356);
+        animation: dropMenu 0.4s;
+        z-index: 10;
+    }
 
-  .btnMenuIsOpenWrapper {
-    padding: 10px 0px 0px 0px;
-  }
-  .btnMenuIsOpen {
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-style: solid;
-    border-width: 15px 15px 0 15px;
-    border-color: black transparent transparent transparent;
-    margin: auto;
-    padding: 10px 0px 0px 0px;
-  }
+    .btnMenu {
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-style: solid;
+        border-width: 15px 15px 0 15px;
+        border-color: white transparent transparent transparent;
+        position: relative;
+        z-index: 1000;
+        transition: all 0.5s ease 0s;
+    }
 
-  
-  .SwipeableDrawer {
-    position: absolute;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.685);
-    width: 100%;
-    overflow-y:hidden;
-    z-index: 99;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.356);
-  }
-  .conentDropMenu {
-    background-color: white;
-  }
-  .list {
-    padding: 20px;
-  }
+    .btnMenuIsOpenWrapper {
+        padding: 10px 0px 0px 0px;
+    }
+    .btnMenuOpen {
+        transform: rotate(180deg);
+    }
 
-  .item {
-    margin: 0px 0px 10px 0px;
-  }
+    .conentDropMenu {
+        background-color: white;
+    }
+    .list {
+        padding: 20px;
+    }
 
-  .item a {
-    color: rgb(79, 75, 153);
-  }
+    .item {
+        margin: 0px 0px 10px 0px;
+    }
+
+    .item a {
+        color: rgb(79, 75, 153);
+    }
+    @keyframes dropMenu {
+        0% {
+            top: -100%;
+        }
+        100% {
+            top: 100%;
+        }
+    }
+    @keyframes rotate {
+        0% {
+            transform: rotate(0);
+        }
+        100% {
+            transform: rotate(90deg);
+        }
+    }
 }
