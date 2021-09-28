@@ -7,12 +7,19 @@ import Preloader from "../../../Common/Preloader/Preloader";
 
 const MyProfile = (props) => {
     const [modalChangeFoto, setModalChangeFoto] = useState(false);
-    const [dataInputFile, setDataInputFile] = useState();
+    const [dataInputFile, setDataInputFile] = useState(null);
     const [photoProfile, setPhotoProfile] = useState(props.profile.photos.large || userImg);
+    const [isPhotoSelect, setPhotoSelect] = useState(false);
 
     const onClickSendFoto = () => {
-        props.uploadImg(dataInputFile);
-        setModalChangeFoto(false);
+        if (dataInputFile) {
+            props.uploadImg(dataInputFile);
+            setModalChangeFoto(false);
+            setPhotoSelect(false);
+            setDataInputFile(null);
+        } else {
+            setPhotoSelect(true);
+        }
     };
 
     useEffect(() => {
@@ -76,7 +83,14 @@ const MyProfile = (props) => {
                 </div>
             </div>
             {modalChangeFoto && (
-                <ModalFoto setDataInputFile={setDataInputFile} onClickSendFoto={onClickSendFoto} />
+                <ModalFoto
+                    setDataInputFile={setDataInputFile}
+                    onClickSendFoto={onClickSendFoto}
+                    dataInputFile={dataInputFile}
+                    isPhotoSelect={isPhotoSelect}
+                    setPhotoSelect={setPhotoSelect}
+                    setModalChangeFoto={setModalChangeFoto}
+                />
             )}
         </div>
     );

@@ -3,7 +3,9 @@
     "favorites.resources": [
       "csstractor-port-0.0.3\\extension.js",
       "src\\API\\API.js",
-      "src\\Store\\Reducers"
+      "src\\Store\\Reducers",
+      "src\\components\\ProfilePage\\MyProfilePage\\MyProfilePage.js",
+      "src\\components\\ProfilePage\\MyProfilePage\\MyProfilePage.module.css"
     ],
     "favorites.sortOrder": "ASC"
 }
