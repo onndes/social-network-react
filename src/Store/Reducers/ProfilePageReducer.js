@@ -7,6 +7,8 @@ const SET_USER_STATUS = "ProfilePageReducer/SET_USER_STATUS";
 const PUT_STATUS = "ProfilePageReducer/PUT_STATUS";
 const IS_UPDATING_MY_STATUS = "ProfilePageReducer/IS_UPDATING_MY_STATUS";
 const SET_FOLLOW_THIS_USER = "ProfilePageReducer/GET_FOLLOW_THIS_USER";
+const SET_PHOTO_PROFILE = "ProfilePageReducer/SET_PHOTO_PROFILE";
+const IS_UPDATE_PHOTO = "ProfilePageReducer/IS_UPDATE_PHOTO";
 
 const initialState = {
     profile: null,
@@ -16,6 +18,7 @@ const initialState = {
     status: "",
     isUpdatingMyStatus: false,
     follow: null,
+    isUpdatePhoto: false,
 };
 
 const ProfilePageReducer = (state = initialState, action) => {
@@ -34,6 +37,10 @@ const ProfilePageReducer = (state = initialState, action) => {
             return { ...state, isUpdatingMyStatus: action.isUpdate };
         case SET_FOLLOW_THIS_USER:
             return { ...state, follow: action.follow };
+        case SET_PHOTO_PROFILE:
+            return { ...state, profile: { ...state.profile, photos: action.image } };
+        case IS_UPDATE_PHOTO:
+            return { ...state, isUpdatePhoto: action.isUpdatePhoto };
         default:
             return state;
     }
@@ -76,6 +83,18 @@ export const setFollowThisUser = (follow) => {
         follow,
     };
 };
+export const setPhotoPofile = (image) => {
+    return {
+        type: SET_PHOTO_PROFILE,
+        image,
+    };
+};
+export const isUpdatePhoto = (isUpdatePhoto) => {
+    return {
+        type: IS_UPDATE_PHOTO,
+        isUpdatePhoto,
+    };
+};
 
 export const getProfile = (userId) => {
     return async (dispatch) => {
@@ -106,6 +125,14 @@ export const getFollowThisUser = (id) => async (dispatch) => {
     if (data.status === 200) {
         dispatch(setFollowThisUser(data.data));
     }
+};
+export const uploadImg = (image) => async (dispatch) => {
+    dispatch(isUpdatePhoto(true));
+    const data = await profileAPI.updateFoto(image);
+    if (data.resultCode === 0) {
+        dispatch(setPhotoPofile(data.data.photos));
+    }
+    dispatch(isUpdatePhoto(false));
 };
 
 export default ProfilePageReducer;

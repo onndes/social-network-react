@@ -15,11 +15,22 @@
   width: 100%;
   height: 100%;
   margin: 0 0 10px 0;
+  position: relative;
 }
 
 .imgContainer img {
   width: 100%;
   max-width: 100%;
+}
+.preloader {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.638);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .btnEditMyProfile {
   width: 100%;
@@ -27,6 +38,10 @@
   padding: 4px 6px;
   color: white;
   background: rgb(79, 75, 153);
+}
+.btnEditMyProfileOff {
+  background: grey;
+
 }
 
 .nameAndOnlineBox {
@@ -114,3 +129,4 @@
 .secondCol {
   margin-left: 15px;
 }
+

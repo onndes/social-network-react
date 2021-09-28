@@ -1,7 +1,12 @@
 import React from "react";
 import MyProfilePage from "./MyProfilePage";
 import { connect } from "react-redux";
-import { isLoading, getProfile, putStatus } from "../../../Store/Reducers/ProfilePageReducer";
+import {
+    isLoading,
+    getProfile,
+    putStatus,
+    uploadImg,
+} from "../../../Store/Reducers/ProfilePageReducer";
 import withAuthRedirect from "../../../HOC/withAuthRedirect";
 import { compose } from "redux";
 import { checkGetUserStatus, getProfilePage } from "../../../Store/Selectors";
@@ -28,6 +33,7 @@ const mapStateToProps = (state) => {
         isUpdatingMyStatus: state.profilePage.isUpdatingMyStatus,
         id: state.auth.id,
         isAuth: state.auth.isAuth,
+        isUpdatePhoto: state.profilePage.isUpdatePhoto,
     };
 };
 
@@ -36,6 +42,7 @@ export default compose(
         isLoading,
         getProfile,
         putStatus,
+        uploadImg,
     }),
     withAuthRedirect,
 )(MyProfileContainer);
