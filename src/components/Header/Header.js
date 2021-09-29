@@ -7,11 +7,13 @@ import DropdownMenus from "./DropdownMenus/DropdownMenus";
 const Header = (props) => {
     const [toggleDrawer, setToggleDrawer] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth + "px");
+    const [photo, setPhoto] = useState(props.photo ? props.photo : iconUser);
 
     useEffect(() => {
         window.addEventListener("resize", () => setWindowWidth(window.innerWidth + "px"));
         if (windowWidth > "768px") setToggleDrawer(false);
-    }, [windowWidth]);
+        setPhoto(props.photo ? props.photo : iconUser);
+    }, [windowWidth, props.photo]);
 
     return (
         <div className={s.wrapper}>
@@ -25,7 +27,7 @@ const Header = (props) => {
                         onClick={() => setToggleDrawer(!toggleDrawer)}></div>
                     <div className={s.loginBox}>
                         <div className={s.imgBox}>
-                            <img src={props.photo ? props.photo : iconUser} alt='' />
+                            <img src={photo} alt='' />
                         </div>
                         <div className={s.userTextBox}>
                             {props.isAuth ? props.login : <NavLink to='/login'>Login</NavLink>}

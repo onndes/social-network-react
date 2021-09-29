@@ -8,6 +8,7 @@ import {
     uploadImg,
     upadateProfileInfo,
 } from "../../../Store/Reducers/ProfilePageReducer";
+import { getSmallPhotoForHeader } from "../../../Store/Reducers/AuthReducer";
 import withAuthRedirect from "../../../HOC/withAuthRedirect";
 import { compose } from "redux";
 import { checkGetUserStatus, getProfilePage } from "../../../Store/Selectors";
@@ -45,6 +46,7 @@ export default compose(
         putStatus,
         uploadImg,
         upadateProfileInfo,
+        getSmallPhotoForHeader,
     }),
     withAuthRedirect,
 )(MyProfileContainer);

@@ -1,4 +1,5 @@
 import { followAPI, profileAPI } from "../../API/API";
+import { getSmallPhotoForHeader } from "./AuthReducer";
 
 const SET_PROFILE_DATA = "ProfilePageReducer/SET_PROFILE_DATA ";
 const SET_USER_ID = "ProfilePageReducer/SET_USER_ID";
@@ -131,11 +132,11 @@ export const uploadImg = (image) => async (dispatch) => {
     const data = await profileAPI.updateFoto(image);
     if (data.resultCode === 0) {
         dispatch(setPhotoPofile(data.data.photos));
+        dispatch(getSmallPhotoForHeader());
     }
     dispatch(isUpdatePhoto(false));
 };
 export const upadateProfileInfo = (profileInfo) => async (dispatch, getState) => {
-    console.log(profileInfo);
     const data = await profileAPI.updateProfileInfo(profileInfo);
     if (data.resultCode === 0) {
         dispatch(getProfile(getState().auth.id));

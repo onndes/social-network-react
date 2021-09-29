@@ -1,5 +1,5 @@
 import { stopSubmit } from "redux-form";
-import { authMeAPI } from "../../API/API";
+import { authMeAPI, profileAPI } from "../../API/API";
 
 const SET_USER_DATA = "AuthReducer/SET_USER_DATA";
 const SET_USER_PHOTO = "AuthReducer/SET_USER_PHOTO";
@@ -61,19 +61,24 @@ export const setIsLoading = (isLoading) => {
     };
 };
 
-export const authMe = (id) => async (dispatch) => {
+export const authMe = (id) => async (dispatch, getState) => {
     const data = await authMeAPI.getAuthMe();
     if (data.resultCode === 0) {
         const { email, id, login } = data.data;
         dispatch(setUserData(id, email, login));
     }
 
-    // if (id) {
-    //     profileAPI.getProfile(id).then((data) => {
-    //         dispatch(setUserPhoto(data.photos.small));
-    //     });
-    // }
+    profileAPI.getProfile(getState().auth.id).then((data) => {
+        dispatch(setUserPhoto(data.photos.small));
+    });
 };
+export const getSmallPhotoForHeader = () => async (dispatch, getState) => {
+    profileAPI.getProfile(getState().auth.id).then((data) => {
+        dispatch(setUserPhoto(data.photos.small));
+    });
+};
+
+
 
 export const loginMe = (userData) => async (dispatch) => {
     dispatch(setIsLoading(true));

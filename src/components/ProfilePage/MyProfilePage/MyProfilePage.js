@@ -24,9 +24,8 @@ const MyProfile = (props) => {
             setPhotoSelect(true);
         }
     };
-
     useEffect(() => {
-        setPhotoProfile(props.profile.photos.large || userImg);
+        setPhotoProfile(props.profile.photos.large || userImg);  
     }, [props.profile, props.isUpdatePhoto]);
 
     const onSubmit = (data) => {
