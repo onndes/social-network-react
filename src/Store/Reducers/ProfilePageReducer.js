@@ -134,5 +134,14 @@ export const uploadImg = (image) => async (dispatch) => {
     }
     dispatch(isUpdatePhoto(false));
 };
+export const upadateProfileInfo = (profileInfo) => async (dispatch, getState) => {
+    console.log(profileInfo);
+    const data = await profileAPI.updateProfileInfo(profileInfo);
+    if (data.resultCode === 0) {
+        dispatch(getProfile(getState().auth.id));
+    } else {
+      // return Promise.reject(data.data.messages[0])
+    }
+};
 
 export default ProfilePageReducer;
