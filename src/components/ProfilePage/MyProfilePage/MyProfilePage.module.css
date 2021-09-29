@@ -108,6 +108,33 @@
 .secondCol {
   margin-left: 15px;
 }
+.btnModified {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 4px;
+  padding: 2px 4px;
+  background-color: rgb(197, 197, 197);
+  font-size: 12px;
+  opacity: .7;
+}
+.btnModifiedSave {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 4px;
+  padding: 2px 4px;
+  font-size: 12px;
+  opacity: .7;
+  background-color: rgb(161, 197, 125);
+
+}
+.btnModified:hover {
+  background-color: rgb(165, 165, 165);
+
+}
+.btnModified a {
+  color: black;
+}
+
 
 @media only screen and (max-width: 575.98px) {
   .userWrap {

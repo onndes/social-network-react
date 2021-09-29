@@ -5,6 +5,7 @@ import UsersPageContainer from "../../UsersPage/UsersPageContainer";
 import ProfilePageContainer from "../../ProfilePage/ProfilePageContainer";
 import MyProfilePageContainer from "../../ProfilePage/MyProfilePage/MyProfilePageContainer";
 import LoginPageContainer from "../../LoginPage/LoginPageContainer";
+// import ProfileInfoModified from "../../ProfilePage/MyProfilePage/ProfileInfoModified/ProfileInfoModified";
 import s from "./Main.module.css";
 import withSuspense from "./../../../HOC/withSuspense";
 
@@ -20,6 +21,7 @@ const Main = (props) => {
                 <Route path='/users' component={UsersPageContainer} />
                 <Route path='/profile/:userId' component={ProfilePageContainer} />
                 <Route path='/login' component={LoginPageContainer} />
+                {/* <Route path='/my-profile-info-modified' component={ProfileInfoModified} /> */}
             </div>
         </>
     );

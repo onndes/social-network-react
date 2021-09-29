@@ -12,7 +12,7 @@ const MyProfile = (props) => {
     const [dataInputFile, setDataInputFile] = useState(null);
     const [photoProfile, setPhotoProfile] = useState(props.profile.photos.large || userImg);
     const [isPhotoSelect, setPhotoSelect] = useState(false);
-    const [modifiedProfile, setModifiedProfile] = useState(true);
+    const [modifiedProfile, setModifiedProfile] = useState(false);
 
     const onClickSendFoto = () => {
         if (dataInputFile) {
@@ -30,7 +30,9 @@ const MyProfile = (props) => {
     }, [props.profile, props.isUpdatePhoto]);
 
     const onSubmit = (data) => {
-      props.upadateProfileInfo(data)
+        if (data) {
+            props.upadateProfileInfo(data).then(() => setModifiedProfile(false));
+        }
     };
 
     return (
@@ -81,8 +83,13 @@ const MyProfile = (props) => {
                         </NavLink> */}
                         Modifide my profile info
                     </button>
+
                     {modifiedProfile ? (
-                        <ProfileInfoModified onSubmit={onSubmit} profile={props.profile} />
+                        <ProfileInfoModified
+                            initialValues={props.profile}
+                            onSubmit={onSubmit}
+                            profile={props.profile}
+                        />
                     ) : (
                         <ProfileInfo profile={props.profile} />
                     )}

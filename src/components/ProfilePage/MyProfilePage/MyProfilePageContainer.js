@@ -6,6 +6,7 @@ import {
     getProfile,
     putStatus,
     uploadImg,
+    upadateProfileInfo,
 } from "../../../Store/Reducers/ProfilePageReducer";
 import withAuthRedirect from "../../../HOC/withAuthRedirect";
 import { compose } from "redux";
@@ -43,6 +44,7 @@ export default compose(
         getProfile,
         putStatus,
         uploadImg,
+        upadateProfileInfo,
     }),
     withAuthRedirect,
 )(MyProfileContainer);
