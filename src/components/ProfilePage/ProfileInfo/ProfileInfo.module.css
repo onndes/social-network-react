@@ -1,0 +1,21 @@
+/* ProfileInfo start */
+.wrappProfileInfoPI {
+  margin: 20px 0px 0px 0px;
+}
+  .wrapTitleInfoPI {
+    display: flex;
+    margin: 0px 0px 10px 0px;
+  }
+  .wrapTitleInfoPI_contacts {
+    margin: 0px 0px 0px 30px;
+  }
+  .titlePI {
+    margin: 0px 10px 0px 0px;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .descriptionPI {
+    font-size: 14px;
+    color: rgb(109, 109, 109);
+  }
+/* ProfileInfo end */
