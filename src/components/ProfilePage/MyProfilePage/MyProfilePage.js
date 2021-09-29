@@ -4,12 +4,15 @@ import userImg from "../../../assets/img/iconUser.png";
 import Status from "./Status/Status";
 import ModalFoto from "./ModalFoto/ModalFoto";
 import Preloader from "../../../Common/Preloader/Preloader";
+import ProfileInfo from "./../ProfileInfo/ProfileInfo";
+import ProfileInfoModified from "./ProfileInfoModified/ProfileInfoModified";
 
 const MyProfile = (props) => {
     const [modalChangeFoto, setModalChangeFoto] = useState(false);
     const [dataInputFile, setDataInputFile] = useState(null);
     const [photoProfile, setPhotoProfile] = useState(props.profile.photos.large || userImg);
     const [isPhotoSelect, setPhotoSelect] = useState(false);
+    const [modifiedProfile, setModifiedProfile] = useState(true);
 
     const onClickSendFoto = () => {
         if (dataInputFile) {
@@ -25,6 +28,10 @@ const MyProfile = (props) => {
     useEffect(() => {
         setPhotoProfile(props.profile.photos.large || userImg);
     }, [props.profile, props.isUpdatePhoto]);
+
+    const onSubmit = (data) => {
+      props.upadateProfileInfo(data)
+    };
 
     return (
         <div>
@@ -64,22 +71,21 @@ const MyProfile = (props) => {
                             isUpdatingMyStatus={props.isUpdatingMyStatus}
                         />
                     </div>
-                    <p className={s.aboutMe}>
-                        <span>About me: </span>
-                        {props.profile.aboutMe ? props.profile.aboutMe : "no data"}
-                    </p>
-                    <div className={s.aboutUserWrapper}>
-                        <ul className={s.aboutUserListTitle}>
-                            <li className={s.aboutUserItemTitle}>Birthday:</li>
-                            <li className={s.aboutUserItemTitle}>Town:</li>
-                            <li className={s.aboutUserItemTitle}>Photos:</li>
-                        </ul>
-                        <ul className={s.aboutUserList}>
-                            <li className={s.aboutUserItem}>[hardcode]</li>
-                            <li className={s.aboutUserItem}>[hardcode]</li>
-                            <li className={s.aboutUserItem}>[hardcode]</li>
-                        </ul>
-                    </div>
+
+                    <button
+                        onClick={() => setModifiedProfile(!modifiedProfile)}
+                        className={s.btnModified}
+                        type='button'>
+                        {/* <NavLink to='/my-profile-info-modified' activeClassName={s.active}>
+                            Modifide my profile info
+                        </NavLink> */}
+                        Modifide my profile info
+                    </button>
+                    {modifiedProfile ? (
+                        <ProfileInfoModified onSubmit={onSubmit} profile={props.profile} />
+                    ) : (
+                        <ProfileInfo profile={props.profile} />
+                    )}
                 </div>
             </div>
             {modalChangeFoto && (
@@ -95,4 +101,5 @@ const MyProfile = (props) => {
         </div>
     );
 };
+
 export default MyProfile;
