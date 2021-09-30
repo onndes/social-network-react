@@ -20,7 +20,7 @@ const AuthReducer = (state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.iel,
+                ...action.data,
             };
         case SET_USER_ADDITIONAL_INFO:
             return {
@@ -41,7 +41,7 @@ const AuthReducer = (state = initialState, action) => {
 export const setUserData = (id, email, login) => {
     return {
         type: SET_USER_DATA,
-        iel: { id, email, login, isAuth: true },
+        data: { id, email, login, isAuth: true },
     };
 };
 export const clearUserData = () => {
@@ -97,9 +97,9 @@ export const loginMe = (userData) => async (dispatch) => {
     dispatch(setIsLoading(false));
 };
 
-export const logoutMe = (userData) => (dispatch) => {
-    const data = authMeAPI.logout(userData);
-    if (data.resultCode === 0) {
+export const logoutMe = (userData) => async (dispatch) => {
+    const data = await authMeAPI.logout(userData);
+    if (data.data.resultCode === 0) {
         dispatch(clearUserData());
     }
 };
