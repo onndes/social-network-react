@@ -34,10 +34,18 @@ const Header = (props) => {
                         </div>
                         <div className={s.userTextBox}>{userName}</div>
                         {props.isAuth && (
-                            <div className={s.menuUser}>
-                                <ul>
-                                    <li>Pofile</li>
-                                    <li>Settings</li>
+                            <div className={s.menuWrapp}>
+                                <ul  className={s.menuList}>
+                                    <li className={s.menuItem}>
+                                        <NavLink to='/myprofile' activeClassName={s.active}>
+                                            My profile
+                                        </NavLink>
+                                    </li>
+                                    <li className={s.menuItem}>
+                                        <NavLink to='/settings' activeClassName={s.active}>
+                                            Settings
+                                        </NavLink>
+                                    </li>
                                     <li onClick={props.logoutMe}>Exit</li>
                                 </ul>
                             </div>

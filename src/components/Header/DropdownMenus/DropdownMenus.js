@@ -38,6 +38,14 @@ const DropdownMenus = ({ toggleDrawer, setToggleDrawer }) => {
                             Users
                         </NavLink>
                     </li>
+                    <li className={s.item}>
+                        <NavLink
+                            to='/settings'
+                            activeClassName={s.active}
+                            onClick={() => setToggleDrawer(!toggleDrawer)}>
+                            Settings
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
         </div>

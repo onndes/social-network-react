@@ -59,11 +59,11 @@
 .userTextBox a:hover {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.624);
 }
-.loginBox:hover .menuUser {
+.loginBox:hover .menuWrapp {
     display: block;
     transition: all 1s ease;
 }
-.menuUser {
+.menuWrapp {
     display: none;
     position: absolute;
     top: 100%;
@@ -74,25 +74,27 @@
     border-right: 0px;
     width: 100%;
 }
-.menuUser ul {
+.menuList {
     background-color: #f0f2f5;
     padding: 10px 5px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.487);
 }
-.menuUser ul li {
+.menuItem {
     padding: 0px 0px 10px 0px;
 }
-.menuUser ul li:hover {
+.menuItem:hover {
     text-shadow: 0px 0px 10px #4f4b99ce;
 }
-.menuUser ul li:last-of-type {
+.menuItem:last-of-type {
     padding: 0px 0px 0px 0px;
 }
 
 .btnMenu {
     display: none;
 }
-
+.active {
+  color: #4f4b99;
+}
 @media only screen and (max-width: 768px) {
     .SwipeableDrawer {
         position: absolute;

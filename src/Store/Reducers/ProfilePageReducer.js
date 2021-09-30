@@ -157,7 +157,9 @@ export default ProfilePageReducer;
 
 // const messs = "The LookingForAJobDescription field is required. (LookingForAJobDescription)";
 // const regExp1 = /\([^)]+\)/;
+// const regExp2 = /\w/;
 // const matchess = regExp1.exec(messs);
+// const matchess2 = regExp2.exec(matchess);
 
-// console.log(matchess); //?
-// console.log();
+// console.log(matchess2); //?
+

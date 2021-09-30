@@ -30,8 +30,7 @@ const Aside = () => {
                     <li className={style.item}>
                         <NavLink to='/settings' activeClassName={style.active}>
                             Settings
-                        </NavLink>
-                        
+                        </NavLink>  
                     </li>
                 </ul>
             </aside>
