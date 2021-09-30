@@ -34,3 +34,15 @@
   
   }
 /* ProfileInfo end */
+
+.errorBox{
+  background-color: rgba(255, 0, 0, 0.2);
+  border: 2px solid rgb(252, 66, 66);
+  margin: 0px 0px 25px 0px;
+}
+
+.errorText {
+  padding: 13px;
+  color: rgb(247, 53, 53);
+  line-height: 17px;
+}

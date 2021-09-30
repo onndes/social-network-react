@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Field, reduxForm } from "redux-form";
 import { Input } from "../../../Common/CastomFrom/CustomFrom";
 import PreloaderLine from "../../../Common/PreloaderLine/PreloaderLine";
-const ProfileModified = ({ profileUser, handleSubmit }) => {
+const ProfileModified = ({ profileUser, handleSubmit, error }) => {
     const [profile, setProfile] = useState(profileUser);
 
     useEffect(() => {
@@ -20,8 +20,15 @@ const ProfileModified = ({ profileUser, handleSubmit }) => {
         );
     });
 
+  
+
     return (
         <form onSubmit={handleSubmit} className={s.wrappProfileInfoPI}>
+            {error && (
+                <div className={s.errorBox}>
+                    <p className={s.errorText}>{error}</p>
+                </div>
+            )}
             <div className={s.wrapTitleInfoPI}>
                 <p className={s.titlePI}>*Full name: </p>
                 <Field className={s.descriptionPI} component={Input} name={"fullName"} />

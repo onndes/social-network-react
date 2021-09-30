@@ -1,5 +1,6 @@
 import { followAPI, profileAPI } from "../../API/API";
 import { getAdditionalInfoUser } from "./AuthReducer";
+import { stopSubmit } from "redux-form";
 
 const SET_PROFILE_DATA = "ProfilePageReducer/SET_PROFILE_DATA ";
 const SET_USER_ID = "ProfilePageReducer/SET_USER_ID";
@@ -142,8 +143,21 @@ export const upadateProfileInfo = (profileInfo) => async (dispatch, getState) =>
         dispatch(getProfile(getState().auth.id));
         dispatch(getAdditionalInfoUser(getState().auth.id));
     } else {
-        // return Promise.reject(data.data.messages[0])
+        var regExp = /\([^)]+\)/;
+        var matches = regExp.exec(data.messages[0]);
+
+        console.log(matches);
+        console.log(data.messages[0]);
+
+        dispatch(stopSubmit("modifiedProfile", { _error: matches }));
     }
 };
 
 export default ProfilePageReducer;
+
+// const messs = "The LookingForAJobDescription field is required. (LookingForAJobDescription)";
+// const regExp1 = /\([^)]+\)/;
+// const matchess = regExp1.exec(messs);
+
+// console.log(matchess); //?
+// console.log();
