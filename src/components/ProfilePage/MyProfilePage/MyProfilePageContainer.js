@@ -16,7 +16,13 @@ import PreloaderLine from "../../../Common/PreloaderLine/PreloaderLine";
 
 class MyProfileContainer extends React.Component {
     componentDidMount() {
-        this.props.getProfile(this.props.id);
+        if (this.props.profile) {
+            if (this.props.id !== this.props.profile.userId) {
+                this.props.getProfile(this.props.id);
+            }
+        } else {
+            this.props.getProfile(this.props.id);
+        }
     }
 
     render() {
