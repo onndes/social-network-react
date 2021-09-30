@@ -7,7 +7,7 @@ import Preloader from "../../../Common/Preloader/Preloader";
 import ProfileInfo from "./../ProfileInfo/ProfileInfo";
 import ProfileInfoModified from "./ProfileInfoModified/ProfileInfoModified";
 
-const MyProfile = (props) => {
+const MyProfilePage = (props) => {
     const [modalChangeFoto, setModalChangeFoto] = useState(false);
     const [dataInputFile, setDataInputFile] = useState(null);
     const [photoProfile, setPhotoProfile] = useState(props.profile.photos.large || userImg);
@@ -24,15 +24,21 @@ const MyProfile = (props) => {
             setPhotoSelect(true);
         }
     };
-    useEffect(() => {
-        setPhotoProfile(props.profile.photos.large || userImg);  
-    }, [props.profile, props.isUpdatePhoto]);
 
     const onSubmit = (data) => {
         if (data) {
             props.upadateProfileInfo(data).then(() => setModifiedProfile(false));
         }
     };
+
+    useEffect(() => {
+        let mount = true;
+        // mount - in order to remove the error, the component is not yet mounted
+        if (mount) {
+            setPhotoProfile(props.profile.photos.large || userImg);
+        }
+        return () => (mount = false);
+    }, [props.profile.photos.large]);
 
     return (
         <div>
@@ -108,4 +114,4 @@ const MyProfile = (props) => {
     );
 };
 
-export default MyProfile;
+export default MyProfilePage;
