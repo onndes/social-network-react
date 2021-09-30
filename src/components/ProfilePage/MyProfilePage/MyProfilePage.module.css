@@ -115,7 +115,7 @@
   padding: 2px 4px;
   background-color: rgb(197, 197, 197);
   font-size: 12px;
-  opacity: .7;
+  /* opacity: .7; */
 }
 .btnModifiedSave {
   display: block;
