@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./ModalFoto.module.css";
+;
 const ModalFoto = ({
     setDataInputFile,
     onClickSendFoto,
@@ -7,9 +8,11 @@ const ModalFoto = ({
     isPhotoSelect,
     setPhotoSelect,
     setModalChangeFoto,
+
 }) => {
     // const onCkickInput = {};
-
+  
+   
     return (
         <div
             onClick={(e) => {

@@ -8,12 +8,15 @@ const Header = (props) => {
     const [toggleDrawer, setToggleDrawer] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth + "px");
     const [photo, setPhoto] = useState(props.photo ? props.photo : iconUser);
-
+    const [userName, setUserName] = useState(
+        props.isAuth ? props.fullName : <NavLink to='/login'>Login</NavLink>,
+    );
     useEffect(() => {
         window.addEventListener("resize", () => setWindowWidth(window.innerWidth + "px"));
         if (windowWidth > "768px") setToggleDrawer(false);
         setPhoto(props.photo ? props.photo : iconUser);
-    }, [windowWidth, props.photo]);
+        setUserName(props.isAuth ? props.fullName : <NavLink to='/login'>Login</NavLink>);
+    }, [windowWidth, props.photo, props.fullName, props.isAuth]);
 
     return (
         <div className={s.wrapper}>
@@ -29,9 +32,7 @@ const Header = (props) => {
                         <div className={s.imgBox}>
                             <img src={photo} alt='' />
                         </div>
-                        <div className={s.userTextBox}>
-                            {props.isAuth ? props.login : <NavLink to='/login'>Login</NavLink>}
-                        </div>
+                        <div className={s.userTextBox}>{userName}</div>
                         {props.isAuth && (
                             <div className={s.menuUser}>
                                 <ul>

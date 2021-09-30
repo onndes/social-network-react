@@ -16,6 +16,7 @@ const mapStateToProps = (state) => {
         email: state.auth.email,
         isAuth: state.auth.isAuth,
         photo: state.auth.photo,
+        fullName: state.auth.fullName,
     };
 };
 

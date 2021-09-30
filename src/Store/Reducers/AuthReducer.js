@@ -2,7 +2,7 @@ import { stopSubmit } from "redux-form";
 import { authMeAPI, profileAPI } from "../../API/API";
 
 const SET_USER_DATA = "AuthReducer/SET_USER_DATA";
-const SET_USER_PHOTO = "AuthReducer/SET_USER_PHOTO";
+const SET_USER_ADDITIONAL_INFO = "AuthReducer/SET_USER_ADDITIONAL_INFO";
 const IS_LOADING = "AuthReducer/IS_LOADING";
 
 const initialState = {
@@ -12,6 +12,7 @@ const initialState = {
     isAuth: false,
     photo: null,
     isLoading: false,
+    fullName: null,
 };
 
 const AuthReducer = (state = initialState, action) => {
@@ -19,12 +20,13 @@ const AuthReducer = (state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data,
+                ...action.iel,
             };
-        case SET_USER_PHOTO:
+        case SET_USER_ADDITIONAL_INFO:
             return {
                 ...state,
                 photo: action.photo,
+                fullName: action.fullName,
             };
         case IS_LOADING:
             return {
@@ -39,19 +41,20 @@ const AuthReducer = (state = initialState, action) => {
 export const setUserData = (id, email, login) => {
     return {
         type: SET_USER_DATA,
-        data: { id, email, login, isAuth: true },
+        iel: { id, email, login, isAuth: true },
     };
 };
 export const clearUserData = () => {
     return {
         type: SET_USER_DATA,
-        data: { id: null, email: null, login: null, isAuth: false, photo: null },
+        data: { id: null, email: null, login: null, isAuth: false, photo: null, fullName: null },
     };
 };
-export const setUserPhoto = (photo) => {
+export const setAdditionalInfoUser = (photo, fullName) => {
     return {
-        type: SET_USER_PHOTO,
+        type: SET_USER_ADDITIONAL_INFO,
         photo,
+        fullName,
     };
 };
 export const setIsLoading = (isLoading) => {
@@ -61,7 +64,7 @@ export const setIsLoading = (isLoading) => {
     };
 };
 
-export const authMe = (id) => async (dispatch, getState) => {
+export const authMe = () => async (dispatch, getState) => {
     const data = await authMeAPI.getAuthMe();
     if (data.resultCode === 0) {
         const { email, id, login } = data.data;
@@ -69,16 +72,15 @@ export const authMe = (id) => async (dispatch, getState) => {
     }
 
     profileAPI.getProfile(getState().auth.id).then((data) => {
-        dispatch(setUserPhoto(data.photos.small));
+        dispatch(setAdditionalInfoUser(data.photos.small, data.fullName));
     });
 };
-export const getSmallPhotoForHeader = () => async (dispatch, getState) => {
+
+export const getAdditionalInfoUser = () => async (dispatch, getState) => {
     profileAPI.getProfile(getState().auth.id).then((data) => {
-        dispatch(setUserPhoto(data.photos.small));
+        dispatch(setAdditionalInfoUser(data.photos.small, data.fullName));
     });
 };
-
-
 
 export const loginMe = (userData) => async (dispatch) => {
     dispatch(setIsLoading(true));
