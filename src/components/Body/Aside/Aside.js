@@ -27,6 +27,12 @@ const Aside = () => {
                             Users
                         </NavLink>
                     </li>
+                    <li className={style.item}>
+                        <NavLink to='/settings' activeClassName={style.active}>
+                            Settings
+                        </NavLink>
+                        
+                    </li>
                 </ul>
             </aside>
         </>

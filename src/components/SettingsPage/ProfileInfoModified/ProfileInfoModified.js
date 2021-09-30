@@ -1,8 +1,16 @@
 import s from "./ProfileInfoModified.module.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Field, reduxForm } from "redux-form";
-import { Input } from "../../../../Common/CastomFrom/CustomFrom";
-const ProfileModified = ({ profile, handleSubmit }) => {
+import { Input } from "../../../Common/CastomFrom/CustomFrom";
+import PreloaderLine from "../../../Common/PreloaderLine/PreloaderLine";
+const ProfileModified = ({ profileUser, handleSubmit }) => {
+    const [profile, setProfile] = useState(profileUser);
+
+    useEffect(() => {
+        setProfile(profileUser);
+    }, [profileUser]);
+
+    if (!profile) return <PreloaderLine />;
     const contacts = Object.keys(profile.contacts).map((title) => {
         return (
             <div key={title} className={s.wrapTitleInfoPI}>

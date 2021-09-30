@@ -1,0 +1,18 @@
+.menu {
+  border-bottom: 1px solid rgba(79, 75, 153, 0.323);
+}
+.menuList {
+  padding: 0px 0px 10px 0px;
+}
+.menuItem a {
+  display: block;
+  font-size: 16px;
+  color: rgb(79, 75, 153);
+}
+
+.menuItem:hover {
+  text-shadow: 0px 0px 10px #4f4b99ce;
+}
+.settingsMenu {
+  padding: 20px 0px 0px 0px;
+}

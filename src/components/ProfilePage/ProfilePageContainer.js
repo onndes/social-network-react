@@ -2,6 +2,7 @@ import React from "react";
 import ProfilePage from "./ProfilePage";
 import { connect } from "react-redux";
 import { isLoading, getProfile, getFollowThisUser } from "../../Store/Reducers/ProfilePageReducer";
+// import { isLoading, getProfile, getFollowThisUser } from "../../Store/Reducers/ProfilePageReducer";
 import Preloader from "../../Common/Preloader/Preloader";
 import { withRouter, Redirect } from "react-router-dom";
 

@@ -5,14 +5,13 @@ import Status from "./Status/Status";
 import ModalFoto from "./ModalFoto/ModalFoto";
 import Preloader from "../../../Common/Preloader/Preloader";
 import ProfileInfo from "./../ProfileInfo/ProfileInfo";
-import ProfileInfoModified from "./ProfileInfoModified/ProfileInfoModified";
+import { NavLink } from "react-router-dom";
 
 const MyProfilePage = (props) => {
     const [modalChangeFoto, setModalChangeFoto] = useState(false);
     const [dataInputFile, setDataInputFile] = useState(null);
     const [photoProfile, setPhotoProfile] = useState(props.profile.photos.large || userImg);
     const [isPhotoSelect, setPhotoSelect] = useState(false);
-    const [modifiedProfile, setModifiedProfile] = useState(false);
 
     const onClickSendFoto = () => {
         if (dataInputFile) {
@@ -22,12 +21,6 @@ const MyProfilePage = (props) => {
             setDataInputFile(null);
         } else {
             setPhotoSelect(true);
-        }
-    };
-
-    const onSubmit = (data) => {
-        if (data) {
-            props.upadateProfileInfo(data).then(() => setModifiedProfile(false));
         }
     };
 
@@ -79,25 +72,13 @@ const MyProfilePage = (props) => {
                         />
                     </div>
 
-                    <button
-                        onClick={() => setModifiedProfile(!modifiedProfile)}
-                        className={s.btnModified}
-                        type='button'>
-                        {/* <NavLink to='/my-profile-info-modified' activeClassName={s.active}>
+                    <button className={s.btnModified} type='button'>
+                        <NavLink to='/settings/edit-profile-info' activeClassName={s.active}>
                             Modifide my profile info
-                        </NavLink> */}
-                        Modifide my profile info
+                        </NavLink>
                     </button>
 
-                    {modifiedProfile ? (
-                        <ProfileInfoModified
-                            initialValues={props.profile}
-                            onSubmit={onSubmit}
-                            profile={props.profile}
-                        />
-                    ) : (
-                        <ProfileInfo profile={props.profile} />
-                    )}
+                    <ProfileInfo profile={props.profile} />
                 </div>
             </div>
             {modalChangeFoto && (
