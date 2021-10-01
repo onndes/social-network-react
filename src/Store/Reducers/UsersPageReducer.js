@@ -10,13 +10,15 @@ const VISIBLE_PAGE = "UsersPageReducer/VISIBLE_PAGE";
 const LOADING = "UsersPageReducer/LOADING";
 const CURRENT_PAGE_PREW = "UsersPageReducer/CURRENT_PAGE_PREW";
 const TOOGLE_BUTTON_FOLLOW = "UsersPageReducer/TOOGLE_BUTTON_FOLLOW";
+const SET_COUNT_BTN = "UsersPageReducer/SET_COUNT_BTN";
 
 const initialState = {
     users: [],
     pageSize: 10,
     totalUserCount: 0,
     currentPage: 1,
-    visiblePageBtn: [0, 7],
+    countBtn: 5,
+    visiblePageBtn: [0, 5],
     isLoading: true,
     currentPagePrew: null,
     buttonFollowWork: [],
@@ -104,6 +106,9 @@ export const setCurrentPagePrew = (currentPagePrew) => {
 export const toggleButtonFollow = (toggleButton, userId) => {
     return { type: TOOGLE_BUTTON_FOLLOW, toggleButton, userId };
 };
+export const setCountBtn = (countBtn) => {
+    return { type: SET_COUNT_BTN, countBtn };
+};
 
 export const getUsers = (currentPage, pageSize) => {
     return async (dispatch) => {
@@ -115,19 +120,26 @@ export const getUsers = (currentPage, pageSize) => {
     };
 };
 export const getUsersClickBtn = (page, totalUserCount, pageSize) => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         dispatch(setLoading(true));
         dispatch(setCurrentPage(page));
 
         const countPage = Math.ceil(totalUserCount / pageSize);
-
-        if (countPage > 7) {
-            if (page < 5) {
-                dispatch(setVisiblePageBtn([0, 7]));
-            } else if (page > countPage - 4) {
-                dispatch(setVisiblePageBtn([countPage - 7, countPage]));
+        const countBtn = getState().usersPage.countBtn;
+        const centralButtonWithStart = Math.ceil(countBtn / 2);
+        const centralButtonWithEnd = countPage - Math.ceil(countBtn / 2);
+        if (countPage > countBtn) {
+            if (page <= centralButtonWithStart) {
+                dispatch(setVisiblePageBtn([0, countBtn]));
+            } else if (page > centralButtonWithEnd) {
+                dispatch(setVisiblePageBtn([countPage - countBtn, countPage]));
             } else {
-                dispatch(setVisiblePageBtn([page - 4, page + 3]));
+                dispatch(
+                    setVisiblePageBtn([
+                        page - centralButtonWithStart,
+                        page + (centralButtonWithStart - 1),
+                    ]),
+                );
             }
         } else {
             dispatch(setVisiblePageBtn([0, countPage]));

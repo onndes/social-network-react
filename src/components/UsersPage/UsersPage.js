@@ -27,6 +27,9 @@ const UsersPage = (props) => {
                 visiblePageBtn={props.visiblePageBtn}
                 handleClickBtnPage={props.handleClickBtnPage}
                 currentPage={props.currentPage}
+                setVisiblePageBtn={props.setVisiblePageBtn}
+                setCountBtn={props.setCountBtn}
+                countBtn={props.countBtn}
             />
 
             {props.isLoading ? <PreloaderLine /> : renderUsersList()}

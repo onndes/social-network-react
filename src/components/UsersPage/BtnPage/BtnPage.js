@@ -3,7 +3,9 @@ import s from "./BtnPage.module.css";
 
 const BtnPage = (props) => {
     const countPage = Math.ceil(props.totalUserCount / props.pageSize);
+
     const renderBtnPageUsers = () => {
+       
         const arrPageCount = [];
         for (let i = 1; i <= countPage; i++) {
             arrPageCount.push(i);
