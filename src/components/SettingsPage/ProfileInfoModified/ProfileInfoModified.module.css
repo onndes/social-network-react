@@ -1,48 +1,95 @@
 /* ProfileInfo start */
-.wrappProfileInfoPI {
-  margin: 0px 0px 0px 0px;
+.wrappProfileInfo {
+    margin: 0 0 0 50px;
+    max-width: 500px;
 }
-  .wrapTitleInfoPI {
-    /* display: flex; */
+.wrapTitleInfo {
+    display: grid;
+    grid-template-columns: 1fr 300px;
     margin: 0px 0px 10px 0px;
-  }
-  .wrapTitleInfoPI_contacts {
-    margin: 0px 0px 0px 30px;
-  }
-  .titlePI {
-    margin: 0px 10px 10px 0px;
-    font-weight: 600;
-    font-size: 15px;
-  }
-  .descriptionPI {
-    font-size: 14px;
-    color: rgb(109, 109, 109);
-    border: 1px solid rgba(0, 0, 0, 0.289);
-  }
-  .btnModifiedSave {
+    justify-content: right;
+    align-items: center;
+    grid-gap: 15px;
+}
+.wrapTitleInfo_contacts {
+    margin: 0px 0px 0px 0px;
+}
+.title {
     display: block;
-    margin-top: 15px;
-    margin-bottom: 4px;
-    padding: 2px 4px;
-    font-size: 12px;
-    opacity: .7;
-    background-color: rgb(161, 197, 125);
-  
-  }
-  .btnModifiedSave:hover {
-    background-color: rgba(105, 140, 71, 0.918);
-  
-  }
+    font-weight: 500;
+    font-size: 14px;
+    text-align: right;
+    color: rgb(106, 106, 106);
+}
+.titleContacts {
+    margin: 15px 0px 0px 0px;
+    text-transform: uppercase;
+}
+
+.description {
+    font-size: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.189);
+    padding: 5px;
+    width: 100%;
+}
+.descriptionCheckBox {
+    width: auto;
+}
+.btnModifiedSave {
+    display: block;
+    width: 100%;
+    color: rgb(79, 75, 153);
+    font-weight: 600;
+    padding: 8px 12px;
+    font-size: 16px;
+    background-color: rgb(193, 221, 164);
+}
+.btnModifiedSave:hover {
+    box-shadow: 0 0 12px rgb(193, 221, 164);
+}
 /* ProfileInfo end */
 
-.errorBox{
-  background-color: rgba(255, 0, 0, 0.2);
-  border: 2px solid rgb(252, 66, 66);
-  margin: 0px 0px 25px 0px;
+.errorBox {
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 2px solid rgb(252, 66, 66);
+    margin: 0px 0px 25px 0px;
 }
 
 .errorText {
-  padding: 13px;
-  color: rgb(247, 53, 53);
-  line-height: 17px;
+    padding: 13px;
+    color: rgb(247, 53, 53);
+    line-height: 17px;
+}
+@media only screen and (max-width: 767.98px) {
+    .wrappProfileInfo {
+        margin: 0 0 0 10px;
+    }
+}
+@media only screen and (max-width: 575.98px) {
+    .wrappProfileInfo {
+        margin: 0 0 0 0px;
+    }
+    .wrapTitleInfo {
+        display: block;
+        margin: 0px 0px 10px 0px;
+
+    }
+    .title {
+        margin: 0px 0 10px 0px;
+
+        text-align: left;
+     
+    }
+    .titleContacts {
+      margin: 25px 0px 0px 0px;
+      text-transform: uppercase;
+  }
+  .wrapTitleInfoCheckBox {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+  .titleCheckBox {
+    margin: 0px 0px 0px 0px;
+  }
 }

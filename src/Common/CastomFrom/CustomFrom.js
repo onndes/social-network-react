@@ -44,5 +44,15 @@ const Input = (props) => {
         </>
     );
 };
+const InputModifProfile = (props) => {
+    const { input, meta, ...otherProps } = props;
 
-export { Textarea, Input };
+    // const hasError = meta.touched && meta.error;
+    return (
+        <>
+            <input className={s.inputMP} {...input} {...otherProps} />
+        </>
+    );
+};
+
+export { Textarea, Input, InputModifProfile };
