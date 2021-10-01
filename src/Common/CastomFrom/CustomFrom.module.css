@@ -49,19 +49,6 @@
   display: block;
 }
 
-/* .messageError {
-  opacity: 0;
-  right: 10%;
-  background-color: rgb(255, 74, 74);
-  padding: 5px;
-  top: -70%;
-  position: absolute;
-  font-size: 14px;
-  color: White;
-} */
-
-/* ============================================== */
-/* ============================================== */
 /* ============================================== */
 .inputWrap {
   width: 100%;
@@ -70,8 +57,3 @@
   width: 100%;
   
 }
-/* InputModifProfile */
-.inputMP {
-  padding: 10px;
-}
-/* InputModifProfile */
