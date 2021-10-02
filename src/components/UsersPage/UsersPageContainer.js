@@ -15,6 +15,10 @@ import { checkGetUsers } from "../../Store/Selectors";
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
+        // this postpone in component BtnPage (start)
+        // this.props.setCountBtn(7);
+        // this.props.setVisiblePageBtn([0, 7]);
+        // this postpone in component BtnPage (end)
     }
 
     handleClickBtnPage = (page) => {

@@ -73,6 +73,11 @@ const UsersPageReducer = (state = initialState, action) => {
                     ? [...state.buttonFollowWork, action.userId]
                     : state.buttonFollowWork.filter((i) => i !== action.userId),
             };
+        case SET_COUNT_BTN:
+            return {
+                ...state,
+                countBtn: action.countBtn,
+            };
 
         default:
             return state;
@@ -124,6 +129,7 @@ export const getUsersClickBtn = (page, totalUserCount, pageSize) => {
         dispatch(setLoading(true));
         dispatch(setCurrentPage(page));
 
+        // Remove this logic from here!!!
         const countPage = Math.ceil(totalUserCount / pageSize);
         const countBtn = getState().usersPage.countBtn;
         const centralButtonWithStart = Math.ceil(countBtn / 2);
@@ -144,6 +150,7 @@ export const getUsersClickBtn = (page, totalUserCount, pageSize) => {
         } else {
             dispatch(setVisiblePageBtn([0, countPage]));
         }
+        //Remove this logic from here!!! ↑↑↑↑↑ 
 
         const data = await usersAPI.getUsers(page, pageSize);
         dispatch(setUsers(data.items));

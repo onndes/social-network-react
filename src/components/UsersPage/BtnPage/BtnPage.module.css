@@ -19,10 +19,15 @@
 }
 .btnUserPageBox div{
   user-select: none; 
-
 }
 .btnPageUsers {
   background-color: rgba(79, 75, 153, 0.266);
+  display: flex;
+  align-items: center;
+}
+.btnPageUsersActive {
+  display: flex;
+  align-items: center;
 }
 .btnPageUsers:hover {
 background-color: rgba(79, 75, 153, 0.466);
@@ -31,12 +36,10 @@ background-color: rgba(79, 75, 153, 0.466);
   font-weight: 700;
   background-color: rgba(79, 75, 153, 0.666);
 }
-
 .btnCurrentPage{
   text-align: center;
-  /* min-width: 60px; */
-  padding: 7px 18px;
-  
+  min-width: 60px;
+  line-height: 16px
 }
 .FLBtn {
   padding: 7px 12px;
@@ -46,7 +49,3 @@ background-color: rgba(79, 75, 153, 0.466);
 .FLBtn:hover {
   background-color: rgb(199, 198, 198);
 }
-
-@media (max-width:  575.98px) { 
-
- }
