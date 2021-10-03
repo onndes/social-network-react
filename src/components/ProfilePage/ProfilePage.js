@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Profile.module.css";
 import userImg from "../../assets/img/iconUser.png";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 const Profile = (props) => {
     return (
         <div>
@@ -34,22 +35,7 @@ const Profile = (props) => {
                     <p className={style.userStatus}>
                         {props.userStatus ? props.userStatus : "no data"}
                     </p>
-                    <p className={style.aboutMe}>
-                        <span>About me: </span>
-                        {props.profile.aboutMe ? props.profile.aboutMe : "no data"}
-                    </p>
-                    <div className={style.aboutUserWrapper}>
-                        <ul className={style.aboutUserListTitle}>
-                            <li className={style.aboutUserItemTitle}>Birthday:</li>
-                            <li className={style.aboutUserItemTitle}>Town:</li>
-                            <li className={style.aboutUserItemTitle}>Photos:</li>
-                        </ul>
-                        <ul className={style.aboutUserList}>
-                            <li className={style.aboutUserItem}>[hardcode]</li>
-                            <li className={style.aboutUserItem}>[hardcode]</li>
-                            <li className={style.aboutUserItem}>[hardcode]</li>
-                        </ul>
-                    </div>
+                    <ProfileInfo profile={props.profile} />
                 </div>
             </div>
         </div>
