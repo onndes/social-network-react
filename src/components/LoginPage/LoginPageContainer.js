@@ -6,9 +6,6 @@ import LoginPage from "./LoginPage";
 import { loginMe } from "../../Store/Reducers/AuthReducer";
 
 const LoginContainer = (props) => {
-    // const history = useHistory();
-    // if (props.isAuth) history.goBack();
-
     return <LoginPage {...props} />;
 };
 
@@ -16,6 +13,7 @@ const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.isAuth,
         isLoading: state.auth.isLoading,
+        captchaUrl: state.auth.captchaUrl,
     };
 };
 

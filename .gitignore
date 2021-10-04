@@ -24,4 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 snippet.txt
 Notes.txt
-.vscode/settings.json
+/.vscode

@@ -15,7 +15,7 @@ const MessagesPageContainer = React.lazy(() => import("../../MessagesPage/Messag
 const Main = (props) => {
     return (
         <>
-            {props.match.path === "/" && <Redirect to='/myprofile' />}
+            {props.location.pathname === "/" && <Redirect to='/myprofile' />}
             <Route path='/myprofile' component={MyProfilePageContainer} />
             <Route path='/messages' render={withSuspense(MessagesPageContainer)}></Route>
             <Route path='/news' render={() => <NewsPageContainer store={props.store} />} />

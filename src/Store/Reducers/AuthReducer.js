@@ -1,9 +1,10 @@
 import { stopSubmit } from "redux-form";
-import { authMeAPI, profileAPI } from "../../API/API";
+import { authMeAPI, profileAPI, securityAPI } from "../../API/API";
 
 const SET_USER_DATA = "AuthReducer/SET_USER_DATA";
 const SET_USER_ADDITIONAL_INFO = "AuthReducer/SET_USER_ADDITIONAL_INFO";
 const IS_LOADING = "AuthReducer/IS_LOADING";
+const CUPTCH_URL = "AuthReducer/CUPTCH_URL";
 
 const initialState = {
     id: null,
@@ -13,6 +14,7 @@ const initialState = {
     photo: null,
     isLoading: false,
     fullName: null,
+    captchaUrl: null,
 };
 
 const AuthReducer = (state = initialState, action) => {
@@ -33,15 +35,20 @@ const AuthReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: action.isLoading,
             };
+        case CUPTCH_URL:
+            return {
+                ...state,
+                captchaUrl: action.captchaUrl,
+            };
         default:
             return state;
     }
 };
 
-export const setUserData = (id, email, login) => {
+export const setUserData = (id, email, login, captcha) => {
     return {
         type: SET_USER_DATA,
-        data: { id, email, login, isAuth: true },
+        data: { id, email, login, isAuth: true, captcha },
     };
 };
 export const clearUserData = () => {
@@ -63,12 +70,18 @@ export const setIsLoading = (isLoading) => {
         isLoading,
     };
 };
-
+export const setCuptchUrl = (captchaUrl) => {
+    return {
+        type: CUPTCH_URL,
+        captchaUrl,
+    };
+};
+// ============================================================
 export const authMe = () => async (dispatch, getState) => {
     const data = await authMeAPI.getAuthMe();
     if (data.resultCode === 0) {
-        const { email, id, login } = data.data;
-        dispatch(setUserData(id, email, login));
+        const { email, id, login, captcha } = data.data;
+        dispatch(setUserData(id, email, login, captcha));
     }
 
     profileAPI.getProfile(getState().auth.id).then((data) => {
@@ -88,6 +101,10 @@ export const loginMe = (userData) => async (dispatch) => {
     if (data.resultCode === 0) {
         dispatch(authMe(data.userId));
     } else {
+        if (data.resultCode === 10) {
+            dispatch(getCuptchaUrl());
+            console.log(data.resultCode);
+        }
         dispatch(
             stopSubmit("login", {
                 _error: data.messages.length < 1 ? "Some error" : data.messages[0],
@@ -98,10 +115,17 @@ export const loginMe = (userData) => async (dispatch) => {
 };
 
 export const logoutMe = (userData) => async (dispatch) => {
-    const data = await authMeAPI.logout(userData);
-    if (data.data.resultCode === 0) {
-        dispatch(clearUserData());
+    if (window.confirm("Do you really want to leave?")) {
+        const data = await authMeAPI.logout(userData);
+        if (data.data.resultCode === 0) {
+            dispatch(clearUserData());
+        }
     }
+};
+export const getCuptchaUrl = () => async (dispatch) => {
+    const data = await securityAPI.captcha();
+    console.log(data.url);
+    dispatch(setCuptchUrl(data.url));
 };
 
 export default AuthReducer;

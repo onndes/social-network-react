@@ -138,19 +138,21 @@ export const uploadImg = (image) => async (dispatch, getState) => {
     dispatch(isUpdatePhoto(false));
 };
 export const upadateProfileInfo = (profileInfo) => async (dispatch, getState) => {
-    const data = await profileAPI.updateProfileInfo(profileInfo);
-    if (data.resultCode === 0) {
-        dispatch(getProfile(getState().auth.id));
-        dispatch(getAdditionalInfoUser(getState().auth.id));
-    } else {
-        var regExp = /\([^)]+\)/;
-        var matches = regExp.exec(data.messages[0]);
+    
+        const data = await profileAPI.updateProfileInfo(profileInfo);
+        if (data.resultCode === 0) {
+            dispatch(getProfile(getState().auth.id));
+            dispatch(getAdditionalInfoUser(getState().auth.id));
+        } else {
+            var regExp = /\([^)]+\)/;
+            var matches = regExp.exec(data.messages[0]);
 
-        console.log(matches);
-        console.log(data.messages[0]);
+            console.log(matches);
+            console.log(data.messages[0]);
 
-        dispatch(stopSubmit("modifiedProfile", { _error: matches }));
-    }
+            dispatch(stopSubmit("modifiedProfile", { _error: matches }));
+        }
+    
 };
 
 export default ProfilePageReducer;
@@ -162,4 +164,3 @@ export default ProfilePageReducer;
 // const matchess2 = regExp2.exec(matchess);
 
 // console.log(matchess2); //?
-

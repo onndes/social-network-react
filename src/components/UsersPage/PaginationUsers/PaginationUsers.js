@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import s from "./PaginationUsers.module.css";
 
-const BtnPage = ({
+const PaginationUsers = ({
     totalUserCount,
     pageSize,
     visiblePageBtn,
@@ -13,7 +13,7 @@ const BtnPage = ({
 }) => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [isCountBtn, setIsCountBtn] = useState(3);
-    // console.log(activePage);
+
     useEffect(() => {
         window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
         handleClickBtnPage(currentPage, true);
@@ -21,16 +21,12 @@ const BtnPage = ({
             setIsCountBtn(11);
         } else if (windowWidth > 992) {
             setIsCountBtn(9);
-            // handleClickBtnPage(currentPage, true);
         } else if (windowWidth > 768) {
             setIsCountBtn(7);
-            // handleClickBtnPage(currentPage, true);
         } else if (windowWidth > 576) {
             setIsCountBtn(5);
-            // handleClickBtnPage(currentPage, true);
         } else if (windowWidth > 400) {
             setIsCountBtn(3);
-            // handleClickBtnPage(currentPage, true);
         }
         if (isCountBtn !== countBtn) {
             setCountBtn(isCountBtn);
@@ -110,4 +106,4 @@ const BtnPage = ({
     );
 };
 
-export default BtnPage;
+export default PaginationUsers;
