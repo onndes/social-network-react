@@ -23,7 +23,9 @@ const Header = (props) => {
             <div className={s.wrapperHeader}>
                 <header className={s.header + " appWrapperHeader"}>
                     <div className={s.logo}>
-                        <div>RR</div>
+                        <NavLink to='/myprofile' activeClassName={s.active}>
+                            RR
+                        </NavLink>
                     </div>
                     <div
                         className={toggleDrawer ? s.btnMenuOpen + " " + s.btnMenu : s.btnMenu}
@@ -35,7 +37,7 @@ const Header = (props) => {
                         <div className={s.userTextBox}>{userName}</div>
                         {props.isAuth && (
                             <div className={s.menuWrapp}>
-                                <ul  className={s.menuList}>
+                                <ul className={s.menuList}>
                                     <li className={s.menuItem}>
                                         <NavLink to='/myprofile' activeClassName={s.active}>
                                             My profile

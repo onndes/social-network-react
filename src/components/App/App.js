@@ -16,7 +16,7 @@ class App extends Component {
 
     render() {
         if (!this.props.initialSucsses) return <AppPreloader />;
-        
+
         return (
             <div className='app'>
                 <HeaderContainer />

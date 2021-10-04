@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import s from "./BtnPage.module.css";
+import s from "./PaginationUsers.module.css";
 
 const BtnPage = ({
     totalUserCount,
@@ -10,29 +10,27 @@ const BtnPage = ({
     setVisiblePageBtn,
     setCountBtn,
     countBtn,
-    setActiveBtn,
-    activeBtn,
 }) => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [isCountBtn, setIsCountBtn] = useState(3);
     // console.log(activePage);
     useEffect(() => {
         window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+        handleClickBtnPage(currentPage, true);
         if (windowWidth > 1200) {
             setIsCountBtn(11);
-            handleClickBtnPage(currentPage, true);
         } else if (windowWidth > 992) {
             setIsCountBtn(9);
-            handleClickBtnPage(currentPage, true);
+            // handleClickBtnPage(currentPage, true);
         } else if (windowWidth > 768) {
             setIsCountBtn(7);
-            handleClickBtnPage(currentPage, true);
+            // handleClickBtnPage(currentPage, true);
         } else if (windowWidth > 576) {
             setIsCountBtn(5);
-            handleClickBtnPage(currentPage, true);
+            // handleClickBtnPage(currentPage, true);
         } else if (windowWidth > 400) {
             setIsCountBtn(3);
-            handleClickBtnPage(currentPage, true);
+            // handleClickBtnPage(currentPage, true);
         }
         if (isCountBtn !== countBtn) {
             setCountBtn(isCountBtn);

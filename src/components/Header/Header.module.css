@@ -35,8 +35,9 @@
     justify-content: center;
 }
 
-.logo div {
+.logo a {
     font-size: 16px;
+    color: white;
 }
 
 .loginBox {
@@ -87,6 +88,9 @@
 }
 .menuItem:last-of-type {
     padding: 0px 0px 0px 0px;
+}
+.menuItem a:visited {
+  color: #4f4b99 
 }
 
 .btnMenu {

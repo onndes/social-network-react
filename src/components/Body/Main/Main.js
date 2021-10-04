@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import NewsPageContainer from "../../NewsPage/NewsPageContainer";
 import UsersPageContainer from "../../UsersPage/UsersPageContainer";
 import ProfilePageContainer from "../../ProfilePage/ProfilePageContainer";
@@ -15,16 +15,14 @@ const MessagesPageContainer = React.lazy(() => import("../../MessagesPage/Messag
 const Main = (props) => {
     return (
         <>
-            {/* <div className={s.wrapp}> */}
-                <Route path='/myprofile' component={MyProfilePageContainer} />
-                <Route path='/messages' render={withSuspense(MessagesPageContainer)}></Route>
-                <Route path='/news' render={() => <NewsPageContainer store={props.store} />} />
-                <Route path='/users' component={UsersPageContainer} />
-                <Route path='/profile/:userId' component={ProfilePageContainer} />
-                <Route path='/login' component={LoginPageContainer} />
-                <Route path='/settings' component={SettingsPageContainer} />
-                {/* <Route path='/my-profile-info-modified' component={ProfileInfoModified} /> */}
-            {/* </div> */}
+            {props.match.path === "/" && <Redirect to='/myprofile' />}
+            <Route path='/myprofile' component={MyProfilePageContainer} />
+            <Route path='/messages' render={withSuspense(MessagesPageContainer)}></Route>
+            <Route path='/news' render={() => <NewsPageContainer store={props.store} />} />
+            <Route path='/users' component={UsersPageContainer} />
+            <Route path='/profile/:userId' component={ProfilePageContainer} />
+            <Route path='/login' component={LoginPageContainer} />
+            <Route path='/settings' component={SettingsPageContainer} />
         </>
     );
 };

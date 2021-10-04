@@ -1,7 +1,7 @@
 import React from "react";
 import PreloaderLine from "../../Common/PreloaderLine/PreloaderLine";
 import User from "./User/User";
-import BtnPage from "./BtnPage/BtnPage";
+import PaginationUsers from "./PaginationUsers/PaginationUsers";
 
 const UsersPage = (props) => {
     const renderUsersList = () => {
@@ -21,7 +21,7 @@ const UsersPage = (props) => {
 
     return (
         <>
-            <BtnPage
+            <PaginationUsers
                 totalUserCount={props.totalUserCount}
                 pageSize={props.pageSize}
                 visiblePageBtn={props.visiblePageBtn}
