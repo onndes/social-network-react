@@ -146,21 +146,9 @@ export const upadateProfileInfo = (profileInfo) => async (dispatch, getState) =>
         } else {
             var regExp = /\([^)]+\)/;
             var matches = regExp.exec(data.messages[0]);
-
-            console.log(matches);
-            console.log(data.messages[0]);
-
             dispatch(stopSubmit("modifiedProfile", { _error: matches }));
         }
     
 };
 
 export default ProfilePageReducer;
-
-// const messs = "The LookingForAJobDescription field is required. (LookingForAJobDescription)";
-// const regExp1 = /\([^)]+\)/;
-// const regExp2 = /\w/;
-// const matchess = regExp1.exec(messs);
-// const matchess2 = regExp2.exec(matchess);
-
-// console.log(matchess2); //?

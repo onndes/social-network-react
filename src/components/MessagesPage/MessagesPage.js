@@ -9,9 +9,11 @@ const MessagesPage = () => {
     return (
         <>
             <main className={style.wrapper}>
-                <div className={style.col1}>  
-                    <h3 className={style.title}>Dialogues</h3>
-                    <Dialogs/>
+                <div className={style.col1}>
+                    <h3 className={style.title}>
+                        Dialogues <span>[page stub]</span>
+                    </h3>
+                    <Dialogs />
                 </div>
                 <div className={style.col2}>
                     <Route path='/messages/2'>

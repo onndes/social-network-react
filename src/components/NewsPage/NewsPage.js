@@ -18,8 +18,8 @@ const MessagesItemTest = (props) => {
         props.addPostActionCreator(text.inputBodyText);
     };
     return (
-        <div className={style.Wrapper}>
-            <FromRedux onSubmit={inputText} />
+        <div className={style.wrapper}>
+            <FromRedux className={style.FromRedux} onSubmit={inputText} />
             <div className={style.BoxMessages}>{updatePost()}</div>
         </div>
     );
@@ -30,7 +30,7 @@ const maxLength = maxLengthCreater(15);
 const Form = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={style.form}>
-            <div className={style.textarea}>
+            <div className={style.textareaFieldWrapp}>
                 <Field
                     validate={[requireFillIn, maxLength]}
                     name='inputBodyText'

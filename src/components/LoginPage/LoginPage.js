@@ -50,6 +50,7 @@ const LoginFrom = (props) => {
                         component={Input}
                         validate={[requireFillIn]}
                         name={"captcha"}
+                        autoFocus
                     />
                 </div>
             )}

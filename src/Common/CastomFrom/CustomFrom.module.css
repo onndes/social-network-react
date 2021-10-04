@@ -2,9 +2,14 @@
 .wrapper {
   position: relative;
 }
+.textarea {
+  height: 100%;
+  
+}
 .textareaWrap {
   display: inline-block;
   height: 100%;
+  width: 100%;
 }
 .textareaError {
   position: relative;
@@ -55,5 +60,8 @@
 }
 .input {
   width: 100%;
+  
+}
+.Input {
   
 }

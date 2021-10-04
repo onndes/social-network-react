@@ -103,7 +103,6 @@ export const loginMe = (userData) => async (dispatch) => {
     } else {
         if (data.resultCode === 10) {
             dispatch(getCuptchaUrl());
-            console.log(data.resultCode);
         }
         dispatch(
             stopSubmit("login", {
@@ -124,7 +123,6 @@ export const logoutMe = (userData) => async (dispatch) => {
 };
 export const getCuptchaUrl = () => async (dispatch) => {
     const data = await securityAPI.captcha();
-    console.log(data.url);
     dispatch(setCuptchUrl(data.url));
 };
 

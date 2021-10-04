@@ -15,7 +15,12 @@ const Textarea = (props) => {
                         {...otherProps}
                     />
                 </div>
-                {hasError && <span className={s.messageError}>{meta.error}</span>}
+                {hasError && (
+                    <span className={s.messageError}>
+                        {" "}
+                        <span className={s.messageError}>{meta.error}</span>
+                    </span>
+                )}
             </div>
         </>
     );
@@ -44,6 +49,5 @@ const Input = (props) => {
         </>
     );
 };
-
 
 export { Textarea, Input };
