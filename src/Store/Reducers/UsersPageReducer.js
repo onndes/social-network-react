@@ -18,6 +18,7 @@ const initialState = {
     totalUserCount: 0,
     currentPage: 1,
     countBtn: 5,
+    activeBtn: 1,
     visiblePageBtn: [0, 5],
     isLoading: true,
     currentPagePrew: null,
@@ -78,7 +79,6 @@ const UsersPageReducer = (state = initialState, action) => {
                 ...state,
                 countBtn: action.countBtn,
             };
-
         default:
             return state;
     }
@@ -124,7 +124,7 @@ export const getUsers = (currentPage, pageSize) => {
         dispatch(setLoading(false));
     };
 };
-export const getUsersClickBtn = (page, totalUserCount, pageSize) => {
+export const getUsersClickBtn = (page, totalUserCount, pageSize, isGet) => {
     return async (dispatch, getState) => {
         dispatch(setLoading(true));
         dispatch(setCurrentPage(page));
@@ -150,10 +150,12 @@ export const getUsersClickBtn = (page, totalUserCount, pageSize) => {
         } else {
             dispatch(setVisiblePageBtn([0, countPage]));
         }
-        //Remove this logic from here!!! ↑↑↑↑↑ 
+        //Remove this logic from here!!! ↑↑↑↑↑
 
-        const data = await usersAPI.getUsers(page, pageSize);
-        dispatch(setUsers(data.items));
+        if (!isGet) {
+            const data = await usersAPI.getUsers(page, pageSize);
+            dispatch(setUsers(data.items));
+        }
         dispatch(setLoading(false));
     };
 };

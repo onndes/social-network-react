@@ -7,6 +7,7 @@ import {
     follow,
     setVisiblePageBtn,
     setCountBtn,
+    setCurrentPage,
 } from "../../Store/Reducers/UsersPageReducer";
 import UsersPage from "./UsersPage";
 import { connect } from "react-redux";
@@ -15,14 +16,10 @@ import { checkGetUsers } from "../../Store/Selectors";
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
-        // this postpone in component BtnPage (start)
-        // this.props.setCountBtn(7);
-        // this.props.setVisiblePageBtn([0, 7]);
-        // this postpone in component BtnPage (end)
     }
 
-    handleClickBtnPage = (page) => {
-        this.props.getUsersClickBtn(page, this.props.totalUserCount, this.props.pageSize);
+    handleClickBtnPage = (page, isGet) => {
+        this.props.getUsersClickBtn(page, this.props.totalUserCount, this.props.pageSize, isGet);
     };
 
     render() {
@@ -55,6 +52,7 @@ const UsersPageContainer = connect(mapStateToProps, {
     follow,
     setVisiblePageBtn,
     setCountBtn,
+    setCurrentPage,
 })(UsersContainer);
 
 export default UsersPageContainer;

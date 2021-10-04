@@ -10,28 +10,43 @@ const BtnPage = ({
     setVisiblePageBtn,
     setCountBtn,
     countBtn,
+    setActiveBtn,
+    activeBtn,
 }) => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const [isCountBtn,  setIsCountBtn] = useState(3);
-
+    const [isCountBtn, setIsCountBtn] = useState(3);
+    // console.log(activePage);
     useEffect(() => {
         window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
         if (windowWidth > 1200) {
-             setIsCountBtn(11);
+            setIsCountBtn(11);
+            handleClickBtnPage(currentPage, true);
         } else if (windowWidth > 992) {
-             setIsCountBtn(9);
+            setIsCountBtn(9);
+            handleClickBtnPage(currentPage, true);
         } else if (windowWidth > 768) {
-             setIsCountBtn(7);
+            setIsCountBtn(7);
+            handleClickBtnPage(currentPage, true);
         } else if (windowWidth > 576) {
-             setIsCountBtn(5);
+            setIsCountBtn(5);
+            handleClickBtnPage(currentPage, true);
         } else if (windowWidth > 400) {
-             setIsCountBtn(3);
+            setIsCountBtn(3);
+            handleClickBtnPage(currentPage, true);
         }
         if (isCountBtn !== countBtn) {
             setCountBtn(isCountBtn);
             setVisiblePageBtn([0, isCountBtn]);
         }
-    }, [windowWidth, isCountBtn, countBtn, setVisiblePageBtn, setCountBtn]);
+    }, [
+        windowWidth,
+        isCountBtn,
+        countBtn,
+        setVisiblePageBtn,
+        setCountBtn,
+        currentPage,
+        handleClickBtnPage,
+    ]);
 
     const countPage = Math.ceil(totalUserCount / pageSize);
 
@@ -48,7 +63,9 @@ const BtnPage = ({
                 return (
                     <div
                         key={i}
-                        onClick={() => handleClickBtnPage(i)}
+                        onClick={() => {
+                            handleClickBtnPage(i);
+                        }}
                         className={currentPage === i ? s.btnPageUsersActive : s.btnPageUsers}>
                         <div className={s.btnCurrentPage}>{i}</div>
                     </div>
@@ -76,11 +93,19 @@ const BtnPage = ({
     };
     return (
         <div className={s.btnUserPageBox}>
-            <div onClick={() => handleClickBtnPage(1)} className={s.FLBtn}>
+            <div
+                onClick={() => {
+                    handleClickBtnPage(1);
+                }}
+                className={s.FLBtn}>
                 First <br /> Page
             </div>
             {renderBtnPageUsers()}
-            <div onClick={() => handleClickBtnPage(countPage)} className={s.FLBtn}>
+            <div
+                onClick={() => {
+                    handleClickBtnPage(countPage);
+                }}
+                className={s.FLBtn}>
                 Last <br /> Page
             </div>
         </div>
