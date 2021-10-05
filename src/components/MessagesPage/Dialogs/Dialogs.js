@@ -7,12 +7,12 @@ const Dialogs = () => {
         return (
             <>
                 <li key={1} className={style.item}>
-                    <NavLink to={`/messages/${1}`} activeClassName={style.active}>
+                    <NavLink to={`/messages/1`} activeClassName={style.active}>
                         Nikita
                     </NavLink>
                 </li>
                 <li key={2} className={style.item}>
-                    <NavLink to={`/messages/${2}`} activeClassName={style.active}>
+                    <NavLink to={`/messages/2`} activeClassName={style.active}>
                         Alisa
                     </NavLink>
                 </li>

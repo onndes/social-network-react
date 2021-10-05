@@ -15,23 +15,29 @@ const PaginationUsers = ({
     const [isCountBtn, setIsCountBtn] = useState(3);
 
     useEffect(() => {
-        window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
-        handleClickBtnPage(currentPage, true);
-        if (windowWidth > 1200) {
-            setIsCountBtn(11);
-        } else if (windowWidth > 992) {
-            setIsCountBtn(9);
-        } else if (windowWidth > 768) {
-            setIsCountBtn(7);
-        } else if (windowWidth > 576) {
-            setIsCountBtn(5);
-        } else if (windowWidth > 400) {
-            setIsCountBtn(3);
+        let mount = false;
+        // mount - in order to remove the error, the component is not yet mounted
+        if (!mount) {
+            window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+
+            handleClickBtnPage(currentPage, true);
+            if (windowWidth > 1200) {
+                setIsCountBtn(11);
+            } else if (windowWidth > 992) {
+                setIsCountBtn(9);
+            } else if (windowWidth > 768) {
+                setIsCountBtn(7);
+            } else if (windowWidth > 576) {
+                setIsCountBtn(5);
+            } else if (windowWidth > 400) {
+                setIsCountBtn(3);
+            }
+            if (isCountBtn !== countBtn) {
+                setCountBtn(isCountBtn);
+                setVisiblePageBtn([0, isCountBtn]);
+            }
         }
-        if (isCountBtn !== countBtn) {
-            setCountBtn(isCountBtn);
-            setVisiblePageBtn([0, isCountBtn]);
-        }
+        return () => (mount = true);
     }, [
         windowWidth,
         isCountBtn,
@@ -40,6 +46,7 @@ const PaginationUsers = ({
         setCountBtn,
         currentPage,
         handleClickBtnPage,
+        setWindowWidth,
     ]);
 
     const countPage = Math.ceil(totalUserCount / pageSize);

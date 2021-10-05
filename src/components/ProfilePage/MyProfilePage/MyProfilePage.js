@@ -25,12 +25,12 @@ const MyProfilePage = (props) => {
     };
 
     useEffect(() => {
-        let mount = true;
+        let mount = false;
         // mount - in order to remove the error, the component is not yet mounted
-        if (mount) {
+        if (!mount) {
             setPhotoProfile(props.profile.photos.large || userImg);
         }
-        return () => (mount = false);
+        return () => (mount = true);
     }, [props.profile.photos.large]);
 
     return (
