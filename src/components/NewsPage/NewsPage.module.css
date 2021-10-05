@@ -1,30 +1,33 @@
 .wrapper {
-  /* padding: 10px; */
 }
-
+.pageStub {
+    margin: 0px 0px 20px 0px;
+    font-size: 14px;
+    color: red;
+    font-weight: 500;
+}
 .textareaFieldWrapp {
-  margin: 0px 0px 30px 0px;
-  height: 100%;
+    margin: 0px 0px 30px 0px;
+    height: 100%;
 }
 
 .Input {
-  /* display: inline-block; */
-  border: 1px solid rgba(129, 129, 129, 0.556);
-  padding: 6px;
-  margin: 0;
-  width: 100%;
-  height: 100px;
-  resize: none;
+    border: 1px solid rgba(129, 129, 129, 0.556);
+    padding: 7px;
+    width: 100%;
+    height: 200px;
+    resize: none;
 }
+
 .Button {
-  color: black;
-  font-weight: 600;
-  padding: 7px 24px;
-  background-color: rgb(151, 201, 136);
-  margin: 0 0 40px 0;
+    color: black;
+    font-weight: 600;
+    padding: 7px 24px;
+    background-color: rgb(151, 201, 136);
+    margin: 0 0 40px 0;
 }
 
 .BoxMessages p {
-  padding: 0 0 7px 0;
-  font-style: italic;
+    padding: 0 0 7px 0;
+    font-style: italic;
 }
