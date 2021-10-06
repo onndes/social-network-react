@@ -12,10 +12,12 @@ const Header = (props) => {
         props.isAuth ? props.fullName : <NavLink to='/login'>Login</NavLink>,
     );
     useEffect(() => {
-        window.addEventListener("resize", () => setWindowWidth(window.innerWidth + "px"));
+        const hundleSetWindowWidth = () => setWindowWidth(window.innerWidth);
+        window.addEventListener("resize", hundleSetWindowWidth);
         if (windowWidth > "768px") setToggleDrawer(false);
         setPhoto(props.photo ? props.photo : iconUser);
         setUserName(props.isAuth ? props.fullName : <NavLink to='/login'>Login</NavLink>);
+        return () => window.removeEventListener("resize", hundleSetWindowWidth);
     }, [windowWidth, props.photo, props.fullName, props.isAuth]);
 
     return (

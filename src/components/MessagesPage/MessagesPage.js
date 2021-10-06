@@ -9,13 +9,10 @@ const MessagesPage = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-        let mount = false;
-        // mount - in order to remove the error, the component is not yet mounted
-        if (!mount) {
-            window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
-        }
-        return () => (mount = true);
-    }, [windowWidth, setWindowWidth]);
+        const hundleSetWindowWidth = () => setWindowWidth(window.innerWidth);
+        window.addEventListener("resize", hundleSetWindowWidth);
+        return () => window.removeEventListener("resize", hundleSetWindowWidth);
+    }, [windowWidth]);
 
     return (
         <>
