@@ -35,7 +35,7 @@ const PaginationUsers = ({
             setCountBtn(isCountBtn);
             setVisiblePageBtn([0, isCountBtn]);
         }
-        // ======
+
         const centralButtonWithStart = Math.ceil(countBtn / 2);
         const centralButtonWithEnd = countPage - Math.ceil(countBtn / 2);
         if (countPage > countBtn) {
@@ -52,7 +52,6 @@ const PaginationUsers = ({
         } else {
             setVisiblePageBtn([0, countPage]);
         }
-        // ======
 
         return () => window.removeEventListener("resize", hundleSetWindowWidth);
     }, [
@@ -63,12 +62,9 @@ const PaginationUsers = ({
         setCountBtn,
         currentPage,
         handleClickBtnPage,
-        totalUserCount,
-        pageSize,
         countPage,
     ]);
 
-    // const countPage = Math.ceil(totalUserCount / pageSize);
 
     const renderBtnPageUsers = () => {
         const arrPageCount = [];
@@ -111,6 +107,7 @@ const PaginationUsers = ({
             });
         }
     };
+
     return (
         <div className={s.btnUserPageBox}>
             <div

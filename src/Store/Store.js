@@ -1,6 +1,5 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunkMiddleware from "redux-thunk";
-import MessagesPageReducer from "./Reducers/MessagesPageReducer";
 import NewsPageReducer from "./Reducers/NewsPageReducer";
 import UsersPageReducer from "./Reducers/UsersPageReducer";
 import ProfilePageReducer from "./Reducers/ProfilePageReducer";
@@ -9,7 +8,6 @@ import { reducer as formReducer } from "redux-form";
 import AppReducer from "./Reducers/AppReducer";
 
 let reducers = combineReducers({
-    messagesPage: MessagesPageReducer,
     newsPage: NewsPageReducer,
     usersPage: UsersPageReducer,
     profilePage: ProfilePageReducer,

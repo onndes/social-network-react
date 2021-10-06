@@ -13,11 +13,6 @@ const Aside = () => {
                         </NavLink>
                     </li>
                     <li className={style.item}>
-                        <NavLink to='/messages' activeClassName={style.active}>
-                            Messages
-                        </NavLink>
-                    </li>
-                    <li className={style.item}>
                         <NavLink to='/news' activeClassName={style.active}>
                             News
                         </NavLink>
@@ -30,7 +25,7 @@ const Aside = () => {
                     <li className={style.item}>
                         <NavLink to='/settings' activeClassName={style.active}>
                             Settings
-                        </NavLink>  
+                        </NavLink>
                     </li>
                 </ul>
             </aside>
