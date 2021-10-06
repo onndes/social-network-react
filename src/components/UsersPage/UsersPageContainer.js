@@ -19,7 +19,14 @@ class UsersContainer extends React.Component {
     }
 
     handleClickBtnPage = (page, isGet) => {
-        this.props.getUsersClickBtn(page, this.props.totalUserCount, this.props.pageSize, isGet);
+        if (page !== this.props.currentPage) {
+            this.props.getUsersClickBtn(
+                page,
+                this.props.totalUserCount,
+                this.props.pageSize,
+                isGet,
+            );
+        }
     };
 
     render() {

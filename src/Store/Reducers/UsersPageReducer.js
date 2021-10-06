@@ -129,33 +129,9 @@ export const getUsersClickBtn = (page, totalUserCount, pageSize, isGet) => {
         dispatch(setLoading(true));
         dispatch(setCurrentPage(page));
 
-        // Remove this logic from here!!!
-        const countPage = Math.ceil(totalUserCount / pageSize);
-        const countBtn = getState().usersPage.countBtn;
-        const centralButtonWithStart = Math.ceil(countBtn / 2);
-        const centralButtonWithEnd = countPage - Math.ceil(countBtn / 2);
-        if (countPage > countBtn) {
-            if (page <= centralButtonWithStart) {
-                dispatch(setVisiblePageBtn([0, countBtn]));
-            } else if (page > centralButtonWithEnd) {
-                dispatch(setVisiblePageBtn([countPage - countBtn, countPage]));
-            } else {
-                dispatch(
-                    setVisiblePageBtn([
-                        page - centralButtonWithStart,
-                        page + (centralButtonWithStart - 1),
-                    ]),
-                );
-            }
-        } else {
-            dispatch(setVisiblePageBtn([0, countPage]));
-        }
-        //Remove this logic from here!!! ↑↑↑↑↑
-
-        if (!isGet) {
-            const data = await usersAPI.getUsers(page, pageSize);
-            dispatch(setUsers(data.items));
-        }
+        const data = await usersAPI.getUsers(page, pageSize);
+        dispatch(setUsers(data.items));
+        
         dispatch(setLoading(false));
     };
 };

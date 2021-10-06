@@ -14,6 +14,7 @@ const PaginationUsers = ({
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [isCountBtn, setIsCountBtn] = useState(3);
 
+    const countPage = Math.ceil(totalUserCount / pageSize);
     useEffect(() => {
         const hundleSetWindowWidth = () => setWindowWidth(window.innerWidth);
         window.addEventListener("resize", hundleSetWindowWidth);
@@ -34,6 +35,24 @@ const PaginationUsers = ({
             setCountBtn(isCountBtn);
             setVisiblePageBtn([0, isCountBtn]);
         }
+        // ======
+        const centralButtonWithStart = Math.ceil(countBtn / 2);
+        const centralButtonWithEnd = countPage - Math.ceil(countBtn / 2);
+        if (countPage > countBtn) {
+            if (currentPage <= centralButtonWithStart) {
+                setVisiblePageBtn([0, countBtn]);
+            } else if (currentPage > centralButtonWithEnd) {
+                setVisiblePageBtn([countPage - countBtn, countPage]);
+            } else {
+                setVisiblePageBtn([
+                    currentPage - centralButtonWithStart,
+                    currentPage + (centralButtonWithStart - 1),
+                ]);
+            }
+        } else {
+            setVisiblePageBtn([0, countPage]);
+        }
+        // ======
 
         return () => window.removeEventListener("resize", hundleSetWindowWidth);
     }, [
@@ -44,9 +63,12 @@ const PaginationUsers = ({
         setCountBtn,
         currentPage,
         handleClickBtnPage,
+        totalUserCount,
+        pageSize,
+        countPage,
     ]);
 
-    const countPage = Math.ceil(totalUserCount / pageSize);
+    // const countPage = Math.ceil(totalUserCount / pageSize);
 
     const renderBtnPageUsers = () => {
         const arrPageCount = [];
