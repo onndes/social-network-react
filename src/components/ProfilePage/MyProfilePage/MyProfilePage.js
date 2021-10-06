@@ -12,6 +12,7 @@ const MyProfilePage = (props) => {
     const [dataInputFile, setDataInputFile] = useState(null);
     const [photoProfile, setPhotoProfile] = useState(props.profile.photos.large || userImg);
     const [isPhotoSelect, setPhotoSelect] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const onClickSendFoto = () => {
         if (dataInputFile) {
@@ -26,7 +27,10 @@ const MyProfilePage = (props) => {
 
     useEffect(() => {
         setPhotoProfile(props.profile.photos.large || userImg);
-    }, [props.profile.photos.large]);
+        const hundleSetWindowWidth = () => setWindowWidth(window.innerWidth);
+        window.addEventListener("resize", hundleSetWindowWidth);
+        return () => window.removeEventListener("resize", hundleSetWindowWidth);
+    }, [props.profile.photos.large, windowWidth]);
 
     return (
         <div>
@@ -73,8 +77,9 @@ const MyProfilePage = (props) => {
                         </NavLink>
                     </button>
 
-                    <ProfileInfo profile={props.profile} />
+                    {windowWidth > 576 && <ProfileInfo profile={props.profile} />}
                 </div>
+                <div className={s.infoBockWrapper}>{windowWidth < 576 && <ProfileInfo profile={props.profile} />}</div>
             </div>
             {modalChangeFoto && (
                 <ModalFoto

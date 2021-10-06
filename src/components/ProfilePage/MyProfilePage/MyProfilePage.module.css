@@ -142,5 +142,8 @@
   }
   .imgContainer  {
   }
+  .infoBockWrapper {
+    grid-column: span 2
+  }
 }
 
