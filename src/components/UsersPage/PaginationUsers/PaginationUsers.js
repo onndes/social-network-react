@@ -65,7 +65,6 @@ const PaginationUsers = ({
         countPage,
     ]);
 
-
     const renderBtnPageUsers = () => {
         const arrPageCount = [];
         for (let i = 1; i <= countPage; i++) {
