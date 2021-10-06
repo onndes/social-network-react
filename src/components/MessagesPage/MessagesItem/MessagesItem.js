@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./MessagesItem.module.css";
+import BtnGoBack from './../../../Common/BtnGoBack/BtnGoBack';
 const MessagesItemTest = () => {
     const generationMessages = () => {
         const commnetsTempHardCodeTest = [
@@ -27,6 +28,12 @@ const MessagesItemTest = () => {
         });
     };
 
-    return <div className={style.reactDiv}>{generationMessages()}</div>;
+    return (
+        <div className={style.reactDiv}>
+            <BtnGoBack mb={"10px"} />
+            <div className={style.line}></div>
+            {generationMessages()}
+        </div>
+    );
 };
 export default MessagesItemTest;

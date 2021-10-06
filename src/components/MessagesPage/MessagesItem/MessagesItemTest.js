@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./MessagesItemTest.module.css";
 import { Field, reduxForm } from "redux-form";
+import BtnGoBack from "./../../../Common/BtnGoBack/BtnGoBack";
 
 const MessagesItemTest = (props) => {
     const onClickButton = (text) => {
@@ -21,6 +22,8 @@ const MessagesItemTest = (props) => {
 
     return (
         <div className={style.t_mainWrapper}>
+            <BtnGoBack mb={"10px"} />
+            <div className={style.line}></div>
             <div className={style.t_wrapper}>
                 <div className={style.t_messagesContainer}>{renderMessages()}</div>
                 <div className={style.t_conteinerInputBtn}>

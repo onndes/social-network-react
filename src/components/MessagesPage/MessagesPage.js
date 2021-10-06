@@ -17,19 +17,44 @@ const MessagesPage = () => {
     return (
         <>
             <main className={style.wrapper}>
-                <div className={style.col1}>
-                    <h3 className={style.title}>
-                        Dialogues <span>[page stub]</span>
-                    </h3>
-                    <Dialogs />
-                </div>
-                <div className={style.col2}>
-                    <Route path='/messages/2'>
-                        <MessagesItem />
-                    </Route>
+                {windowWidth > 576 && (
+                    <>
+                        {" "}
+                        <div className={style.col1}>
+                            <h3 className={style.title}>
+                                Dialogues <span>[page stub]</span>
+                            </h3>
+                            <Dialogs />
+                        </div>
+                        <div className={style.col2}>
+                            <Route path='/messages/2'>
+                                <MessagesItem />
+                            </Route>
 
-                    <Route path='/messages/1' render={() => <MessagesItemTestContainer />} />
-                </div>
+                            <Route
+                                path='/messages/1'
+                                render={() => <MessagesItemTestContainer />}
+                            />
+                        </div>
+                    </>
+                )}
+                {windowWidth < 576 && (
+                    <>
+                    
+                        <Route path='/messages' exact>
+                            {" "}
+                            <div className={style.col1}>
+                                <h3 className={style.title}>
+                                    Dialogues <span>[page stub]</span>
+                                </h3>
+                                <Dialogs />
+                            </div>
+                        </Route>
+                        
+                        <Route path='/messages/2' component={MessagesItem}></Route>
+                        <Route path='/messages/1' render={() => <MessagesItemTestContainer />} />
+                    </>
+                )}
             </main>
         </>
     );
