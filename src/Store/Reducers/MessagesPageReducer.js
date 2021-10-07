@@ -108,6 +108,124 @@ const initialState = {
                 },
             ],
         },
+        {
+            id: 2,
+            userName: "Dima",
+            messages: [
+                {
+                    id: 0,
+                    bodyMessages: [
+                        "Reprehenderit sunt exercitation do mollit ea cillum veniam ea dolor veniam sint laboris aute ea.",
+                    ],
+                    date: "11.09.2021",
+                    myMessages: true,
+                },
+                {
+                    id: 1,
+                    bodyMessages: ["Anim velit non minim laboris amet in velit officia officia."],
+                    date: "11.10.2021",
+                    myMessages: false,
+                },
+                {
+                    id: 2,
+                    bodyMessages: [
+                        "Consequat reprehenderit nulla ut est deserunt dolor culpa sit et aliqua non occaecat.",
+                    ],
+                    date: "11.10.2021",
+                    myMessages: true,
+                },
+                {
+                    id: 3,
+                    bodyMessages: [
+                        "Aliquip sint Lorem laboris aute ipsum ea veniam ea quis commodo pariatur.",
+                    ],
+                    date: "12.10.2021",
+                    myMessages: false,
+                },
+                {
+                    id: 4,
+                    bodyMessages: ["Ad deserunt fugiat ullamco ex et veniam."],
+                    date: "13.10.2021",
+                    myMessages: true,
+                },
+                {
+                    id: 5,
+                    bodyMessages: [
+                        "Sit dolore do in mollit excepteur sunt tempor consectetur ut culpa.",
+                    ],
+                    date: "13.10.2021",
+                    myMessages: false,
+                },
+                {
+                    id: 6,
+                    bodyMessages: [
+                        "Amet proident duis sunt aute qui sit amet aliquip nulla eiusmod fugiat.",
+                    ],
+                    date: "14.10.2021",
+                    myMessages: true,
+                },
+                {
+                    id: 7,
+                    bodyMessages: [
+                        "Deserunt irure nostrud enim proident proident aute non nostrud.",
+                    ],
+                    date: "14.10.2021",
+                    myMessages: false,
+                },
+                {
+                    id: 8,
+                    bodyMessages: ["Labore dolore deserunt ea ex est reprehenderit."],
+                    date: "14.10.2021",
+                    myMessages: false,
+                },
+                {
+                    id: 9,
+                    bodyMessages: ["Proident quis enim id do magna."],
+                    date: "14.10.2021",
+                    myMessages: true,
+                },
+                {
+                    id: 10,
+                    bodyMessages: ["Dolore dolore voluptate mollit irure amet in nulla."],
+                    date: "14.10.2021",
+                    myMessages: false,
+                },
+                {
+                    id: 11,
+                    bodyMessages: ["Non cillum excepteur irure duis consectetur esse laboris."],
+                    date: "14.10.2021",
+                    myMessages: true,
+                },
+                {
+                    id: 12,
+                    bodyMessages: [
+                        "Voluptate quis sint fugiat cillum commodo sit aliquip commodo commodo nulla ipsum adipisicing velit occaecat.",
+                    ],
+                    date: "14.10.2021",
+                    myMessages: false,
+                },
+                {
+                    id: 13,
+                    bodyMessages: ["Laborum aliqua officia fugiat cupidatat."],
+                    date: "14.10.2021",
+                    myMessages: true,
+                },
+                {
+                    id: 14,
+                    bodyMessages: [
+                        "In eu reprehenderit ex nostrud labore magna consequat aute incididunt.",
+                    ],
+                    date: "14.10.2021",
+                    myMessages: false,
+                },
+                {
+                    id: 15,
+                    bodyMessages: ["Cupidatat pariatur laboris in ipsum sit esse nisi eu."],
+                    date: "14.10.2021",
+                    myMessages: false,
+                },
+            ],
+        },
     ],
     openDialogId: null,
 };

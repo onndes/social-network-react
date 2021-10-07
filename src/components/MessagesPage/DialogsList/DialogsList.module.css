@@ -1,0 +1,27 @@
+.wrapper {
+    color: rgb(79, 75, 153);
+}
+.title {
+    margin: 0px 0px 20px 0px;
+    font-size: 24px;
+}
+.stub {
+  font-size: 13px;
+  color: red;
+  margin: 0px 0px 10px 0px;
+}
+.wrapperListDialogs {
+}
+.itemDialog {
+  display: block;
+    margin: 0px 0px 10px 0px;
+}
+.itemDialog a {
+  color: rgb(79, 75, 153);
+}
+.itemDialogOpen {
+  text-decoration: underline;
+}
+.activeLink {
+  color: rgb(79, 75, 153);
+}
