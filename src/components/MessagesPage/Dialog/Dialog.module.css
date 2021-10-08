@@ -1,5 +1,5 @@
 .wrapper {
-    height: 100%;
+   
 }
 .line {
     width: 100%;
@@ -12,16 +12,19 @@
     grid-template-columns: 100%;
 }
 .dialogWrapper {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
 }
 .messagesWrapper {
-    flex: 1;
-    max-height: 100%;
+    flex: 1 1 auto;
+    
 }
 .inputTextMessage {
-    /* justify-content: flex-end; */
+
+    width: 100%;
+    padding: 0px 0px 10px 0px;
 }
 .myMessage {
 }

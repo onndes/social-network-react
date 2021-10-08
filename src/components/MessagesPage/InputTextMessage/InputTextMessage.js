@@ -1,11 +1,20 @@
+import { Input } from "../../../Common/CastomFrom/CustomFrom";
 import React from "react";
+import { Field, reduxForm } from "redux-form";
 import s from "./InputTextMessage.module.css";
 
-const InputTextMessage = () => {
+const InputTextMessage = (props) => {
     return (
-        <div className={s.wrapper}>
-            <input />
-        </div>
+        <form onSubmit={props.handleSubmit} className={s.wrapper}>
+            <Field
+                className={s.input}
+                component={Input}
+                name={"bodyTextMessage"}
+                placeholder={"Your message"}
+            />
+            <button className={s.btn}>Send</button>
+        </form>
     );
 };
-export default InputTextMessage;
+// export default InputTextMessage;
+export default reduxForm({ form: "dialog" })(InputTextMessage);

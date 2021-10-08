@@ -21,46 +21,49 @@ const Header = (props) => {
     }, [windowWidth, props.photo, props.fullName, props.isAuth]);
 
     return (
-        <div className={s.wrapper}>
-            <div className={s.wrapperHeader}>
-                <header className={s.header + " appWrapperHeader"}>
-                    <div className={s.logo}>
-                        <NavLink to='/myprofile' activeClassName={s.active}>
-                            RR
-                        </NavLink>
-                    </div>
-                    <div
-                        className={toggleDrawer ? s.btnMenuOpen + " " + s.btnMenu : s.btnMenu}
-                        onClick={() => setToggleDrawer(!toggleDrawer)}></div>
-                    <div className={s.loginBox}>
-                        <div className={s.imgBox}>
-                            <img src={photo} alt='' />
-                        </div>
-                        <div className={s.userTextBox}>{userName}</div>
-                        {props.isAuth && (
-                            <div className={s.menuWrapp}>
-                                <ul className={s.menuList}>
-                                    <li className={s.menuItem}>
-                                        <NavLink to='/myprofile' activeClassName={s.active}>
-                                            My profile
-                                        </NavLink>
-                                    </li>
-                                    <li className={s.menuItem}>
-                                        <NavLink to='/settings' activeClassName={s.active}>
-                                            Settings
-                                        </NavLink>
-                                    </li>
-                                    <li onClick={props.logoutMe}>Exit</li>
-                                </ul>
-                            </div>
-                        )}
-                    </div>
-                </header>
-            </div>
-            {toggleDrawer && (
-                <DropdownMenus toggleDrawer={toggleDrawer} setToggleDrawer={setToggleDrawer} />
-            )}
-        </div>
+     <>
+        {/* <div className={s.fakeBlock}></div> */}
+          <div className={s.wrapper}>
+              <div className={s.wrapperHeader}>
+                  <header className={s.header + " appWrapperHeader"}>
+                      <div className={s.logo}>
+                          <NavLink to='/myprofile' activeClassName={s.active}>
+                              RR
+                          </NavLink>
+                      </div>
+                      <div
+                          className={toggleDrawer ? s.btnMenuOpen + " " + s.btnMenu : s.btnMenu}
+                          onClick={() => setToggleDrawer(!toggleDrawer)}></div>
+                      <div className={s.loginBox}>
+                          <div className={s.imgBox}>
+                              <img src={photo} alt='' />
+                          </div>
+                          <div className={s.userTextBox}>{userName}</div>
+                          {props.isAuth && (
+                              <div className={s.menuWrapp}>
+                                  <ul className={s.menuList}>
+                                      <li className={s.menuItem}>
+                                          <NavLink to='/myprofile' activeClassName={s.active}>
+                                              My profile
+                                          </NavLink>
+                                      </li>
+                                      <li className={s.menuItem}>
+                                          <NavLink to='/settings' activeClassName={s.active}>
+                                              Settings
+                                          </NavLink>
+                                      </li>
+                                      <li onClick={props.logoutMe}>Exit</li>
+                                  </ul>
+                              </div>
+                          )}
+                      </div>
+                  </header>
+              </div>
+              {toggleDrawer && (
+                  <DropdownMenus toggleDrawer={toggleDrawer} setToggleDrawer={setToggleDrawer} />
+              )}
+          </div>
+     </>
     );
 };
 

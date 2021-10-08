@@ -2,9 +2,10 @@ import React from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import MessagesPage from "./MessagesPage";
-import { setOpenDialog } from "./../../Store/Reducers/MessagesPageReducer";
+import { setOpenDialog, addMessage } from "./../../Store/Reducers/MessagesPageReducer";
 import withWindowWidth from "./../../HOC/withWindowWidth";
 import { withRouter } from "react-router-dom";
+import { reset } from "redux-form";
 
 class DialogsPageContainer extends React.Component {
     render() {
@@ -20,7 +21,7 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-    connect(mapStateToProps, { setOpenDialog }),
+    connect(mapStateToProps, { setOpenDialog, addMessage, reset }),
     withWindowWidth,
     withRouter,
 )(DialogsPageContainer);

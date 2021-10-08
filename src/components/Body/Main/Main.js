@@ -7,7 +7,6 @@ import MyProfilePageContainer from "../../ProfilePage/MyProfilePage/MyProfilePag
 import LoginPageContainer from "../../LoginPage/LoginPageContainer";
 import SettingsPageContainer from "../../SettingsPage/SettingsPageContainer";
 import MessagesPageContainer from "../../MessagesPage/MessagesPageContainer";
-
 const Main = (props) => {
     return (
         <>

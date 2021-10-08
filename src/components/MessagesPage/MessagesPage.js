@@ -7,7 +7,7 @@ import cn from "classnames";
 
 const DialogsPage = (props) => {
     const [windowWidth, setWindowWidth] = useState(props.windowWidth);
-  
+
     useEffect(() => {
         setWindowWidth(props.windowWidth);
     }, [props.windowWidth]);
@@ -35,6 +35,8 @@ const DialogsPage = (props) => {
                         dialogs={props.dialogs}
                         openDialogId={props.openDialogId}
                         windowWidth={windowWidth}
+                        addMessage={props.addMessage}
+                        reset={props.reset}
                     />
                 )}
             />

@@ -1,4 +1,5 @@
 const SET_OPEN_DIALOG = "MessagesPageReducer/SET_OPEN_DIALOG";
+const ADD_MESSAGE = "MessagesPageReducer/ADD_MESSAGE";
 
 const initialState = {
     dialogs: [
@@ -237,6 +238,31 @@ const MessagesPageReducer = (state = initialState, action) => {
                 ...state,
                 openDialogId: action.openDialogId,
             };
+        case ADD_MESSAGE:
+            const today = new Date();
+            const dd = String(today.getDate()).padStart(2, "0");
+            const mm = String(today.getMonth() + 1).padStart(2, "0");
+            const yyyy = today.getFullYear();
+            const mytoday = mm + "." + dd + "." + yyyy;
+            return {
+                ...state,
+                dialogs: state.dialogs.map((dialog) => {
+                    if (action.userId === dialog.id) {
+                        const newMessage = {
+                            id: dialog.messages.length,
+                            bodyMessages: [action.message],
+                            data: mytoday,
+                            myMessages: true,
+                        };
+                        return {
+                            ...dialog,
+                            messages: [...dialog.messages, newMessage],
+                            log: 2,
+                        };
+                    }
+                    return dialog;
+                }),
+            };
         default:
             return state;
     }
@@ -244,6 +270,9 @@ const MessagesPageReducer = (state = initialState, action) => {
 
 export const setOpenDialog = (openDialogId) => {
     return { type: SET_OPEN_DIALOG, openDialogId };
+};
+export const addMessage = (message, userId) => {
+    return { type: ADD_MESSAGE, message, userId };
 };
 
 export default MessagesPageReducer;
