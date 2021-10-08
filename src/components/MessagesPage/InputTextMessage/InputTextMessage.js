@@ -9,12 +9,12 @@ const InputTextMessage = (props) => {
             <Field
                 className={s.input}
                 component={Input}
-                name={"bodyTextMessage"}
+                name={`bodyTextMessage${props.userId}`}
                 placeholder={"Your message"}
             />
             <button className={s.btn}>Send</button>
         </form>
     );
 };
-// export default InputTextMessage;
+
 export default reduxForm({ form: "dialog" })(InputTextMessage);

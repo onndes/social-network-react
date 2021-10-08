@@ -5,14 +5,18 @@ import BtnGoBack from "./../../../Common/BtnGoBack/BtnGoBack";
 import InputTextMessage from "./../InputTextMessage/InputTextMessage";
 
 const Dialog = (props) => {
+    const userId = +props.match.params.userId;
     const divRef = useRef(null);
     useEffect(() => {
         divRef.current.scrollIntoView({ behavior: "auto", block: "end", inline: "nearest" });
     });
 
     const sendMessage = (data) => {
-        props.addMessage(data.bodyTextMessage, +props.match.params.userId);
-        props.reset("dialog");
+        const bodyTextMessage = data[`bodyTextMessage${userId}`];
+        if (bodyTextMessage && bodyTextMessage.trim()) {
+            props.addMessage(bodyTextMessage, userId);
+            props.reset("dialog");
+        }
     };
 
     return (
@@ -25,18 +29,14 @@ const Dialog = (props) => {
             )}
             <div className={s.dialogWrapper} ref={divRef}>
                 <div className={s.messagesWrapper}>
-                    {props.dialogs[props.match.params.userId].messages.map((message) => {
+                    {props.dialogs[userId].messages.map((message) => {
                         return (
                             <div key={message.id} className={s.messageBox}>
                                 <p
                                     className={cn(
                                         s.bodyMessage,
-                                        {
-                                            [s.notMyMessage]: !message.myMessages,
-                                        },
-                                        {
-                                            [s.myMessage]: message.myMessages,
-                                        },
+                                        { [s.notMyMessage]: !message.myMessages },
+                                        { [s.myMessage]: message.myMessages },
                                     )}>
                                     {message.bodyMessages}
                                 </p>
@@ -45,7 +45,7 @@ const Dialog = (props) => {
                     })}
                 </div>
                 <div className={s.inputTextMessage}>
-                    <InputTextMessage onSubmit={sendMessage} />
+                    <InputTextMessage onSubmit={sendMessage} userId={userId} />
                 </div>
             </div>
         </>
