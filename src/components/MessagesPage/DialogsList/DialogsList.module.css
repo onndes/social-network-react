@@ -1,5 +1,6 @@
 .wrapper {
     color: rgb(79, 75, 153);
+    position: fixed;
 }
 .title {
     margin: 0px 0px 20px 0px;

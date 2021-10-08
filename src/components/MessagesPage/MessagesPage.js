@@ -7,16 +7,18 @@ import cn from "classnames";
 
 const DialogsPage = (props) => {
     const [windowWidth, setWindowWidth] = useState(props.windowWidth);
+  
     useEffect(() => {
         setWindowWidth(props.windowWidth);
     }, [props.windowWidth]);
 
     return (
-            <div
-                className={cn(
-                    { [s.wrapperForBig]: windowWidth >= 576 },
-                    { [s.wrapperForSmall]: windowWidth < 576 },
-                )}>
+        <div
+            className={cn(
+                { [s.wrapperForBig]: windowWidth >= 576 },
+                { [s.wrapperForSmall]: windowWidth < 576 },
+            )}>
+            <div>
                 <Route exact={windowWidth < 576} path={`/messages`}>
                     <DialogsList
                         dialogs={props.dialogs}
@@ -24,18 +26,19 @@ const DialogsPage = (props) => {
                         setOpenDialog={props.setOpenDialog}
                     />
                 </Route>
-                <Route
-                    path={`/messages/:userId`}
-                    render={() => (
-                        <ContainerDialogWithRouter
-                            setOpenDialog={props.setOpenDialog}
-                            dialogs={props.dialogs}
-                            openDialogId={props.openDialogId}
-                            windowWidth={windowWidth}
-                        />
-                    )}
-                />
             </div>
+            <Route
+                path={`/messages/:userId`}
+                render={() => (
+                    <ContainerDialogWithRouter
+                        setOpenDialog={props.setOpenDialog}
+                        dialogs={props.dialogs}
+                        openDialogId={props.openDialogId}
+                        windowWidth={windowWidth}
+                    />
+                )}
+            />
+        </div>
     );
 };
 

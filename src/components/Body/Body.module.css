@@ -12,4 +12,7 @@
   .div1 {
     display: none;
   }
+  .div2 {
+    height: 100%;
+  }
 }

@@ -4,7 +4,7 @@ import "../../Common/Sanitize.css";
 import "./App.css";
 import { connect } from "react-redux";
 import HeaderContainer from "../Header/HeaderContainer";
-import Footer from "../Footer/Footer";
+// import Footer from "../Footer/Footer";
 import BodyContainer from "../Body/BodyContainer";
 import { startInitial } from "../../Store/Reducers/AppReducer";
 import AppPreloader from "./../../Common/AppPreloader/AppPreloader";
@@ -21,7 +21,7 @@ class App extends Component {
             <div className='app'>
                 <HeaderContainer />
                 <BodyContainer />
-                <Footer />
+                {/* <Footer /> */}
             </div>
         );
     }
