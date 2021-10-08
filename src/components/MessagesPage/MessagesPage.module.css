@@ -1,10 +1,13 @@
+.wrapper {
+  height: 100%;
+  overflow: hidden;
+}
+
 .wrapperForBig {
   display: grid;
   grid-template-columns: 150px 1fr;
-  min-height: 100%;
 }
 
 .wrapperForSmall {
   display: block;
-  min-height: 100%;
 }

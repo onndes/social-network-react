@@ -7,14 +7,14 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  /* grid-template-rows: 1fr auto; */
-  /* grid-gap: 20px; */
+  grid-template-rows: auto 1fr;
+  grid-gap: 20px;
   background-color: #f0f2f5;
   height: 100%;
 }
 .appWrapper {
   max-width: 1200px;
-  margin: 60px auto 0px;
+  margin: 0px auto 0px;
   width: 100%;
   padding: 0 10px;
 

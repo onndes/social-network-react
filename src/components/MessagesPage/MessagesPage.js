@@ -15,6 +15,7 @@ const DialogsPage = (props) => {
     return (
         <div
             className={cn(
+                s.wrapper,
                 { [s.wrapperForBig]: windowWidth >= 576 },
                 { [s.wrapperForSmall]: windowWidth < 576 },
             )}>

@@ -1,8 +1,8 @@
 .fakeBlock {
-  height: 70px;
+  /* height: 70px; */
 }
 .wrapper {
-    position: fixed;
+    position: sticky;
     z-index: 10;
     width: 100%;
     top: 0;
