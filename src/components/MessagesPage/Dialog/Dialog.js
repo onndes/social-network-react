@@ -23,7 +23,9 @@ const Dialog = (props) => {
         <>
             {props.windowWidth < 576 && (
                 <div className={s.wrapperBtnLine} onClick={() => props.setOpenDialog(null)}>
-                    <BtnGoBack mb={"10px"} backLink={"/messages"} />
+                    <div className={s.wrappBtn}>
+                        <BtnGoBack mb={"0px"} backLink={"/messages"} />
+                    </div>
                     <div className={s.line}></div>
                 </div>
             )}

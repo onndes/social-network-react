@@ -15,7 +15,10 @@ const MessagesItemTest = (props) => {
     };
 
     const inputText = (text) => {
-        props.addPostActionCreator(text.inputBodyText);
+        if (text.inputBodyText && text.inputBodyText.trim()) {
+            props.addPostActionCreator(text.inputBodyText);
+            props.reset("inputNews");
+        }
     };
     return (
         <div className={s.wrapper}>

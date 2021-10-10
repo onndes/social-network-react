@@ -2,6 +2,7 @@
 import NewsPage from "./NewsPage";
 import { addPostActionCreator } from "../../Store/Reducers/NewsPageReducer";
 import { connect } from "react-redux";
+import { reset } from "redux-form";
 
 let mapStateToProps = (state) => {
     return {
@@ -9,6 +10,6 @@ let mapStateToProps = (state) => {
     };
 };
 
-const NewsPageContainer = connect(mapStateToProps, { addPostActionCreator })(NewsPage);
+const NewsPageContainer = connect(mapStateToProps, { addPostActionCreator, reset })(NewsPage);
 
 export default NewsPageContainer;
