@@ -5,10 +5,13 @@ import { isLoading, getProfile, getFollowThisUser } from "../../Store/Reducers/P
 // import { isLoading, getProfile, getFollowThisUser } from "../../Store/Reducers/ProfilePageReducer";
 import Preloader from "../../Common/Preloader/Preloader";
 import { withRouter, Redirect } from "react-router-dom";
-
+import { unFollow, follow } from "../../Store/Reducers/UsersPageReducer";
 class ProfileContainer extends React.Component {
     componentDidMount() {
         this.props.getProfile(this.props.match.params.userId);
+        this.props.getFollowThisUser(this.props.match.params.userId);
+    }
+    componentDidUpdate() {
         this.props.getFollowThisUser(this.props.match.params.userId);
     }
     render() {
@@ -25,16 +28,19 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        follow: state.profilePage.follow,
+        isFollow: state.profilePage.follow,
         userStatus: state.profilePage.userStatus,
         id: state.auth.id,
         isAuth: state.auth.isAuth,
+        buttonFollowWork: state.usersPage.buttonFollowWork,
     };
 };
 const ProfilePageContainer = connect(mapStateToProps, {
     isLoading,
     getProfile,
     getFollowThisUser,
+    unFollow,
+    follow,
 })(withRouter(ProfileContainer));
 
 export default ProfilePageContainer;

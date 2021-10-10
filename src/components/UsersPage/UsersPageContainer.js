@@ -53,10 +53,10 @@ const mapStateToProps = (state) => {
 
 const UsersPageContainer = connect(mapStateToProps, {
     unFollow,
+    follow,
     toggleButtonFollow,
     getUsers,
     getUsersClickBtn,
-    follow,
     setVisiblePageBtn,
     setCountBtn,
     setCurrentPage,

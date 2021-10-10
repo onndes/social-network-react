@@ -1,110 +1,109 @@
 .userWrap {
-  display: grid;
-  grid-template-columns: 2fr 5fr;
-  grid-gap: 15px;
-  margin: 0 10px 35px 10px;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    grid-gap: 15px;
+    margin: 0 10px 35px 10px;
 }
 
 .nameAndOnlineBox {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .imgContainer {
-  width: 100%;
-  /* height: 100%; */
-  margin: 0 0 10px 0;
+    width: 100%;
+    margin: 0 0 10px 0;
 }
 
 .imgContainer img {
-  width: 100%;
-  max-width: 100%;
+    width: 100%;
+    max-width: 100%;
 }
 
 .btnFollow {
-  width: 100%;
-  text-align: center;
-  padding: 4px 6px;
-  color: white;
+    width: 100%;
+    text-align: center;
+    padding: 4px 6px;
+    color: white;
+}
+.btnFollow:disabled {
+    opacity: 0.2;
 }
 
 .follow {
-  background: rgb(79, 75, 153);
+    background: rgb(79, 75, 153);
 }
 
 .unfollow {
-  background: rgb(80, 80, 80);
-} 
+    background: rgb(80, 80, 80);
+}
 .nameAndOnlineBox {
-  padding: 0 0 10px 0;
+    padding: 0 0 10px 0;
 }
 
 .status {
-  
 }
 .statusOffline {
-  color: rgb(168, 115, 115);
+    color: rgb(168, 115, 115);
 }
 .statusOnline {
-  color: rgb(43, 168, 49);
+    color: rgb(43, 168, 49);
 }
 .titleName {
-  font-weight: 500;
-  font-size: 18px;
-  padding: 0 30px 0 0;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 0 30px 0 0;
 }
 .userStatus {
-  font-size: 14px;
-  color: rgb(73, 73, 73);
-  margin: 0px 0px 20px 0px;
+    font-size: 14px;
+    color: rgb(73, 73, 73);
+    margin: 0px 0px 20px 0px;
 }
 .aboutMe {
-  padding: 30px 0 0 0;
+    padding: 30px 0 0 0;
 }
 .aboutMe span {
-  font-weight: 600;
+    font-weight: 600;
 }
 .testBtn {
-  background-color: green;
-  color: white;
-  padding: 4px 8px;
-  font-size: 16px;
-  letter-spacing: 1px;
-  font-weight: 500;
-  margin: 0 0 15px 0;
+    background-color: green;
+    color: white;
+    padding: 4px 8px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    margin: 0 0 15px 0;
 }
 
 .btnUserPageBox {
-  display: flex;
-  padding: 0 0 10px 10px;
-  margin: 0 10px 20px 0;
-  border-bottom: 1px solid rgba(79, 75, 153, 0.234);
-  font-size: 20px;
-  cursor: pointer;
+    display: flex;
+    padding: 0 0 10px 10px;
+    margin: 0 10px 20px 0;
+    border-bottom: 1px solid rgba(79, 75, 153, 0.234);
+    font-size: 20px;
+    cursor: pointer;
 }
-.btnUserPageBox div{
-  padding: 5px 10px 5px 10px;
-
+.btnUserPageBox div {
+    padding: 5px 10px 5px 10px;
 }
 .btnPageUsers {
-  background-color: rgba(79, 75, 153, 0.248);
+    background-color: rgba(79, 75, 153, 0.248);
 }
 .btnPageUsersActive {
-  font-weight: 700;
-  background-color: rgba(79, 75, 153, 0.666);
+    font-weight: 700;
+    background-color: rgba(79, 75, 153, 0.666);
 }
 
 .aboutUserWrapper {
-  margin: 40px 0 0 0;
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  grid-gap: 40px;
+    margin: 40px 0 0 0;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-gap: 40px;
 }
-.aboutUserItemTitle{
-  padding: 0 0 10px 0;
-  font-weight: 600;
+.aboutUserItemTitle {
+    padding: 0 0 10px 0;
+    font-weight: 600;
 }
 .aboutUserItem {
-  padding: 0 0 10px 0;
-
+    padding: 0 0 10px 0;
 }
