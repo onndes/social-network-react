@@ -53,7 +53,7 @@ const Profile = (props) => {
                         <p className={style.statusOffline + " " + style.status}>[Offline]</p>
                     </div>
                     <p className={style.userStatus}>
-                        {props.userStatus ? props.userStatus : "no data"}
+                        {props.userStatus ? props.userStatus : "no status"}
                     </p>
                     <ProfileInfo profile={props.profile} />
                 </div>
