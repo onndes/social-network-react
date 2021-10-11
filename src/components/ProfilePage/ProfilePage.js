@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from "react";
-import style from "./Profile.module.css";
+import React from "react";
+import style from "./MyProfilePage/MyProfilePage.module.css";
 import userImg from "../../assets/img/iconUser.png";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 const Profile = (props) => {
-    const [gIsFollow, gSetIsFollow] = useState(props.isFollow);
-    useEffect(() => {
-        gSetIsFollow(props.isFollow);
-    }, [props.isFollow]);
-
     const renderBlockUserPhoto = () => {
         return (
             <div className={style.firstCol}>
@@ -22,7 +17,7 @@ const Profile = (props) => {
                     />
                 </div>
                 <div className={style.btnContainer}>
-                    {gIsFollow ? (
+                    {props.isFollow ? (
                         <button
                             disabled={props.buttonFollowWork.some(
                                 (i) => i === props.profile.userId,
@@ -53,16 +48,20 @@ const Profile = (props) => {
     return (
         <div>
             <div className={style.userWrap}>
-                {renderBlockUserPhoto()}
+                {props.windowWidth >= 420 && renderBlockUserPhoto()}
                 <div className={style.secondCol}>
                     <div className={style.nameAndOnlineBox}>
                         <p className={style.titleName}>{props.profile.fullName}</p>
                         <p className={style.statusOffline + " " + style.status}>[Offline]</p>
                     </div>
-                    <p className={style.userStatus}>
+                    <p className={style.userStatusN}>
                         {props.userStatus ? props.userStatus : "no status"}
                     </p>
-                    <ProfileInfo profile={props.profile} />
+                    {props.windowWidth > 576 && <ProfileInfo profile={props.profile} />}
+                </div>
+                {props.windowWidth < 420 && renderBlockUserPhoto()}
+                <div className={style.infoBockWrapper}>
+                    {props.windowWidth < 576 && <ProfileInfo profile={props.profile} />}
                 </div>
             </div>
         </div>

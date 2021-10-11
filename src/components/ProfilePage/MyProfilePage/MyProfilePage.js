@@ -62,7 +62,7 @@ const MyProfilePage = (props) => {
     return (
         <div>
             <div key={props.id} className={s.userWrap}>
-                {windowWidth >= 320 && renderBlockUserPhoto()}
+                {windowWidth >= 420 && renderBlockUserPhoto()}
                 <div className={s.secondCol}>
                     <div className={s.nameAndOnlineBox}>
                         <p className={s.titleName}>{props.profile.fullName}</p>
@@ -84,7 +84,7 @@ const MyProfilePage = (props) => {
 
                     {windowWidth > 576 && <ProfileInfo profile={props.profile} />}
                 </div>
-                {windowWidth < 320 && renderBlockUserPhoto()}
+                {windowWidth < 420 && renderBlockUserPhoto()}
                 <div className={s.infoBockWrapper}>
                     {windowWidth < 576 && <ProfileInfo profile={props.profile} />}
                 </div>

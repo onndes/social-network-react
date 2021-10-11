@@ -46,6 +46,9 @@
 .userStatus {
     position: relative;
 }
+.userStatusN {
+  margin: 0px 0px 20px 0px;
+}
 .userStatus::before {
     content: "";
     display: block;
@@ -126,6 +129,24 @@
     color: black;
 }
 
+.btnFollow {
+  width: 100%;
+  text-align: center;
+  padding: 4px 6px;
+  color: white;
+}
+.btnFollow:disabled {
+  opacity: 0.2;
+}
+
+.follow {
+  background: rgb(79, 75, 153);
+}
+
+.unfollow {
+  background: rgb(80, 80, 80);
+}
+
 @media only screen and (max-width: 576px) {
     .userWrap {
         grid-template-columns: 100px 1fr;
@@ -134,7 +155,7 @@
         grid-column: span 2;
     }
 }
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 420px) {
     .userWrap {
         display: flex;
         flex-direction: column;
