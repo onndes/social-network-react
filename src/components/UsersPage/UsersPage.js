@@ -4,6 +4,7 @@ import User from "./User/User";
 import PaginationUsers from "./PaginationUsers/PaginationUsers";
 
 const UsersPage = (props) => {
+    console.log(props);
     const renderUsersList = () => {
         return props.users.map((user) => {
             return (
@@ -13,6 +14,7 @@ const UsersPage = (props) => {
                         buttonFollowWork={props.buttonFollowWork}
                         follow={props.follow}
                         unFollow={props.unFollow}
+                        windowWidth={props.windowWidth}
                     />
                 </div>
             );

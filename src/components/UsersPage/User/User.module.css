@@ -57,3 +57,20 @@
   color: rgb(73, 73, 73);
 }
 
+@media only screen and (max-width: 420px) {
+  .userWrap {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    grid-gap: 15px;
+    margin: 0 10px 35px 10px;
+  }
+  .nameAndOnlineBox {
+    display: block;
+    /* justify-content: space-between; */
+  }
+  .titleName {
+    font-weight: 500;
+    font-size: 18px;
+    padding: 0 0px 0 0;
+  }
+}

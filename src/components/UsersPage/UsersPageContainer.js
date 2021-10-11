@@ -12,6 +12,8 @@ import {
 import UsersPage from "./UsersPage";
 import { connect } from "react-redux";
 import { checkGetUsers } from "../../Store/Selectors";
+import { compose } from "redux";
+import withWindowWidth from "./../../HOC/withWindowWidth";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -51,15 +53,16 @@ const mapStateToProps = (state) => {
     };
 };
 
-const UsersPageContainer = connect(mapStateToProps, {
-    unFollow,
-    follow,
-    toggleButtonFollow,
-    getUsers,
-    getUsersClickBtn,
-    setVisiblePageBtn,
-    setCountBtn,
-    setCurrentPage,
-})(UsersContainer);
-
-export default UsersPageContainer;
+export default compose(
+    connect(mapStateToProps, {
+        unFollow,
+        follow,
+        toggleButtonFollow,
+        getUsers,
+        getUsersClickBtn,
+        setVisiblePageBtn,
+        setCountBtn,
+        setCurrentPage,
+    }),
+    withWindowWidth,
+)(UsersContainer);

@@ -3,6 +3,14 @@ import s from "./User.module.css";
 import { NavLink } from "react-router-dom";
 
 const User = ({ user, ...props }) => {
+    const sliceUserName = (userName) => {
+        if (userName.length > 12 && props.windowWidth < 420) {
+            return userName.slice(0, 12) + "...";
+        } else {
+            return userName;
+        }
+    };
+
     return (
         <div key={user.id} className={s.userWrap}>
             <div className={s.firstCol}>
@@ -36,7 +44,7 @@ const User = ({ user, ...props }) => {
             <div className={s.secondCol}>
                 <div className={s.nameAndOnlineBox}>
                     <p className={s.titleName}>
-                        {user.name}
+                        {sliceUserName(user.name)}
                         {}
                     </p>
                     {user.status ? (

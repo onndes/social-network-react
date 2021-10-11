@@ -12,6 +12,7 @@
 }
 .imgContainer {
     width: 100%;
+    max-width: 250px;
     margin: 0 0 10px 0;
     position: relative;
 }
@@ -94,6 +95,7 @@
 }
 .btnUserPageBox div {
     padding: 5px 10px 5px 10px;
+    max-width: 250px;
 }
 .btnPageUsers {
     background-color: rgba(79, 75, 153, 0.248);
@@ -120,6 +122,7 @@
     padding: 2px 4px;
     font-size: 12px;
     opacity: 0.7;
+    opacity: 0.7;
     background-color: rgb(161, 197, 125);
 }
 .btnModified:hover {
@@ -128,7 +131,9 @@
 .btnModified a {
     color: black;
 }
-
+.btnContainer {
+  max-width: 250px;
+}
 .btnFollow {
   width: 100%;
   text-align: center;
