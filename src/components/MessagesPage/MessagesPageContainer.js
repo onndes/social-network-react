@@ -6,6 +6,7 @@ import { setOpenDialog, addMessage } from "./../../Store/Reducers/MessagesPageRe
 import withWindowWidth from "./../../HOC/withWindowWidth";
 import { withRouter } from "react-router-dom";
 import { reset } from "redux-form";
+import withAuthRedirect from './../../HOC/withAuthRedirect';
 
 class DialogsPageContainer extends React.Component {
     render() {
@@ -24,4 +25,5 @@ export default compose(
     connect(mapStateToProps, { setOpenDialog, addMessage, reset }),
     withWindowWidth,
     withRouter,
+    withAuthRedirect,
 )(DialogsPageContainer);

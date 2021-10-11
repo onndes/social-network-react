@@ -3,9 +3,7 @@
     top: 0;
     left: 0;
     position: relative;
-
 }
-
 
 .pStatus {
     padding-top: 5px;
@@ -13,10 +11,8 @@
     position: relative;
 }
 .pStatusBox {
-
 }
 .statusUpdating {
-
 }
 .pStatusBox .statusUpdating {
     position: absolute;
@@ -24,11 +20,10 @@
     left: 80px;
     font-size: 12px;
     padding: 3px;
-    opacity: .7;
+    opacity: 0.7;
     display: flex;
     align-items: center;
     background: #ecb0b0;
-
 }
 
 .pStatus:hover {
@@ -58,4 +53,18 @@
 .btnCloseStatus {
     padding: 4px 8px;
     background: rgba(225, 111, 111, 0.77);
+}
+@media screen and (max-width: 576px) {
+    .inputWrap {
+        min-width: 250px;
+        max-width: 260px;
+        background: #f0f2f5;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.55);
+        position: fixed;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 11;
+    }
 }

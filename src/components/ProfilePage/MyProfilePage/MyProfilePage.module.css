@@ -1,149 +1,143 @@
 .userWrap {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-gap: 15px;
-  margin: 0 10px 35px 10px;
-  min-height: 100%;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-gap: 15px;
+    margin: 0 10px 35px 10px;
+    min-height: 100%;
+    overflow: hidden;
 }
-
 .nameAndOnlineBox {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
-
 .imgContainer {
-  width: 100%;
-  margin: 0 0 10px 0;
-  position: relative;
+    width: 100%;
+    margin: 0 0 10px 0;
+    position: relative;
 }
-
 .imgContainer img {
-  width: 100%;
-  max-width: 100%;
+    width: 100%;
+    max-width: 100%;
 }
 .preloader {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.638);
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.638);
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .btnEditMyProfile {
-  width: 100%;
-  text-align: center;
-  padding: 4px 6px;
-  color: white;
-  background: rgb(79, 75, 153);
+    width: 100%;
+    text-align: center;
+    padding: 4px 6px;
+    color: white;
+    background: rgb(79, 75, 153);
 }
 .btnEditMyProfileOff {
-  background: grey;
-
+    background: grey;
 }
 
 .nameAndOnlineBox {
-  padding: 0 0 10px 0;
+    padding: 0 0 10px 0;
 }
 .userStatus {
-  position: relative;
+    position: relative;
 }
 .userStatus::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 4px;
-  left: -20px;
-  width: 15px;
-  height: 15px;
-  z-index: 8;
-  background: url(../../../assets/img/pencil.svg)  0 / 100% auto no-repeat;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: -20px;
+    width: 15px;
+    height: 15px;
+    z-index: 8;
+    background: url(../../../assets/img/pencil.svg) 0 / 100% auto no-repeat;
 }
 .statusOffline {
-  color: rgb(168, 115, 115);
+    color: rgb(168, 115, 115);
 }
 .statusOnline {
-  color: rgb(43, 168, 49);
+    color: rgb(43, 168, 49);
 }
 .titleName {
-  font-weight: 500;
-  font-size: 18px;
-  padding: 0 30px 0 0;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 0 30px 0 0;
 }
 .userStatus {
-  font-size: 14px;
-  color: rgb(73, 73, 73);
+    font-size: 14px;
+    color: rgb(73, 73, 73);
 }
-
 .testBtn {
-  background-color: green;
-  color: white;
-  padding: 4px 8px;
-  font-size: 16px;
-  letter-spacing: 1px;
-  font-weight: 500;
-  margin: 0 0 15px 0;
+    background-color: green;
+    color: white;
+    padding: 4px 8px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    margin: 0 0 15px 0;
 }
-
 .btnUserPageBox {
-  display: flex;
-  padding: 0 0 10px 10px;
-  margin: 0 10px 20px 0;
-  border-bottom: 1px solid rgba(79, 75, 153, 0.234);
-  font-size: 20px;
-  cursor: pointer;
+    display: flex;
+    padding: 0 0 10px 10px;
+    margin: 0 10px 20px 0;
+    border-bottom: 1px solid rgba(79, 75, 153, 0.234);
+    font-size: 20px;
+    cursor: pointer;
 }
-.btnUserPageBox div{
-  padding: 5px 10px 5px 10px;
-
+.btnUserPageBox div {
+    padding: 5px 10px 5px 10px;
 }
 .btnPageUsers {
-  background-color: rgba(79, 75, 153, 0.248);
+    background-color: rgba(79, 75, 153, 0.248);
 }
 .btnPageUsersActive {
-  font-weight: 700;
-  background-color: rgba(79, 75, 153, 0.666);
+    font-weight: 700;
+    background-color: rgba(79, 75, 153, 0.666);
 }
 .secondCol {
-  margin-left: 15px;
+    margin-left: 15px;
 }
 .btnModified {
-  display: block;
-  margin-top: 15px;
-  margin-bottom: 4px;
-  padding: 2px 4px;
-  background-color: rgb(197, 197, 197);
-  font-size: 12px;
-  /* opacity: .7; */
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 4px;
+    padding: 2px 4px;
+    background-color: rgb(197, 197, 197);
+    font-size: 12px;
 }
 .btnModifiedSave {
-  display: block;
-  margin-top: 15px;
-  margin-bottom: 4px;
-  padding: 2px 4px;
-  font-size: 12px;
-  opacity: .7;
-  background-color: rgb(161, 197, 125);
-
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 4px;
+    padding: 2px 4px;
+    font-size: 12px;
+    opacity: 0.7;
+    background-color: rgb(161, 197, 125);
 }
 .btnModified:hover {
-  background-color: rgb(165, 165, 165);
-
+    background-color: rgb(165, 165, 165);
 }
 .btnModified a {
-  color: black;
+    color: black;
 }
-
 
 @media only screen and (max-width: 576px) {
-  .userWrap {
-    grid-template-columns: 100px 1fr;
-  }
-  .imgContainer  {
-  }
-  .infoBockWrapper {
-    grid-column: span 2
-  }
+    .userWrap {
+        grid-template-columns: 100px 1fr;
+    }
+    .infoBockWrapper {
+        grid-column: span 2;
+    }
 }
-
+@media only screen and (max-width: 320px) {
+    .userWrap {
+        display: flex;
+        flex-direction: column;
+        grid-gap: 20px;
+    }
+}

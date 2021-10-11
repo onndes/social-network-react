@@ -7,46 +7,53 @@ const Profile = (props) => {
     useEffect(() => {
         gSetIsFollow(props.isFollow);
     }, [props.isFollow]);
+
+    const renderBlockUserPhoto = () => {
+        return (
+            <div className={style.firstCol}>
+                <div className={style.imgContainer}>
+                    <img
+                        src={
+                            props.profile.photos.small !== null
+                                ? props.profile.photos.small
+                                : userImg
+                        }
+                        alt=''
+                    />
+                </div>
+                <div className={style.btnContainer}>
+                    {gIsFollow ? (
+                        <button
+                            disabled={props.buttonFollowWork.some(
+                                (i) => i === props.profile.userId,
+                            )}
+                            onClick={() => {
+                                props.unFollow(props.profile.userId);
+                            }}
+                            className={style.unfollow + " " + style.btnFollow}>
+                            Unfollow
+                        </button>
+                    ) : (
+                        <button
+                            disabled={props.buttonFollowWork.some(
+                                (i) => i === props.profile.userId,
+                            )}
+                            onClick={() => {
+                                props.follow(props.profile.userId);
+                            }}
+                            className={style.follow + " " + style.btnFollow}>
+                            Follow
+                        </button>
+                    )}
+                </div>
+            </div>
+        );
+    };
+
     return (
         <div>
             <div className={style.userWrap}>
-                <div className={style.firstCol}>
-                    <div className={style.imgContainer}>
-                        <img
-                            src={
-                                props.profile.photos.small !== null
-                                    ? props.profile.photos.small
-                                    : userImg
-                            }
-                            alt=''
-                        />
-                    </div>
-                    <div className={style.btnContainer}>
-                        {gIsFollow ? (
-                            <button
-                                disabled={props.buttonFollowWork.some(
-                                    (i) => i === props.profile.userId,
-                                )}
-                                onClick={() => {
-                                    props.unFollow(props.profile.userId);
-                                }}
-                                className={style.unfollow + " " + style.btnFollow}>
-                                Unfollow
-                            </button>
-                        ) : (
-                            <button
-                                disabled={props.buttonFollowWork.some(
-                                    (i) => i === props.profile.userId,
-                                )}
-                                onClick={() => {
-                                    props.follow(props.profile.userId);
-                                }}
-                                className={style.follow + " " + style.btnFollow}>
-                                Follow
-                            </button>
-                        )}
-                    </div>
-                </div>
+                {renderBlockUserPhoto()}
                 <div className={style.secondCol}>
                     <div className={style.nameAndOnlineBox}>
                         <p className={style.titleName}>{props.profile.fullName}</p>

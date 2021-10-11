@@ -94,6 +94,9 @@
 .menuItem a:visited {
   color: #4f4b99 
 }
+.menuItem a{
+  color: #4f4b99 
+}
 
 .btnMenu {
     display: none;

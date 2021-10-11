@@ -32,32 +32,37 @@ const MyProfilePage = (props) => {
         return () => window.removeEventListener("resize", hundleSetWindowWidth);
     }, [props.profile.photos.large, windowWidth]);
 
+    const renderBlockUserPhoto = () => {
+        return (
+            <div className={s.firstCol}>
+                <div className={s.imgContainer}>
+                    <img src={photoProfile} alt='' />
+                    {props.isUpdatePhoto && (
+                        <div className={s.preloader}>
+                            <Preloader />
+                        </div>
+                    )}
+                </div>
+                <div className={s.btnContainer}>
+                    {props.isUpdatePhoto ? (
+                        <button className={s.btnEditMyProfile + " " + s.btnEditMyProfileOff}>
+                            Change photo
+                        </button>
+                    ) : (
+                        <button
+                            className={s.btnEditMyProfile}
+                            onClick={() => setModalChangeFoto(true)}>
+                            Change photo
+                        </button>
+                    )}
+                </div>
+            </div>
+        );
+    };
     return (
         <div>
             <div key={props.id} className={s.userWrap}>
-                <div className={s.firstCol}>
-                    <div className={s.imgContainer}>
-                        <img src={photoProfile} alt='' />
-                        {props.isUpdatePhoto && (
-                            <div className={s.preloader}>
-                                <Preloader />
-                            </div>
-                        )}
-                    </div>
-                    <div className={s.btnContainer}>
-                        {props.isUpdatePhoto ? (
-                            <button className={s.btnEditMyProfile + " " + s.btnEditMyProfileOff}>
-                                Change photo
-                            </button>
-                        ) : (
-                            <button
-                                className={s.btnEditMyProfile}
-                                onClick={() => setModalChangeFoto(true)}>
-                                Change photo
-                            </button>
-                        )}
-                    </div>
-                </div>
+                {windowWidth >= 320 && renderBlockUserPhoto()}
                 <div className={s.secondCol}>
                     <div className={s.nameAndOnlineBox}>
                         <p className={s.titleName}>{props.profile.fullName}</p>
@@ -79,7 +84,10 @@ const MyProfilePage = (props) => {
 
                     {windowWidth > 576 && <ProfileInfo profile={props.profile} />}
                 </div>
-                <div className={s.infoBockWrapper}>{windowWidth < 576 && <ProfileInfo profile={props.profile} />}</div>
+                {windowWidth < 320 && renderBlockUserPhoto()}
+                <div className={s.infoBockWrapper}>
+                    {windowWidth < 576 && <ProfileInfo profile={props.profile} />}
+                </div>
             </div>
             {modalChangeFoto && (
                 <ModalFoto
