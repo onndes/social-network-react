@@ -47,10 +47,10 @@ const User = ({ user, ...props }) => {
                         {sliceUserName(user.name)}
                         {}
                     </p>
-                    {user.status ? (
-                        <p className={s.statusOnline + " " + s.status}>Online</p>
+                    {!user.status ? (
+                        <p className={s.statusOnline + " " + s.status}>[Online]</p>
                     ) : (
-                        <p className={s.statusOffline + " " + s.status}>Offline</p>
+                        <p className={s.statusOffline + " " + s.status}>[Offline]</p>
                     )}
                 </div>
                 <p className={s.status}>{user.status}</p>
