@@ -10,9 +10,6 @@ const ModalFoto = ({
     setModalChangeFoto,
 
 }) => {
-    // const onCkickInput = {};
-  
-   
     return (
         <div
             onClick={(e) => {

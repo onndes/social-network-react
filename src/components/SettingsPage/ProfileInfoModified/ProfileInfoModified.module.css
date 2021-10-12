@@ -72,24 +72,22 @@
     .wrapTitleInfo {
         display: block;
         margin: 0px 0px 10px 0px;
-
     }
     .title {
         margin: 0px 0 10px 0px;
 
         text-align: left;
-     
     }
     .titleContacts {
-      margin: 25px 0px 0px 0px;
-      text-transform: uppercase;
-  }
-  .wrapTitleInfoCheckBox {
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-  }
-  .titleCheckBox {
-    margin: 0px 0px 0px 0px;
-  }
+        margin: 25px 0px 0px 0px;
+        text-transform: uppercase;
+    }
+    .wrapTitleInfoCheckBox {
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+    }
+    .titleCheckBox {
+        margin: 0px 0px 0px 0px;
+    }
 }

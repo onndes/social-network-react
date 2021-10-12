@@ -1,4 +1,3 @@
-// import React from "react";
 import NewsPage from "./NewsPage";
 import { addPostActionCreator } from "../../Store/Reducers/NewsPageReducer";
 import { connect } from "react-redux";

@@ -4,7 +4,6 @@ import User from "./User/User";
 import PaginationUsers from "./PaginationUsers/PaginationUsers";
 
 const UsersPage = (props) => {
-    console.log(props);
     const renderUsersList = () => {
         return props.users.map((user) => {
             return (

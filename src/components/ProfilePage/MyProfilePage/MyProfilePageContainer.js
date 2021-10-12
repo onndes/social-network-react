@@ -35,7 +35,6 @@ class MyProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        // use selectors
         profile: getProfilePage(state),
         userStatus: checkGetUserStatus(state),
         isUpdatingMyStatus: state.profilePage.isUpdatingMyStatus,

@@ -2,7 +2,6 @@ import React from "react";
 import ProfilePage from "./ProfilePage";
 import { connect } from "react-redux";
 import { isLoading, getProfile, getFollowThisUser } from "../../Store/Reducers/ProfilePageReducer";
-// import { isLoading, getProfile, getFollowThisUser } from "../../Store/Reducers/ProfilePageReducer";
 import Preloader from "../../Common/Preloader/Preloader";
 import { withRouter, Redirect } from "react-router-dom";
 import { unFollow, follow } from "../../Store/Reducers/UsersPageReducer";
@@ -37,13 +36,6 @@ const mapStateToProps = (state) => {
         buttonFollowWork: state.usersPage.buttonFollowWork,
     };
 };
-// const ProfilePageContainer = connect(mapStateToProps, {
-//     isLoading,
-//     getProfile,
-//     getFollowThisUser,
-//     unFollow,
-//     follow,
-// })(withRouter(ProfileContainer));
 
 export default compose(
     connect(mapStateToProps, {
