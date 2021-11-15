@@ -1,14 +1,20 @@
 const ADD_POST = "NewsPageReducer/ADD_POST";
 const DELETE_POST = "NewsPageReducer/DELETE_POST";
 
+type PostsTypes = {
+    id: number | null;
+    postText: string | null;
+};
 const initialState = {
     posts: [
         { id: 1, postText: "This is news page" },
         { id: 2, postText: "Test" },
-    ],
+    ] as Array<PostsTypes>,
 };
 
-const newsPageReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState
+
+const newsPageReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case ADD_POST:
             return {
@@ -25,10 +31,10 @@ const newsPageReducer = (state = initialState, action) => {
     }
 };
 
-export const addPostActionCreator = (textBody) => {
+export const addPostActionCreator = (textBody: string) => {
     return { type: ADD_POST, textBody };
 };
-export const deletePostActionCreator = (id) => {
+export const deletePostActionCreator = (id: number) => {
     return { type: DELETE_POST, id };
 };
 

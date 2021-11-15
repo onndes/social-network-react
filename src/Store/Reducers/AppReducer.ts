@@ -7,7 +7,9 @@ const initialState = {
     initialSucsses: false,
 };
 
-const AppReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+
+const AppReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case INITIAL_SUCCESS:
             return {
@@ -19,13 +21,16 @@ const AppReducer = (state = initialState, action) => {
     }
 };
 
-const setInitialSuccess = () => {
+type SetInitialSuccessType = {
+  type: typeof INITIAL_SUCCESS,
+}
+const setInitialSuccess = (): SetInitialSuccessType => {
     return {
         type: INITIAL_SUCCESS,
     };
 };
 
-const startInitial = () => (dispatch) => {
+const startInitial = () => (dispatch: any) => {
     const authMePromise = dispatch(authMe());
     const getUsersPromise = dispatch(getUsers(1, 10));
 

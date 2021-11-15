@@ -6,18 +6,30 @@ const SET_USER_ADDITIONAL_INFO = "AuthReducer/SET_USER_ADDITIONAL_INFO";
 const IS_LOADING = "AuthReducer/IS_LOADING";
 const CUPTCH_URL = "AuthReducer/CUPTCH_URL";
 
-const initialState = {
-    id: null,
-    email: null,
-    login: null,
-    isAuth: false,
-    photo: null,
-    isLoading: false,
-    fullName: null,
-    captchaUrl: null,
-};
+// export type InitialStateType = {
+//     id: null | number;
+//     email: null | string;
+//     login: null | string;
+//     isAuth: boolean;
+//     photo: null | string;
+//     isLoading: boolean;
+//     fullName: null | string;
+//     captchaUrl: null | string;
+// };
 
-const AuthReducer = (state = initialState, action) => {
+const initialState = {
+    id: null as null | number,
+    email: null as null | string,
+    login: null as null | string,
+    isAuth: false,
+    photo: null as null | string,
+    isLoading: false,
+    fullName: null as null | string,
+    captchaUrl: null as null | string,
+};
+export type InitialStateType = typeof initialState;
+
+const AuthReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case SET_USER_DATA:
             return {
@@ -35,6 +47,7 @@ const AuthReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: action.isLoading,
             };
+
         case CUPTCH_URL:
             return {
                 ...state,
@@ -44,40 +57,70 @@ const AuthReducer = (state = initialState, action) => {
             return state;
     }
 };
+type UserDataType = {
+    id: number | null;
+    email: string | null;
+    login: string | null;
+    isAuth: boolean;
+    captcha?: string | null;
+    photo?: string | null;
+    fullName?: string | null;
+};
 
-export const setUserData = (id, email, login, captcha) => {
+type SetUserDataType = {
+    type: typeof SET_USER_DATA;
+    data: UserDataType;
+};
+export const setUserData = (id: any, email: any, login: any, captcha: any): SetUserDataType => {
     return {
         type: SET_USER_DATA,
         data: { id, email, login, isAuth: true, captcha },
     };
 };
-export const clearUserData = () => {
+export const clearUserData = (): SetUserDataType => {
     return {
         type: SET_USER_DATA,
         data: { id: null, email: null, login: null, isAuth: false, photo: null, fullName: null },
     };
 };
-export const setAdditionalInfoUser = (photo, fullName) => {
+type SetAdditionalInfoUserType = {
+    type: typeof SET_USER_ADDITIONAL_INFO;
+    photo: string;
+    fullName: string;
+};
+export const setAdditionalInfoUser = (
+    photo: string,
+    fullName: string,
+): SetAdditionalInfoUserType => {
     return {
         type: SET_USER_ADDITIONAL_INFO,
         photo,
         fullName,
     };
 };
-export const setIsLoading = (isLoading) => {
+type setIsLoadingType = {
+    type: typeof IS_LOADING;
+    isLoading: boolean;
+};
+export const setIsLoading = (isLoading: boolean): setIsLoadingType => {
     return {
         type: IS_LOADING,
         isLoading,
     };
 };
-export const setCuptchUrl = (captchaUrl) => {
+
+type setCuptchUrlType = {
+    type: typeof CUPTCH_URL;
+    captchaUrl: string;
+};
+export const setCuptchUrl = (captchaUrl: string): setCuptchUrlType => {
     return {
         type: CUPTCH_URL,
         captchaUrl,
     };
 };
 // ============================================================
-export const authMe = () => async (dispatch, getState) => {
+export const authMe = () => async (dispatch: any, getState: any) => {
     const data = await authMeAPI.getAuthMe();
     if (data.resultCode === 0) {
         const { email, id, login, captcha } = data.data;
@@ -89,17 +132,17 @@ export const authMe = () => async (dispatch, getState) => {
     });
 };
 
-export const getAdditionalInfoUser = () => async (dispatch, getState) => {
+export const getAdditionalInfoUser = () => async (dispatch: any, getState: any) => {
     profileAPI.getProfile(getState().auth.id).then((data) => {
         dispatch(setAdditionalInfoUser(data.photos.small, data.fullName));
     });
 };
 
-export const loginMe = (userData) => async (dispatch) => {
+export const loginMe = (userData: any) => async (dispatch: any) => {
     dispatch(setIsLoading(true));
     const data = await authMeAPI.login(userData);
     if (data.resultCode === 0) {
-        dispatch(authMe(data.userId));
+        dispatch(authMe());
     } else {
         if (data.resultCode === 10) {
             dispatch(getCuptchaUrl());
@@ -113,15 +156,15 @@ export const loginMe = (userData) => async (dispatch) => {
     dispatch(setIsLoading(false));
 };
 
-export const logoutMe = (userData) => async (dispatch) => {
+export const logoutMe = (userData: any) => async (dispatch: any) => {
     if (window.confirm("Do you really want to leave?")) {
-        const data = await authMeAPI.logout(userData);
+        const data = await authMeAPI.logout();
         if (data.data.resultCode === 0) {
             dispatch(clearUserData());
         }
     }
 };
-export const getCuptchaUrl = () => async (dispatch) => {
+export const getCuptchaUrl = () => async (dispatch: any) => {
     const data = await securityAPI.captcha();
     dispatch(setCuptchUrl(data.url));
 };

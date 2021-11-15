@@ -1,6 +1,17 @@
 const SET_OPEN_DIALOG = "MessagesPageReducer/SET_OPEN_DIALOG";
 const ADD_MESSAGE = "MessagesPageReducer/ADD_MESSAGE";
 
+type DialogisMessagesType = {
+    id: number
+    bodyMessages: Array<string>
+    date: string
+    myMessages: boolean
+};
+type DialogsType = {
+  id: number
+  userName: string
+  messages: DialogisMessagesType
+}
 const initialState = {
     dialogs: [
         {
@@ -227,19 +238,25 @@ const initialState = {
                 },
                 {
                     id: 16,
-                    bodyMessages: ["Magna ut amet culpa nisi labore ipsum adipisicing sunt dolore proident."],
+                    bodyMessages: [
+                        "Magna ut amet culpa nisi labore ipsum adipisicing sunt dolore proident.",
+                    ],
                     date: "14.10.2021",
                     myMessages: false,
                 },
                 {
                     id: 17,
-                    bodyMessages: ["Cillum sunt velit eu occaecat reprehenderit ullamco cupidatat exercitation mollit."],
+                    bodyMessages: [
+                        "Cillum sunt velit eu occaecat reprehenderit ullamco cupidatat exercitation mollit.",
+                    ],
                     date: "14.10.2021",
                     myMessages: false,
                 },
                 {
                     id: 18,
-                    bodyMessages: ["Quis labore minim elit commodo amet aliqua laboris non occaecat consequat dolore ut."],
+                    bodyMessages: [
+                        "Quis labore minim elit commodo amet aliqua laboris non occaecat consequat dolore ut.",
+                    ],
                     date: "14.10.2021",
                     myMessages: true,
                 },
@@ -257,7 +274,9 @@ const initialState = {
                 },
                 {
                     id: 21,
-                    bodyMessages: ["Ullamco pariatur pariatur nulla laborum sint dolore do anim veniam ut commodo."],
+                    bodyMessages: [
+                        "Ullamco pariatur pariatur nulla laborum sint dolore do anim veniam ut commodo.",
+                    ],
                     date: "14.10.2021",
                     myMessages: true,
                 },
@@ -269,11 +288,11 @@ const initialState = {
                 },
             ],
         },
-    ],
+    ] as Array<DialogsType>,
     openDialogId: null,
 };
 
-const MessagesPageReducer = (state = initialState, action) => {
+const MessagesPageReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case SET_OPEN_DIALOG:
             return {
@@ -310,10 +329,10 @@ const MessagesPageReducer = (state = initialState, action) => {
     }
 };
 
-export const setOpenDialog = (openDialogId) => {
+export const setOpenDialog = (openDialogId: number) => {
     return { type: SET_OPEN_DIALOG, openDialogId };
 };
-export const addMessage = (message, userId) => {
+export const addMessage = (message: string, userId: number) => {
     return { type: ADD_MESSAGE, message, userId };
 };
 
