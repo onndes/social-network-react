@@ -1,5 +1,5 @@
 import { usersAPI, followAPI } from "../../API/API";
-import { updateImmutableObg } from "./../../Utils/ObjectHelp";
+import { updateImmutableObg } from "../../Utils/ObjectHelp";
 
 const FOLLOW = "UsersPageReducer/FOLLOW";
 const UN_FOLLOW = "UsersPageReducer/UN_FOLLOW";
@@ -12,20 +12,36 @@ const CURRENT_PAGE_PREW = "UsersPageReducer/CURRENT_PAGE_PREW";
 const TOOGLE_BUTTON_FOLLOW = "UsersPageReducer/TOOGLE_BUTTON_FOLLOW";
 const SET_COUNT_BTN = "UsersPageReducer/SET_COUNT_BTN";
 
+type PhotosType = {
+    small: string;
+    large: string;
+};
+type UsersTypes = {
+    id: number;
+    name: string;
+    status: string;
+    photos: PhotosType;
+    small: string;
+    large: string;
+    followed: boolean;
+};
+
 const initialState = {
-    users: [],
+    users: [] as Array<UsersTypes>,
     pageSize: 10,
     totalUserCount: 0,
     currentPage: 1,
     countBtn: 5,
     activeBtn: 1,
-    visiblePageBtn: [0, 5],
+    visiblePageBtn: [0, 5] as Array<number>,
     isLoading: true,
-    currentPagePrew: null,
-    buttonFollowWork: [],
+    currentPagePrew: null as null | number,
+    buttonFollowWork: [] as Array<any>,
 };
 
-const UsersPageReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState;
+
+const UsersPageReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -84,39 +100,80 @@ const UsersPageReducer = (state = initialState, action) => {
     }
 };
 
-export const followApply = (id) => {
+type FollowApplyType = {
+    type: typeof FOLLOW;
+    id: number;
+};
+export const followApply = (id: number): FollowApplyType => {
     return { type: FOLLOW, id };
 };
-export const unFollowApply = (id) => {
+type UnFollowApplyType = {
+  type: typeof UN_FOLLOW;
+  id: number;
+};
+export const unFollowApply = (id: number): UnFollowApplyType => {
     return { type: UN_FOLLOW, id };
 };
-export const setUsers = (users) => {
+type SetUsersType = {
+  type: typeof SET_USERS;
+  users: UsersTypes;
+};
+export const setUsers = (users: UsersTypes): SetUsersType => {
     return { type: SET_USERS, users };
 };
-export const setCurrentPage = (currentPage) => {
+type SetCurrentPageType = {
+  type: typeof CURRENT_PAGE;
+  currentPage: number;
+};
+export const setCurrentPage = (currentPage: number): SetCurrentPageType => {
     return { type: CURRENT_PAGE, currentPage: currentPage };
 };
-export const setTotalUsers = (totalUserCount) => {
+type SetTotalUsersType = {
+  type: typeof TOTAL_USERS;
+  totalUserCount: number;
+};
+export const setTotalUsers = (totalUserCount: number): SetTotalUsersType => {
     return { type: TOTAL_USERS, totalUserCount: totalUserCount };
 };
-export const setVisiblePageBtn = (visiblePageBtn) => {
+type SetVisiblePageBtnType = {
+  type: typeof VISIBLE_PAGE;
+  visiblePageBtn: number;
+};
+export const setVisiblePageBtn = (visiblePageBtn: number): SetVisiblePageBtnType => {
     return { type: VISIBLE_PAGE, visiblePageBtn };
 };
-export const setLoading = (load) => {
+type SetLoadingType = {
+  type: typeof LOADING;
+  loading: boolean;
+};
+export const setLoading = (load: boolean): SetLoadingType => {
     return { type: LOADING, loading: load };
 };
-export const setCurrentPagePrew = (currentPagePrew) => {
+type SetCurrentPagePrewType = {
+  type: typeof CURRENT_PAGE_PREW;
+  currentPagePrew: number;
+};
+export const setCurrentPagePrew = (currentPagePrew: number): SetCurrentPagePrewType => {
     return { type: CURRENT_PAGE_PREW, currentPagePrew: currentPagePrew };
 };
-export const toggleButtonFollow = (toggleButton, userId) => {
+type ToggleButtonFollowType = {
+  type: typeof TOOGLE_BUTTON_FOLLOW;
+  userId: number;
+  toggleButton: number;
+};
+export const toggleButtonFollow = (toggleButton: any, userId: number): ToggleButtonFollowType => {
     return { type: TOOGLE_BUTTON_FOLLOW, toggleButton, userId };
 };
-export const setCountBtn = (countBtn) => {
+type SetCountBtnType = {
+  type: typeof SET_COUNT_BTN;
+  countBtn: number;
+};
+export const setCountBtn = (countBtn: number): SetCountBtnType => {
     return { type: SET_COUNT_BTN, countBtn };
 };
 
-export const getUsers = (currentPage, pageSize) => {
-    return async (dispatch) => {
+export const getUsers = (currentPage: number, pageSize: number) => {
+    return async (dispatch: any) => {
         dispatch(setLoading(true));
         const data = await usersAPI.getUsers(currentPage, pageSize);
         dispatch(setUsers(data.items));
@@ -124,19 +181,24 @@ export const getUsers = (currentPage, pageSize) => {
         dispatch(setLoading(false));
     };
 };
-export const getUsersClickBtn = (page, totalUserCount, pageSize, isGet) => {
-    return async (dispatch, getState) => {
+export const getUsersClickBtn = (
+    page: number,
+    totalUserCount: number,
+    pageSize: number,
+    isGet: any,
+) => {
+    return async (dispatch: any, getState: any) => {
         dispatch(setLoading(true));
         dispatch(setCurrentPage(page));
 
         const data = await usersAPI.getUsers(page, pageSize);
         dispatch(setUsers(data.items));
-        
+
         dispatch(setLoading(false));
     };
 };
 
-const followUnFollow = async (dispatch, userId, followApi, followApply) => {
+const followUnFollow = async (dispatch: any, userId: number, followApi: any, followApply: any) => {
     dispatch(toggleButtonFollow(true, userId));
     const data = await followApi(userId);
     if (data.resultCode === 0) {
@@ -147,13 +209,13 @@ const followUnFollow = async (dispatch, userId, followApi, followApply) => {
     dispatch(toggleButtonFollow(false, userId));
 };
 
-export const follow = (userId) => {
-    return (dispatch) => {
+export const follow = (userId: number) => {
+    return (dispatch: number) => {
         followUnFollow(dispatch, userId, followAPI.follow, followApply);
     };
 };
-export const unFollow = (userId) => {
-    return async (dispatch) => {
+export const unFollow = (userId: number) => {
+    return async (dispatch: any) => {
         followUnFollow(dispatch, userId, followAPI.unFollow, unFollowApply);
     };
 };

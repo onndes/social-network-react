@@ -2,16 +2,18 @@ const SET_OPEN_DIALOG = "MessagesPageReducer/SET_OPEN_DIALOG";
 const ADD_MESSAGE = "MessagesPageReducer/ADD_MESSAGE";
 
 type DialogisMessagesType = {
-    id: number
-    bodyMessages: Array<string>
-    date: string
-    myMessages: boolean
+    id: number;
+    bodyMessages: Array<string>;
+    date: string;
+    myMessages: boolean;
 };
+
 type DialogsType = {
-  id: number
-  userName: string
-  messages: DialogisMessagesType
-}
+    id: number;
+    userName: string;
+    messages: Array<DialogisMessagesType>;
+};
+
 const initialState = {
     dialogs: [
         {
@@ -289,10 +291,12 @@ const initialState = {
             ],
         },
     ] as Array<DialogsType>,
-    openDialogId: null,
+    openDialogId: null as null | number,
 };
 
-const MessagesPageReducer = (state = initialState, action: any) => {
+type InitialStateType = typeof initialState;
+
+const MessagesPageReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case SET_OPEN_DIALOG:
             return {
@@ -312,27 +316,34 @@ const MessagesPageReducer = (state = initialState, action: any) => {
                         const newMessage = {
                             id: dialog.messages.length,
                             bodyMessages: [action.message],
-                            data: mytoday,
+                            date: mytoday,
                             myMessages: true,
-                        };
+                        } as DialogisMessagesType;
                         return {
                             ...dialog,
                             messages: [...dialog.messages, newMessage],
-                            log: 2,
-                        };
+                        } as DialogsType;
                     }
-                    return dialog;
+                    return dialog as DialogsType;
                 }),
             };
         default:
             return state;
     }
 };
-
-export const setOpenDialog = (openDialogId: number) => {
+type SetOpenDialogType = {
+    type: typeof SET_OPEN_DIALOG;
+    openDialogId: number;
+};
+export const setOpenDialog = (openDialogId: number): SetOpenDialogType => {
     return { type: SET_OPEN_DIALOG, openDialogId };
 };
-export const addMessage = (message: string, userId: number) => {
+type AddMessageType = {
+    type: typeof ADD_MESSAGE;
+    message: string;
+    userId: number;
+};
+export const addMessage = (message: string, userId: number): AddMessageType => {
     return { type: ADD_MESSAGE, message, userId };
 };
 

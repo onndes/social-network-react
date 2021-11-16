@@ -12,8 +12,26 @@ const SET_FOLLOW_THIS_USER = "ProfilePageReducer/GET_FOLLOW_THIS_USER";
 const SET_PHOTO_PROFILE = "ProfilePageReducer/SET_PHOTO_PROFILE";
 const IS_UPDATE_PHOTO = "ProfilePageReducer/IS_UPDATE_PHOTO";
 
+type ContactsType = {
+    github: string;
+    vk: string;
+    facebook: string;
+    instagram: string;
+    twitter: string;
+    website: string;
+    youtube: string;
+    mainLink: string;
+};
+type ProfileType = {
+    userId: number;
+    lookingForAJob: boolean;
+    lookingForAJobDescription: string;
+    fullName: string;
+    contacts: ContactsType;
+};
+
 const initialState = {
-    profile: null,
+    profile: null as null | ProfileType,
     userId: null,
     isLoading: true,
     userStatus: null,
@@ -23,7 +41,7 @@ const initialState = {
     isUpdatePhoto: false,
 };
 
-const ProfilePageReducer = (state = initialState, action) => {
+const ProfilePageReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case SET_PROFILE_DATA:
             return { ...state, profile: action.profile };
@@ -48,58 +66,89 @@ const ProfilePageReducer = (state = initialState, action) => {
     }
 };
 
-export const setProfileData = (profile) => {
+type SetProfileDataType = {
+    type: typeof SET_PROFILE_DATA;
+    profile: ProfileType | null;
+};
+export const setProfileData = (profile: ProfileType | null): SetProfileDataType => {
     return {
         type: SET_PROFILE_DATA,
         profile,
     };
 };
-
-export const setUserId = (userId) => {
+type SetUserIdType = {
+    type: typeof SET_USER_ID;
+    userId: number;
+};
+export const setUserId = (userId: number): SetUserIdType => {
     return {
         type: SET_USER_ID,
         userId,
     };
 };
-export const isLoading = (loading) => {
+type IsLoadingType = {
+    type: typeof IS_LOADING;
+    loading: boolean;
+};
+export const isLoading = (loading: boolean): IsLoadingType => {
     return {
         type: IS_LOADING,
         loading,
     };
 };
-export const setUserStatus = (userStatus) => {
+type SetUserStatusType = {
+    type: typeof SET_USER_STATUS;
+    userStatus: string;
+};
+export const setUserStatus = (userStatus: string): SetUserStatusType => {
     return {
         type: SET_USER_STATUS,
         userStatus,
     };
 };
-export const isUpdatingMyStatus = (isUpdate) => {
+type IsUpdatingMyStatusType = {
+    type: typeof IS_UPDATING_MY_STATUS;
+    isUpdate: boolean;
+};
+export const isUpdatingMyStatus = (isUpdate: boolean): IsUpdatingMyStatusType => {
     return {
         type: IS_UPDATING_MY_STATUS,
         isUpdate,
     };
 };
-export const setFollowThisUser = (follow) => {
+type SetFollowThisUserType = {
+    type: typeof SET_FOLLOW_THIS_USER;
+    follow: boolean;
+};
+export const setFollowThisUser = (follow: boolean): SetFollowThisUserType => {
     return {
         type: SET_FOLLOW_THIS_USER,
         follow,
     };
 };
-export const setPhotoPofile = (image) => {
+type SetPhotoPofile = {
+  type: typeof SET_PHOTO_PROFILE;
+  image: string;
+};
+export const setPhotoPofile = (image: string): SetPhotoPofile => {
     return {
         type: SET_PHOTO_PROFILE,
         image,
     };
 };
-export const isUpdatePhoto = (isUpdatePhoto) => {
+type IsUpdatePhoto = {
+  type: typeof IS_UPDATE_PHOTO,
+  isUpdatePhoto: boolean,
+}
+export const isUpdatePhoto = (isUpdatePhoto: boolean):IsUpdatePhoto => {
     return {
         type: IS_UPDATE_PHOTO,
         isUpdatePhoto,
     };
 };
 
-export const getProfile = (userId) => {
-    return async (dispatch) => {
+export const getProfile = (userId: number) => {
+    return async (dispatch: any) => {
         dispatch(setProfileData(null));
         dispatch(isLoading(true));
 
@@ -113,7 +162,7 @@ export const getProfile = (userId) => {
     };
 };
 
-export const putStatus = (status) => async (dispatch) => {
+export const putStatus = (status: string) => async (dispatch: any) => {
     dispatch(isUpdatingMyStatus(true));
     const data = await profileAPI.putStatus(status);
     if (data.resaultCode === 0) {
@@ -122,26 +171,26 @@ export const putStatus = (status) => async (dispatch) => {
     dispatch(isUpdatingMyStatus(false));
 };
 
-export const getFollowThisUser = (id) => async (dispatch) => {
+export const getFollowThisUser = (id: number) => async (dispatch: any) => {
     const data = await followAPI.checkFollow(id);
     if (data.status === 200) {
         dispatch(setFollowThisUser(data.data));
     }
 };
-export const uploadImg = (image) => async (dispatch, getState) => {
+export const uploadImg = (image: string) => async (dispatch: any, getState: any) => {
     dispatch(isUpdatePhoto(true));
     const data = await profileAPI.updateFoto(image);
     if (data.resultCode === 0) {
         dispatch(setPhotoPofile(data.data.photos));
-        dispatch(getAdditionalInfoUser(getState().auth.id));
+        dispatch(getAdditionalInfoUser());
     }
     dispatch(isUpdatePhoto(false));
 };
-export const upadateProfileInfo = (profileInfo) => async (dispatch, getState) => {
+export const upadateProfileInfo = (profileInfo: any) => async (dispatch: any, getState: any) => {
     const data = await profileAPI.updateProfileInfo(profileInfo);
     if (data.resultCode === 0) {
         dispatch(getProfile(getState().auth.id));
-        dispatch(getAdditionalInfoUser(getState().auth.id));
+        dispatch(getAdditionalInfoUser());
     } else {
         var regExp = /\([^)]+\)/;
         var matches = regExp.exec(data.messages[0]);
