@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
 import s from "./PaginationUsers.module.css";
 
-const PaginationUsers = ({
+type PaginationUsersType = {
+    totalUserCount: number;
+    pageSize: number;
+    visiblePageBtn: Array<number>;
+    currentPage: number;
+    countBtn: number;
+    handleClickBtnPage: (currentPage: number, clickBtn?: boolean) => void;
+    setVisiblePageBtn: (visibleBtn: Array<number>) => void;
+    setCountBtn: (isCountBtn: number) => void;
+};
+
+const PaginationUsers: React.FC<PaginationUsersType> = ({
     totalUserCount,
     pageSize,
     visiblePageBtn,
@@ -66,13 +77,13 @@ const PaginationUsers = ({
     ]);
 
     const renderBtnPageUsers = () => {
-        const arrPageCount = [];
+        const arrPageCount: Array<number> = [];
         for (let i = 1; i <= countPage; i++) {
             arrPageCount.push(i);
         }
 
         if (arrPageCount.length > 0) {
-            const selectArrPageCount = arrPageCount.slice(visiblePageBtn[0], visiblePageBtn[1]);
+            const selectArrPageCount: Array<any> = arrPageCount.slice(visiblePageBtn[0], visiblePageBtn[1]);
 
             return selectArrPageCount.map((i) => {
                 return (

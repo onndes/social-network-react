@@ -8,7 +8,7 @@ import AuthReducer from "./Reducers/AuthReducer";
 import AppReducer from "./Reducers/AppReducer";
 import MessagesPageReducer from "./Reducers/MessagesPageReducer";
 
-let reducers = combineReducers({
+let rootReducers = combineReducers({
     newsPage: NewsPageReducer,
     usersPage: UsersPageReducer,
     profilePage: ProfilePageReducer,
@@ -18,7 +18,10 @@ let reducers = combineReducers({
     messagesPage: MessagesPageReducer,
 });
 
+type RootReducersType = typeof rootReducers;
+export type AppStateType = ReturnType<RootReducersType>;
+// @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
+const store = createStore(rootReducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 export default store;
