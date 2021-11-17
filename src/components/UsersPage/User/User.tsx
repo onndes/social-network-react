@@ -1,9 +1,19 @@
 import React from "react";
 import s from "./User.module.css";
 import { NavLink } from "react-router-dom";
+import { UsersTypes } from "../../../Types/Types";
 
-const User = ({ user, ...props }) => {
-    const sliceUserName = (userName) => {
+type UserType = {
+  user: UsersTypes
+  windowWidth: number
+  buttonFollowWork: Array<any>
+  unFollow: (userId: number) => void
+  follow: (userId: number) => void
+}
+
+
+const User: React.FC<UserType> = ({ user, ...props }) => {
+    const sliceUserName = (userName: string) => {
         if (userName.length > 12 && props.windowWidth < 420) {
             return userName.slice(0, 12) + "...";
         } else {

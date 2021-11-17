@@ -7,7 +7,6 @@ import MyProfilePageContainer from "../../ProfilePage/MyProfilePage/MyProfilePag
 import LoginPageContainer from "../../LoginPage/LoginPageContainer";
 import SettingsPageContainer from "../../SettingsPage/SettingsPageContainer";
 import MessagesPageContainer from "../../MessagesPage/MessagesPageContainer";
-import Test from "../../Test/Test";
 const Main = (props) => {
     return (
         <>
@@ -19,7 +18,7 @@ const Main = (props) => {
             <Route path='/profile/:userId' component={ProfilePageContainer} />
             <Route path='/login' component={LoginPageContainer} />
             <Route path='/settings' component={SettingsPageContainer} />
-            <Route path='/test' component={Test} />
+           
         </>
     );
 };

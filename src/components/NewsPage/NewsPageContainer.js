@@ -3,6 +3,8 @@ import { addPostActionCreator } from "../../Store/Reducers/NewsPageReducer";
 import { connect } from "react-redux";
 import { reset } from "redux-form";
 
+
+
 let mapStateToProps = (state) => {
     return {
         newsPage: state.newsPage,

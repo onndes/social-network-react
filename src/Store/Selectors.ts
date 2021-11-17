@@ -1,12 +1,13 @@
+import { AppStateType } from './Store';
 // Trial selectors
 import { createSelector } from "reselect";
 import userImg from "../assets/img/iconUser.png";
 
-export const getProfilePage = (state) => {
+export const getProfilePage = (state: AppStateType) => {
     return state.profilePage.profile;
 };
 
-export const getUserStatus = (state) => {
+export const getUserStatus = (state: AppStateType) => {
     return state.profilePage.userStatus;
 };
 
@@ -15,7 +16,7 @@ export const checkGetUserStatus = createSelector(getUserStatus, (status) => {
 });
 
 
-const getUsers = (state) => {
+const getUsers = (state: AppStateType) => {
     return state.usersPage.users;
 };
 

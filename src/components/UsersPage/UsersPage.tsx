@@ -1,9 +1,27 @@
-import React from "react";
-import PreloaderLine from "../../Common/PreloaderLine/PreloaderLine";
-import User from "./User/User";
-import PaginationUsers from "./PaginationUsers/PaginationUsers";
+import React from "react"
+import PreloaderLine from "../../Common/PreloaderLine/PreloaderLine"
+import User from "./User/User"
+import PaginationUsers from "./PaginationUsers/PaginationUsers"
+import { UsersTypes } from "../../Types/Types"
 
-const UsersPage = (props) => {
+type UsersPageType = {
+    users: Array<UsersTypes>
+    windowWidth: number
+    totalUserCount: number
+    visiblePageBtn: Array<number>
+    pageSize: number
+    currentPage: number
+    countBtn: number
+    isLoading: boolean
+    buttonFollowWork: Array<any>
+    follow: (userId: number) => void
+    unFollow: (userId: number) => void
+    handleClickBtnPage: (page: number, isGet: any) => void
+    setVisiblePageBtn: () => void
+    setCountBtn: () => void
+}
+
+const UsersPage: React.FC<UsersPageType> = (props) => {
     const renderUsersList = () => {
         return props.users.map((user) => {
             return (
@@ -16,9 +34,9 @@ const UsersPage = (props) => {
                         windowWidth={props.windowWidth}
                     />
                 </div>
-            );
-        });
-    };
+            )
+        })
+    }
 
     return (
         <>
@@ -35,7 +53,7 @@ const UsersPage = (props) => {
 
             {props.isLoading ? <PreloaderLine /> : renderUsersList()}
         </>
-    );
-};
+    )
+}
 
-export default UsersPage;
+export default UsersPage

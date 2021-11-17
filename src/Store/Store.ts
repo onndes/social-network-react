@@ -18,8 +18,10 @@ let rootReducers = combineReducers({
     messagesPage: MessagesPageReducer,
 });
 
+
 type RootReducersType = typeof rootReducers;
 export type AppStateType = ReturnType<RootReducersType>;
+
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducers, composeEnhancers(applyMiddleware(thunkMiddleware)));

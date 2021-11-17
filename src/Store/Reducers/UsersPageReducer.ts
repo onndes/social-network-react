@@ -1,5 +1,9 @@
+import { AppStateType } from './../Store';
+import { Dispatch } from "react";
 import { usersAPI, followAPI } from "../../API/API";
+import { UsersTypes } from "../../Types/Types";
 import { updateImmutableObg } from "../../Utils/ObjectHelp";
+import { ThunkAction } from 'redux-thunk';
 
 const FOLLOW = "UsersPageReducer/FOLLOW";
 const UN_FOLLOW = "UsersPageReducer/UN_FOLLOW";
@@ -11,20 +15,6 @@ const LOADING = "UsersPageReducer/LOADING";
 const CURRENT_PAGE_PREW = "UsersPageReducer/CURRENT_PAGE_PREW";
 const TOOGLE_BUTTON_FOLLOW = "UsersPageReducer/TOOGLE_BUTTON_FOLLOW";
 const SET_COUNT_BTN = "UsersPageReducer/SET_COUNT_BTN";
-
-type PhotosType = {
-    small: string;
-    large: string;
-};
-type UsersTypes = {
-    id: number;
-    name: string;
-    status: string;
-    photos: PhotosType;
-    small: string;
-    large: string;
-    followed: boolean;
-};
 
 const initialState = {
     users: [] as Array<UsersTypes>,
@@ -93,12 +83,26 @@ const UsersPageReducer = (state = initialState, action: any): InitialStateType =
         case SET_COUNT_BTN:
             return {
                 ...state,
+
                 countBtn: action.countBtn,
             };
         default:
             return state;
     }
 };
+
+type ActioinTypes =
+    | FollowApplyType
+    | UnFollowApplyType
+    | SetUsersType
+    | SetCurrentPageType
+    | SetTotalUsersType
+    | SetVisiblePageBtnType
+    | SetLoadingType
+    | SetCurrentPagePrewType
+    | SetCountBtnType
+    | ToggleButtonFollowType;
+
 
 type FollowApplyType = {
     type: typeof FOLLOW;
@@ -108,72 +112,76 @@ export const followApply = (id: number): FollowApplyType => {
     return { type: FOLLOW, id };
 };
 type UnFollowApplyType = {
-  type: typeof UN_FOLLOW;
-  id: number;
+    type: typeof UN_FOLLOW;
+    id: number;
 };
 export const unFollowApply = (id: number): UnFollowApplyType => {
     return { type: UN_FOLLOW, id };
 };
 type SetUsersType = {
-  type: typeof SET_USERS;
-  users: UsersTypes;
+    type: typeof SET_USERS;
+    users: UsersTypes;
 };
 export const setUsers = (users: UsersTypes): SetUsersType => {
     return { type: SET_USERS, users };
 };
 type SetCurrentPageType = {
-  type: typeof CURRENT_PAGE;
-  currentPage: number;
+    type: typeof CURRENT_PAGE;
+    currentPage: number;
 };
 export const setCurrentPage = (currentPage: number): SetCurrentPageType => {
     return { type: CURRENT_PAGE, currentPage: currentPage };
 };
 type SetTotalUsersType = {
-  type: typeof TOTAL_USERS;
-  totalUserCount: number;
+    type: typeof TOTAL_USERS;
+    totalUserCount: number;
 };
 export const setTotalUsers = (totalUserCount: number): SetTotalUsersType => {
     return { type: TOTAL_USERS, totalUserCount: totalUserCount };
 };
 type SetVisiblePageBtnType = {
-  type: typeof VISIBLE_PAGE;
-  visiblePageBtn: number;
+    type: typeof VISIBLE_PAGE;
+    visiblePageBtn: number;
 };
 export const setVisiblePageBtn = (visiblePageBtn: number): SetVisiblePageBtnType => {
     return { type: VISIBLE_PAGE, visiblePageBtn };
 };
 type SetLoadingType = {
-  type: typeof LOADING;
-  loading: boolean;
+    type: typeof LOADING;
+    loading: boolean;
 };
 export const setLoading = (load: boolean): SetLoadingType => {
     return { type: LOADING, loading: load };
 };
 type SetCurrentPagePrewType = {
-  type: typeof CURRENT_PAGE_PREW;
-  currentPagePrew: number;
+    type: typeof CURRENT_PAGE_PREW;
+    currentPagePrew: number;
 };
 export const setCurrentPagePrew = (currentPagePrew: number): SetCurrentPagePrewType => {
     return { type: CURRENT_PAGE_PREW, currentPagePrew: currentPagePrew };
 };
 type ToggleButtonFollowType = {
-  type: typeof TOOGLE_BUTTON_FOLLOW;
-  userId: number;
-  toggleButton: number;
+    type: typeof TOOGLE_BUTTON_FOLLOW;
+    userId: number;
+    toggleButton: number;
 };
 export const toggleButtonFollow = (toggleButton: any, userId: number): ToggleButtonFollowType => {
     return { type: TOOGLE_BUTTON_FOLLOW, toggleButton, userId };
 };
 type SetCountBtnType = {
-  type: typeof SET_COUNT_BTN;
-  countBtn: number;
+    type: typeof SET_COUNT_BTN;
+    countBtn: number;
 };
 export const setCountBtn = (countBtn: number): SetCountBtnType => {
     return { type: SET_COUNT_BTN, countBtn };
 };
 
+type GetStateType = () => AppStateType
+type DispatchType = Dispatch<ActioinTypes>
+type ThunkActionType = ThunkAction<Promise<void>, AppStateType, unknown, ActioinTypes >
+
 export const getUsers = (currentPage: number, pageSize: number) => {
-    return async (dispatch: any) => {
+    return async (dispatch: DispatchType) => {
         dispatch(setLoading(true));
         const data = await usersAPI.getUsers(currentPage, pageSize);
         dispatch(setUsers(data.items));
@@ -187,7 +195,7 @@ export const getUsersClickBtn = (
     pageSize: number,
     isGet: any,
 ) => {
-    return async (dispatch: any, getState: any) => {
+    return async (dispatch: DispatchType, getState: GetStateType) => {
         dispatch(setLoading(true));
         dispatch(setCurrentPage(page));
 
@@ -198,7 +206,7 @@ export const getUsersClickBtn = (
     };
 };
 
-const followUnFollow = async (dispatch: any, userId: number, followApi: any, followApply: any) => {
+const _followUnFollow = async (dispatch: any, userId: number, followApi: any, followApply: any) => {
     dispatch(toggleButtonFollow(true, userId));
     const data = await followApi(userId);
     if (data.resultCode === 0) {
@@ -210,13 +218,13 @@ const followUnFollow = async (dispatch: any, userId: number, followApi: any, fol
 };
 
 export const follow = (userId: number) => {
-    return (dispatch: number) => {
-        followUnFollow(dispatch, userId, followAPI.follow, followApply);
+    return (dispatch: DispatchType) => {
+        _followUnFollow(dispatch, userId, followAPI.follow, followApply);
     };
 };
-export const unFollow = (userId: number) => {
-    return async (dispatch: any) => {
-        followUnFollow(dispatch, userId, followAPI.unFollow, unFollowApply);
+export const unFollow = (userId: number): ThunkActionType  => {
+    return async (dispatch: DispatchType) => {
+        _followUnFollow(dispatch, userId, followAPI.unFollow, unFollowApply);
     };
 };
 export default UsersPageReducer;
