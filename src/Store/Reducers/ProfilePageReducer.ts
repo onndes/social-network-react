@@ -1,47 +1,32 @@
-import { followAPI, profileAPI } from "../../API/API";
+import { followAPI, profileAPI, ResultCodeEnum } from "../../API/API";
 import { getAdditionalInfoUser } from "./AuthReducer";
 import { stopSubmit } from "redux-form";
+import { ProfileType } from "../../Types/Types";
+import { AppStateType } from "../Store";
+import { Dispatch } from "redux";
+import { ThunkAction } from "redux-thunk";
 
 const SET_PROFILE_DATA = "ProfilePageReducer/SET_PROFILE_DATA ";
 const SET_USER_ID = "ProfilePageReducer/SET_USER_ID";
 const IS_LOADING = "ProfilePageReducer/IS_LOADING";
 const SET_USER_STATUS = "ProfilePageReducer/SET_USER_STATUS";
-const PUT_STATUS = "ProfilePageReducer/PUT_STATUS";
 const IS_UPDATING_MY_STATUS = "ProfilePageReducer/IS_UPDATING_MY_STATUS";
 const SET_FOLLOW_THIS_USER = "ProfilePageReducer/GET_FOLLOW_THIS_USER";
 const SET_PHOTO_PROFILE = "ProfilePageReducer/SET_PHOTO_PROFILE";
 const IS_UPDATE_PHOTO = "ProfilePageReducer/IS_UPDATE_PHOTO";
 
-type ContactsType = {
-    github: string;
-    vk: string;
-    facebook: string;
-    instagram: string;
-    twitter: string;
-    website: string;
-    youtube: string;
-    mainLink: string;
-};
-type ProfileType = {
-    userId: number;
-    lookingForAJob: boolean;
-    lookingForAJobDescription: string;
-    fullName: string;
-    contacts: ContactsType;
-};
-
 const initialState = {
-    profile: null as null | ProfileType,
-    userId: null,
+    profile: null as null | ProfileType | any,
+    userId: null as null | number,
     isLoading: true,
-    userStatus: null,
-    status: "",
+    userStatus: null as null | string,
     isUpdatingMyStatus: false,
-    follow: null,
+    follow: null as null | boolean,
     isUpdatePhoto: false,
 };
+type InitialStateType = typeof initialState;
 
-const ProfilePageReducer = (state = initialState, action: any) => {
+const ProfilePageReducer = (state = initialState, action: ActioinTypes): InitialStateType => {
     switch (action.type) {
         case SET_PROFILE_DATA:
             return { ...state, profile: action.profile };
@@ -51,8 +36,6 @@ const ProfilePageReducer = (state = initialState, action: any) => {
             return { ...state, isLoading: action.loading };
         case SET_USER_STATUS:
             return { ...state, userStatus: action.userStatus };
-        case PUT_STATUS:
-            return { ...state, status: action.userStatus };
         case IS_UPDATING_MY_STATUS:
             return { ...state, isUpdatingMyStatus: action.isUpdate };
         case SET_FOLLOW_THIS_USER:
@@ -65,6 +48,16 @@ const ProfilePageReducer = (state = initialState, action: any) => {
             return state;
     }
 };
+
+type ActioinTypes =
+    | SetProfileDataType
+    | SetUserIdType
+    | IsLoadingType
+    | SetUserStatusType
+    | IsUpdatingMyStatusType
+    | SetFollowThisUserType
+    | SetPhotoPofile
+    | IsUpdatePhoto;
 
 type SetProfileDataType = {
     type: typeof SET_PROFILE_DATA;
@@ -127,27 +120,31 @@ export const setFollowThisUser = (follow: boolean): SetFollowThisUserType => {
     };
 };
 type SetPhotoPofile = {
-  type: typeof SET_PHOTO_PROFILE;
-  image: string;
+    type: typeof SET_PHOTO_PROFILE;
+    image: any;
 };
-export const setPhotoPofile = (image: string): SetPhotoPofile => {
+export const setPhotoPofile = (image: any): SetPhotoPofile => {
     return {
         type: SET_PHOTO_PROFILE,
         image,
     };
 };
 type IsUpdatePhoto = {
-  type: typeof IS_UPDATE_PHOTO,
-  isUpdatePhoto: boolean,
-}
-export const isUpdatePhoto = (isUpdatePhoto: boolean):IsUpdatePhoto => {
+    type: typeof IS_UPDATE_PHOTO;
+    isUpdatePhoto: boolean;
+};
+export const isUpdatePhoto = (isUpdatePhoto: boolean): IsUpdatePhoto => {
     return {
         type: IS_UPDATE_PHOTO,
         isUpdatePhoto,
     };
 };
 
-export const getProfile = (userId: number) => {
+type GetStateType = () => AppStateType;
+type DispatchType = Dispatch<ActioinTypes>;
+type ThunkActionType = ThunkAction<Promise<void>, AppStateType, unknown, ActioinTypes>;
+
+export const getProfile = (userId: number): ThunkActionType => {
     return async (dispatch: any) => {
         dispatch(setProfileData(null));
         dispatch(isLoading(true));
@@ -162,25 +159,26 @@ export const getProfile = (userId: number) => {
     };
 };
 
-export const putStatus = (status: string) => async (dispatch: any) => {
+export const putStatus = (status: string) => async (dispatch: DispatchType) => {
     dispatch(isUpdatingMyStatus(true));
     const data = await profileAPI.putStatus(status);
-    if (data.resaultCode === 0) {
+    if (data.resultCode === ResultCodeEnum.Success) {
         dispatch(setUserStatus(status));
     }
     dispatch(isUpdatingMyStatus(false));
 };
 
-export const getFollowThisUser = (id: number) => async (dispatch: any) => {
+export const getFollowThisUser = (id: number) => async (dispatch: DispatchType) => {
     const data = await followAPI.checkFollow(id);
     if (data.status === 200) {
         dispatch(setFollowThisUser(data.data));
     }
 };
-export const uploadImg = (image: string) => async (dispatch: any, getState: any) => {
+export const uploadImg = (image: any) => async (dispatch: any, getState: GetStateType) => {
     dispatch(isUpdatePhoto(true));
     const data = await profileAPI.updateFoto(image);
-    if (data.resultCode === 0) {
+    
+    if (data.resultCode === ResultCodeEnum.Success) {
         dispatch(setPhotoPofile(data.data.photos));
         dispatch(getAdditionalInfoUser());
     }
@@ -188,7 +186,7 @@ export const uploadImg = (image: string) => async (dispatch: any, getState: any)
 };
 export const upadateProfileInfo = (profileInfo: any) => async (dispatch: any, getState: any) => {
     const data = await profileAPI.updateProfileInfo(profileInfo);
-    if (data.resultCode === 0) {
+    if (data.resultCode === ResultCodeEnum.Success) {
         dispatch(getProfile(getState().auth.id));
         dispatch(getAdditionalInfoUser());
     } else {

@@ -1,9 +1,9 @@
-import { AppStateType } from './../Store';
-import { Dispatch } from "react";
+import { AppStateType } from "./../Store";
+import { Dispatch } from "redux";
 import { usersAPI, followAPI } from "../../API/API";
 import { UsersTypes } from "../../Types/Types";
 import { updateImmutableObg } from "../../Utils/ObjectHelp";
-import { ThunkAction } from 'redux-thunk';
+import { ThunkAction } from "redux-thunk";
 
 const FOLLOW = "UsersPageReducer/FOLLOW";
 const UN_FOLLOW = "UsersPageReducer/UN_FOLLOW";
@@ -31,7 +31,7 @@ const initialState = {
 
 type InitialStateType = typeof initialState;
 
-const UsersPageReducer = (state = initialState, action: any): InitialStateType => {
+const UsersPageReducer = (state = initialState, action: ActioinTypes): InitialStateType => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -103,7 +103,6 @@ type ActioinTypes =
     | SetCountBtnType
     | ToggleButtonFollowType;
 
-
 type FollowApplyType = {
     type: typeof FOLLOW;
     id: number;
@@ -120,9 +119,9 @@ export const unFollowApply = (id: number): UnFollowApplyType => {
 };
 type SetUsersType = {
     type: typeof SET_USERS;
-    users: UsersTypes;
+    users: Array<UsersTypes>;
 };
-export const setUsers = (users: UsersTypes): SetUsersType => {
+export const setUsers = (users: Array<UsersTypes>): SetUsersType => {
     return { type: SET_USERS, users };
 };
 type SetCurrentPageType = {
@@ -141,9 +140,9 @@ export const setTotalUsers = (totalUserCount: number): SetTotalUsersType => {
 };
 type SetVisiblePageBtnType = {
     type: typeof VISIBLE_PAGE;
-    visiblePageBtn: number;
+    visiblePageBtn: Array<number>;
 };
-export const setVisiblePageBtn = (visiblePageBtn: number): SetVisiblePageBtnType => {
+export const setVisiblePageBtn = (visiblePageBtn: Array<number>): SetVisiblePageBtnType => {
     return { type: VISIBLE_PAGE, visiblePageBtn };
 };
 type SetLoadingType = {
@@ -176,11 +175,15 @@ export const setCountBtn = (countBtn: number): SetCountBtnType => {
     return { type: SET_COUNT_BTN, countBtn };
 };
 
-type GetStateType = () => AppStateType
-type DispatchType = Dispatch<ActioinTypes>
-type ThunkActionType = ThunkAction<Promise<void>, AppStateType, unknown, ActioinTypes >
+// =========================== Thunks
+// =========================== Thunks
+// =========================== Thunks
 
-export const getUsers = (currentPage: number, pageSize: number) => {
+type GetStateType = () => AppStateType;
+type DispatchType = Dispatch<ActioinTypes>;
+type ThunkActionType = ThunkAction<Promise<void>, AppStateType, unknown, ActioinTypes>;
+
+export const getUsers = (currentPage: number, pageSize: number): ThunkActionType => {
     return async (dispatch: DispatchType) => {
         dispatch(setLoading(true));
         const data = await usersAPI.getUsers(currentPage, pageSize);
@@ -194,7 +197,7 @@ export const getUsersClickBtn = (
     totalUserCount: number,
     pageSize: number,
     isGet: any,
-) => {
+): ThunkActionType => {
     return async (dispatch: DispatchType, getState: GetStateType) => {
         dispatch(setLoading(true));
         dispatch(setCurrentPage(page));
@@ -217,12 +220,12 @@ const _followUnFollow = async (dispatch: any, userId: number, followApi: any, fo
     dispatch(toggleButtonFollow(false, userId));
 };
 
-export const follow = (userId: number) => {
-    return (dispatch: DispatchType) => {
+export const follow = (userId: number): ThunkActionType => {
+    return async (dispatch: DispatchType) => {
         _followUnFollow(dispatch, userId, followAPI.follow, followApply);
     };
 };
-export const unFollow = (userId: number): ThunkActionType  => {
+export const unFollow = (userId: number): ThunkActionType => {
     return async (dispatch: DispatchType) => {
         _followUnFollow(dispatch, userId, followAPI.unFollow, unFollowApply);
     };
