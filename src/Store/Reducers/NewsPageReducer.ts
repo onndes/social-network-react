@@ -1,6 +1,10 @@
 const ADD_POST = "NewsPageReducer/ADD_POST";
 const DELETE_POST = "NewsPageReducer/DELETE_POST";
 
+// NO TYPED
+// NO TYPED
+// NO TYPED
+
 type PostsTypes = {
     id: number | null;
     postText: string | null;
