@@ -78,8 +78,10 @@ type DataOnSubmitType = {
     mail: string;
     password: string;
     rememberMe: boolean;
-    captcha?: string | null;
+    captcha: string | null;
 };
+
+
 type LoginPageType = {
     data?: DataOnSubmitType;
     isAuth: boolean;

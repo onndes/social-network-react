@@ -1,10 +1,10 @@
 import React from "react";
 import {
     unFollow,
-    toggleButtonFollow,
     getUsers,
     getUsersClickBtn,
     follow,
+    toggleButtonFollow,
     setVisiblePageBtn,
     setCountBtn,
     setCurrentPage,
@@ -90,9 +90,9 @@ export default compose(
     connect(mapStateToProps, {
         unFollow,
         follow,
-        toggleButtonFollow,
         getUsers,
         getUsersClickBtn,
+        toggleButtonFollow,
         setVisiblePageBtn,
         setCountBtn,
         setCurrentPage,

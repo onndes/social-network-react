@@ -1,27 +1,27 @@
 import { AppStateType } from './../../Store/Store';
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import { loginMe } from "../../Store/Reducers/AuthReducer";
 
-type MapPropsType = {
+type IStateProps = {
   isAuth:boolean
   isLoading: boolean
   captchaUrl: string | null
 }
 
-type MapDispatchType = {
+type IDispatchProps = {
   loginMe: () => void
 }
 
-type PropsType = MapPropsType & MapDispatchType 
+type PropsType = IStateProps & IDispatchProps
 
-const LoginContainer: React.FC<PropsType | any> = (props) => {
+const LoginContainer: React.FC<PropsType & RouteComponentProps | any> = (props) => {
     return <LoginPage {...props} />;
 };
 
-const mapStateToProps = (state: AppStateType): MapPropsType => {
+const mapStateToProps = (state: AppStateType): IStateProps => {
     return {
         isAuth: state.auth.isAuth,
         isLoading: state.auth.isLoading,

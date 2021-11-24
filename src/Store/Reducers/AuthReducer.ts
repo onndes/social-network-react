@@ -1,6 +1,10 @@
 import { stopSubmit } from "redux-form";
 import { authMeAPI, ResultCodeEnum, LoginResultCodeEnum, profileAPI, securityAPI } from "../../API/API";
 
+// NO TYPED
+// NO TYPED
+// NO TYPED
+
 const SET_USER_DATA = "AuthReducer/SET_USER_DATA";
 const SET_USER_ADDITIONAL_INFO = "AuthReducer/SET_USER_ADDITIONAL_INFO";
 const IS_LOADING = "AuthReducer/IS_LOADING";
