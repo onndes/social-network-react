@@ -1,9 +1,10 @@
 import { AppStateType } from "./../Store";
 import { Dispatch } from "redux";
-import { usersAPI, followAPI } from "../../API/API";
 import { UsersTypes } from "../../Types/Types";
 import { updateImmutableObg } from "../../Utils/ObjectHelp";
 import { ThunkAction } from "redux-thunk";
+import { usersAPI } from "../../API/UsersAPI";
+import { followAPI } from "../../API/FollowAPI";
 
 const FOLLOW = "UsersPageReducer/FOLLOW";
 const UN_FOLLOW = "UsersPageReducer/UN_FOLLOW";

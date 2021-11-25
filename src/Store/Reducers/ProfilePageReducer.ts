@@ -1,10 +1,12 @@
-import { followAPI, profileAPI, ResultCodeEnum } from "../../API/API";
+import { profileAPI } from './../../API/ProfileAPI';
+import { ResultCodeEnum } from "../../API/API";
 import { getAdditionalInfoUser } from "./AuthReducer";
 import { stopSubmit } from "redux-form";
 import { ProfileType } from "../../Types/Types";
 import { AppStateType } from "../Store";
 import { Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
+import { followAPI } from "../../API/FollowAPI";
 
 const SET_PROFILE_DATA = "ProfilePageReducer/SET_PROFILE_DATA ";
 const SET_USER_ID = "ProfilePageReducer/SET_USER_ID";

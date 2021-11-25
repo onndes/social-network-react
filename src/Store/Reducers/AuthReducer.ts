@@ -1,5 +1,8 @@
 import { stopSubmit } from "redux-form";
-import { authMeAPI, ResultCodeEnum, LoginResultCodeEnum, profileAPI, securityAPI } from "../../API/API";
+import { ResultCodeEnum} from "../../API/API";
+import { authMeAPI, LoginResultCodeEnum } from "../../API/AuthMeAPI";
+import { profileAPI } from "../../API/ProfileAPI";
+import { securityAPI } from "../../API/SecurityAPI";
 
 // NO TYPED
 // NO TYPED
