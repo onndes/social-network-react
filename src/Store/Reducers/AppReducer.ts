@@ -1,9 +1,7 @@
+
+import { BaseThunkType, GetActionsTypes } from "../Store";
 import { authMe } from "./AuthReducer";
 import { getUsers } from "./UsersPageReducer";
-
-// NO TYPED
-// NO TYPED
-// NO TYPED
 
 const INITIAL_SUCCESS = "AppReducer/INITIAL_SUCCESS";
 
@@ -13,7 +11,7 @@ const initialState = {
 
 export type InitialStateType = typeof initialState;
 
-const AppReducer = (state = initialState, action: any): InitialStateType => {
+const AppReducer = (state = initialState, action: ActioinTypes): InitialStateType => {
     switch (action.type) {
         case INITIAL_SUCCESS:
             return {
@@ -25,21 +23,19 @@ const AppReducer = (state = initialState, action: any): InitialStateType => {
     }
 };
 
-type SetInitialSuccessType = {
-  type: typeof INITIAL_SUCCESS,
-}
-const setInitialSuccess = (): SetInitialSuccessType => {
-    return {
-        type: INITIAL_SUCCESS,
-    };
+export type ActioinTypes = GetActionsTypes<typeof actions>;
+
+export const actions = {
+    setInitialSuccess: () => ({type: INITIAL_SUCCESS} as const),
 };
 
-const startInitial = () => (dispatch: any) => {
+type ThunkActionType = BaseThunkType<ActioinTypes>
+
+const startInitial = (): ThunkActionType => (dispatch) => {
     const authMePromise = dispatch(authMe());
     const getUsersPromise = dispatch(getUsers(1, 10));
-
-    Promise.all([authMePromise, getUsersPromise]).then(() => {
-        dispatch(setInitialSuccess());
+    return Promise.all([authMePromise, getUsersPromise]).then(() => {
+        dispatch(actions.setInitialSuccess());
     });
 };
 

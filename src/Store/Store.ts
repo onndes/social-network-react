@@ -1,6 +1,6 @@
-import { applyMiddleware, combineReducers, compose, createStore } from "redux";
+import { Action, applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { reducer as formReducer } from "redux-form";
-import thunkMiddleware from "redux-thunk";
+import thunkMiddleware, { ThunkAction } from "redux-thunk";
 import NewsPageReducer from "./Reducers/NewsPageReducer";
 import UsersPageReducer from "./Reducers/UsersPageReducer";
 import ProfilePageReducer from "./Reducers/ProfilePageReducer";
@@ -18,14 +18,19 @@ let rootReducers = combineReducers({
     messagesPage: MessagesPageReducer,
 });
 
-
+// Типизация для state
 type RootReducersType = typeof rootReducers;
 export type AppStateType = ReturnType<RootReducersType>;
 
+// Типизация для Actions
 type PropTypes<T> = T extends {[key: string]: infer U } ? U : never;
-export type ActionsTypes<T extends {[key: string]: (...args: any[]) => any}> = ReturnType<PropTypes<T>>
+export type GetActionsTypes<T extends {[key: string]: (...args: any[]) => any}> = ReturnType<PropTypes<T>>
+
+// Типизация Thunks
+export type BaseThunkType<A extends Action, P = Promise<void>> =  ThunkAction<P, AppStateType, unknown, A>;
 
 // @ts-ignore
+// __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ - для роботы ReduxDev tools в браузере
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
 

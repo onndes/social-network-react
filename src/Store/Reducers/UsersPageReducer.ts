@@ -1,8 +1,7 @@
-import { AppStateType } from "./../Store";
+import { AppStateType, BaseThunkType } from "./../Store";
 import { Dispatch } from "redux";
 import { UsersTypes } from "../../Types/Types";
 import { updateImmutableObg } from "../../Utils/ObjectHelp";
-import { ThunkAction } from "redux-thunk";
 import { usersAPI } from "../../API/UsersAPI";
 import { followAPI } from "../../API/FollowAPI";
 
@@ -177,12 +176,10 @@ export const setCountBtn = (countBtn: number): SetCountBtnType => {
 };
 
 // =========================== Thunks
-// =========================== Thunks
-// =========================== Thunks
 
 type GetStateType = () => AppStateType;
 type DispatchType = Dispatch<ActioinTypes>;
-type ThunkActionType = ThunkAction<Promise<void>, AppStateType, unknown, ActioinTypes>;
+type ThunkActionType = BaseThunkType<ActioinTypes>
 
 export const getUsers = (currentPage: number, pageSize: number): ThunkActionType => {
     return async (dispatch: DispatchType) => {
