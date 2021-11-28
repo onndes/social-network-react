@@ -64,7 +64,7 @@ type SetUserDataType = {
     type: typeof SET_USER_DATA;
     data: UserDataType;
 };
-export const setUserData = (id: any, email: any, login: any): SetUserDataType => {
+export const setUserData = (id: number, email: string, login: string): SetUserDataType => {
     return {
         type: SET_USER_DATA,
         data: { id, email, login, isAuth: true },

@@ -31,6 +31,7 @@ export const actions = {
 
 type ThunkActionType = BaseThunkType<ActioinTypes>
 
+// Инициализаци приложения
 const startInitial = (): ThunkActionType => (dispatch) => {
     const authMePromise = dispatch(authMe());
     const getUsersPromise = dispatch(getUsers(1, 10));
