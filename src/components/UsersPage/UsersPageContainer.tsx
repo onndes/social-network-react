@@ -4,10 +4,7 @@ import {
     getUsers,
     getUsersClickBtn,
     follow,
-    toggleButtonFollow,
-    setVisiblePageBtn,
-    setCountBtn,
-    setCurrentPage,
+    actions,
 } from "../../Store/Reducers/UsersPageReducer";
 import UsersPage from "./UsersPage";
 import { connect } from "react-redux";
@@ -27,7 +24,7 @@ type MapStatePropsType = {
     countBtn: number;
     isLoading: boolean;
     buttonFollowWork: Array<any>;
-}
+};
 
 type MapDispathPropsType = {
     getUsers: (currentPage: number, pageSize: number) => void;
@@ -84,6 +81,7 @@ const mapStateToProps = (state: AppStateType) => {
     };
 };
 
+const { toggleButtonFollow, setVisiblePageBtn, setCountBtn, setCurrentPage } = actions;
 export default compose(
     // <MapStatePropsType, MapDispathPropsType, OwnPropsType, AppStateType>
     // <ReturnType<typeof mapStateToProps>,MapDispathPropsType, OwnPropsType, AppStateType>
