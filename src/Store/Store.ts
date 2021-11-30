@@ -23,9 +23,7 @@ type RootReducersType = typeof rootReducers;
 export type AppStateType = ReturnType<RootReducersType>;
 
 // Типизация для Actions
-type PropTypes<T> = T extends {[key: string]: infer U } ? U : never;
-export type GetActionsTypes<T extends {[key: string]: (...args: any[]) => any}> = ReturnType<PropTypes<T>>
-
+export type InferActionsTypes<T> = T extends {[keys: string]: (...args: any[]) => infer U} ? U : never
 // Типизация Thunks
 export type BaseThunkType<A extends Action, P = Promise<void>> =  ThunkAction<P, AppStateType, unknown, A>;
 

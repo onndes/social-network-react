@@ -176,7 +176,7 @@ export const getFollowThisUser = (id: number) => async (dispatch: DispatchType) 
         dispatch(setFollowThisUser(data.data));
     }
 };
-export const uploadImg = (image: any) => async (dispatch: any, getState: GetStateType) => {
+export const uploadImg = (image: File) => async (dispatch: any, getState: GetStateType) => {
     dispatch(isUpdatePhoto(true));
     const data = await profileAPI.updateFoto(image);
     

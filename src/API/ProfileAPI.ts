@@ -18,7 +18,7 @@ export const profileAPI = {
             .put<ResponseData>(`profile/status`, { status })
             .then((response) => response.data);
     },
-    updateFoto(photo: string) {
+    updateFoto(photo: File) {
         const formData = new FormData();
         formData.append("image", photo);
         return instance

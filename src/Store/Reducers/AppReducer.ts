@@ -1,5 +1,5 @@
 
-import { BaseThunkType, GetActionsTypes } from "../Store";
+import { BaseThunkType, InferActionsTypes } from "../Store";
 import { authMe } from "./AuthReducer";
 import { getUsers } from "./UsersPageReducer";
 
@@ -23,7 +23,7 @@ const AppReducer = (state = initialState, action: ActioinTypes): InitialStateTyp
     }
 };
 
-export type ActioinTypes = GetActionsTypes<typeof actions>;
+export type ActioinTypes = InferActionsTypes<typeof actions>;
 
 export const actions = {
     setInitialSuccess: () => ({type: INITIAL_SUCCESS} as const),
