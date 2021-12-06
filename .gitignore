@@ -29,3 +29,5 @@ src/components/Test/Test.js
 src/components/Test/Test.module.css
 src/components/Test/TestContainer.css
 src/components/Test/TestContainer.js
+sn.env
+.env
