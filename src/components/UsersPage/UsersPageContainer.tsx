@@ -28,7 +28,7 @@ type MapStatePropsType = {
 
 type MapDispathPropsType = {
     getUsers: (currentPage: number, pageSize: number) => void;
-    getUsersClickBtn: (page: number, totalUserCount: number, pageSize: number, isGet: any) => void;
+    getUsersClickBtn: (page: number, pageSize: number, ) => void;
     unFollow: (userId: number) => void;
     follow: (userId: number) => void;
 
@@ -50,11 +50,7 @@ class UsersContainer extends React.Component<PropsType> {
 
     handleClickBtnPage = (page: number, isGet: any) => {
         if (page !== this.props.currentPage) {
-            this.props.getUsersClickBtn(
-                page,
-                this.props.totalUserCount,
-                this.props.pageSize,
-                isGet,
+            this.props.getUsersClickBtn(page, this.props.pageSize
             );
         }
     };
