@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.aee34135.chunk.css",
-    "main.js": "/static/js/main.f80d8b06.chunk.js",
-    "main.js.map": "/static/js/main.f80d8b06.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.4ac874f9.js",
-    "runtime-main.js.map": "/static/js/runtime-main.4ac874f9.js.map",
-    "static/js/2.d3d592d6.chunk.js": "/static/js/2.d3d592d6.chunk.js",
-    "static/js/2.d3d592d6.chunk.js.map": "/static/js/2.d3d592d6.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.aee34135.chunk.css.map": "/static/css/main.aee34135.chunk.css.map",
-    "static/js/2.d3d592d6.chunk.js.LICENSE.txt": "/static/js/2.d3d592d6.chunk.js.LICENSE.txt",
-    "static/media/app_preloader.9d402047.svg": "/static/media/app_preloader.9d402047.svg",
-    "static/media/app_preloared_dots.de141810.svg": "/static/media/app_preloared_dots.de141810.svg",
-    "static/media/CustomFrom.module.css": "/static/media/info_error.e353ba1a.svg",
-    "static/media/MyProfilePage.module.css": "/static/media/pencil.b3ea7b64.svg",
-    "static/media/preloader.282a7f1e.svg": "/static/media/preloader.282a7f1e.svg"
+    "main.css": "/social-network-react/static/css/main.003cf3c7.chunk.css",
+    "main.js": "/social-network-react/static/js/main.f80d8b06.chunk.js",
+    "main.js.map": "/social-network-react/static/js/main.f80d8b06.chunk.js.map",
+    "runtime-main.js": "/social-network-react/static/js/runtime-main.15e6da85.js",
+    "runtime-main.js.map": "/social-network-react/static/js/runtime-main.15e6da85.js.map",
+    "static/js/2.d3d592d6.chunk.js": "/social-network-react/static/js/2.d3d592d6.chunk.js",
+    "static/js/2.d3d592d6.chunk.js.map": "/social-network-react/static/js/2.d3d592d6.chunk.js.map",
+    "index.html": "/social-network-react/index.html",
+    "static/css/main.003cf3c7.chunk.css.map": "/social-network-react/static/css/main.003cf3c7.chunk.css.map",
+    "static/js/2.d3d592d6.chunk.js.LICENSE.txt": "/social-network-react/static/js/2.d3d592d6.chunk.js.LICENSE.txt",
+    "static/media/app_preloader.9d402047.svg": "/social-network-react/static/media/app_preloader.9d402047.svg",
+    "static/media/app_preloared_dots.de141810.svg": "/social-network-react/static/media/app_preloared_dots.de141810.svg",
+    "static/media/CustomFrom.module.css": "/social-network-react/static/media/info_error.e353ba1a.svg",
+    "static/media/MyProfilePage.module.css": "/social-network-react/static/media/pencil.b3ea7b64.svg",
+    "static/media/preloader.282a7f1e.svg": "/social-network-react/static/media/preloader.282a7f1e.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.4ac874f9.js",
+    "static/js/runtime-main.15e6da85.js",
     "static/js/2.d3d592d6.chunk.js",
-    "static/css/main.aee34135.chunk.css",
+    "static/css/main.003cf3c7.chunk.css",
     "static/js/main.f80d8b06.chunk.js"
   ]
 }
