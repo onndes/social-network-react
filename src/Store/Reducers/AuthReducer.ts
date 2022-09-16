@@ -1,5 +1,5 @@
 import { stopSubmit } from "redux-form";
-import { ResultCodeEnum} from "../../API/API";
+import { ResultCodeEnum } from "../../API/API";
 import { authMeAPI, LoginResultCodeEnum } from "../../API/AuthMeAPI";
 import { profileAPI } from "../../API/ProfileAPI";
 import { securityAPI } from "../../API/SecurityAPI";
@@ -64,7 +64,11 @@ type SetUserDataType = {
     type: typeof SET_USER_DATA;
     data: UserDataType;
 };
-export const setUserData = (id: number, email: string, login: string): SetUserDataType => {
+export const setUserData = (
+    id: number,
+    email: string,
+    login: string,
+): SetUserDataType => {
     return {
         type: SET_USER_DATA,
         data: { id, email, login, isAuth: true },
@@ -73,7 +77,14 @@ export const setUserData = (id: number, email: string, login: string): SetUserDa
 export const clearUserData = () => {
     return {
         type: SET_USER_DATA,
-        data: { id: null, email: null, login: null, isAuth: false, photo: null, fullName: null },
+        data: {
+            id: null,
+            email: null,
+            login: null,
+            isAuth: false,
+            photo: null,
+            fullName: null,
+        },
     };
 };
 type SetAdditionalInfoUserType = {
@@ -119,18 +130,19 @@ export const authMe = () => async (dispatch: any, getState: any) => {
         const { email, id, login } = data.data;
         dispatch(setUserData(id, email, login));
     }
-
-    
+    console.log(111);
     profileAPI.getProfile(getState().auth.id).then((data) => {
-        dispatch(setAdditionalInfoUser(data.photos.small, data.fullName));
+        const small = data.photos.small || "";
+        dispatch(setAdditionalInfoUser(small, data.fullName));
     });
 };
 
-export const getAdditionalInfoUser = () => async (dispatch: any, getState: any) => {
-    profileAPI.getProfile(getState().auth.id).then((data) => {
-        dispatch(setAdditionalInfoUser(data.photos.small, data.fullName));
-    });
-};
+export const getAdditionalInfoUser =
+    () => async (dispatch: any, getState: any) => {
+        profileAPI.getProfile(getState().auth.id).then((data) => {
+            dispatch(setAdditionalInfoUser(data.photos.small, data.fullName));
+        });
+    };
 
 export const loginMe = (userData: any) => async (dispatch: any) => {
     dispatch(setIsLoading(true));
@@ -145,7 +157,8 @@ export const loginMe = (userData: any) => async (dispatch: any) => {
         }
         dispatch(
             stopSubmit("login", {
-                _error: data.messages.length < 1 ? "Some error" : data.messages[0],
+                _error:
+                    data.messages.length < 1 ? "Some error" : data.messages[0],
             }),
         );
     }
