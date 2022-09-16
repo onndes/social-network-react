@@ -4,7 +4,6 @@ import { updateImmutableObg } from "../../Utils/ObjectHelp";
 import { usersAPI } from "../../API/UsersAPI";
 import { followAPI } from "../../API/FollowAPI";
 
-
 const initialState = {
     users: [] as Array<UsersTypes>,
     pageSize: 10,
@@ -19,22 +18,29 @@ const initialState = {
 };
 type InitialStateType = typeof initialState;
 
-const UsersPageReducer = (state = initialState, action: ActioinTypes): InitialStateType => {
+const UsersPageReducer = (
+    state = initialState,
+    action: ActionsTypes,
+): InitialStateType => {
     switch (action.type) {
         case "UsersPageReducer/FOLLOW":
             return {
                 ...state,
-                users: updateImmutableObg(state.users, "id", action.id, { followed: true }),
+                users: updateImmutableObg(state.users, "id", action.id, {
+                    followed: true,
+                }),
             };
         case "UsersPageReducer/UN_FOLLOW":
             return {
                 ...state,
-                users: updateImmutableObg(state.users, "id", action.id, { followed: false }),
+                users: updateImmutableObg(state.users, "id", action.id, {
+                    followed: false,
+                }),
             };
         case "UsersPageReducer/SET_USERS":
             return {
                 ...state,
-                users: [...action.users],
+                users: action.users ? [...action.users] : [],
             };
         case "UsersPageReducer/CURRENT_PAGE":
             return {
@@ -77,13 +83,17 @@ const UsersPageReducer = (state = initialState, action: ActioinTypes): InitialSt
             return state;
     }
 };
-type ActioinTypes = InferActionsTypes<typeof actions>;
+type ActionsTypes = InferActionsTypes<typeof actions>;
 
 export const actions = {
-    followApply: (id: number) => ({ type: "UsersPageReducer/FOLLOW", id } as const),
-    unFollowApply: (id: number) => ({ type: "UsersPageReducer/UN_FOLLOW", id } as const),
-    setUsers: (users: Array<UsersTypes>) => ({ type: "UsersPageReducer/SET_USERS", users } as const),
-    setCurrentPage: (currentPage: number) => ({ type: "UsersPageReducer/CURRENT_PAGE", currentPage } as const),
+    followApply: (id: number) =>
+        ({ type: "UsersPageReducer/FOLLOW", id } as const),
+    unFollowApply: (id: number) =>
+        ({ type: "UsersPageReducer/UN_FOLLOW", id } as const),
+    setUsers: (users: Array<UsersTypes>) =>
+        ({ type: "UsersPageReducer/SET_USERS", users } as const),
+    setCurrentPage: (currentPage: number) =>
+        ({ type: "UsersPageReducer/CURRENT_PAGE", currentPage } as const),
     setTotalUsers: (totalUserCount: number) =>
         ({
             type: "UsersPageReducer/TOTAL_USERS",
@@ -91,7 +101,8 @@ export const actions = {
         } as const),
     setVisiblePageBtn: (visiblePageBtn: Array<number>) =>
         ({ type: "UsersPageReducer/VISIBLE_PAGE", visiblePageBtn } as const),
-    setLoading: (load: boolean) => ({ type: "UsersPageReducer/LOADING", loading: load } as const),
+    setLoading: (load: boolean) =>
+        ({ type: "UsersPageReducer/LOADING", loading: load } as const),
     setCurrentPagePrew: (currentPagePrew: number | null) =>
         ({
             type: "UsersPageReducer/CURRENT_PAGE_PREW",
@@ -103,15 +114,20 @@ export const actions = {
             toggleButton,
             userId,
         } as const),
-    setCountBtn: (countBtn: number) => ({ type: "UsersPageReducer/SET_COUNT_BTN", countBtn } as const),
+    setCountBtn: (countBtn: number) =>
+        ({ type: "UsersPageReducer/SET_COUNT_BTN", countBtn } as const),
 };
 
-type ThunkActionType = BaseThunkType<ActioinTypes> 
+type ThunkActionType = BaseThunkType<ActionsTypes>;
 
-export const getUsers = (currentPage: number, pageSize: number): ThunkActionType => {
+export const getUsers = (
+    currentPage: number,
+    pageSize: number,
+): ThunkActionType => {
     return async (dispatch) => {
         dispatch(actions.setLoading(true));
         const data = await usersAPI.getUsers(currentPage, pageSize);
+
         dispatch(actions.setUsers(data.items));
         dispatch(actions.setTotalUsers(data.totalCount));
         dispatch(actions.setLoading(false));
@@ -130,7 +146,12 @@ export const getUsersClickBtn = (
     };
 };
 
-const _followUnFollow = async (dispatch: any, userId: number, followApi: any, followApply: any) => {
+const _followUnFollow = async (
+    dispatch: any,
+    userId: number,
+    followApi: any,
+    followApply: any,
+) => {
     dispatch(actions.toggleButtonFollow(true, userId));
     const data = await followApi(userId);
     if (data.resultCode === 0) {
@@ -143,14 +164,23 @@ const _followUnFollow = async (dispatch: any, userId: number, followApi: any, fo
 
 export const follow = (userId: number): ThunkActionType => {
     return async (dispatch) => {
-        _followUnFollow(dispatch, userId, followAPI.follow, actions.followApply);
+        _followUnFollow(
+            dispatch,
+            userId,
+            followAPI.follow,
+            actions.followApply,
+        );
     };
 };
 
 export const unFollow = (userId: number): ThunkActionType => {
     return async (dispatch) => {
-        _followUnFollow(dispatch, userId, followAPI.unFollow, actions.unFollowApply);
+        _followUnFollow(
+            dispatch,
+            userId,
+            followAPI.unFollow,
+            actions.unFollowApply,
+        );
     };
 };
 export default UsersPageReducer;
-
