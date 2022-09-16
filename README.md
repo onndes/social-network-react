@@ -1,3 +1,3 @@
 # social-network-react
 
-Pet project -  is under construction.
+This is the first study project
