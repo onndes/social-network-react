@@ -1,8 +1,7 @@
 {
   "name": "social-network-react",
   "version": "0.1.0",
-  "private": true,
-  "home": "https://onndes.github.io/social-network-react/",
+  "private": false,
   "dependencies": {
     "@babel/register": "^7.15.3",
     "@emotion/react": "^11.4.1",
