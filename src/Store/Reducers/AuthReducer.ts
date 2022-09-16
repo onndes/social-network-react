@@ -130,9 +130,8 @@ export const authMe = () => async (dispatch: any, getState: any) => {
         const { email, id, login } = data.data;
         dispatch(setUserData(id, email, login));
     }
-    console.log(111);
     profileAPI.getProfile(getState().auth.id).then((data) => {
-        const small = data.photos.small || "";
+        const small = data.photos?.small ? data.photos.small : ''
         dispatch(setAdditionalInfoUser(small, data.fullName));
     });
 };
